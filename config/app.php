@@ -84,6 +84,12 @@ return [
 
     'locale' => 'en',
 
+
+    'supported_languages' => [
+        'ar' => 'ar',
+        'en' => 'en',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

@@ -1,7 +1,17 @@
 {
-    "The :attribute must contain at least one letter.": "The :attribute must contain at least one letter.",
-    "The :attribute must contain at least one number.": "The :attribute must contain at least one number.",
-    "The :attribute must contain at least one symbol.": "The :attribute must contain at least one symbol.",
-    "The :attribute must contain at least one uppercase and one lowercase letter.": "The :attribute must contain at least one uppercase and one lowercase letter.",
-    "The given :attribute has appeared in a data leak. Please choose a different :attribute.": "The given :attribute has appeared in a data leak. Please choose a different :attribute."
+    "first_name_required"    : "First Name field is required",
+    "last_name_required"     : "Last Name field is required",
+    "email_required"         : "Email field is required",
+    "email_unique"           : "Email is already exists",
+    "password_required"      : "Password field is required",
+    "password_min"           : "Password minimum is 6 numbers",
+    "address_required"       : "Address field is required",
+    "phone_required"         : "Phone field is required",
+    "mobile_required"        : "Mobile field is required",
+    "city_required"          : "City field is required",
+    "country_required"       : "Country field is required",
+    "registered_successfully": "You've been registered successfully",
+    "login_successfully"     : "You've been logged in successfully",
+    "logout_successfully"    : "You've been logged out successfully"
+
 }

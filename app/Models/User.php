@@ -18,9 +18,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'address',
+        'mobile',
+        'phone',
         'email',
         'password',
+        'country',
+        'city',
     ];
 
     /**
@@ -41,4 +47,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected function rules()
+    {
+        return [
+            'first_name' => 'required',
+            'last_name'  => 'required',
+            'email'      => 'required|unique:users,email,'.$this->id,
+            'password'   => 'required|min:6',
+            'phone'      => 'required',
+            'mobile'     => 'required',
+            'country'    => 'required',
+            'city'       => 'required',
+        ];
+    }
 }
