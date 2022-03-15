@@ -12,6 +12,10 @@
     "country_required"       : "Country field is required",
     "registered_successfully": "You've been registered successfully",
     "login_successfully"     : "You've been logged in successfully",
-    "logout_successfully"    : "You've been logged out successfully"
+    "logout_successfully"    : "You've been logged out successfully",
+    "created_successfully"   : "Added successfully",
+    "category_not_found"     : "This category is not exists",
+    "deleted_successfully"   : "Deleted successfully"
+
 
 }

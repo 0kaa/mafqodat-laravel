@@ -12,5 +12,8 @@
     "country_required"       : "البلد مطلوب",
     "registered_successfully": "لقد تم تسجيلك بنجاح",
     "login_successfully"     : "لقد تم تسجيل دخولك بنجاح",
-    "logout_successfully"    : "لقد تم تسجيل خروجك بنجاح"
+    "logout_successfully"    : "لقد تم تسجيل خروجك بنجاح",
+    "created_successfully"   : "تمت الاضافة بنجاح",
+    "category_not_found"     : "هذا القسم غير موجود",
+    "deleted_successfully"   : "تم الحذف بنجاح"
 }

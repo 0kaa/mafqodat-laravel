@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +22,11 @@ Route::post('login', [AuthController::class, 'login']);
 Route::group(['middleware' => 'auth:sanctum', 'localization'], function() {
 
     Route::post('logout', [AuthController::class, 'logout']);
+
+    Route::get('categories', [CategoryController::class, 'getAllCategories']);
+    Route::post('create-category', [CategoryController::class, 'createCategory']);
+    Route::post('update-category/{id}', [CategoryController::class, 'updateCategory']);
+    Route::post('delete-category/{id}', [CategoryController::class, 'deleteCategory']);
+
 
 });
