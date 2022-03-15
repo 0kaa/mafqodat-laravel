@@ -19,7 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'first_name',
-        'last_name',
+        'family_name',
         'address',
         'mobile',
         'phone',
@@ -51,14 +51,14 @@ class User extends Authenticatable
     protected function rules()
     {
         return [
-            'first_name' => 'required',
-            'last_name'  => 'required',
-            'email'      => 'required|unique:users,email,'.$this->id,
-            'password'   => 'required|min:6',
-            'phone'      => 'required',
-            'mobile'     => 'required',
-            'country'    => 'required',
-            'city'       => 'required',
+            'first_name'  => 'required',
+            'family_name' => 'required',
+            'email'       => 'required|unique:users,email,'.$this->id,
+            'password'    => 'required|min:6',
+            'phone'       => 'required',
+            'mobile'      => 'required',
+            'country'     => 'required',
+            'city'        => 'required',
         ];
     }
 }
