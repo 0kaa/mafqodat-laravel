@@ -44,6 +44,8 @@ class AuthController extends Controller
                 'user' => new UserResource($user),
                 'token' => $user->createToken('tokens')->plainTextToken,
             ], 200);
+        } else {
+            return $this->apiResponse(__('wrong_credentials'), [], 404);
         }
 
     }

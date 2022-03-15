@@ -15,5 +15,6 @@
     "logout_successfully"    : "لقد تم تسجيل خروجك بنجاح",
     "created_successfully"   : "تمت الاضافة بنجاح",
     "category_not_found"     : "هذا القسم غير موجود",
-    "deleted_successfully"   : "تم الحذف بنجاح"
+    "deleted_successfully"   : "تم الحذف بنجاح",
+    "wrong_credentials" : "بريدك الإلكتروني أو كلمة المرور خاطئة ، يرجى المحاولة مرة أخرى"
 }
