@@ -22,10 +22,10 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     display: block;
     margin: 20px auto;
     padding-top: 70px;
-    width: 400px;
+    width: 100%;
 }
 
 .error_page h3 {
-    color: #035e96;
+    color: #6c63ff;
     font-size: 50px;
 }

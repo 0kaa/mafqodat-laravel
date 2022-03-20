@@ -6,11 +6,11 @@
     <p class="clearfix mb-0">
         <span class="float-md-left d-block d-md-inline-block mt-25">
             <span class="d-none d-sm-inline-block">
-                2022 &copy جميع الحقوق محفوظة لموقع مفقودات
+                2022 &copy {{ __('copy_right') }}
             </span>
         </span>
 
-        <span class="float-md-right fs-5 d-none d-md-block">صنع بكل حب  في معامل جدارة<i data-feather="heart"></i></span>
+        <span class="float-md-right fs-5 d-none d-md-block">{{ __('jadaara') }}<i data-feather="heart"></i></span>
     </p>
 </footer>
 <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>

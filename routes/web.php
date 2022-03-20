@@ -31,8 +31,22 @@ Route::prefix('admin')->namespace('Dashboard')->group(function () {
 });
 
 
-Route::prefix('admin')->middleware('auth')->namespace('Dashboard')->name('admin.')->group(function () {
+Route::get('language/{locale}', function ($locale) {
+
+    app()->setLocale($locale);
+
+    session()->put('locale', $locale);
+
+    return redirect()->back();
+})->name('language');
+
+
+Route::prefix('admin')->middleware(['auth', 'webLocalization'])->namespace('Dashboard')->name('admin.')->group(function () {
 
     Route::get('/', 'HomeController@home')->name('home');
+
+    Route::resource('employees', 'EmployeeController');
+
+    Route::resource('countries', 'CountryController');
 
 });

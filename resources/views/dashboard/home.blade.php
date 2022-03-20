@@ -26,7 +26,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <h1 class="mb-1 text-white">تهانينا </h1>
+                                    <h1 class="mb-1 text-white">{{ __('congrats') }} </h1>
                                 </div>
                             </div>
                         </div>
