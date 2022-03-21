@@ -55,6 +55,17 @@
             </li>
         </ul>
 
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li  class="nav-item {{ areActiveRoutes(['admin.categories.create' , 'admin.categories.index' , 'admin.categories.edit']) }}"><a class="d-flex align-items-center" href="#"><i data-feather='inbox'></i><span class="menu-title text-truncate">{{ __('categories') }}</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{ route('admin.categories.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('categories') }}</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="{{ route('admin.categories.create') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('new_city') }}</span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
     </div>
 </div>
 <!-- END: Main Menu-->

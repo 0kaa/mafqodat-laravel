@@ -81,6 +81,12 @@
     "address"                : "العنوان",
     "write_address"          : "اكتب عنوانك",
     "edit_employee"          : "تعديل موظف",
+    "categories"             : "الاقسام",
+    "new_category"           : "اضافة قسم جديد",
+    "edit_category"          : "تعديل قسم",
+    "image"                  : "الصورة",
+    "image_required"         : "الصورة مطلوبة",
+    "category_name"          : "اسم القسم",
     ""                       : ""
 
 

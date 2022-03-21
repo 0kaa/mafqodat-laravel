@@ -81,6 +81,10 @@
     "address"                : "Address",
     "write_address"          : "Write your address",
     "edit_employee"          : "Edit Employee",
+    "categories"             : "Categories",
+    "new_category"           : "Add New Category",
+    "edit_category"          : "Edit Category",
+    "category_name"          : "Category Name",
     ""                       : ""
 
 

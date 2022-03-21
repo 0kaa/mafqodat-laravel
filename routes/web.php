@@ -53,4 +53,6 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization'])->namespace('Dash
     Route::resource('cities', 'CityController');
 
     Route::post('get-cities', [EmployeeController::class, 'getCities'])->name('get_cities');
+
+    Route::resource('categories', 'CategoryController');
 });
