@@ -69,6 +69,18 @@
     "select_country"         : "اختر دولة",
     "country_id_required"    : "الدولة مطلوبة",
     "edit_city"              : "تعديل دولة",
+    "select_city"            : "اختر المدينة",
+    "first_name"             : "الاسم الأول",
+    "write_first_name"       : "اكتب الاسم الاول",
+    "family_name"            : "اسم العائلة",
+    "write_family_name"      : "اكتب اسم عائلتك",
+    "write_email"            : "اكتب بريدك الالكترونى",
+    "write_password"         : "اكتب كلمة المرور الخاصة بك",
+    "write_phone"            : "اكتب رقم الهاتف",
+    "write_mobile"           : "اكتب رقم الجوال",
+    "address"                : "العنوان",
+    "write_address"          : "اكتب عنوانك",
+    "edit_employee"          : "تعديل موظف",
     ""                       : ""
 
 

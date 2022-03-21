@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,4 +52,5 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization'])->namespace('Dash
 
     Route::resource('cities', 'CityController');
 
+    Route::post('get-cities', [EmployeeController::class, 'getCities'])->name('get_cities');
 });

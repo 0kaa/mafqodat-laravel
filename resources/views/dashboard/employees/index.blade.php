@@ -59,13 +59,13 @@
                                                     <td>{{ $employee->mobile }}</td>
                                                     <td>{{ $employee->phone }}</td>
                                                     <td>{{ $employee->email }}</td>
-                                                    <td>{{ $employee->country }}</td>
-                                                    <td>{{ $employee->city }}</td>
+                                                    <td>{{ $employee->country->name }}</td>
+                                                    <td>{{ $employee->city->name }}</td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
                                                             <a href="{{ route('admin.employees.edit', $employee->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
-                                                            <a href="{{ route('admin.employees.destroy', $employee->id) }}" data-id="{{ $category->id }}" class="btn btn-sm btn-danger item-delete"><i data-feather="trash"></i></a>
+                                                            <a href="{{ route('admin.employees.destroy', $employee->id) }}" data-id="{{ $employee->id }}" class="btn btn-sm btn-danger item-delete"><i data-feather="trash"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>

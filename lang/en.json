@@ -69,6 +69,18 @@
     "select_country"         : "Select Country",
     "country_id_required"    : "Country is Required",
     "edit_city"              : "Edit City",
+    "select_city"            : "Select City",
+    "first_name"             : "First Name",
+    "write_first_name"       : "Write your first name",
+    "family_name"            : "Family Name",
+    "write_family_name"      : "Write your family name",
+    "write_email"            : "Write your email",
+    "write_password"         : "Write your password",
+    "write_phone"            : "Write your phone number",
+    "write_mobile"           : "Write your mobile number",
+    "address"                : "Address",
+    "write_address"          : "Write your address",
+    "edit_employee"          : "Edit Employee",
     ""                       : ""
 
 

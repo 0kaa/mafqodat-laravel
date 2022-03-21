@@ -1,6 +1,6 @@
 @extends('dashboard.layouts-auth.app')
 
-@section('title' , 'تسجيل الدخول')
+@section('title' , __('login'))
 
 @section('content')
         <!-- BEGIN: Content-->
