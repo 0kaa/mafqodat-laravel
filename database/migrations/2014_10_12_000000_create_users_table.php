@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('mobile');
             $table->string('country');
             $table->string('city');
+            $table->string('code')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
