@@ -49,4 +49,6 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization'])->namespace('Dash
 
     Route::resource('countries', 'CountryController');
 
+    Route::resource('cities', 'CityController');
+
 });

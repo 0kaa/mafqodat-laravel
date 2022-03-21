@@ -23,10 +23,10 @@ class AuthController extends Controller
     {
         //attempt to log admin
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            return \redirect()->intended(\route('admin.home'))->with('success', 'تم تسجيل الدخول بنجاح');
+            return \redirect()->intended(\route('admin.home'))->with('success', __('login_successfully'));
         }
 
-        return redirect()->back()->withInput($request->only('email','remember'))->with('error', 'البريد الالكترونى او كلمة المرور غير صحيحة');
+        return redirect()->back()->withInput($request->only('email','remember'))->with('error', __('wrong_credentials'));
 
     }
 

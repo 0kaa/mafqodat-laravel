@@ -1,10 +1,14 @@
 {
+    "welcome_to_mafqodat"    : "Welcome To Mafqodat",
+    "please_login"           : "Please Login",
     "first_name_required"    : "First Name field is required",
     "family_name_required"   : "Last Name field is required",
     "email_required"         : "Email field is required",
     "email_unique"           : "Email is already exists",
+    "password"               : "Password",
     "password_required"      : "Password field is required",
     "password_min"           : "Password minimum is 6 numbers",
+    "forget_password"        : "Forget password ?",
     "address_required"       : "Address field is required",
     "phone_required"         : "Phone field is required",
     "mobile_required"        : "Mobile field is required",
@@ -55,6 +59,16 @@
     "canceled"               : "Canceled",
     "edit_country"           : "Edit Country",
     "update"                 : "Update",
+    "remember"               : "Remember me",
+    "login"                  : "Login",
+    "control_panel"          : "Control Panel",
+    "cities"                 : "Cities",
+    "new_city"               : "Add new City",
+    "city_name"              : "City Name",
+    "select"                 : "Select",
+    "select_country"         : "Select Country",
+    "country_id_required"    : "Country is Required",
+    "edit_city"              : "Edit City",
     ""                       : ""
 
 

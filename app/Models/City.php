@@ -6,19 +6,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 
-class Country extends Model
+class City extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name_ar', 'name_en'];
+    protected $fillable = ['name_ar', 'name_en', 'country_id'];
+
+    protected $casts = [
+        'country_id' => 'integer'
+    ];
 
     public function getNameAttribute()
     {
         return $this->{'name_'.App::getLocale()};
     }
 
-    public function city()
+    public function country()
     {
-        return $this->hasMany(City::class, 'id', 'country_id');
+        return $this->belongsTo(Country::class, 'country_id', 'id');
     }
 }

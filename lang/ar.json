@@ -1,10 +1,14 @@
 {
+    "welcome_to_mafqodat"    : "مرحبا بك في مفقودات",
+    "please_login"           : "من فضلك قم بتسجيل الدخول",
     "first_name_required"    : "الاسم الأول مطلوب",
     "family_name_required"   : "الاسم الأخير مطلوب",
     "email_required"         : "البريد الإلكتروني مطلوب",
     "email_unique"           : "البريد الإلكتروني موجود بالفعل",
+    "password"               : "كلمة المرور",
     "password_required"      : "كلمة المرور مطلوبة",
     "password_min"           : "الحد الأدنى لكلمة المرور هو 6 أرقام",
+    "forget_password"        : "نسيت كلمة المرور؟",
     "address_required"       : "العنوان مطلوب",
     "phone_required"         : "الهاتف مطلوب",
     "mobile_required"        : "الجوال مطلوب",
@@ -55,6 +59,16 @@
     "canceled"               : "تم إلإلغاء",
     "edit_country"           : "تعديل دولة",
     "update"                 : "تعديل",
+    "remember"               : "تذكرنى",
+    "login"                  : "تسجيل الدخول",
+    "control_panel"          : "لوحة التحكم",
+    "cities"                 : "المدن",
+    "new_city"               : "اضافة مدينة جديدة",
+    "city_name"              : "اسم المدينة",
+    "select"                 : "اختر",
+    "select_country"         : "اختر دولة",
+    "country_id_required"    : "الدولة مطلوبة",
+    "edit_city"              : "تعديل دولة",
     ""                       : ""
 
 

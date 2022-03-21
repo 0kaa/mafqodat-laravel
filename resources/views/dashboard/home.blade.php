@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app')
 
-@section('title' , 'لوحة التحكم')
+@section('title' , __('control_panel'))
 
 @section('content')
 
