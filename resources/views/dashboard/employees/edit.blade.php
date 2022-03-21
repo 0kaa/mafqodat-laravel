@@ -219,45 +219,45 @@
         <script src="{{ asset('dashboard/assets/js/validation/employeeValidation.js') }}"></script>
 
         <script>
-            // $('#create_employee_form').submit(function() {
+            $('#update_employee_form').submit(function() {
 
-            //     localStorage.setItem('city', $("#selectCity").val());
+                localStorage.setItem('city', $("#selectCity").val());
 
-            // })
-
-
-            // window.onload = (() => {
-            //     if ($('#selectCountry').val()) {
-
-            //         $('#city_form_select').fadeIn();
-            //         var idCountry = $('#selectCountry').val();
-            //         $("#selectCity").html('');
+            })
 
 
-            //         $.ajax({
-            //             url: "{{ route('admin.get_cities') }}",
-            //             type: "POST",
-            //             data: {
-            //                 country_id: idCountry,
-            //                 _token: '{{ csrf_token() }}'
-            //             },
-            //             dataType: 'json',
-            //             success: function(result) {
+            window.onload = (() => {
+                if ($('#selectCountry').val()) {
 
-            //                 var city = localStorage.getItem('city');
+                    $('#city_form_select').fadeIn();
+                    var idCountry = $('#selectCountry').val();
+                    $("#selectCity").html('');
 
-            //                 $('#selectCity').html('<option value="">{{ __('select') }}</option>');
-            //                 $.each(result.cities, function(key, value) {
-            //                     $("#selectCity").append('<option value="' + value
-            //                         .id + '" ' + (city == value.id ? 'selected' : '') + '>' +
-            //                         value.name + '</option>');
-            //                 });
-            //             }
-            //         });
 
-            //     }
+                    $.ajax({
+                        url: "{{ route('admin.get_cities') }}",
+                        type: "POST",
+                        data: {
+                            country_id: idCountry,
+                            _token: '{{ csrf_token() }}'
+                        },
+                        dataType: 'json',
+                        success: function(result) {
 
-            // });
+                            var city = localStorage.getItem('city');
+
+                            // $('#selectCity').html('<option value="">{{ __('select') }}</option>');
+                            $.each(result.cities, function(key, value) {
+                                $("#selectCity").append('<option value="' + value
+                                    .id + '" ' + (city == value.id ? 'selected' : '') + '>' +
+                                    value.name + '</option>');
+                            });
+                        }
+                    });
+
+                }
+
+            });
 
             $('#selectCountry').on('change', function() {
                 var idCountry = this.value;
