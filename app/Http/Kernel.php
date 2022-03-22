@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\Localization;
+use App\Http\Middleware\WebLocalization;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -38,6 +39,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            WebLocalization::class
         ],
 
         'api' => [
@@ -66,5 +68,6 @@ class Kernel extends HttpKernel
         'throttle'         => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified'         => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'localization'     => \App\Http\Middleware\Localization::class,
+        'webLocalization'  => \App\Http\Middleware\WebLocalization::class,
     ];
 }

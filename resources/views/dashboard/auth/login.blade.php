@@ -1,6 +1,6 @@
 @extends('dashboard.layouts-auth.app')
 
-@section('title' , 'تسجيل الدخول')
+@section('title' , __('login'))
 
 @section('content')
         <!-- BEGIN: Content-->
@@ -18,16 +18,16 @@
                             <div class="card-body">
                                 <a href="javascript:void(0);" class="brand-logo">
                                     <!-- <img src="" alt=""> -->
-                                    <h2 class="brand-text text-primary ml-1">مفقودات</h2>
+                                    <h2 class="brand-text text-primary ml-1">{{ __('mafqodat') }}</h2>
                                 </a>
 
-                                <h4 class="card-title mb-1">مرحبا بك في مفقودات 👋</h4>
-                                <p class="card-text mb-2">من فضلك قم بتسجيل الدخول</p>
+                                <h4 class="card-title mb-1">{{ __('welcome_to_mafqodat') }} 👋</h4>
+                                <p class="card-text mb-2">{{ __('please_login') }}</p>
 
                                 <form class="auth-login-form mt-2" id="authValidation" action="{{ route('admin.login.post') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="login-email" class="form-label">البريد الالكترونى</label>
+                                        <label for="login-email" class="form-label">{{ __('email') }}</label>
                                         <input type="email" class="form-control" id="email" name="email" placeholder="john@example.com" aria-describedby="email" tabindex="1" autofocus />
 
                                         @error('email')
@@ -39,9 +39,9 @@
 
                                     <div class="form-group">
                                         <div class="d-flex justify-content-between">
-                                            <label for="password">كلمة المرور</label>
+                                            <label for="password">{{ __('password') }}</label>
                                             <a href="{{ route('admin.reset') }}">
-                                                <small>نسيت كلمة المرور؟</small>
+                                                <small>{{ __('forget_password') }}</small>
                                             </a>
                                         </div>
                                         <div class="input-group input-group-merge form-password-toggle">
@@ -59,10 +59,10 @@
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
                                             <input class="custom-control-input" name="remember" type="checkbox" id="remember-me" tabindex="3" />
-                                            <label class="custom-control-label" for="remember-me"> تذكرنى </label>
+                                            <label class="custom-control-label" for="remember-me"> {{ __('remember') }} </label>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary btn-block" tabindex="4">تسجيل الدخول</button>
+                                    <button class="btn btn-primary btn-block" tabindex="4">{{ __('login') }}</button>
                                 </form>
                             </div>
                         </div>

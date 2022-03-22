@@ -18,11 +18,13 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('family_name')->nullable();
             $table->string('email')->unique();
-            $table->string('address');
-            $table->string('phone');
-            $table->string('mobile');
-            $table->string('country');
-            $table->string('city');
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('mobile')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->string('code')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

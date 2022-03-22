@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,8 +32,27 @@ Route::prefix('admin')->namespace('Dashboard')->group(function () {
 });
 
 
-Route::prefix('admin')->middleware('auth')->namespace('Dashboard')->name('admin.')->group(function () {
+Route::get('language/{locale}', function ($locale) {
+
+    app()->setLocale($locale);
+
+    session()->put('locale', $locale);
+
+    return redirect()->back();
+})->name('language');
+
+
+Route::prefix('admin')->middleware(['auth', 'webLocalization'])->namespace('Dashboard')->name('admin.')->group(function () {
 
     Route::get('/', 'HomeController@home')->name('home');
 
+    Route::resource('employees', 'EmployeeController');
+
+    Route::resource('countries', 'CountryController');
+
+    Route::resource('cities', 'CityController');
+
+    Route::post('get-cities', [EmployeeController::class, 'getCities'])->name('get_cities');
+
+    Route::resource('categories', 'CategoryController');
 });

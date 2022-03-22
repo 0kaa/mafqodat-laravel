@@ -25,8 +25,8 @@ class User extends Authenticatable
         'phone',
         'email',
         'password',
-        'country',
-        'city',
+        'country_id',
+        'city_id',
         'code'
     ];
 
@@ -58,8 +58,18 @@ class User extends Authenticatable
             'password'    => 'required|min:6',
             'phone'       => 'required',
             'mobile'      => 'required',
-            'country'     => 'required',
-            'city'        => 'required',
+            'country_id'  => 'required',
+            'city_id'     => 'required',
         ];
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id', 'id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id', 'id');
     }
 }
