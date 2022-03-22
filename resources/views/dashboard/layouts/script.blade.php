@@ -35,17 +35,30 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/localization/messages_ar.min.js"></script>
 
+    <script>
+
+    $('.table').DataTable({
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json"
+        }
+    });
+
+    </script>
+
+@else
+
+    <script>
+
+        $('.table').DataTable({
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/en.json"
+            }
+        });
+
+    </script>
+
 @endif
 
-<script>
-
-$('.table').DataTable({
-    "language": {
-        "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json"
-    }
-});
-
-</script>
 
 @stack('js')
 
