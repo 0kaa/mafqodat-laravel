@@ -87,6 +87,9 @@
     "image"                  : "الصورة",
     "image_required"         : "الصورة مطلوبة",
     "category_name"          : "اسم القسم",
+    "create_employee"        : "اضافة موظف",
+    "update_employee"        : "تعديل موظف",
+    "delete_employee"        : "حذف موظف",
     ""                       : ""
 
 

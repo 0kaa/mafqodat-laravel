@@ -10,6 +10,7 @@ use App\Models\Country;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Permission;
 
 class EmployeeController extends Controller
 {
@@ -36,7 +37,9 @@ class EmployeeController extends Controller
     {
         $countries = Country::get();
 
-        return view('dashboard.employees.create', compact('countries'));
+        $permissions = Permission::get();
+
+        return view('dashboard.employees.create', compact('countries', 'permissions'));
     }
 
     /**
@@ -47,7 +50,7 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request)
     {
-        $data = $request->except('_token');
+        $data = $request->except('_token', 'permissions');
 
         if ($request->password) {
             $data['password'] = \bcrypt($request->password);
@@ -56,6 +59,9 @@ class EmployeeController extends Controller
         $employee = User::create($data);
 
         if ($employee) {
+
+            $employee->givePermissionTo($request->permissions);
+
             return \redirect()->route('admin.employees.index')->with('success', __('created_successfully'));
         } else {
             return redirect()->back('error', __('something_went_wrong'));
@@ -88,8 +94,10 @@ class EmployeeController extends Controller
 
         $cities = City::where('country_id', $employee->country_id)->get();
 
+        $permissions = Permission::get();
+
         if ($employee) {
-            return view('dashboard.employees.edit', compact('employee', 'countries', 'cities'));
+            return view('dashboard.employees.edit', compact('employee', 'countries', 'cities', 'permissions'));
         } else {
             return view('dashboard.error');
         }
@@ -107,12 +115,16 @@ class EmployeeController extends Controller
     {
         $employee = User::find($id);
 
-        $data = $request->except('_token', '_method');
+        $data = $request->except('_token', '_method', 'permissions');
 
         if ($request->password) {
             $data['password'] = \bcrypt($request->password);
         } else {
             $data['password'] = $employee->password;
+        }
+
+        if ($request->permissions) {
+            $employee->syncPermissions($request->permissions);
         }
 
         if ($employee) {

@@ -37,6 +37,9 @@ $(document).ready(function () {
             city_id: {
                 required: true
             },
+            permissions: {
+                required: true
+            },
         },
 
         submitHandler: function(form) {

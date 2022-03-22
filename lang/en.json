@@ -85,6 +85,9 @@
     "new_category"           : "Add New Category",
     "edit_category"          : "Edit Category",
     "category_name"          : "Category Name",
+    "create_employee"        : "Create Employee",
+    "update_employee"        : "Update Employee",
+    "delete_employee"        : "Delete Employee",
     ""                       : ""
 
 

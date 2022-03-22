@@ -45,7 +45,8 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">{{ __('edit_employee') }} | {{ $employee->first_name . ' ' . $employee->family_name }}</h2>
+                                    <h2 class="card-title">{{ __('edit_employee') }} |
+                                        {{ $employee->first_name . ' ' . $employee->family_name }}</h2>
                                 </div>
                                 <div class="card-body">
                                     <form class="form form-vertical" id="update_employee_form"
@@ -196,6 +197,28 @@
                                                         </span>
                                                     @enderror
                                                 </div>
+                                            </div>
+
+                                            <div class="demo-inline-spacing col-12">
+                                                @foreach ($permissions as $permission)
+                                                    <div class="form-group" id="city_form_select">
+
+                                                        <div class="custom-control custom-control-danger custom-checkbox">
+                                                            <input type="checkbox" name="permissions[]"
+                                                                value="{{ $permission->id }}"
+                                                                class="custom-control-input"
+                                                                id="permission-{{ $permission->id }}"
+                                                                {{ $employee->permissions->contains($permission->id) ? 'checked' : '' }} required>
+                                                            <label class="custom-control-label"
+                                                                for="permission-{{ $permission->id }}">{{ __($permission->name) }}</label>
+                                                        </div>
+                                                        @error('permissions')
+                                                            <span class="alert alert-danger">
+                                                                <small class="errorTxt">{{ $message }}</small>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                @endforeach
                                             </div>
 
                                             <div class="col-12">

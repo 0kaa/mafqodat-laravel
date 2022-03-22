@@ -42,7 +42,7 @@ Route::get('language/{locale}', function ($locale) {
 })->name('language');
 
 
-Route::prefix('admin')->middleware(['auth', 'webLocalization'])->namespace('Dashboard')->name('admin.')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'webLocalization', 'role:super_admin'])->namespace('Dashboard')->name('admin.')->group(function () {
 
     Route::get('/', 'HomeController@home')->name('home');
 

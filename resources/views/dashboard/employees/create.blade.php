@@ -191,6 +191,25 @@
                                                 </div>
                                             </div>
 
+                                            <div class="demo-inline-spacing col-12">
+                                                @foreach ($permissions as $permission)
+                                                    <div class="form-group" id="city_form_select">
+
+                                                        <div class="custom-control custom-control-danger custom-checkbox">
+                                                            <input type="checkbox" name="permissions[]" value="{{ $permission->id }}" class="custom-control-input"
+                                                                id="permission-{{ $permission->id }}" required>
+                                                            <label class="custom-control-label"
+                                                                for="permission-{{ $permission->id }}">{{ __($permission->name) }}</label>
+                                                        </div>
+                                                        @error('permissions')
+                                                            <span class="alert alert-danger">
+                                                                <small class="errorTxt">{{ $message }}</small>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                @endforeach
+                                            </div>
+
                                             <div class="col-12">
                                                 <button type="submit"
                                                     class="btn btn-primary mr-1">{{ __('add') }}</button>
