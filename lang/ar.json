@@ -18,5 +18,9 @@
     "deleted_successfully": "تم الحذف بنجاح",
     "wrong_credentials": "بريدك الإلكتروني أو كلمة المرور خاطئة ، يرجى المحاولة مرة أخرى",
     "code_sent": "تم إرسال الرمز بنجاح",
-    "user_not_found": "هذا المستخدم غير موجود"
+    "user_not_found": "هذا المستخدم غير موجود",
+    "code_verified": "تم تأكيد الرمز بنجاح",
+    "code_not_verified": "لم يتم تأكيد الرمز بنجاح",
+    "password_changed": "تم تغيير كلمة المرور بنجاح",
+    "password_not_changed": "لم يتم تغيير كلمة المرور بنجاح"
 }

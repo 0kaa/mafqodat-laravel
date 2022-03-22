@@ -62,6 +62,43 @@ class AuthController extends Controller
             return $this->apiResponse(__('user_not_found'), [], 404);
         }
     }
+    public function verifyOtp(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+
+        if ($user && $user->code == $request->code) {
+            $token = $user->createToken('tokens')->plainTextToken;
+            return $this->apiResponse(__('code_verified'), ['token' => $token], 200);
+        } else {
+            return $this->apiResponse(__('code_not_verified'), [], 404);
+        }
+    }
+
+    public function setNewPassword(Request $request)
+    {
+        $user = auth()->user();
+        if ($user) {
+
+            $request->validate(
+                [
+                    'password' => 'required|confirmed|min:6',
+                ],
+                [
+                    'password.required' => __('password_required'),
+                    'password.confirmed' => __('password_confirmed'),
+                    'password.min' => __('password_min'),
+                ]
+            );
+
+
+            $user->password = bcrypt($request->password);
+            $user->code = null;
+            $user->save();
+            return $this->apiResponse(__('password_changed'), [], 200);
+        } else {
+            return $this->apiResponse(__('user_not_found'), [], 404);
+        }
+    }
 
     public function profile()
     {

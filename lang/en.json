@@ -18,5 +18,9 @@
     "deleted_successfully": "Deleted successfully",
     "wrong_credentials": "Your email or password are wrong, Please try again",
     "code_sent": "Code sent successfully",
-    "user_not_found": "This Mail is not exists"
+    "user_not_found": "This Mail is not exists",
+    "code_verified": "Code verified successfully",
+    "code_not_verified": "Code is not verified",
+    "password_changed": "Password changed successfully",
+    "password_not_changed": "Password is not changed"
 }
