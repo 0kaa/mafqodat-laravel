@@ -12,7 +12,6 @@ $(document).ready(function () {
             },
             number: {
                 required: true,
-                minlength: 3,
                 number: true,
             },
             details: {
@@ -46,7 +45,6 @@ $(document).ready(function () {
             },
             number: {
                 required: true,
-                minlength: 3,
                 number: true,
             },
             details: {
