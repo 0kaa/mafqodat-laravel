@@ -56,6 +56,17 @@
         </ul>
 
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li  class="nav-item {{ areActiveRoutes(['admin.stations.create' , 'admin.stations.index' , 'admin.stations.edit']) }}"><a class="d-flex align-items-center" href="#"><i data-feather='inbox'></i><span class="menu-title text-truncate">{{ __('stations') }}</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{ route('admin.stations.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('stations') }}</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="{{ route('admin.stations.create') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('new_station') }}</span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li  class="nav-item {{ areActiveRoutes(['admin.categories.create' , 'admin.categories.index' , 'admin.categories.edit']) }}"><a class="d-flex align-items-center" href="#"><i data-feather='inbox'></i><span class="menu-title text-truncate">{{ __('categories') }}</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{ route('admin.categories.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('categories') }}</span></a>

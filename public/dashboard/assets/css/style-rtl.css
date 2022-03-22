@@ -29,3 +29,11 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     color: #6c63ff;
     font-size: 50px;
 }
+
+#pac-input{
+    z-index: 0;
+    position: absolute;
+    left: 189px;
+    top: 13px !important;
+    width: 75%;
+}

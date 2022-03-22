@@ -82,7 +82,89 @@
     </div>
     <!-- END: Content-->
 @push('js')
-<script src="{{ asset('dashboard/app-assets/js/custom/custom-delete.js') }}"></script>
+{{-- <script src="{{ asset('dashboard/app-assets/js/custom/custom-delete.js') }}"></script> --}}
+
+<script>
+    $(document).ready(function () {
+
+        $('.item-delete').click(function(e) {
+
+            e.preventDefault();
+            const Toast2 = Swal.mixin({
+
+                showConfirmButton: false,
+                timer: 4000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+
+            const Toast = Swal.mixin({
+
+                showCancelButton: true,
+                showConfirmButton: true,
+                cancelButtonColor: '#888',
+                confirmButtonColor: '#d6210f',
+                confirmButtonText: "{{ __('delete') }}",
+                cancelButtonText: "{{ __('no') }}",
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'question',
+                title: "{{ __('want_delete') }}"
+            }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        var id    = $(this).data('id');
+                        var url = $(this).attr('href');
+                        var elem  = $(this).closest('tr');
+
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: {
+                                _method : 'delete',
+                                _token  : $('meta[name="csrf-token"]').attr('content'),
+                                id      : id,
+                            },
+                            dataType: 'json',
+                            success: function(result) {
+                                elem.fadeOut();
+
+                                Toast2.fire({
+                                    title: "{{ __('deleted_successfully') }}",
+                                    // showConfirmButton: false,
+                                    icon: 'success',
+                                    timer: 1000
+                                });
+                            } // end of success
+
+                        }); // end of ajax
+
+                    } else if (result.dismiss === Swal.DismissReason.cancel)
+                    {
+                        Toast2.fire({
+                            title: "{{ __('canceled') }}",
+                            // showConfirmButton: false,
+                            icon: 'success',
+                            timer: 1000
+                        });
+
+                    } // end of else confirmed
+
+                }) // end of then
+        });
+
+    });
+
+</script>
 @endpush
 @endsection
 

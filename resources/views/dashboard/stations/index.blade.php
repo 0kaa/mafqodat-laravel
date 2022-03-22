@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app')
 
-@section('title' , __('countries'))
+@section('title' ,  __('stations'))
 
 @section('content')
     <!-- BEGIN: Content-->
@@ -14,9 +14,9 @@
                         <div class="col-12">
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('admin.countries.index') }}">{{ __('countries') }}</a>
+                                    <li class="breadcrumb-item"><a href="{{ route('admin.stations.index') }}">{{ __('stations') }}</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">{{ __('countries') }}</a>
+                                    <li class="breadcrumb-item"><a href="#">{{ __('stations') }}</a>
                                     </li>
                                 </ol>
                             </div>
@@ -27,7 +27,7 @@
                     <div class="form-group breadcrumb-right">
                         <div class="dropdown">
                             <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="grid"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{ route('admin.countries.create') }}"><i class="mr-1" data-feather="circle"></i><span class="align-middle">{{ __('new_country') }} </span></a></div>
+                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{ route('admin.stations.create') }}"><i class="mr-1" data-feather="circle"></i><span class="align-middle">{{ __('new_station') }} </span></a></div>
                         </div>
                     </div>
                 </div>
@@ -42,19 +42,28 @@
                                         <thead>
                                             <tr>
                                                 <th>{{ __('id') }}</th>
-                                                <th>{{ __('country_name') }}</th>
+                                                <th>{{ __('station_type') }}</th>
+                                                <th>{{ __('station_name') }}</th>
+                                                <th>{{ __('station_number') }}</th>
+                                                <th>{{ __('station_details') }}</th>
+                                                <th>{{ __('station_location') }}</th>
                                                 <th>{{ __('actions') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($countries as $country)
+                                            @foreach ($stations as $station)
                                                 <tr>
-                                                    <td>{{ $country->id }}</td>
-                                                    <td>{{ $country->name }}</td>
+                                                    <td>{{ $station->id }}</td>
+                                                    <td>{{ $station->type }}</td>
+                                                    <td>{{ $station->name }}</td>
+                                                    <td>{{ $station->number }}</td>
+                                                    <td>{{ $station->details }}</td>
+                                                    <td>{{ $station->location }}</td>
+
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
-                                                            <a href="{{ route('admin.countries.edit', $country->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
-                                                            <a href="{{ route('admin.countries.destroy', $country->id) }}" data-id="{{ $country->id }}" class="btn btn-sm btn-danger item-delete"><i data-feather="trash"></i></a>
+                                                            <a href="{{ route('admin.stations.edit', $station->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
+                                                            <a href="{{ route('admin.stations.destroy', $station->id) }}" data-id="{{ $station->id }}" class="btn btn-sm btn-danger item-delete"><i data-feather="trash"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
