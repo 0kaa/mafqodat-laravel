@@ -23,7 +23,7 @@ class EmployeeController extends Controller
     {
         $admin = Auth::user();
 
-        $employees = User::where('id', '!=', $admin->id)->get();
+        $employees = User::whereDoesntHave('roles')->get();
 
         return view('dashboard.employees.index', compact('employees'));
     }
