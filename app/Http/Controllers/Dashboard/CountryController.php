@@ -46,7 +46,7 @@ class CountryController extends Controller
         if ($country) {
             return redirect()->route('admin.countries.index')->with('success', __('created_successfully'));
         } else {
-            return redirect()->back('error', __('something_went_wrong'));
+            return redirect()->back()->with('error', __('something_went_wrong'));
         }
     }
 
@@ -102,7 +102,7 @@ class CountryController extends Controller
             return redirect()->back()->with('success', __('updated_successfully'));
 
         }  else {
-            return redirect()->back('error', __('something_went_wrong'));
+            return redirect()->back()->with('error', __('something_went_wrong'));
         }
 
 

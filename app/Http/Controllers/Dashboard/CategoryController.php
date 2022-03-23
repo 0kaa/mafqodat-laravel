@@ -51,8 +51,7 @@ class CategoryController extends Controller
         if ($category) {
             return \redirect()->route('admin.categories.index')->with('success', __('created_successfully'));
         } else {
-            return redirect()->back('error', __('something_went_wrong'));
-        }
+            return redirect()->back()->with('error', __('something_went_wrong'));        }
     }
 
     /**
@@ -114,8 +113,7 @@ class CategoryController extends Controller
 
         } else {
 
-            return redirect()->back('error', __('something_went_wrong'));
-
+            return redirect()->back()->with('error', __('something_went_wrong'));
         }
 
     }

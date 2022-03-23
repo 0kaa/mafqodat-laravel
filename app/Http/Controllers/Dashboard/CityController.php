@@ -49,7 +49,7 @@ class CityController extends Controller
         if ($city) {
             return \redirect()->route('admin.cities.index')->with('success', __('created_successfully'));
         } else {
-            return redirect()->back('error', __('something_went_wrong'));
+            return redirect()->back()->with('error', __('something_went_wrong'));
         }
 
     }
@@ -109,8 +109,7 @@ class CityController extends Controller
 
         } else {
 
-            return redirect()->back('error', __('something_went_wrong'));
-
+            return redirect()->back()->with('error', __('something_went_wrong'));
         }
 
     }

@@ -101,7 +101,7 @@ class StationController extends Controller
             return redirect()->back()->with('success', __('updated_successfully'));
 
         }  else {
-            return redirect()->back('error', __('something_went_wrong'));
+            return redirect()->back()->with('error', __('something_went_wrong'));
         }
     }
 
