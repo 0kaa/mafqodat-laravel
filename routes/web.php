@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\EmployeeController;
 use App\Http\Controllers\Dashboard\ItemController;
+use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,5 +63,9 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization', 'role:super_admin
     Route::resource('items', 'ItemController');
 
     Route::get('get-stations', [ItemController::class, 'getStations'])->name('get_stations');
+
+    Route::get('profile', [UserController::class, 'getProfile'])->name('get_profile');
+
+    Route::post('update-profile', [UserController::class, 'updateProfile'])->name('update_profile');
 
 });

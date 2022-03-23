@@ -49,8 +49,16 @@
                             alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
                 </a>
 
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user"><a class="dropdown-item"
-                        href="{{ route('admin.logout') }}"><i class="mr-50" data-feather="power"></i>{{ __('logout') }}</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
+
+                    <a class="dropdown-item" href="{{ route('admin.get_profile') }}">
+                        <i class="mr-50" data-feather="settings"></i>{{ __('profile_setting') }}
+                    </a>
+
+                    <a class="dropdown-item" href="{{ route('admin.logout') }}">
+                        <i class="mr-50" data-feather="power"></i>{{ __('logout') }}
+                    </a>
+
                 </div>
             </li>
         </ul>
