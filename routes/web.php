@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\EmployeeController;
+use App\Http\Controllers\Dashboard\ItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,4 +58,9 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization', 'role:super_admin
     Route::resource('categories', 'CategoryController');
 
     Route::resource('stations', 'StationController');
+
+    Route::resource('items', 'ItemController');
+
+    Route::get('get-stations', [ItemController::class, 'getStations'])->name('get_stations');
+
 });

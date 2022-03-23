@@ -56,7 +56,7 @@
         </ul>
 
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li  class="nav-item {{ areActiveRoutes(['admin.stations.create' , 'admin.stations.index' , 'admin.stations.edit']) }}"><a class="d-flex align-items-center" href="#"><i data-feather='inbox'></i><span class="menu-title text-truncate">{{ __('stations') }}</span></a>
+            <li  class="nav-item {{ areActiveRoutes(['admin.stations.create' , 'admin.stations.index' , 'admin.stations.edit']) }}"><a class="d-flex align-items-center" href="#"><i data-feather='compass'></i><span class="menu-title text-truncate">{{ __('stations') }}</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{ route('admin.stations.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('stations') }}</span></a>
                     </li>
@@ -71,7 +71,18 @@
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{ route('admin.categories.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('categories') }}</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href="{{ route('admin.categories.create') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('new_city') }}</span></a>
+                    <li><a class="d-flex align-items-center" href="{{ route('admin.categories.create') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('new_category') }}</span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li  class="nav-item {{ areActiveRoutes(['admin.items.create' , 'admin.items.index' , 'admin.items.edit']) }}"><a class="d-flex align-items-center" href="#"><i data-feather='package'></i><span class="menu-title text-truncate">{{ __('items') }}</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{ route('admin.items.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('items') }}</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="{{ route('admin.items.create') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('new_item') }}</span></a>
                     </li>
                 </ul>
             </li>
