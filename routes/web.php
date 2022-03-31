@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\EmployeeController;
 use App\Http\Controllers\Dashboard\ItemController;
 use App\Http\Controllers\Dashboard\UserController;
@@ -23,13 +24,13 @@ Route::get('/', function () {
 Route::prefix('admin')->namespace('Dashboard')->group(function () {
 
     /* Auth Routes */
-    Route::get('login', 'AuthController@showLoginForm')->name('admin.login');
-    Route::post('login', 'AuthController@login')->name('admin.login.post');
-    Route::get('logout', 'AuthController@logout')->name('admin.logout');
-    Route::get('reset-password', 'AuthController@reset')->name('admin.reset');
-    Route::post('send-link', 'AuthController@sendLink')->name('admin.sendLink');
-    Route::get('changePassword/{code}', 'AuthController@changePassword')->name('admin.changePassword');
-    Route::post('update-password', 'AuthController@updatePassword')->name('admin.updatePassword');
+    Route::get('login', [AuthController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('login', [AuthController::class, 'login'])->name('admin.login.post');
+    Route::get('logout', [AuthController::class, 'logout'])->name('admin.logout');
+    Route::get('reset-password', [AuthController::class, 'reset'])->name('admin.reset');
+    Route::post('send-link', [AuthController::class, 'sendLink'])->name('admin.sendLink');
+    Route::get('changePassword/{code}', [AuthController::class, 'changePassword'])->name('admin.changePassword');
+    Route::post('update-password', [AuthController::class, 'updatePassword'])->name('admin.updatePassword');
 
 });
 

@@ -1,6 +1,6 @@
 @extends('dashboard.layouts-auth.app')
 
-@section('title' , 'نسيت كلمة السر')
+@section('title' , __('forget_password'))
 
 @section('content')
     <!-- BEGIN: Content-->
@@ -17,23 +17,23 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="javascript:void(0);" class="brand-logo">
-                                    <h2 class="brand-text text-primary ml-1">مفقودات</h2>
+                                    <h2 class="brand-text text-primary ml-1">{{ __('mafqodat') }}</h2>
                                 </a>
 
-                                <h4 class="card-title mb-1">نسيت كلمة المرور؟ 🔒</h4>
-                                <p class="card-text mb-2">أدخل بريدك الإلكتروني وسنرسل لك تعليمات لإعادة تعيين كلمة مرورك</p>
+                                <h4 class="card-title mb-1">{{ __('forget_password') }} 🔒</h4>
+                                <p class="card-text mb-2">{{ __('email_reset_password') }}</p>
 
                                 <form class="auth-forgot-password-form mt-2" action="{{ route('admin.sendLink') }}" method="POST">
                                     @csrf()
                                     <div class="form-group">
-                                        <label for="forgot-password-email" class="form-label">البريد الالكتروني</label>
+                                        <label for="forgot-password-email" class="form-label">{{ __('email') }}</label>
                                         <input type="text" class="form-control" id="forgot-password-email" name="email" placeholder="john@example.com" aria-describedby="forgot-password-email" tabindex="1" autofocus />
                                     </div>
-                                    <button class="btn btn-primary btn-block" tabindex="2">أرسل رابط إعادة التعيين</button>
+                                    <button class="btn btn-primary btn-block" tabindex="2">{{ __('send_link') }}</button>
                                 </form>
 
                                 <p class="text-center mt-2">
-                                    <a href="{{ route('admin.login') }}"> <i data-feather="chevron-left"></i> العودة لتسجيل الدخول </a>
+                                    <a href="{{ route('admin.login') }}"> <i data-feather="chevron-left"></i> {{ __('back_login') }} </a>
                                 </p>
                             </div>
                         </div>

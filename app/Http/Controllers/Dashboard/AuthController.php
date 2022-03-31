@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\AuthRequest;
 use App\Http\Requests\Dashboard\ResetRequest;
-use App\Mail\SendMessage;
+use App\Mail\ResetPassword;
 use App\Models\User;
-use App\Repositories\Contract\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -56,14 +55,14 @@ class AuthController extends Controller
                 'link' => route('admin.changePassword' , $code)
             ];
 
-            // Mail::to($user->email)->send(new SendMessage($data));
+            Mail::to($user->email)->send(new ResetPassword($data));
 
-            return redirect()->back()->with('success' , 'تم ارسال رابط اعادة كلمة المرور الي البريد الالكتروني الخاص بك ');
+            return redirect()->back()->with('success' , __('link_sent'));
 
         } else
         {
 
-            return redirect()->back()->with('error' , 'البريد الالكتروني غير موجود');
+            return redirect()->back()->with('error' , __('email_not_found'));
 
         }
 
@@ -72,7 +71,7 @@ class AuthController extends Controller
     public function changePassword($code)
     {
 
-        $user = $this->userRepository->getWhere(['code' => $code])->first();
+        $user = User::where('code', $code)->first();
 
         if ($user) {
             return view('dashboard.auth.changePassword' , \compact('code'));
@@ -85,19 +84,17 @@ class AuthController extends Controller
     public function updatePassword(ResetRequest $request)
     {
 
-        $user = $this->userRepository->getWhere(['code' => $request->code])->first();
+        // dd($request->all());
 
-        if ($user->isVerified == 1) {
+        $user = User::where('code', $request->code)->first();
 
-            $newPassword = $user->update(['password' => bcrypt($request->password)]);
-
-        }
+        $newPassword = $user->update(['password' => bcrypt($request->password)]);
 
         if ($newPassword) {
 
             Auth::login($user);
 
-            return \redirect(\route('admin.dashboard'))->with('success', 'تم تغيير كلمة المرور بنجاح');
+            return \redirect(\route('admin.login'))->with('success', 'تم تغيير كلمة المرور بنجاح');
 
         } else {
             return redirect()->back()->with('error', 'يوجد مشكله اثناء اعاده كلمة المرور  الخاصه  بك برجاء المحاولة مره اخري');

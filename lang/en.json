@@ -112,11 +112,19 @@
     "edit_item"              : "Edit Item",
     "new_item"               : "Add New Item",
     "profile_setting"        : "Profile Setting",
+    "email_reset_password"   : "Enter your email and we will send you instructions to reset your password",
+    "send_link"              : "Send reset link",
+    "back_login"             : "Back to login",
+    "link_sent"              : "A password reset link has been sent to your email",
+    "email_not_found"        : "Email not found",
+    "reset_password"         : "Password Reset",
+    "to_reset_password"      : "Reset a new password, please click on the link below",
+    "different_password"     : "Your new password must be different from your old  password",
+    "new_password"           : "new password",
+    "password_confirmation"  : "password confirmation",
+    "change_password"        : "change password",
+    "password_confirmed"     : "the password confirmation does not match",
+    "select_station"         : "Select Station",
     ""                       : ""
-
-
-
-
-
 
 }
