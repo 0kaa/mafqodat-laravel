@@ -28,7 +28,7 @@ class User extends Authenticatable
         'password',
         'country_id',
         'city_id',
-        'code',
+        'code'
     ];
 
     /**
@@ -55,7 +55,7 @@ class User extends Authenticatable
         return [
             'first_name'  => 'required',
             'family_name' => 'required',
-            'email'       => 'required|unique:users,email,'.$this->id,
+            'email'       => 'required|unique:users,email,' . $this->id,
             'password'    => 'required|min:6',
             'phone'       => 'required',
             'mobile'      => 'required',
