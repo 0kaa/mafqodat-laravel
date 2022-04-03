@@ -140,5 +140,10 @@
     "date"                   : "Date",
     "time"                   : "Time",
     "is_delivered"           : "Is delivered",
+    "statistics"             : "Statistics",
+    "total_items"            : "Total Items",
+    "total_delivered_items"  : "Total Delivered Items",
+    "total_stations"         : "Total Stations",
+    "total_employees"        : "Total Employees",
     ""                       : ""
 }

@@ -142,5 +142,10 @@
     "date"                   : "تاريخ",
     "time"                   : "وقت",
     "is_delivered"           : "تم الاستلام",
+    "statistics"             : "الاحصائيات",
+    "total_items"            : "إجمالي المفقودات",
+    "total_delivered_items"  : "إجمالي المفقودات المستلمة",
+    "total_stations"         : "إجمالي المحطات",
+    "total_employees"        : "إجمالي الموظفين",
     ""                       : ""
 }
