@@ -43,3 +43,26 @@ label {
     font-size: 0.857rem;
     font-size: 17px;
 }
+
+.item_card{
+    display: flex;
+    gap: 25px ;
+    padding: 20px ;
+    align-items: start;
+
+
+}
+
+.item_card ul li {
+    list-style-type: none;
+    margin: 10px 0;
+}
+.item_card ul
+{
+    padding: 0;
+}
+
+
+.item_card  .card-body{
+    padding: 0;
+}

@@ -69,6 +69,7 @@
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
+                                                            <a href="{{ route('admin.items.show', $item->id) }}" class="btn btn-sm btn-info"><i data-feather="eye"></i></a>
                                                             <a href="{{ route('admin.items.edit', $item->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
                                                             <a href="{{ route('admin.items.destroy', $item->id) }}" data-id="{{ $item->id }}" class="btn btn-sm btn-danger item-delete"><i data-feather="trash"></i></a>
                                                         </div>

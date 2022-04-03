@@ -61,6 +61,7 @@
     "updated_successfully"   : "Updated successfully",
     "delete"                 : "Delete",
     "no"                     : "No",
+    "yes"                    : "Yes",
     "want_delete"            : "Do you want to delete ?",
     "canceled"               : "Canceled",
     "edit_country"           : "Edit Country",

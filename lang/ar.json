@@ -61,6 +61,7 @@
     "updated_successfully"   : "تم التعديل بنجاح",
     "delete"                 : "حذف",
     "no"                     : "لا",
+    "yes"                    : "نعم",
     "want_delete"            : "هل تريد الحذف ؟",
     "canceled"               : "تم إلإلغاء",
     "edit_country"           : "تعديل دولة",
