@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\Station;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -21,6 +22,11 @@ class HomeController extends Controller
 
         $employees = User::whereDoesntHave('roles')->get()->count();
 
-        return view('dashboard.home', compact('items', 'delivered_items', 'stations', 'employees'));
+        $lost_items = Item::select(
+            DB::raw('YEAR(created_at) as year'),
+            DB::raw('MONTH(created_at) as month')
+        )->get()->groupBy('month');
+
+        return view('dashboard.home', compact('items', 'delivered_items', 'stations', 'employees', 'lost_items'));
     }
 }
