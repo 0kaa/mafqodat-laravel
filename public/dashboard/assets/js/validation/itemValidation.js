@@ -23,6 +23,68 @@ $(document).ready(function () {
             station_id: {
                 required: true
             },
+            primary_colour: {
+                required: true
+            },
+            first_name: {
+                required: true,
+                depends: function(element) {
+                    return $("#is_deliverd").is(":checked");
+                }
+            },
+            sur_name: {
+                required: true,
+                depends: function(element) {
+                    return $("#is_deliverd").is(":checked");
+                }
+            },
+            email: {
+                required: true,
+                email: true,
+                depends: function(element) {
+                    return $("#is_deliverd").is(":checked");
+                }
+            },
+            address: {
+                required: true,
+                depends: function(element) {
+                    return $("#is_deliverd").is(":checked");
+                }
+            },
+            // second_address: {
+            //     required: true,
+            //     depends: function(element) {
+            //         return $("#is_deliverd").is(":checked");
+            //     }
+            // },
+            city: {
+                required: true,
+                depends: function(element) {
+                    return $("#is_deliverd").is(":checked");
+                }
+            },
+            postcode: {
+                required: true,
+                depends: function(element) {
+                    return $("#is_deliverd").is(":checked");
+                }
+            },
+            phone: {
+                required: true,
+                maxlength: 12,
+                depends: function(element) {
+                    return $("#is_deliverd").is(":checked");
+                }
+            },
+            mobile: {
+                required: true,
+                maxlength: 12,
+                depends: function(element) {
+                    return $("#is_deliverd").is(":checked");
+                }
+            },
+
+
         },
 
         submitHandler: function(form) {

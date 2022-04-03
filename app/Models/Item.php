@@ -11,17 +11,30 @@ class Item extends Model
     use HasFactory;
 
     protected $fillable = [
+        /* Lost item data */
         'details',
-        'location',
-        'lat',
-        'lng',
         'image',
+        'primary_colour',
+        'secondary_colour',
+        'tertiary_colour',
         'date',
         'time',
         'category_id',
         'station_id',
         'description',
         'storage',
+        'is_delivered',
+
+        /* User data */
+        'first_name',
+        'surname',
+        'address',
+        'secondary_address',
+        'city',
+        'postcode',
+        'phone',
+        'mobile',
+        'email',
     ];
 
     protected $dates = [
@@ -33,12 +46,6 @@ class Item extends Model
         'category_id' => 'integer',
         'station_id' => 'integer',
     ];
-
-
-    // public function getDateAttribute($value)
-    // {
-    //     $this->attributes['date'] = Carbon::parse($value)->format('yyyy-mm-dd');
-    // }
 
     public function category()
     {

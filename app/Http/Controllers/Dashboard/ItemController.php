@@ -99,7 +99,6 @@ class ItemController extends Controller
         } else {
             return view('dashboard.error');
         }
-
     }
 
     /**
@@ -111,9 +110,10 @@ class ItemController extends Controller
      */
     public function update(ItemRequest $request, $id)
     {
+
         $item = Item::find($id);
 
-        $data = $request->except('_token', '_method', 'image');
+        $data = $request->except('_token', '_method', 'image', 'first_name', 'surname', 'is_delivered', 'email', 'phone', 'address', 'second_address', 'postcode', 'city', 'mobile');
 
         $date = Carbon::create($request->date);
         $time = Carbon::create($request->time);
@@ -121,6 +121,33 @@ class ItemController extends Controller
         $data['date'] = $date->toDateTimeString();
 
         $data['time'] = $time->toDateTimeString();
+
+        if (isset($request->is_delivered)) {
+
+            $data['is_delivered'] = $request->is_delivered;
+            $data['first_name'] = $request->first_name;
+            $data['surname'] = $request->surname;
+            $data['email'] = $request->email;
+            $data['phone'] = $request->phone;
+            $data['address'] = $request->address;
+            $data['second_address'] = $request->second_address;
+            $data['postcode'] = $request->postcode;
+            $data['city'] = $request->city;
+            $data['mobile'] = $request->mobile;
+        } else {
+            $data['is_delivered'] = '0';
+            $data['first_name'] = null;
+            $data['surname'] = null;
+            $data['email'] = null;
+            $data['phone'] = null;
+            $data['address'] = null;
+            $data['second_address'] = null;
+            $data['postcode'] = null;
+            $data['city'] = null;
+            $data['mobile'] = null;
+        }
+
+        // dd($data, $request->all());
 
         if ($request->has('image')) {
             $data['image'] = $request->file('image')->store('items');
@@ -133,9 +160,9 @@ class ItemController extends Controller
             $item->update($data);
 
             return redirect()->back()->with('success', __('updated_successfully'));
-
-        }  else {
-            return redirect()->back()->with('error', __('something_went_wrong'));        }
+        } else {
+            return redirect()->back()->with('error', __('something_went_wrong'));
+        }
     }
 
     /**

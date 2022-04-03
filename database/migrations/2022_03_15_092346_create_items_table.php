@@ -29,17 +29,18 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->unsignedBigInteger('station_id');
             $table->foreign('station_id')->references('id')->on('stations')->onDelete('cascade');
+            $table->boolean('is_delivered')->nullable();
 
             /* User data */
-            $table->string('first_name');
-            $table->string('surname');
-            $table->string('address');
+            $table->string('first_name')->nullable();
+            $table->string('surname')->nullable();
+            $table->string('address')->nullable();
             $table->string('secondary_address')->nullable();
-            $table->string('city');
-            $table->string('postcode');
+            $table->string('city')->nullable();
+            $table->string('postcode')->nullable();
             $table->string('phone')->nullable();
-            $table->string('mobile');
-            $table->string('email');
+            $table->string('mobile')->nullable();
+            $table->string('email')->nullable();
 
             $table->timestamps();
         });

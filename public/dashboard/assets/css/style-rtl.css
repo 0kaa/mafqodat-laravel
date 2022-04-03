@@ -37,3 +37,9 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     top: 13px !important;
     width: 75%;
 }
+
+label {
+    color: #5E5873;
+    font-size: 0.857rem;
+    font-size: 17px;
+}

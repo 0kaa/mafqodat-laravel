@@ -83,7 +83,7 @@
                                                     <label for="first-name-vertical">{{ __('details') }}</label>
                                                     <input type="text" class="form-control" name="details"
                                                         value="{{ old('details') }}"
-                                                        placeholder="{{ __('write_details') }}" />
+                                                        placeholder="{{ __('details') }}" />
                                                     @error('details')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
@@ -123,7 +123,7 @@
                                                     <label for="first-name-vertical">{{ __('storage') }}</label>
                                                     <input type="text" class="form-control" name="storage"
                                                         value="{{ old('storage') }}"
-                                                        placeholder="{{ __('write_storage') }}" />
+                                                        placeholder="{{ __('storage') }}" />
                                                     @error('storage')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
@@ -138,6 +138,48 @@
                                                         class="form-label">{{ __('image') }}</label>
                                                     <input class="form-control" type="file" id="formFile" name="image">
                                                     @error('image')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="first-name-vertical">{{ __('primary_colour') }}</label>
+                                                    <input type="text" class="form-control" name="primary_colour"
+                                                        value="{{ old('primary_colour') }}"
+                                                        placeholder="{{ __('primary_colour') }}" />
+                                                    @error('primary_colour')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="first-name-vertical">{{ __('secondary_colour') }}</label>
+                                                    <input type="text" class="form-control" name="secondary_colour"
+                                                        value="{{ old('secondary_colour') }}"
+                                                        placeholder="{{ __('secondary_colour') }}" />
+                                                    @error('secondary_colour')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="first-name-vertical">{{ __('tertiary_colour') }}</label>
+                                                    <input type="text" class="form-control" name="tertiary_colour"
+                                                        value="{{ old('tertiary_colour') }}"
+                                                        placeholder="{{ __('tertiary_colour') }}" />
+                                                    @error('tertiary_colour')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
                                                         </span>

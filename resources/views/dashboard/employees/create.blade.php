@@ -193,7 +193,7 @@
 
                                             <div class="demo-inline-spacing col-12">
                                                 @foreach ($permissions as $permission)
-                                                    <div class="form-group" id="city_form_select">
+                                                    <div class="form-group">
 
                                                         <div class="custom-control custom-control-danger custom-checkbox">
                                                             <input type="checkbox" name="permissions[]" value="{{ $permission->id }}" class="custom-control-input"
