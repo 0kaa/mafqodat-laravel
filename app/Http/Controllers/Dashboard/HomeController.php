@@ -16,6 +16,8 @@ class HomeController extends Controller
 
         $items = Item::get()->count();
 
+        $latest_items = Item::orderBy('created_at', 'desc')->take(3)->get();
+
         $delivered_items = Item::where('is_delivered', '1')->get()->count();
 
         $stations = Station::get()->count();
@@ -27,6 +29,6 @@ class HomeController extends Controller
             DB::raw('MONTH(created_at) as month')
         )->get()->groupBy('month');
 
-        return view('dashboard.home', compact('items', 'delivered_items', 'stations', 'employees', 'lost_items'));
+        return view('dashboard.home', compact('items', 'delivered_items', 'stations', 'employees', 'lost_items', 'latest_items'));
     }
 }

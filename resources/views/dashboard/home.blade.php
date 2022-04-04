@@ -52,7 +52,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="media-body my-auto">
-                                                    <h4 class="font-weight-bolder mb-0 item-count">{{ $items }}</h4>
+                                                    <h4 class="font-weight-bolder mb-0 item-count">{{ $items }}
+                                                    </h4>
                                                     <p class="card-text font-small-3 mb-0">{{ __('total_items') }}</p>
                                                 </div>
                                             </div>
@@ -105,13 +106,12 @@
                         <!--/ Statistics Card -->
 
                         <!-- Sales Line Chart Card -->
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="card">
                                 <div class="card-header align-items-start">
                                     <div>
                                         <h4 class="card-title mb-25">{{ __('items') }}</h4>
                                     </div>
-                                    <i data-feather="settings" class="font-medium-3 text-muted cursor-pointer"></i>
                                 </div>
                                 <div class="card-body pb-0">
                                     <div id="sales-line-chart"></div>
@@ -119,6 +119,44 @@
                             </div>
                         </div>
                         <!--/ Sales Line Chart Card -->
+
+                        <div class="col-6">
+                            <div class="card">
+                                <table class="datatables-basic table">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ __('id') }}</th>
+                                            <th>{{ __('category_name') }}</th>
+                                            <th>{{ __('details') }}</th>
+                                            <th>{{ __('station_name') }}</th>
+                                            <th>{{ __('actions') }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($latest_items as $item)
+                                            <tr>
+                                                <td>{{ $item->id }}</td>
+                                                <td>{{ $item->category->name }}</td>
+                                                <td>{{ $item->details }}</td>
+                                                <td>{{ $item->station->name . ' | ' . __($item->station->type) }}</td>
+                                                <td class="text-center">
+                                                    <div class="btn-group" role="group" aria-label="Second group">
+                                                        <a href="{{ route('admin.items.show', $item->id) }}"
+                                                            class="btn btn-sm btn-info"><i data-feather="eye"></i></a>
+                                                        <a href="{{ route('admin.items.edit', $item->id) }}"
+                                                            class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
+                                                        <a href="{{ route('admin.items.destroy', $item->id) }}"
+                                                            data-id="{{ $item->id }}"
+                                                            class="btn btn-sm btn-danger item-delete"><i
+                                                                data-feather="trash"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </section>
                 <!-- Dashboard Analytics end -->
@@ -130,7 +168,88 @@
 
     @push('js')
         <script src="{{ asset('dashboard/app-assets/vendors/js/charts/apexcharts.min.js') }}"></script>
-        {{-- <script src="{{ asset('dashboard/assets/js/custom/chart.js') }}"></script> --}}
+
+        <script>
+            $(document).ready(function () {
+
+                $('.item-delete').click(function(e) {
+
+                    e.preventDefault();
+                    const Toast2 = Swal.mixin({
+
+                        showConfirmButton: false,
+                        timer: 4000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    const Toast = Swal.mixin({
+
+                        showCancelButton: true,
+                        showConfirmButton: true,
+                        cancelButtonColor: '#888',
+                        confirmButtonColor: '#d6210f',
+                        confirmButtonText: "{{ __('delete') }}",
+                        cancelButtonText: "{{ __('no') }}",
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'question',
+                        title: "{{ __('want_delete') }}"
+                    }).then((result) => {
+                            if (result.isConfirmed) {
+
+                                var id    = $(this).data('id');
+                                var url = $(this).attr('href');
+                                var elem  = $(this).closest('tr');
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: url,
+                                    data: {
+                                        _method : 'delete',
+                                        _token  : $('meta[name="csrf-token"]').attr('content'),
+                                        id      : id,
+                                    },
+                                    dataType: 'json',
+                                    success: function(result) {
+                                        elem.fadeOut();
+
+                                        Toast2.fire({
+                                            title: "{{ __('deleted_successfully') }}",
+                                            // showConfirmButton: false,
+                                            icon: 'success',
+                                            timer: 1000
+                                        });
+                                    } // end of success
+
+                                }); // end of ajax
+
+                            } else if (result.dismiss === Swal.DismissReason.cancel)
+                            {
+                                Toast2.fire({
+                                    title: "{{ __('canceled') }}",
+                                    // showConfirmButton: false,
+                                    icon: 'success',
+                                    timer: 1000
+                                });
+
+                            } // end of else confirmed
+
+                        }) // end of then
+                });
+
+            });
+
+        </script>
 
         <script>
             $(window).on("load", function() {
