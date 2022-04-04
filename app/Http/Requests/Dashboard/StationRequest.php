@@ -10,7 +10,8 @@ class StationRequest extends FormRequest
     {
         return [
             'type.required'     => __('type_required'),
-            'name.required'     => __('name_required'),
+            'name_ar.required'  => __('name_ar_required'),
+            'name_en.required'  => __('name_en_required'),
             'details.required'  => __('details_required'),
             'number.required'   => __('number_required'),
             'number.numeric'    => __('number_numeric'),
@@ -38,7 +39,8 @@ class StationRequest extends FormRequest
     {
         return [
             'type'        => 'required|in:metro,bus',
-            'name'        => 'required',
+            'name_ar'     => 'required',
+            'name_en'     => 'required',
             'details'     => 'required',
             'number'      => 'required|numeric|unique:stations,number,'.$this->id,
             'description' => 'sometimes',

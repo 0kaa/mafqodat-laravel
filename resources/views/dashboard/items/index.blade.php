@@ -48,6 +48,7 @@
                                                 <th>{{ __('station_location') }}</th>
                                                 <th>{{ __('storage') }}</th>
                                                 <th>{{ __('image') }}</th>
+                                                <th>{{ __('is_delivered') }}</th>
                                                 <th>{{ __('actions') }}</th>
                                             </tr>
                                         </thead>
@@ -65,6 +66,13 @@
                                                             <img src="{{ asset('storage/'.$item->image) }}" style="width: 50px; height: auto;">
                                                         @else
                                                             <img src="https://via.placeholder.com/50">
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($item->is_delivered == 1)
+                                                            <span class="badge badge-light-success">{{ __('yes') }}</span>
+                                                        @else
+                                                            <span class="badge badge-light-danger">{{ __('no') }}</span>
                                                         @endif
                                                     </td>
                                                     <td class="text-center">

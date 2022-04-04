@@ -18,7 +18,8 @@ class StationTableSeeder extends Seeder
         Station::insert([
             [
                 'type'     => 'metro',
-                'name'     => 'محطة الرياض',
+                'name_ar'  => 'محطة الرياض',
+                'name_en'  => 'Riyadh Station',
                 'number'   => '123456',
                 'details'  => 'تفاصيل',
                 'location' => 'الرياض',

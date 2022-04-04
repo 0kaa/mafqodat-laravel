@@ -6,7 +6,11 @@ $(document).ready(function () {
             type: {
                 required: true,
             },
-            name: {
+            name_ar: {
+                required: true,
+                minlength: 3,
+            },
+            name_en: {
                 required: true,
                 minlength: 3,
             },
@@ -39,7 +43,11 @@ $(document).ready(function () {
             type: {
                 required: true,
             },
-            name: {
+            name_ar: {
+                required: true,
+                minlength: 3,
+            },
+            name_en: {
                 required: true,
                 minlength: 3,
             },

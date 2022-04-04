@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Station extends Model
 {
@@ -11,7 +12,8 @@ class Station extends Model
 
     protected $fillable = [
         'type',
-        'name',
+        'name_ar',
+        'name_en',
         'details',
         'number',
         'description',
@@ -19,4 +21,9 @@ class Station extends Model
         'lat',
         'lng',
     ];
+
+    public function getNameAttribute()
+    {
+        return $this->{'name_'.App::getLocale()};
+    }
 }
