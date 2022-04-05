@@ -11,8 +11,10 @@ class CityRequest extends FormRequest
         return [
             'name_ar.required'    => __('name_ar_required'),
             'name_ar.min'         => __('name_ar_min'),
+            'name_ar.unique'      => __('name_ar_unique'),
             'name_en.required'    => __('name_en_required'),
             'name_en.min'         => __('name_en_min'),
+            'name_en.unique'      => __('name_en_unique'),
             'country_id.required' => __('country_id_required')
         ];
     }
@@ -35,8 +37,8 @@ class CityRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar'    => 'required|min:3',
-            'name_en'    => 'required|min:3',
+            'name_ar'    => 'required|min:3|unique:cities,name_ar' . $this->id,
+            'name_en'    => 'required|min:3|unique:cities,name_en' . $this->id,
             'country_id' => 'required'
         ];
     }
