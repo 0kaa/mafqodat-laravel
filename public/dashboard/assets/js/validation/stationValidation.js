@@ -18,10 +18,6 @@ $(document).ready(function () {
                 required: true,
                 number: true,
             },
-            details: {
-                required: true,
-                minlength: 3,
-            },
             location: {
                 required: true,
             },
@@ -54,10 +50,6 @@ $(document).ready(function () {
             number: {
                 required: true,
                 number: true,
-            },
-            details: {
-                required: true,
-                minlength: 3,
             },
             location: {
                 required: true,

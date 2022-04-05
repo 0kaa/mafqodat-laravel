@@ -45,7 +45,6 @@
                                                 <th>{{ __('station_type') }}</th>
                                                 <th>{{ __('station_name') }}</th>
                                                 <th>{{ __('station_number') }}</th>
-                                                <th>{{ __('station_details') }}</th>
                                                 <th>{{ __('station_location') }}</th>
                                                 <th>{{ __('actions') }}</th>
                                             </tr>
@@ -57,7 +56,6 @@
                                                     <td>{{ $station->type }}</td>
                                                     <td>{{ $station->name }}</td>
                                                     <td>{{ $station->number }}</td>
-                                                    <td>{{ $station->details }}</td>
                                                     <td>{{ $station->location }}</td>
 
                                                     <td class="text-center">

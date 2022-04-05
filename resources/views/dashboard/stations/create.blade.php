@@ -117,21 +117,6 @@
 
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="">{{ __('station_details') }}</label>
-                                                    <input type="text" id="" class="form-control"
-                                                        name="details" value="{{ old('details') }}"
-                                                        placeholder="{{ __('station_details') }}" />
-                                                    @error('details')
-                                                        <span class="alert alert-danger">
-                                                            <small class="errorTxt">{{ $message }}</small>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-12">
-                                                <div class="form-group">
                                                     <label
                                                         for="">{{ __('station_description') }}</label>
                                                     <textarea name="description" class="form-control" id="">{{ old('description') }}</textarea>
