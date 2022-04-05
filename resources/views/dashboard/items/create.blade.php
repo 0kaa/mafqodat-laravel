@@ -248,10 +248,48 @@
     </div>
     <!-- END: Content-->
 
+     <!-- Vertical modal -->
+     <div class="vertical-modal-ex">
+        {{-- <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Vertically Centered
+        </button> --}}
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div style="text-align: center">
+                            <p id="append_qrcode">
+                                {!! session('qr_code') !!}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="print">{{ __('print') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vertical modal end-->
+
     @push('js')
         <script src="{{ asset('dashboard/assets/js/validation/itemValidation.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js" integrity="sha512-d5Jr3NflEZmFDdFHZtxeJtBzk0eB+kkRXWFQqEc1EKmolXjHm2IKCA7kTvXBNjIYzjXfD5XzIjaaErpkZHCkBg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
         <script>
+
+            $('#print').click(function (e) {
+                e.preventDefault();
+                $('#append_qrcode').printThis();
+            });
+
             $('#selectStation').on('change', function() {
 
                 var id = this.value;

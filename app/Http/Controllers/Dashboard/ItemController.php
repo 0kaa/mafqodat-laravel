@@ -9,6 +9,7 @@ use App\Models\Item;
 use App\Models\Station;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ItemController extends Controller
 {
@@ -63,7 +64,13 @@ class ItemController extends Controller
         $item = Item::create($data);
 
         if ($item) {
-            return redirect()->route('admin.items.index')->with('success', __('created_successfully'));
+
+            $qr_Code = QrCode::size(150)->generate('http://localhost:8000/items/' . $item->id);
+
+            session()->put('qr_code', $qr_Code);
+
+            return redirect()->back()->with(['success' => __('created_successfully') ,'qr_code' => $qr_Code]);
+
         } else {
             return redirect()->back()->with('error', __('something_went_wrong'));
         }

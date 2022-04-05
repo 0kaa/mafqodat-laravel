@@ -146,5 +146,6 @@
     "total_delivered_items"  : "Total Delivered Items",
     "total_stations"         : "Total Stations",
     "total_employees"        : "Total Employees",
+    "print"                  : "Print",
     ""                       : ""
 }

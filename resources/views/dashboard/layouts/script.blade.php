@@ -32,65 +32,36 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @if (App::getLocale() == 'ar')
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/localization/messages_ar.min.js"></script>
 
     <script>
-
-    $('.table').DataTable({
-        "language": {
-            "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json"
-        }
-    });
-
+        $('.table').DataTable({
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json"
+            }
+        });
     </script>
-
 @else
-
     <script>
-
         $('.table').DataTable({
             "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/en.json"
             }
         });
-
     </script>
-
 @endif
-
 
 @stack('js')
 
-@if(session()->has('success'))
 
+@if (session()->has('qr_code'))
     <script>
-
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 4000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
-
-        Toast.fire({
-            icon : 'success',
-            title: "{{ session()->get('success') }}"
-        })
-
+        $('.modal').modal('show');
     </script>
-
 @endif
 
-@if(session()->has('error'))
-
+@if (session()->has('success'))
     <script>
-
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -98,18 +69,37 @@
             timer: 4000,
             timerProgressBar: true,
             didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
         })
 
         Toast.fire({
-            icon : 'error',
-            title: "{{ session()->get('error') }}"
+            icon: 'success',
+            title: "{{ session()->get('success') }}"
+        })
+    </script>
+@endif
+
+@if (session()->has('error'))
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
         })
 
+        Toast.fire({
+            icon: 'error',
+            title: "{{ session()->get('error') }}"
+        })
     </script>
-
 @endif
 
 <script>
