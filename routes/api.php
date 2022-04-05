@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
     Route::post('set-new-password', [AuthController::class, 'setNewPassword']);
 
     Route::get('categories', [CategoryController::class, 'getAllCategories']);
-    Route::post('create-category', [CategoryController::class, 'createCategory']);
-    Route::post('update-category/{id}', [CategoryController::class, 'updateCategory']);
-    Route::post('delete-category/{id}', [CategoryController::class, 'deleteCategory']);
+    Route::post('categories/create', [CategoryController::class, 'createCategory']);
+    Route::post('categories/update/{id}', [CategoryController::class, 'updateCategory']);
+    Route::post('categories/delete/{id}', [CategoryController::class, 'deleteCategory']);
 });
