@@ -14,7 +14,6 @@ class Station extends Model
         'type',
         'name_ar',
         'name_en',
-        'details',
         'number',
         'description',
         'location',

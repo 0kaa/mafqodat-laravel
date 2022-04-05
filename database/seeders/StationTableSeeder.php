@@ -21,7 +21,6 @@ class StationTableSeeder extends Seeder
                 'name_ar'  => 'محطة الرياض',
                 'name_en'  => 'Riyadh Station',
                 'number'   => '123456',
-                'details'  => 'تفاصيل',
                 'location' => 'الرياض',
                 'lat'      => '24.774265',
                 'lng'      => '46.738586'

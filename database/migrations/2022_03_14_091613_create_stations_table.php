@@ -18,12 +18,11 @@ return new class extends Migration
             $table->enum('type', ['metro', 'bus']);
             $table->string('name_ar');
             $table->string('name_en');
-            $table->string('details');
             $table->string('number')->unique();
             $table->longText('description')->nullable();
             $table->string('location');
-            $table->string('lat');
-            $table->string('lng');
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->timestamps();
         });
     }

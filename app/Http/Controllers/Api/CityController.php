@@ -53,8 +53,8 @@ class CityController extends Controller
         if ($city) {
 
             $data = $request->validate([
-                'name_ar' => 'required|min:3|unique:cities,name_ar,' . $city->id,
-                'name_en' => 'required|min:3|unique:cities,name_en,' . $city->id,
+                'name_ar' => 'required|min:3|unique:cities,name_ar,' . $id,
+                'name_en' => 'required|min:3|unique:cities,name_en,' . $id,
                 'country_id' => 'required',
             ], [
                 'name_ar.required'    => __('name_ar_required'),

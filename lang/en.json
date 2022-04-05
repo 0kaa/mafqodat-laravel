@@ -151,5 +151,6 @@
     "name_en_unique"         : "Name in english must be unique",
     "country_not_found"      : "Country not found",
     "city_not_found"         : "City not found",
+    "station_not_found"      : "Station not found",
     ""                       : ""
 }

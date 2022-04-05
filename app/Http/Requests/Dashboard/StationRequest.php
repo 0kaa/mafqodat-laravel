@@ -41,7 +41,6 @@ class StationRequest extends FormRequest
             'type'        => 'required|in:metro,bus',
             'name_ar'     => 'required',
             'name_en'     => 'required',
-            'details'     => 'required',
             'number'      => 'required|numeric|unique:stations,number,'.$this->id,
             'description' => 'sometimes',
             'location'    => 'required',
