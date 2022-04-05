@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CountryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,9 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
     Route::post('categories/create', [CategoryController::class, 'createCategory']);
     Route::post('categories/update/{id}', [CategoryController::class, 'updateCategory']);
     Route::post('categories/delete/{id}', [CategoryController::class, 'deleteCategory']);
+
+    Route::get('countries', [CountryController::class, 'getAllcountries']);
+    Route::post('countries/create', [CountryController::class, 'createCountry']);
+    Route::post('countries/update/{id}', [CountryController::class, 'updateCountry']);
+    Route::post('countries/delete/{id}', [CountryController::class, 'deleteCountry']);
 });

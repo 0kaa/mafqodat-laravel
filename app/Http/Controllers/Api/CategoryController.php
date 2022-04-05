@@ -40,7 +40,7 @@ class CategoryController extends Controller
 
     public function updateCategory(CategoryRequest $request, $id)
     {
-        $category = Category::where('id', $id)->first();
+        $category = Category::find($id);
 
         if ($category) {
 
@@ -69,7 +69,7 @@ class CategoryController extends Controller
 
     public function deleteCategory($id)
     {
-        $category = Category::where('id', $id)->first();
+        $category = Category::find($id);
 
         if ($category) {
 

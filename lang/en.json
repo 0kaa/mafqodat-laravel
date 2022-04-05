@@ -147,5 +147,8 @@
     "total_stations"         : "Total Stations",
     "total_employees"        : "Total Employees",
     "print"                  : "Print",
+    "name_ar_unique"         : "Name in arabic must be unique",
+    "name_en_unique"         : "Name in english must be unique",
+    "country_not_found"      : "Country not found",
     ""                       : ""
 }
