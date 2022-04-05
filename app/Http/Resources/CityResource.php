@@ -17,8 +17,9 @@ class CityResource extends JsonResource
         // return parent::toArray($request);
 
         return [
-            'id'   => $this->id,
-            'name' => $this->name
+            'id'      => $this->id,
+            'name'    => $this->name,
+            'country' => $this->country->name,
         ];
     }
 }

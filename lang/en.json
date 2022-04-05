@@ -150,5 +150,6 @@
     "name_ar_unique"         : "Name in arabic must be unique",
     "name_en_unique"         : "Name in english must be unique",
     "country_not_found"      : "Country not found",
+    "city_not_found"         : "City not found",
     ""                       : ""
 }
