@@ -17,15 +17,15 @@ class UserResource extends JsonResource
         // return parent::toArray($request);
 
         return [
-            'id'          => $this->id,
-            'first_name'  => $this->first_name,
-            'family_name' => $this->family_name,
-            'email'       => $this->email,
-            'address'     => $this->address,
-            'phone'       => $this->phone,
-            'mobile'      => $this->mobile,
-            'country'     => new CountryResource($this->country),
-            'city'        => new CityResource($this->city),
+            'id'         => $this->id,
+            'first_name' => $this->first_name,
+            'family_name'  => $this->family_name,
+            'email'      => $this->email,
+            'address'    => $this->address,
+            'phone'      => $this->phone,
+            'mobile'     => $this->mobile,
+            'country'    => new CountryResource($this->country),
+            'city'       => new CityResource($this->city),
         ];
     }
 }
