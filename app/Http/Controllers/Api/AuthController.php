@@ -8,6 +8,7 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\ApiResponse;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Request;
 
 class AuthController extends Controller
@@ -105,6 +106,49 @@ class AuthController extends Controller
         $user = auth()->user();
 
         return $this->apiResponse(__('login_successfully'), ['token' => $user->createToken('tokens')->plainTextToken, 'user' => new UserResource($user)], 200);
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+
+        if ($user) {
+
+            $data = $request->validate([
+                'first_name'  => 'required',
+                'family_name' => 'required',
+                'email'       => 'required|unique:users,email,'.$user->id,
+                'address'     => 'required',
+                'phone'       => 'required',
+                'mobile'      => 'required',
+                'country_id'  => 'required',
+                'city_id'     => 'required',
+            ], [
+                'first_name.required'  => __('first_name_required'),
+                'family_name.required' => __('family_name_required'),
+                'email.required'       => __('email_required'),
+                'email.unique'         => __('email_unique'),
+                'phone.required'       => __('phone_required'),
+                'address.required'     => __('address_required'),
+                'phone.required'       => __('phone_required'),
+                'mobile.required'      => __('mobile_required'),
+                'country_id.required'  => __('country_required'),
+                'city_id.required'     => __('city_required'),
+            ]);
+
+            if ($request->has('image')) {
+
+                Storage::delete($user->image);
+
+                $data['image'] = $request->file('image')->store('users');
+            } else {
+                $data['image'] = $user->image;
+            }
+
+            $user->update($data);
+
+            return $this->apiResponse(__('updated_successfully'), new UserResource($user), 200);
+        }
     }
 
     public function logout(Request $request)

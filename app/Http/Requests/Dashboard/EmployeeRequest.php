@@ -54,14 +54,16 @@ class EmployeeRequest extends FormRequest
             case 'PUT':
 
                 return [
-                    'first_name'  => 'required',
-                    'family_name' => 'required',
-                    'email'       => 'required|unique:users,email,'.$this->id,
-                    'password'    => 'nullable|min:6',
-                    'phone'       => 'required',
-                    'mobile'      => 'required',
-                    'country_id'  => 'required',
-                    'city_id'     => 'required',
+                    'first_name'     => 'required',
+                    'family_name'    => 'required',
+                    'email'          => 'required|unique:users,email,'.$this->id,
+                    'password'       => 'nullable|min:6',
+                    'address'        => 'required',
+                    'second_address' => 'nullable',
+                    'phone'          => 'required',
+                    'mobile'         => 'required',
+                    'country_id'     => 'required',
+                    'city_id'        => 'required',
                 ];
 
                 break;
