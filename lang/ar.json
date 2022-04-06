@@ -162,5 +162,6 @@
     "time_required"          : "الوقت مطلوب",
     "primary_colour_required": "اللون الأساسي مطلوب",
     "postcode_required"      : "الرمز البريدي مطلوب",
+    "old_password_wrong"     : "كلمة المرور القديمة غير صحيحة",
     ""                       : ""
 }

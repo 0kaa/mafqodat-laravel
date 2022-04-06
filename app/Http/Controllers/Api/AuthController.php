@@ -151,6 +151,36 @@ class AuthController extends Controller
         }
     }
 
+
+    public function changePassword(Request $request)
+    {
+        $user = auth()->user();
+
+        if (Hash::check($request->old_password, $user->password)) {
+
+            $data = $request->validate([
+                'password' => 'required|min:6',
+            ], [
+                'password.required' => __('password_required'),
+                'password.min'      => __('password_min'),
+            ]);
+
+            if ($request->has('password')) {
+                $data['password'] = \bcrypt($request->password);
+            } else {
+                $data['password'] = $user->password;
+            }
+
+            $user->update($data);
+
+            return $this->apiResponse(__('password_changed'), [], 200);
+
+        } else {
+            return $this->apiResponse(__('old_password_wrong'), [], 422);
+        }
+    }
+
+
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();

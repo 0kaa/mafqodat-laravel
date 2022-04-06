@@ -160,5 +160,6 @@
     "time_required"          : "Time is required",
     "primary_colour_required": "Primary Color is required",
     "postcode_required"      : "Post Code is required",
+    "old_password_wrong"     : "Old password is wrong",
     ""                       : ""
 }

@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('set-new-password', [AuthController::class, 'setNewPassword']);
     Route::post('profile/update', [AuthController::class, 'updateProfile']);
+    Route::post('profile/change-password', [AuthController::class, 'changePassword']);
 
     /* category routes */
     Route::get('categories', [CategoryController::class, 'getAllCategories']);
