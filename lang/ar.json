@@ -154,5 +154,6 @@
     "country_not_found"      : "البلد غير موجود",
     "city_not_found"         : "المدينة غير موجودة",
     "station_not_found"      : "المحطة غير موجودة",
+    "employee_not_found"     : "الموظف غير موجود",
     ""                       : ""
 }

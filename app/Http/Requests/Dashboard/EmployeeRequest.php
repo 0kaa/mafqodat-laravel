@@ -20,8 +20,8 @@ class EmployeeRequest extends FormRequest
             'address.required'     => __('address_required'),
             'phone.required'       => __('phone_required'),
             'mobile.required'      => __('mobile_required'),
-            'country_id.required'     => __('country_required'),
-            'city_id.required'        => __('city_required'),
+            'country_id.required'  => __('country_required'),
+            'city_id.required'     => __('city_required'),
 
         ];
     }

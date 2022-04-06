@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\CountryController;
+use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\StationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -48,4 +49,9 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
     Route::post('stations/create', [StationController::class, 'createStation']);
     Route::post('stations/update/{id}', [StationController::class, 'updateStation']);
     Route::post('stations/delete/{id}', [StationController::class, 'deleteStation']);
+
+    Route::get('employees', [EmployeeController::class, 'getAllemployees']);
+    Route::post('employees/create', [EmployeeController::class, 'createEmployee']);
+    Route::post('employees/update/{id}', [EmployeeController::class, 'updateEmployee']);
+    Route::post('employees/delete/{id}', [EmployeeController::class, 'deleteEmployee']);
 });

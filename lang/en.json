@@ -152,5 +152,6 @@
     "country_not_found"      : "Country not found",
     "city_not_found"         : "City not found",
     "station_not_found"      : "Station not found",
+    "employee_not_found"     : "Employee not found",
     ""                       : ""
 }
