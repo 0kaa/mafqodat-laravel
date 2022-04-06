@@ -28,7 +28,7 @@ class UserResource extends JsonResource
             'country'           => new CountryResource($this->country),
             'city'              => new CityResource($this->city),
             'post_code'         => $this->post_code,
-            'image'             => URL('/public/storage/'.$this->image),
+            'image'             => $this->image ? URL('/public/storage/'.$this->image) : null,
         ];
     }
 }
