@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
 {
@@ -52,6 +53,10 @@ class EmployeeController extends Controller
     {
         $data = $request->except('_token', 'permissions');
 
+        if ($request->has('image')) {
+            $data['image'] = $request->file('image')->store('users');
+        }
+
         if ($request->password) {
             $data['password'] = \bcrypt($request->password);
         }
@@ -66,7 +71,6 @@ class EmployeeController extends Controller
         } else {
             return redirect()->back()->with('error', __('something_went_wrong'));
         }
-
     }
 
     /**
@@ -101,12 +105,11 @@ class EmployeeController extends Controller
         } else {
             return view('dashboard.error');
         }
-
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     *f
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -116,6 +119,22 @@ class EmployeeController extends Controller
         $employee = User::find($id);
 
         $data = $request->except('_token', '_method', 'permissions');
+
+        if ($request->has('image')) {
+
+            if ($employee->image !== null) {
+
+                if (Storage::exists($employee->image)) {
+
+                    Storage::delete($employee->image);
+
+                }
+            }
+
+            $data['image'] = $request->file('image')->store('users');
+        } else {
+            $data['image'] = $employee->image;
+        }
 
         if ($request->password) {
             $data['password'] = \bcrypt($request->password);
@@ -132,11 +151,9 @@ class EmployeeController extends Controller
             $employee->update($data);
 
             return redirect()->back()->with('success', __('updated_successfully'));
-
-        }  else {
+        } else {
             return redirect()->back()->with('error', __('something_went_wrong'));
         }
-
     }
 
     /**

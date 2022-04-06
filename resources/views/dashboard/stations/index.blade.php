@@ -53,7 +53,7 @@
                                             @foreach ($stations as $station)
                                                 <tr>
                                                     <td>{{ $station->id }}</td>
-                                                    <td>{{ $station->type }}</td>
+                                                    <td>{{ $station->type }}</td>w
                                                     <td>{{ $station->name }}</td>
                                                     <td>{{ $station->number }}</td>
                                                     <td>{{ $station->location }}</td>

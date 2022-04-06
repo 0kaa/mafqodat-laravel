@@ -49,9 +49,29 @@
                                 </div>
                                 <div class="card-body">
                                     <form class="form form-vertical" id="create_employee_form"
-                                        action="{{ route('admin.employees.store') }}" method="POST">
+                                        action="{{ route('admin.employees.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
+
+                                            <div class="col-12 mb-2">
+                                                <!-- header media -->
+                                                <div class="media">
+                                                    <a href="javascript:void(0);" class="mr-25">
+                                                        <img src="{{ asset('dashboard/app-assets/images/avatars/placeholder.png') }}"
+                                                            id="account-upload-img" class="rounded mr-50"
+                                                            alt="profile image" height="100" width="100" />
+                                                    </a>
+                                                    <!-- upload and reset button -->
+                                                    <div class="media-body mt-2 ml-1">
+                                                        <label for="account-upload"
+                                                            class="btn btn-primary mb-75 mr-75">{{ __('upload') }}</label>
+                                                        <input type="file" id="account-upload" name="image" hidden
+                                                            accept="image/*" />
+                                                    </div>
+                                                    <!--/ upload and reset button -->
+                                                </div>
+                                                <!--/ header media -->
+                                            </div>
 
                                             <div class="col-6">
                                                 <div class="form-group">
@@ -231,6 +251,26 @@
         <script src="{{ asset('dashboard/assets/js/validation/employeeValidation.js') }}"></script>
 
         <script>
+
+            // variables
+            var accountUploadImg = $('#account-upload-img'),
+                accountUploadBtn = $('#account-upload');
+
+            // Update user photo on click of button
+            if (accountUploadBtn) {
+                accountUploadBtn.on('change', function(e) {
+                    var reader = new FileReader(),
+                        files = e.target.files;
+                    reader.onload = function() {
+                        if (accountUploadImg) {
+                            accountUploadImg.attr('src', reader.result);
+                        }
+                    };
+                    reader.readAsDataURL(files[0]);
+                });
+            }
+
+
             $('#create_employee_form').submit(function() {
 
                 localStorage.setItem('city', $("#selectCity").val());

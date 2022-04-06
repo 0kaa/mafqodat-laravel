@@ -50,10 +50,37 @@
                                 </div>
                                 <div class="card-body">
                                     <form class="form form-vertical" id="update_employee_form"
-                                        action="{{ route('admin.employees.update', $employee->id) }}" method="POST">
+                                        action="{{ route('admin.employees.update', $employee->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <div class="row">
+
+                                            <div class="col-12 mb-2">
+                                                <!-- header media -->
+                                                <div class="media">
+                                                    <a href="javascript:void(0);" class="mr-25">
+                                                        @if ($employee->image)
+                                                            <img src="{{ asset('storage/' . $employee->image) }}"
+                                                                id="account-upload-img" class="rounded mr-50"
+                                                                alt="profile image" height="100" width="100" />
+                                                        @else
+                                                            <img src="{{ asset('dashboard/app-assets/images/avatars/placeholder.png') }}"
+                                                                id="account-upload-img" class="rounded mr-50"
+                                                                alt="profile image" height="100" width="100" />
+                                                        @endif
+                                                    </a>
+                                                    <!-- upload and reset button -->
+                                                    <div class="media-body mt-2 ml-1">
+                                                        <label for="account-upload"
+                                                            class="btn btn-primary mb-75 mr-75">{{ __('upload') }}</label>
+                                                        <input type="file" id="account-upload" name="image" hidden
+                                                            accept="image/*" />
+                                                    </div>
+                                                    <!--/ upload and reset button -->
+                                                </div>
+                                                <!--/ header media -->
+                                            </div>
+
 
                                             <div class="col-6">
                                                 <div class="form-group">
@@ -208,7 +235,8 @@
                                                                 value="{{ $permission->id }}"
                                                                 class="custom-control-input"
                                                                 id="permission-{{ $permission->id }}"
-                                                                {{ $employee->permissions->contains($permission->id) ? 'checked' : '' }} required>
+                                                                {{ $employee->permissions->contains($permission->id) ? 'checked' : '' }}
+                                                                required>
                                                             <label class="custom-control-label"
                                                                 for="permission-{{ $permission->id }}">{{ __($permission->name) }}</label>
                                                         </div>
@@ -242,6 +270,26 @@
         <script src="{{ asset('dashboard/assets/js/validation/employeeValidation.js') }}"></script>
 
         <script>
+
+            // variables
+            var accountUploadImg = $('#account-upload-img'),
+                accountUploadBtn = $('#account-upload');
+
+            // Update user photo on click of button
+            if (accountUploadBtn) {
+                accountUploadBtn.on('change', function(e) {
+                    var reader = new FileReader(),
+                        files = e.target.files;
+                    reader.onload = function() {
+                        if (accountUploadImg) {
+                            accountUploadImg.attr('src', reader.result);
+                        }
+                    };
+                    reader.readAsDataURL(files[0]);
+                });
+            }
+
+
             $('#update_employee_form').submit(function() {
 
                 localStorage.setItem('city', $("#selectCity").val());
