@@ -7,7 +7,7 @@ use App\Models\City;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
     public function getProfile()
@@ -25,7 +25,22 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $data = $request->except('_token');
+        $data = $request->except('_token', 'image');
+
+        if ($request->has('image')) {
+
+            if ($user->image !== null) {
+
+                if (Storage::exists($user->image)) {
+
+                    Storage::delete($user->image);
+
+                }
+            }
+            $data['image'] = $request->file('image')->store('users');
+        } else {
+            $data['image'] = $user->image;
+        }
 
         if ($request->password) {
             $data['password'] = \bcrypt($request->password);
