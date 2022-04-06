@@ -153,5 +153,12 @@
     "city_not_found"         : "City not found",
     "station_not_found"      : "Station not found",
     "employee_not_found"     : "Employee not found",
+    "category_id_required"   : "Category is required",
+    "station_id_required"    : "Station is required",
+    "storage_required"       : "Storage is required",
+    "date_required"          : "Date is required",
+    "time_required"          : "Time is required",
+    "primary_colour_required": "Primary Color is required",
+    "postcode_required"      : "Post Code is required",
     ""                       : ""
 }

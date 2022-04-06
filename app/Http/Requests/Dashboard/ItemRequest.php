@@ -32,7 +32,6 @@ class ItemRequest extends FormRequest
             'date'            => 'required',
             'description'     => 'sometimes',
             'image'           => 'sometimes',
-
         ];
     }
 }

@@ -155,5 +155,12 @@
     "city_not_found"         : "المدينة غير موجودة",
     "station_not_found"      : "المحطة غير موجودة",
     "employee_not_found"     : "الموظف غير موجود",
+    "category_id_required"   : "القسم مطلوب",
+    "station_id_required"    : "المحطة مطلوبة",
+    "storage_required"       : "مكان التخزين مطلوب",
+    "date_required"          : "التاريخ مطلوب",
+    "time_required"          : "الوقت مطلوب",
+    "primary_colour_required": "اللون الأساسي مطلوب",
+    "postcode_required"      : "الرمز البريدي مطلوب",
     ""                       : ""
 }
