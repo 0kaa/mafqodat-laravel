@@ -10,6 +10,7 @@ use App\Traits\ApiResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Request;
+use Validator;
 
 class AuthController extends Controller
 {
@@ -114,7 +115,9 @@ class AuthController extends Controller
 
         if ($user) {
 
-            $data = $request->validate([
+            $data = $request->all();
+
+            $validator = Validator::make($data, [
                 'first_name'  => 'required',
                 'family_name' => 'required',
                 'email'       => 'required|unique:users,email,'.$user->id,
@@ -135,6 +138,10 @@ class AuthController extends Controller
                 'country_id.required'  => __('country_required'),
                 'city_id.required'     => __('city_required'),
             ]);
+
+            if ($validator->stopOnFirstFailure()->fails()) {
+                return $this->apiResponse($validator->errors()->all()[0], [], 422);
+            }
 
             if ($request->has('image')) {
 
@@ -158,12 +165,21 @@ class AuthController extends Controller
 
         if (Hash::check($request->old_password, $user->password)) {
 
-            $data = $request->validate([
+            // $data = $request->validate([
+            //     'password' => 'required|min:6',
+            // ], [
+            //     'password.required' => __('password_required'),
+            //     'password.min'      => __('password_min'),
+            // ]);
+
+
+            $data = Validator::make($request->all(), [
                 'password' => 'required|min:6',
             ], [
                 'password.required' => __('password_required'),
                 'password.min'      => __('password_min'),
-            ]);
+            ])->validate();
+
 
             if ($request->has('password')) {
                 $data['password'] = \bcrypt($request->password);
@@ -174,7 +190,6 @@ class AuthController extends Controller
             $user->update($data);
 
             return $this->apiResponse(__('password_changed'), [], 200);
-
         } else {
             return $this->apiResponse(__('old_password_wrong'), [], 422);
         }
