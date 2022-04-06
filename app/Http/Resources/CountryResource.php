@@ -15,10 +15,10 @@ class CountryResource extends JsonResource
     public function toArray($request)
     {
         // return parent::toArray($request);
-
         return [
-            'id'   => $this->id,
-            'name' => $this->name,
+            'id'        => $this->id,
+            'name'      => $this->name,
+            'cities'    => CityResource::collection($this->cities),
         ];
     }
 }

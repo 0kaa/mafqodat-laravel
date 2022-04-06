@@ -24,8 +24,8 @@ class UserResource extends JsonResource
             'address'    => $this->address,
             'phone'      => $this->phone,
             'mobile'     => $this->mobile,
-            'country'    => $this->country,
-            'city'       => $this->city,
+            'country'    => new CountryResource($this->country),
+            'city'       => new CityResource($this->city),
         ];
     }
 }

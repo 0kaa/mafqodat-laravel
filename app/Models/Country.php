@@ -14,12 +14,12 @@ class Country extends Model
 
     public function getNameAttribute()
     {
-        return $this->{'name_'.App::getLocale()};
+        return $this->{'name_' . App::getLocale()};
     }
 
-    public function city()
+    public function cities()
     {
-        return $this->hasMany(City::class, 'id', 'country_id');
+        return $this->hasMany(City::class);
     }
 
     public function user()
