@@ -5,7 +5,7 @@ namespace App\Http\Requests\Api;
 use App\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class CategoryRequest extends MasterApiRequest
 {
     public function messages()
     {

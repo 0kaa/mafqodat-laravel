@@ -165,21 +165,18 @@ class AuthController extends Controller
 
         if (Hash::check($request->old_password, $user->password)) {
 
-            // $data = $request->validate([
-            //     'password' => 'required|min:6',
-            // ], [
-            //     'password.required' => __('password_required'),
-            //     'password.min'      => __('password_min'),
-            // ]);
+            $data = $request->except('old_password');
 
-
-            $data = Validator::make($request->all(), [
+            $validator = Validator::make($data, [
                 'password' => 'required|min:6',
             ], [
                 'password.required' => __('password_required'),
                 'password.min'      => __('password_min'),
-            ])->validate();
+            ]);
 
+            if ($validator->stopOnFirstFailure()->fails()) {
+                return $this->apiResponse($validator->errors()->all()[0], [], 422);
+            }
 
             if ($request->has('password')) {
                 $data['password'] = \bcrypt($request->password);

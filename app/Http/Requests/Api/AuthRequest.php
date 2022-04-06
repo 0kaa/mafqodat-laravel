@@ -5,7 +5,7 @@ namespace App\Http\Requests\Api;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthRequest extends FormRequest
+class AuthRequest extends MasterApiRequest
 {
     public function messages()
     {

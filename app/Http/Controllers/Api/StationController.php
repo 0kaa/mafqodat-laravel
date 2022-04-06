@@ -23,7 +23,9 @@ class StationController extends Controller
 
     public function createStation(Request $request)
     {
-        $data = $request->validate([
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
             'type'        => 'required|in:metro,bus',
             'name_ar'     => 'required',
             'name_en'     => 'required',
@@ -40,6 +42,10 @@ class StationController extends Controller
             'location.required' => __('location_required'),
         ]);
 
+        if ($validator->stopOnFirstFailure()->fails()) {
+            return $this->apiResponse($validator->errors()->all()[0], [], 422);
+        }
+
         $station = Station::create($data);
 
         if ($station) {
@@ -53,7 +59,9 @@ class StationController extends Controller
 
         if ($station) {
 
-            $data = $request->validate([
+            $data = $request->all();
+
+            $validator = Validator::make($data, [
                 'type'        => 'required|in:metro,bus',
                 'name_ar'     => 'required',
                 'name_en'     => 'required',
@@ -69,6 +77,10 @@ class StationController extends Controller
                 'number.unique'     => __('number_unique'),
                 'location.required' => __('location_required'),
             ]);
+
+            if ($validator->stopOnFirstFailure()->fails()) {
+                return $this->apiResponse($validator->errors()->all()[0], [], 422);
+            }
 
             $station->update($data);
 

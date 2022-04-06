@@ -24,7 +24,9 @@ class EmployeeController extends Controller
 
     public function createEmployee(Request $request)
     {
-        $data = $request->validate([
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
             'first_name'  => 'required',
             'family_name' => 'required',
             'email'       => 'required|unique:users,email',
@@ -48,6 +50,10 @@ class EmployeeController extends Controller
             'city_id.required'     => __('city_required'),
         ]);
 
+        if ($validator->stopOnFirstFailure()->fails()) {
+            return $this->apiResponse($validator->errors()->all()[0], [], 422);
+        }
+
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
         }
@@ -69,7 +75,9 @@ class EmployeeController extends Controller
 
         if ($employee) {
 
-            $data = $request->validate([
+            $data = $request->all();
+
+            $validator = Validator::make($data, [
                 'first_name'  => 'required',
                 'family_name' => 'required',
                 'email'       => 'required|unique:users,email,' . $id,
@@ -92,6 +100,10 @@ class EmployeeController extends Controller
                 'country_id.required'  => __('country_required'),
                 'city_id.required'     => __('city_required'),
             ]);
+
+            if ($validator->stopOnFirstFailure()->fails()) {
+                return $this->apiResponse($validator->errors()->all()[0], [], 422);
+            }
 
             if ($request->password) {
                 $data['password'] = bcrypt($request->password);

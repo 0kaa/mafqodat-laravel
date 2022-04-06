@@ -25,9 +25,11 @@ class CityController extends Controller
 
     public function createCity(Request $request)
     {
-        $data = $request->validate([
-            'name_ar' => 'required|min:3|unique:cities,name_ar',
-            'name_en' => 'required|min:3|unique:cities,name_en',
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name_ar'    => 'required|min:3|unique:cities,name_ar',
+            'name_en'    => 'required|min:3|unique:cities,name_en',
             'country_id' => 'required',
         ], [
             'name_ar.required'    => __('name_ar_required'),
@@ -38,6 +40,10 @@ class CityController extends Controller
             'name_en.unique'      => __('name_en_unique'),
             'country_id.required' => __('country_id_required'),
         ]);
+
+        if ($validator->stopOnFirstFailure()->fails()) {
+            return $this->apiResponse($validator->errors()->all()[0], [], 422);
+        }
 
         $city = City::create($data);
 
@@ -52,9 +58,11 @@ class CityController extends Controller
 
         if ($city) {
 
-            $data = $request->validate([
-                'name_ar' => 'required|min:3|unique:cities,name_ar,' . $id,
-                'name_en' => 'required|min:3|unique:cities,name_en,' . $id,
+            $data = $request->all();
+
+            $validator = Validator::make($data, [
+                'name_ar'    => 'required|min:3|unique:cities,name_ar,' . $id,
+                'name_en'    => 'required|min:3|unique:cities,name_en,' . $id,
                 'country_id' => 'required',
             ], [
                 'name_ar.required'    => __('name_ar_required'),
@@ -65,6 +73,10 @@ class CityController extends Controller
                 'name_en.unique'      => __('name_en_unique'),
                 'country_id.required' => __('country_id_required'),
             ]);
+
+            if ($validator->stopOnFirstFailure()->fails()) {
+                return $this->apiResponse($validator->errors()->all()[0], [], 422);
+            }
 
             $city->update($data);
 

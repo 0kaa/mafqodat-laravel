@@ -27,6 +27,22 @@ class CountryController extends Controller
     {
         $data = $request->all();
 
+        $validator = Validator::make($data, [
+            'name_ar' => 'required|min:3|unique:countries,name_ar',
+            'name_en' => 'required|min:3|unique:countries,name_en',
+        ], [
+            'name_ar.required' => __('name_ar_required'),
+            'name_ar.min'      => __('name_ar_min'),
+            'name_ar.unique'   => __('name_ar_unique'),
+            'name_en.required' => __('name_en_required'),
+            'name_en.min'      => __('name_en_min'),
+            'name_en.unique'   => __('name_en_unique'),
+        ]);
+
+        if ($validator->stopOnFirstFailure()->fails()) {
+            return $this->apiResponse($validator->errors()->all()[0], [], 422);
+        }
+
         $country = Country::create($data);
 
         if ($country) {
@@ -40,7 +56,9 @@ class CountryController extends Controller
 
         if ($country) {
 
-            $data = $request->validate([
+            $data = $request->all();
+
+            $validator = Validator::make($data, [
                 'name_ar' => 'required|min:3|unique:countries,name_ar,' . $id,
                 'name_en' => 'required|min:3|unique:countries,name_en,' . $id,
             ], [
@@ -51,6 +69,10 @@ class CountryController extends Controller
                 'name_en.min'      => __('name_en_min'),
                 'name_en.unique'   => __('name_en_unique'),
             ]);
+
+            if ($validator->stopOnFirstFailure()->fails()) {
+                return $this->apiResponse($validator->errors()->all()[0], [], 422);
+            }
 
             $country->update($data);
 
