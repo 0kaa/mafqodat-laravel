@@ -145,7 +145,14 @@ class AuthController extends Controller
 
             if ($request->has('image')) {
 
-                Storage::delete($user->image);
+                if ($user->image !== null) {
+
+                    if (Storage::exists($user->image)) {
+
+                        Storage::delete($user->image);
+
+                    }
+                }
 
                 $data['image'] = $request->file('image')->store('users');
             } else {

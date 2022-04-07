@@ -23,5 +23,17 @@ class UserTableSeeder extends Seeder
 
         $user->assignRole('super_admin');
 
+        User::create([
+            'first_name' => 'test',
+            'family_name' => 'user',
+            'email' => 'user@test.com',
+            'password' => \bcrypt('123456'),
+            'address' => 'test address',
+            'mobile' => '123456789',
+            'phone' => '123456789',
+            'country_id' => 1,
+            'city_id' => 1,
+        ]);
+
     }
 }
