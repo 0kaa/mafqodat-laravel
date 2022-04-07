@@ -161,5 +161,15 @@
     "primary_colour_required": "Primary Color is required",
     "postcode_required"      : "Post Code is required",
     "old_password_wrong"     : "Old password is wrong",
+    "item_not_found"         : "Item not found",
+    "must_be_email"          : "Must be an email",
+    "first_name_min"         : "First name minimum is 3 letters",
+    "family_name_min"        : "Family name minimum is 3 letters",
+    "phone_min"              : "Phone number minimum is 8 numbers",
+    "phone_max"              : "Phone number maximum is 12 numbers",
+    "mobile_min"             : "Mobile number minimum is 8 numbers",
+    "mobile_max"             : "Mobile number maximum is 12 numbers",
+    "address_min"            : "Address minimum is 3 letters",
+    "secondary_address_min"  : "Secondary address minimum is 3 letters",
     ""                       : ""
 }

@@ -148,7 +148,7 @@ class ItemController extends Controller
             $data['city'] = $request->city;
             $data['mobile'] = $request->mobile;
         } else {
-            $data['is_delivered'] = '0';
+            $data['is_delivered'] = 0;
             $data['first_name'] = null;
             $data['surname'] = null;
             $data['email'] = null;
