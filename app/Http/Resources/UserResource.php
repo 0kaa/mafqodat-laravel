@@ -15,6 +15,10 @@ class UserResource extends JsonResource
     public function toArray($request)
     {
         // return parent::toArray($request);
+        // $permission = [];
+        // foreach ($this->getPermissionNames() as $key => $value) {
+        //     $permission[] = __($value);
+        // }
 
         return [
             'id'             => $this->id,
@@ -29,6 +33,7 @@ class UserResource extends JsonResource
             'city'           => new CityResource($this->city),
             'post_code'      => $this->post_code,
             'image'          => $this->image ? url('/storage') . '/' . $this->image : null,
+            "permissions"    => $this->getPermissionNames(),
         ];
     }
 }

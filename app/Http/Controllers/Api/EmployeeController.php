@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Validator;
 
 class EmployeeController extends Controller
 {
@@ -63,6 +64,7 @@ class EmployeeController extends Controller
             return $this->apiResponse($validator->errors()->all()[0], [], 422);
         }
 
+
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
         }
@@ -72,6 +74,8 @@ class EmployeeController extends Controller
         }
 
         $employee = User::create($data);
+
+        $employee->givePermissionTo($request->permissions);
 
         if ($employee) {
             return $this->apiResponse(__('created_successfully'), new UserResource($employee), 201);
@@ -137,6 +141,8 @@ class EmployeeController extends Controller
 
 
             $employee->update($data);
+
+            $employee->syncPermissions($request->permissions);
 
             return $this->apiResponse(__('updated_successfully'), new UserResource($employee), 200);
         } else {
