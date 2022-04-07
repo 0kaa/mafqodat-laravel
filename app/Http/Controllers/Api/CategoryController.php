@@ -19,12 +19,14 @@ class CategoryController extends Controller
         $categories = Category::get();
 
         if ($categories->isNotEmpty()) {
-            return $this->apiResponse('', [CategoryResource::collection($categories)], 200);
+            return $this->apiResponse('', CategoryResource::collection($categories), 200);
         }
     }
 
     public function createCategory(CategoryRequest $request)
     {
+        $user = auth()->user();
+
         $data = $request->all();
 
         if ($request->has('image')) {
@@ -34,7 +36,7 @@ class CategoryController extends Controller
         $category = Category::create($data);
 
         if ($category) {
-            return $this->apiResponse(__('created_successfully'), [new CategoryResource($category)], 201);
+            return $this->apiResponse(__('created_successfully'), new CategoryResource($category), 201);
         }
     }
 
@@ -60,7 +62,7 @@ class CategoryController extends Controller
 
             $category->update($data);
 
-            return $this->apiResponse(__('updated_successfully'), [new CategoryResource($category)], 200);
+            return $this->apiResponse(__('updated_successfully'), new CategoryResource($category), 200);
 
         } else {
             return $this->apiResponse(__('category_not_found'), [], 404);

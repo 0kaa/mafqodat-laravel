@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\ItemController;
+use App\Http\Controllers\Api\LogController;
 use App\Http\Controllers\Api\StationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -71,4 +72,7 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
     Route::post('items/create', [ItemController::class, 'createItem']);
     Route::post('items/update/{id}', [ItemController::class, 'updateItem']);
     Route::post('items/delete/{id}', [ItemController::class, 'deleteItem']);
+
+    /* logs routes */
+    Route::get('logs', [LogController::class, 'getAllLogs']);
 });

@@ -12,6 +12,7 @@ use AmrShawky\LaravelCurrency\Facade\Currency;
 use App\Jobs\SendEmailGifts;
 use App\Jobs\sendMailSubscribe;
 use App\Mail\BondMail;
+use App\Models\Log;
 use Illuminate\Http\Request;
 use Twilio\Rest\Client;
 use Illuminate\Support\Facades\App;
@@ -62,5 +63,24 @@ function getSitting($key , $lang = null)
     }
 
     return $setting;
+
+}
+
+function createLog($user_id , $modal_type , $modal_name , $message, $action)
+{
+
+    $log = new Log();
+
+    $log->user_id = $user_id;
+
+    $log->modal_type = $modal_type;
+
+    $log->modal_name = $modal_name;
+
+    $log->message = $message;
+
+    $log->action = $action;
+
+    $log->save();
 
 }
