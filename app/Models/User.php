@@ -56,14 +56,16 @@ class User extends Authenticatable
     protected function rules()
     {
         return [
-            'first_name'  => 'required',
-            'family_name' => 'required',
-            'email'       => 'required|unique:users,email,' . $this->id,
-            'password'    => 'required|min:6',
-            'phone'       => 'required',
-            'mobile'      => 'required',
-            'country_id'  => 'required',
-            'city_id'     => 'required',
+            'first_name'     => 'required|min:3',
+            'family_name'    => 'required|min:3',
+            'email'          => 'required|unique:users,email' . $this->id,
+            'password'       => 'required|min:6',
+            'address'        => 'required|min:3',
+            'second_address' => 'nullable|min:3',
+            'phone'          => 'required|min:8|max:12',
+            'mobile'         => 'required|min:8|max:12',
+            'country_id'     => 'required',
+            'city_id'        => 'required',
         ];
     }
 

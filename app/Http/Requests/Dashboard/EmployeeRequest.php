@@ -11,18 +11,24 @@ class EmployeeRequest extends FormRequest
     {
         return [
             'first_name.required'  => __('first_name_required'),
+            'first_name.min'       => __('first_name_min'),
             'family_name.required' => __('family_name_required'),
+            'family_name.min'      => __('family_name_min'),
             'email.required'       => __('email_required'),
             'email.unique'         => __('email_unique'),
             'password.required'    => __('password_required'),
             'password.min'         => __('password_min'),
             'phone.required'       => __('phone_required'),
             'address.required'     => __('address_required'),
+            'address.min'          => __('address_min'),
             'phone.required'       => __('phone_required'),
+            'phone.min'            => __('phone_min'),
+            'phone.max'            => __('phone_max'),
             'mobile.required'      => __('mobile_required'),
+            'mobile.min'           => __('mobile_min'),
+            'mobile.max'           => __('mobile_max'),
             'country_id.required'  => __('country_required'),
             'city_id.required'     => __('city_required'),
-
         ];
     }
 

@@ -101,7 +101,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-12">
+                                            <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="first-name-vertical">{{ __('email') }}</label>
                                                     <input type="email" class="form-control" name="email"
@@ -115,7 +115,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-12">
+                                            <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="first-name-vertical">{{ __('password') }}</label>
                                                     <input type="password" class="form-control" name="password"
@@ -157,13 +157,41 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-12">
+                                            <div class="col-4">
                                                 <div class="form-group">
                                                     <label for="first-name-vertical">{{ __('address') }}</label>
                                                     <input type="text" class="form-control" name="address"
                                                         value="{{ old('address') }}"
                                                         placeholder="{{ __('write_address') }}" />
                                                     @error('address')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="first-name-vertical">{{ __('second_address') }}</label>
+                                                    <input type="text" class="form-control" name="second_address"
+                                                        value="{{ old('second_address') }}"
+                                                        placeholder="{{ __('second_address') }}" />
+                                                    @error('second_address')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="first-name-vertical">{{ __('post_code') }}</label>
+                                                    <input type="text" class="form-control" name="post_code"
+                                                        value="{{ old('post_code') }}"
+                                                        placeholder="{{ __('post_code') }}" />
+                                                    @error('post_code')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
                                                         </span>

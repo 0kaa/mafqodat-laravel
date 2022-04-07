@@ -9,36 +9,6 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row">
-                <div class="content-header-left col-md-9 col-12 mb-2">
-                    <div class="row breadcrumbs-top">
-                        <div class="col-12">
-                            <div class="breadcrumb-wrapper">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a
-                                            href="{{ route('admin.employees.index') }}">{{ __('employees') }}</a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="#">{{ __('employees') }}</a>
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
-                    <div class="form-group breadcrumb-right">
-                        <div class="dropdown">
-                            <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                    data-feather="grid"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
-                                    href="{{ route('admin.employees.create') }}"><i class="mr-1"
-                                        data-feather="circle"></i><span
-                                        class="align-middle">{{ __('new_employee') }}</span></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="content-body">
                 <!-- account setting page -->
                 <section id="page-account-settings">
