@@ -23,7 +23,7 @@ class UserTableSeeder extends Seeder
 
         $user->assignRole('super_admin');
 
-        User::create([
+        $employee = User::create([
             'first_name' => 'test',
             'family_name' => 'user',
             'email' => 'user@test.com',
@@ -34,6 +34,8 @@ class UserTableSeeder extends Seeder
             'country_id' => 1,
             'city_id' => 1,
         ]);
+
+        $employee->givePermissionTo(['create_employee', 'update_employee', 'delete_employee']);
 
     }
 }

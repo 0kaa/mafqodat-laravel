@@ -171,5 +171,6 @@
     "mobile_max"             : "Mobile number maximum is 12 numbers",
     "address_min"            : "Address minimum is 3 letters",
     "secondary_address_min"  : "Secondary address minimum is 3 letters",
+    "not_authorized"         : "You do not have the authority to perform this action",
     ""                       : ""
 }

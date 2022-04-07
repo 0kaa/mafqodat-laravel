@@ -63,9 +63,9 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
 
     /* employees routes */
     Route::get('employees', [EmployeeController::class, 'getAllemployees']);
-    Route::post('employees/create', [EmployeeController::class, 'createEmployee']);
-    Route::post('employees/update/{id}', [EmployeeController::class, 'updateEmployee']);
-    Route::post('employees/delete/{id}', [EmployeeController::class, 'deleteEmployee']);
+    Route::post('employees/create', [EmployeeController::class, 'createEmployee'])->middleware(['permission:create_employee']);
+    Route::post('employees/update/{id}', [EmployeeController::class, 'updateEmployee'])->middleware(['permission:update_employee']);
+    Route::post('employees/delete/{id}', [EmployeeController::class, 'deleteEmployee'])->middleware(['permission:delete_employee']);
 
     /* items routes */
     Route::get('items', [ItemController::class, 'getAllitems']);
