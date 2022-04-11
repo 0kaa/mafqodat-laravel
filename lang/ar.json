@@ -186,5 +186,8 @@
     "create_city"            : "إنشاء مدينة",
     "update_city"            : "تعديل مدينة",
     "delete_city"            : "حذف مدينة",
+    "create_item"            : "إنشاء مفقود",
+    "update_item"            : "تعديل مفقود",
+    "delete_item"            : "حذف مفقود",
     ""                       : ""
 }

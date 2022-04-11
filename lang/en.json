@@ -184,5 +184,8 @@
     "create_city"            : "Create City",
     "update_city"            : "Update City",
     "delete_city"            : "Delete City",
+    "create_item"            : "Create Item",
+    "update_item"            : "Update Item",
+    "delete_item"            : "Delete Item",
     ""                       : ""
 }

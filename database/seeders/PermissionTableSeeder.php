@@ -41,51 +41,51 @@ class PermissionTableSeeder extends Seeder
                 'guard_name' => 'web',
             ],
             [
-                'name'       => 'create_countries',
+                'name'       => 'create_country',
                 'guard_name' => 'web',
             ],
             [
-                'name'       => 'update_countries',
+                'name'       => 'update_country',
                 'guard_name' => 'web',
             ],
             [
-                'name'       => 'delete_countries',
+                'name'       => 'delete_country',
                 'guard_name' => 'web',
             ],
             [
-                'name'       => 'create_cities',
+                'name'       => 'create_city',
                 'guard_name' => 'web',
             ],
             [
-                'name'       => 'update_cities',
+                'name'       => 'update_city',
                 'guard_name' => 'web',
             ],
             [
-                'name'       => 'delete_cities',
+                'name'       => 'delete_city',
                 'guard_name' => 'web',
             ],
             [
-                'name'       => 'create_stations',
+                'name'       => 'create_station',
                 'guard_name' => 'web',
             ],
             [
-                'name'       => 'update_stations',
+                'name'       => 'update_station',
                 'guard_name' => 'web',
             ],
             [
-                'name'       => 'delete_stations',
+                'name'       => 'delete_station',
                 'guard_name' => 'web',
             ],
             [
-                'name'       => 'create_items',
+                'name'       => 'create_item',
                 'guard_name' => 'web',
             ],
             [
-                'name'       => 'update_items',
+                'name'       => 'update_item',
                 'guard_name' => 'web',
             ],
             [
-                'name'       => 'delete_items',
+                'name'       => 'delete_item',
                 'guard_name' => 'web',
             ],
 
