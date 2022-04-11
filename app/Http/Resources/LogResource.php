@@ -23,7 +23,7 @@ class LogResource extends JsonResource
             'modal_name' => $this->modal_name,
             'action'     => $this->action,
             'message'    => $this->message,
-            'created_at' => $this->created_at->format('Y-m-d H:i A'),
+            'created_at' => $this->created_at->format('Y-m-d h:i A'),
         ];
     }
 }
