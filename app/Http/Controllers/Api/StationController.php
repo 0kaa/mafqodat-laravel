@@ -21,6 +21,17 @@ class StationController extends Controller
         }
     }
 
+    public function showStation($id)
+    {
+        $station = Station::find($id);
+
+        if ($station) {
+            return $this->apiResponse('', new StationResource($station), 200);
+        } else {
+            return $this->apiResponse(__('station_not_found'), [], 404);
+        }
+    }
+
     public function createStation(Request $request)
     {
         $data = $request->all();

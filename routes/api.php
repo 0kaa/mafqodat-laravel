@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
 
     /* station routes */
     Route::get('stations', [StationController::class, 'getAllstations']);
+    Route::get('stations/show/{id}', [StationController::class, 'showStation']);
     Route::post('stations/create', [StationController::class, 'createStation']);
     Route::post('stations/update/{id}', [StationController::class, 'updateStation']);
     Route::post('stations/delete/{id}', [StationController::class, 'deleteStation']);
