@@ -200,7 +200,7 @@
                                                             <div class="form-group">
                                                                 <select id="selectCity" name="city_id"
                                                                     class="form-control form-control-lg mb-1" required>
-
+                                                                    <option value="">{{ __('select') }}</option>
                                                                     @foreach ($cities as $city)
                                                                         <option value="{{ $city->id }}"
                                                                             {{ old('city_id', $user->city_id) == $city->id ? 'selected' : '' }}>
