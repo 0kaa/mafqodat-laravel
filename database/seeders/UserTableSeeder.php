@@ -35,7 +35,7 @@ class UserTableSeeder extends Seeder
             'city_id' => 1,
         ]);
 
-        $employee->givePermissionTo(['create_employee', 'update_employee', 'delete_employee']);
+        $employee->givePermissionTo(['create_employee', 'update_employee', 'delete_employee', 'create_category', 'update_category', 'delete_category', 'create_country', 'update_country', 'delete_country', 'create_city', 'update_city', 'delete_city', 'create_station', 'update_station', 'delete_station', 'create_item', 'update_item', 'delete_item']);
 
     }
 }
