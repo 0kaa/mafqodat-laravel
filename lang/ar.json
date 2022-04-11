@@ -174,5 +174,17 @@
     "address_min"            : "العنوان لا يقل عن 3 أحرف",
     "secondary_address_min"  : "العنوان الثاني لا يقل عن 3 أحرف",
     "not_authorized"         : "ليس لديك الصلاحية للقيام بهذا الإجراء",
+    "create_category"        : "إنشاء قسم",
+    "update_category"        : "تعديل قسم",
+    "delete_category"        : "حذف قسم",
+    "create_station"         : "إنشاء محطة",
+    "update_station"         : "تعديل محطة",
+    "delete_station"         : "حذف محطة",
+    "create_country"         : "إنشاء بلد",
+    "update_country"         : "تعديل بلد",
+    "delete_country"         : "حذف بلد",
+    "create_city"            : "إنشاء مدينة",
+    "update_city"            : "تعديل مدينة",
+    "delete_city"            : "حذف مدينة",
     ""                       : ""
 }

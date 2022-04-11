@@ -172,5 +172,17 @@
     "address_min"            : "Address minimum is 3 letters",
     "secondary_address_min"  : "Secondary address minimum is 3 letters",
     "not_authorized"         : "You do not have the authority to perform this action",
+    "create_category"        : "Create Category",
+    "update_category"        : "Update Category",
+    "delete_category"        : "Delete Category",
+    "create_station"         : "Create Station",
+    "update_station"         : "Update Station",
+    "delete_station"         : "Delete Station",
+    "create_country"         : "Create Country",
+    "update_country"         : "Update Country",
+    "delete_country"         : "Delete Country",
+    "create_city"            : "Create City",
+    "update_city"            : "Update City",
+    "delete_city"            : "Delete City",
     ""                       : ""
 }

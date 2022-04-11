@@ -56,7 +56,11 @@
 
 @if (session()->has('qr_code'))
     <script>
-        $('.modal').modal('show');
+        // $('.modal').modal('show');
+        $(".modal").modal({
+            backdrop: 'static',
+            keyboard: false
+        });
     </script>
 @endif
 

@@ -258,7 +258,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" id="close_modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -312,6 +312,19 @@
                     success: function(result) {
 
                         $("#appendStation").html(result);
+
+                    }
+                });
+            });
+
+            $("#close_modal").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('admin.remove_session') }}",
+                    data: "data",
+                    dataType: "dataType",
+                    success: function (response) {
 
                     }
                 });

@@ -71,7 +71,6 @@ class ItemController extends Controller
             session()->put('item_name', $item->details);
             session()->put('category_name', $item->category->name);
             session()->put('station_name', $item->station->name);
-
             return redirect()->back()->with(['success' => __('created_successfully')]);
 
         } else {
@@ -201,5 +200,16 @@ class ItemController extends Controller
         $station = Station::find($request->id);
 
         return view('dashboard.ajax.stations', compact('station'))->render();
+    }
+
+    public function removeSession()
+    {
+        session()->forget('qr_code');
+        session()->forget('item_name');
+        session()->forget('category_name');
+        session()->forget('station_name');
+        return response()->json([
+            'success' => __('session_removed')
+        ]);
     }
 }
