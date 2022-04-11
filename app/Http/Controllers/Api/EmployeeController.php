@@ -23,6 +23,19 @@ class EmployeeController extends Controller
         }
     }
 
+
+    public function showEmployee($id)
+    {
+        $employee = User::whereDoesntHave('roles')->find($id);
+
+        if ($employee) {
+            return $this->apiResponse('', new UserResource($employee), 200);
+        } else {
+            return $this->apiResponse(__('employee_not_found'), [], 404);
+        }
+    }
+
+
     public function createEmployee(Request $request)
     {
         $data = $request->all();
@@ -84,7 +97,7 @@ class EmployeeController extends Controller
 
     public function updateEmployee(Request $request, $id)
     {
-        $employee = User::find($id);
+        $employee = User::whereDoesntHave('roles')->find($id);
 
         if ($employee) {
 
