@@ -188,5 +188,6 @@
     "update_item"            : "Update Item",
     "delete_item"            : "Delete Item",
     "permissions"            : "Permissions",
+    "qr_code"                : "QR Code",
     ""                       : ""
 }

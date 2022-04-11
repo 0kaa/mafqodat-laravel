@@ -230,6 +230,7 @@
                                                     <div class="form-group">
                                                         <select id="selectCity" name="city_id"
                                                             class="form-control form-control-lg mb-1" required>
+                                                            <option value="">{{ __('select') }}</option>
                                                         </select>
                                                     </div>
                                                     @error('city_id')
@@ -336,7 +337,7 @@
 
             });
 
-            $('#city_form_select').hide();
+            // $('#city_form_select').hide();
             $('#selectCountry').on('change', function() {
                 $('#city_form_select').fadeIn();
                 var idCountry = this.value;
