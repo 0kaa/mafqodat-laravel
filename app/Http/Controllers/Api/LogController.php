@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\LogResource;
+use App\Http\Resources\PaginationResource;
 use App\Models\Log;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class LogController extends Controller
 
     public function getAllLogs()
     {
-        $logs = Log::get();
+        $logs = Log::paginate(10);
 
         $logs->transform(function ($log) {
             return new LogResource($log);
