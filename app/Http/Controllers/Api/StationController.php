@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PaginationResource;
 use App\Http\Resources\StationResource;
 use App\Models\Station;
 use App\Traits\ApiResponse;
@@ -14,10 +15,16 @@ class StationController extends Controller
 
     public function getAllStations()
     {
-        $stations = Station::get();
+        $stations = Station::paginate(10);
+
+        $stations->transform(function ($station) {
+            return new StationResource($station);
+        });
 
         if ($stations->isNotEmpty()) {
-            return $this->apiResponse('', StationResource::collection($stations), 200);
+            return $this->apiResponse('', new PaginationResource($stations), 200);
+        } else {
+            return $this->apiResponse('', [], 200);
         }
     }
 

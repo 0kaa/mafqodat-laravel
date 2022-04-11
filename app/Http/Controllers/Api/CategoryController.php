@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CategoryRequest;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\PaginationResource;
 use App\Models\Category;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -16,10 +17,16 @@ class CategoryController extends Controller
 
     public function getAllCategories()
     {
-        $categories = Category::get();
+        $categories = Category::paginate(10);
+
+        $categories->transform(function ($category) {
+            return new CategoryResource($category);
+        });
 
         if ($categories->isNotEmpty()) {
-            return $this->apiResponse('', CategoryResource::collection($categories), 200);
+            return $this->apiResponse('', new PaginationResource($categories), 200);
+        } else {
+            return $this->apiResponse('', [], 200);
         }
     }
 

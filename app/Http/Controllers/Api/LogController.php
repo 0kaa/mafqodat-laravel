@@ -16,8 +16,14 @@ class LogController extends Controller
     {
         $logs = Log::get();
 
+        $logs->transform(function ($log) {
+            return new LogResource($log);
+        });
+
         if ($logs->isNotEmpty()) {
-            return $this->apiResponse('', LogResource::collection($logs), 200);
+            return $this->apiResponse('', new PaginationResource($logs), 200);
+        } else {
+            return $this->apiResponse('', [], 200);
         }
     }
 }

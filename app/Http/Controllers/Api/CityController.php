@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CityResource;
+use App\Http\Resources\PaginationResource;
 use App\Models\City;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -14,10 +15,14 @@ class CityController extends Controller
 
     public function getAllCities()
     {
-        $cities = City::get();
+        $cities = City::paginate(10);
+
+        $cities->transform(function ($city) {
+            return new CityResource($city);
+        });
 
         if ($cities->isNotEmpty()) {
-            return $this->apiResponse('', CityResource::collection($cities), 200);
+            return $this->apiResponse('', new PaginationResource($cities), 200);
         } else {
             return $this->apiResponse('', [], 200);
         }

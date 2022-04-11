@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CountryRequest;
 use App\Http\Resources\CountryResource;
+use App\Http\Resources\PaginationResource;
 use App\Models\Country;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -16,10 +17,16 @@ class CountryController extends Controller
 
     public function getAllCountries()
     {
-        $countries = Country::get();
+        $countries = Country::paginate(10);
+
+        $countries->transform(function ($country) {
+            return new CountryResource($country);
+        });
 
         if ($countries->isNotEmpty()) {
-            return $this->apiResponse('', CountryResource::collection($countries), 200);
+            return $this->apiResponse('', new PaginationResource($countries), 200);
+        } else {
+            return $this->apiResponse('', [], 200);
         }
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ItemRequest;
 use App\Http\Resources\ItemResource;
+use App\Http\Resources\PaginationResource;
 use App\Models\Item;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -17,10 +18,14 @@ class ItemController extends Controller
 
     public function getAllItems()
     {
-        $items = Item::get();
+        $items = Item::paginate();
+
+        $items->transform(function ($item) {
+            return new ItemResource($item);
+        });
 
         if($items->isNotEmpty()) {
-            return $this->apiResponse('', ItemResource::collection($items), 200);
+            return $this->apiResponse('', new PaginationResource($items), 200);
         } else {
             return $this->apiResponse('', [], 404);
         }

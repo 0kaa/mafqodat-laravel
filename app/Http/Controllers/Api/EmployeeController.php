@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PaginationResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\ApiResponse;
@@ -16,10 +17,16 @@ class EmployeeController extends Controller
 
     public function getAllEmployees()
     {
-        $employees = User::whereDoesntHave('roles')->get();
+        $employees = User::whereDoesntHave('roles')->paginate(10);
+
+        $employees->transform(function ($employee) {
+            return new UserResource($employee);
+        });
 
         if ($employees->isNotEmpty()) {
-            return $this->apiResponse('', UserResource::collection($employees), 200);
+            return $this->apiResponse('', new PaginationResource($employees), 200);
+        } else {
+            return $this->apiResponse('', [], 200);
         }
     }
 
