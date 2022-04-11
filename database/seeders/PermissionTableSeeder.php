@@ -28,6 +28,66 @@ class PermissionTableSeeder extends Seeder
                 'name'       => 'delete_employee',
                 'guard_name' => 'web',
             ],
+            [
+                'name'       => 'create_category',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'update_category',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'delete_category',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'create_countries',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'update_countries',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'delete_countries',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'create_cities',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'update_cities',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'delete_cities',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'create_stations',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'update_stations',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'delete_stations',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'create_items',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'update_items',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'delete_items',
+                'guard_name' => 'web',
+            ],
 
         ]);
     }
