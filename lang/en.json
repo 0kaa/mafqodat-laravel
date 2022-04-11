@@ -187,5 +187,6 @@
     "create_item"            : "Create Item",
     "update_item"            : "Update Item",
     "delete_item"            : "Delete Item",
+    "permissions"            : "Permissions",
     ""                       : ""
 }

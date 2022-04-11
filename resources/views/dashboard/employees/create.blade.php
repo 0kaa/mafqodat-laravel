@@ -49,7 +49,8 @@
                                 </div>
                                 <div class="card-body">
                                     <form class="form form-vertical" id="create_employee_form"
-                                        action="{{ route('admin.employees.store') }}" method="POST" enctype="multipart/form-data">
+                                        action="{{ route('admin.employees.store') }}" method="POST"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
 
@@ -225,7 +226,7 @@
 
                                             <div class="col-6">
                                                 <div class="form-group" id="city_form_select">
-                                                    <label for="selectCountry">{{ __('select_city') }}</label>
+                                                    <label for="selectCity">{{ __('select_city') }}</label>
                                                     <div class="form-group">
                                                         <select id="selectCity" name="city_id"
                                                             class="form-control form-control-lg mb-1" required>
@@ -239,23 +240,20 @@
                                                 </div>
                                             </div>
 
-                                            <div class="demo-inline-spacing col-12">
-                                                @foreach ($permissions as $permission)
-                                                    <div class="form-group">
-
-                                                        <div class="custom-control custom-control-danger custom-checkbox">
-                                                            <input type="checkbox" name="permissions[]" value="{{ $permission->id }}" class="custom-control-input"
-                                                                id="permission-{{ $permission->id }}" required>
-                                                            <label class="custom-control-label"
-                                                                for="permission-{{ $permission->id }}">{{ __($permission->name) }}</label>
-                                                        </div>
-                                                        @error('permissions')
-                                                            <span class="alert alert-danger">
-                                                                <small class="errorTxt">{{ $message }}</small>
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                @endforeach
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="permissions">{{ __('permissions') }}</label>
+                                                    <select class="select2 form-control" id="permissions"  name="permissions[]" multiple required>
+                                                        @foreach ($permissions as $permission)
+                                                            <option value="{{ $permission->id }}">{{ __($permission->name) }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('permissions')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
                                             </div>
 
                                             <div class="col-12">
@@ -279,7 +277,6 @@
         <script src="{{ asset('dashboard/assets/js/validation/employeeValidation.js') }}"></script>
 
         <script>
-
             // variables
             var accountUploadImg = $('#account-upload-img'),
                 accountUploadBtn = $('#account-upload');
