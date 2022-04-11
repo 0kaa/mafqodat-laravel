@@ -190,5 +190,7 @@
     "update_item"            : "تعديل مفقود",
     "delete_item"            : "حذف مفقود",
     "permissions"            : "الصلاحيات",
+    "item_name"              : "اسم المفقود",
+    "item_type"              : "نوع المفقود",
     ""                       : ""
 }

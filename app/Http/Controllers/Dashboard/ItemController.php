@@ -71,6 +71,7 @@ class ItemController extends Controller
             session()->put('item_name', $item->details);
             session()->put('category_name', $item->category->name);
             session()->put('station_name', $item->station->name);
+            session()->put('station_location', $item->station->location);
             return redirect()->back()->with(['success' => __('created_successfully')]);
 
         } else {
@@ -208,8 +209,9 @@ class ItemController extends Controller
         session()->forget('item_name');
         session()->forget('category_name');
         session()->forget('station_name');
+        session()->forget('station_location');
         return response()->json([
-            'success' => __('session_removed')
+            'success' => "Session Removed"
         ]);
     }
 }

@@ -263,15 +263,15 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div style="text-align: center">
+                        <div style="text-align: center" id="append_qrcode">
 
-                            <ul>
+                            <ul style="list-style: none;text-align: right;">
                                 <li>{{ __('item_type') }} : <span>{{ session('category_name') }}</span></li>
                                 <li>{{ __('item_name') }} : <span>{{ session('item_name') }}</span></li>
-                                <li>{{ __('station_name') }} : <span>{{ session('station_name') }}</span></li>
+                                <li>{{ __('station_name') }} : <span>{{ session('station_name') . ' - ' . session('station_location') }}</span></li>
                             </ul>
 
-                            <p id="append_qrcode">
+                            <p style="margin: auto;text-align: left;">
                                 {!! session('qr_code') !!}
                             </p>
                         </div>
