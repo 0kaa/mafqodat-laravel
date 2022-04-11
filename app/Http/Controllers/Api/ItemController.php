@@ -18,7 +18,7 @@ class ItemController extends Controller
 
     public function getAllItems()
     {
-        $items = Item::paginate();
+        $items = Item::paginate(10);
 
         $items->transform(function ($item) {
             return new ItemResource($item);
