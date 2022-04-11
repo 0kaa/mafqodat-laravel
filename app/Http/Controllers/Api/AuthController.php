@@ -120,7 +120,7 @@ class AuthController extends Controller
             $validator = Validator::make($data, [
                 'first_name'  => 'required',
                 'family_name' => 'required',
-                'email'       => 'required|unique:users,email,'.$user->id,
+                'email'       => 'required|unique:users,email,' . $user->id,
                 'address'     => 'required',
                 'phone'       => 'required',
                 'mobile'      => 'required',
@@ -150,7 +150,6 @@ class AuthController extends Controller
                     if (Storage::exists($user->image)) {
 
                         Storage::delete($user->image);
-
                     }
                 }
 

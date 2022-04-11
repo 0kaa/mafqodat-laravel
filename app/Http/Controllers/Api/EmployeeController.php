@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PaginationResource;
+use App\Http\Resources\PermissionResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Permission\Models\Permission;
 use Validator;
 
 class EmployeeController extends Controller
@@ -42,6 +44,14 @@ class EmployeeController extends Controller
         }
     }
 
+    public function permissionList()
+    {
+        $permissions = Permission::get();
+
+        if ($permissions->isNotEmpty()) {
+            return $this->apiResponse('', PermissionResource::collection($permissions), 200);
+        }
+    }
 
     public function createEmployee(Request $request)
     {
