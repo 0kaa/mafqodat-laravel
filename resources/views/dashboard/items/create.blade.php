@@ -263,7 +263,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div style="text-align: center" id="append_qrcode">
+                        <div style="text-align: center; display: flex;" id="append_qrcode">
 
                             <ul style="list-style: none;text-align: right;">
                                 <li>{{ __('item_type') }} : <span>{{ session('category_name') }}</span></li>
