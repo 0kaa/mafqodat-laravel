@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
 
     /* items routes */
     Route::get('items', [ItemController::class, 'getAllitems']);
+    Route::get('items/show/{id}', [ItemController::class, 'showItem']);
     Route::post('items/create', [ItemController::class, 'createItem']);
     Route::post('items/update/{id}', [ItemController::class, 'updateItem']);
     Route::post('items/delete/{id}', [ItemController::class, 'deleteItem']);

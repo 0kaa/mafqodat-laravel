@@ -26,6 +26,17 @@ class ItemController extends Controller
         }
     }
 
+    public function showItem($id)
+    {
+        $item = Item::find($id);
+
+        if($item) {
+            return $this->apiResponse('', new ItemResource($item), 200);
+        } else {
+            return $this->apiResponse(__('item_not_found'), [], 404);
+        }
+    }
+
     public function createItem(ItemRequest $request)
     {
         $data = $request->all();

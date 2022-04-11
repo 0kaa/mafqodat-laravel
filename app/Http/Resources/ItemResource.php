@@ -23,7 +23,7 @@ class ItemResource extends JsonResource
             'station_id'        => $this->station_id,
             'storage'           => $this->storage,
             'date'              => $this->date->format('Y-m-d'),
-            'time'              => $this->time->format('H:i'),
+            'time'              => $this->time->format('h:i A'),
             'primary_colour'    => $this->primary_colour,
             'secondary_colour'  => $this->secondary_colour,
             'tertiary_colour'   => $this->tertiary_colour,
