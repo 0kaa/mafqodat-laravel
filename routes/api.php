@@ -45,22 +45,22 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
 
     /* country routes */
     Route::get('countries', [CountryController::class, 'getAllcountries']);
-    Route::post('countries/create', [CountryController::class, 'createCountry']);
-    Route::post('countries/update/{id}', [CountryController::class, 'updateCountry']);
-    Route::post('countries/delete/{id}', [CountryController::class, 'deleteCountry']);
+    Route::post('countries/create', [CountryController::class, 'createCountry'])->middleware(['permission:create_country']);
+    Route::post('countries/update/{id}', [CountryController::class, 'updateCountry'])->middleware(['permission:update_country']);
+    Route::post('countries/delete/{id}', [CountryController::class, 'deleteCountry'])->middleware(['permission:delete_country']);
 
     /* city routes */
     Route::get('cities', [CityController::class, 'getAllcities']);
-    Route::post('cities/create', [CityController::class, 'createCity']);
-    Route::post('cities/update/{id}', [CityController::class, 'updateCity']);
-    Route::post('cities/delete/{id}', [CityController::class, 'deleteCity']);
+    Route::post('cities/create', [CityController::class, 'createCity'])->middleware(['permission:create_city']);
+    Route::post('cities/update/{id}', [CityController::class, 'updateCity'])->middleware(['permission:update_city']);
+    Route::post('cities/delete/{id}', [CityController::class, 'deleteCity'])->middleware(['permission:delete_city']);
 
     /* station routes */
     Route::get('stations', [StationController::class, 'getAllstations']);
     Route::get('stations/show/{id}', [StationController::class, 'showStation']);
-    Route::post('stations/create', [StationController::class, 'createStation']);
-    Route::post('stations/update/{id}', [StationController::class, 'updateStation']);
-    Route::post('stations/delete/{id}', [StationController::class, 'deleteStation']);
+    Route::post('stations/create', [StationController::class, 'createStation'])->middleware(['permission:create_station']);
+    Route::post('stations/update/{id}', [StationController::class, 'updateStation'])->middleware(['permission:update_station']);
+    Route::post('stations/delete/{id}', [StationController::class, 'deleteStation'])->middleware(['permission:delete_station']);
 
     /* employees routes */
     Route::get('employees', [EmployeeController::class, 'getAllemployees']);
@@ -72,9 +72,9 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
     /* items routes */
     Route::get('items', [ItemController::class, 'getAllitems']);
     Route::get('items/show/{id}', [ItemController::class, 'showItem']);
-    Route::post('items/create', [ItemController::class, 'createItem']);
-    Route::post('items/update/{id}', [ItemController::class, 'updateItem']);
-    Route::post('items/delete/{id}', [ItemController::class, 'deleteItem']);
+    Route::post('items/create', [ItemController::class, 'createItem'])->middleware(['permission:create_item']);
+    Route::post('items/update/{id}', [ItemController::class, 'updateItem'])->middleware(['permission:update_item']);
+    Route::post('items/delete/{id}', [ItemController::class, 'deleteItem'])->middleware(['permission:delete_item']);
 
     /* logs routes */
     Route::get('logs', [LogController::class, 'getAllLogs']);
