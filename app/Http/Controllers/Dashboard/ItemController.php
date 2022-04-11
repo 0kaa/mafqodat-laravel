@@ -65,11 +65,14 @@ class ItemController extends Controller
 
         if ($item) {
 
-            $qr_Code = QrCode::size(150)->generate('http://localhost:8000/items/' . $item->id);
+            $qr_Code = QrCode::size(100)->generate('http://localhost:8000/items/' . $item->id);
 
             session()->put('qr_code', $qr_Code);
+            session()->put('item_name', $item->details);
+            session()->put('category_name', $item->category->name);
+            session()->put('station_name', $item->station->name);
 
-            return redirect()->back()->with(['success' => __('created_successfully') ,'qr_code' => $qr_Code]);
+            return redirect()->back()->with(['success' => __('created_successfully')]);
 
         } else {
             return redirect()->back()->with('error', __('something_went_wrong'));

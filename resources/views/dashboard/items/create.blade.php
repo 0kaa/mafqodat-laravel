@@ -264,6 +264,13 @@
                     </div>
                     <div class="modal-body">
                         <div style="text-align: center">
+
+                            <ul>
+                                <li>{{ __('item_type') }} : <span>{{ session('category_name') }}</span></li>
+                                <li>{{ __('item_name') }} : <span>{{ session('item_name') }}</span></li>
+                                <li>{{ __('station_name') }} : <span>{{ session('station_name') }}</span></li>
+                            </ul>
+
                             <p id="append_qrcode">
                                 {!! session('qr_code') !!}
                             </p>
