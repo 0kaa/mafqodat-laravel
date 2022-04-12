@@ -88,6 +88,15 @@
             </li>
         </ul>
 
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li  class="nav-item {{ areActiveRoutes(['admin.get_logs']) }}"><a class="d-flex align-items-center" href="#"><i data-feather='package'></i><span class="menu-title text-truncate">{{ __('employee_logs') }}</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{ route('admin.get_logs') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('employee_logs') }}</span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
     </div>
 </div>
 <!-- END: Main Menu-->

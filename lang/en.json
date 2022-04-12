@@ -191,5 +191,7 @@
     "qr_code"                : "QR Code",
     "the_employee_has"       : "The employee has",
     "added_new_employee"     : "added new employee",
+    "employee_logs"          : "Employee Logs",
+    "log"                    : "Log",
     ""                       : ""
 }

@@ -195,5 +195,7 @@
     "qr_code"                : "رمز QR",
     "the_employee_has"       : "",
     "added_new_employee"     : "بإضافة موظف جديد",
+    "employee_logs"          : "سجلات الموظفين",
+    "log"                    : "سجل",
     ""                       : ""
 }

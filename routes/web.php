@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\EmployeeController;
 use App\Http\Controllers\Dashboard\ItemController;
+use App\Http\Controllers\Dashboard\LogController;
 use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,5 +71,7 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization', 'role:super_admin
     Route::get('profile', [UserController::class, 'getProfile'])->name('get_profile');
 
     Route::post('update-profile', [UserController::class, 'updateProfile'])->name('update_profile');
+
+    Route::get('logs', [LogController::class, 'index'])->name('get_logs');
 
 });
