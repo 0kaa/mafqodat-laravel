@@ -4,7 +4,7 @@
     "code_verified"          : "تم تأكيد الرمز بنجاح",
     "code_not_verified"      : "لم يتم تأكيد الرمز بنجاح",
     "password_changed"       : "تم تغيير كلمة المرور بنجاح",
-    "password_not_changed"   : "لم يتم تغيير كلمة المرور بنجاح",
+    "password_not_changed"   : "يوجد مشكله اثناء اعاده كلمة المرور  الخاصه  بك برجاء المحاولة مره اخري",
     "welcome_to_mafqodat"    : "مرحبا بك في مفقودات",
     "please_login"           : "من فضلك قم بتسجيل الدخول",
     "first_name_required"    : "الاسم الأول مطلوب",

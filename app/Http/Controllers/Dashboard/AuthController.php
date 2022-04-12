@@ -93,10 +93,10 @@ class AuthController extends Controller
 
             Auth::login($user);
 
-            return \redirect(\route('admin.login'))->with('success', 'تم تغيير كلمة المرور بنجاح');
+            return \redirect(\route('admin.login'))->with('success', __('password_changed'));
 
         } else {
-            return redirect()->back()->with('error', 'يوجد مشكله اثناء اعاده كلمة المرور  الخاصه  بك برجاء المحاولة مره اخري');
+            return redirect()->back()->with('error', __('password_not_changed'));
         }
     }
 

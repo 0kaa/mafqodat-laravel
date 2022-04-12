@@ -4,7 +4,7 @@
     "code_verified"          : "Code verified successfully",
     "code_not_verified"      : "Code is not verified",
     "password_changed"       : "Password changed successfully",
-    "password_not_changed"   : "Password is not changed",
+    "password_not_changed"   : "There is a problem while resetting your password, please try again",
     "welcome_to_mafqodat"    : "Welcome To Mafqodat",
     "please_login"           : "Please Login",
     "first_name_required"    : "First Name field is required",
