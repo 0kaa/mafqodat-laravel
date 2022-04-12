@@ -188,6 +188,8 @@
     "update_item"            : "Update Item",
     "delete_item"            : "Delete Item",
     "permissions"            : "Permissions",
+    "item_name"              : "Item Name",
+    "item_type"              : "Item Type",
     "qr_code"                : "QR Code",
     "the_employee_has"       : "The employee has",
     "added_new_employee"     : "added new employee",

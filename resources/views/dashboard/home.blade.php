@@ -335,7 +335,6 @@
                             show: false,
                         },
                         categories: [
-                            "Mar",
                             "Apr",
                             "May",
                             "Jun",
@@ -347,6 +346,7 @@
                             "Dec",
                             "Jan",
                             "Feb",
+                            "Mar",
                         ],
                         axisBorder: {
                             show: false,
