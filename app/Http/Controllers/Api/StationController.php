@@ -18,7 +18,7 @@ class StationController extends Controller
 
     public function getAllStations()
     {
-        $stations = Station::paginate(10);
+        $stations = Station::paginate(8);
 
         $stations->transform(function ($station) {
             return new StationResource($station);

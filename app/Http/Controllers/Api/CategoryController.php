@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function getAllCategories()
     {
-        $categories = Category::paginate(10);
+        $categories = Category::paginate(8);
 
         $categories->transform(function ($category) {
             return new CategoryResource($category);

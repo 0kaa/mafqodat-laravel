@@ -21,7 +21,7 @@ class EmployeeController extends Controller
 
     public function getAllEmployees()
     {
-        $employees = User::whereDoesntHave('roles')->paginate(10);
+        $employees = User::whereDoesntHave('roles')->paginate(8);
 
         $employees->transform(function ($employee) {
             return new UserResource($employee);

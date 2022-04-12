@@ -101,4 +101,8 @@ class AuthController extends Controller
         }
     }
 
+    public function notAuthorized()
+    {
+        return view('dashboard.authorize');
+    }
 }

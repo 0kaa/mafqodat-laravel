@@ -15,7 +15,7 @@ class LogController extends Controller
 
     public function getAllLogs()
     {
-        $logs = Log::paginate(10);
+        $logs = Log::paginate(8);
 
         $logs->transform(function ($log) {
             return new LogResource($log);

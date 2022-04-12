@@ -19,7 +19,7 @@ class CountryController extends Controller
 
     public function getAllCountries()
     {
-        $countries = Country::paginate(10);
+        $countries = Country::paginate(8);
 
         $countries->transform(function ($country) {
             return new CountryResource($country);

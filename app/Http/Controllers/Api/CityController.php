@@ -18,7 +18,7 @@ class CityController extends Controller
 
     public function getAllCities()
     {
-        $cities = City::paginate(10);
+        $cities = City::paginate(8);
 
         $cities->transform(function ($city) {
             return new CityResource($city);
