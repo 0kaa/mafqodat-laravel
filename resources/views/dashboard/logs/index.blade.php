@@ -45,9 +45,13 @@
                                                     <td>
                                                         <div class="d-flex">
                                                             <div class="image">
-                                                                <img src="{{ asset('storage/'.$log->image) }}" alt="" width="100px">
+                                                                @if ($log->image)
+                                                                    <img src="{{ asset('storage/'.$log->image) }}" alt="" width="100px">
+                                                                @else
+                                                                    <img src="https://via.placeholder.com/100" alt="">
+                                                                @endif
                                                             </div>
-                                                            <div class="text ml-2">
+                                                            <div class="text ml-2" style="direction: ltr">
                                                                 <h4>{{ $log->message }}</h4>
                                                                 <span>{{ $log->date }}</span>
                                                             </div>
