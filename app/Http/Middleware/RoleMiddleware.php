@@ -46,7 +46,7 @@ class RoleMiddleware
 
         }
 
-        return redirect()->back()->with('error', __('not_authorized'));
+        return redirect()->route('admin.notAuthoried');
 
         // throw UnauthorizedException::forRoles($roles);
 

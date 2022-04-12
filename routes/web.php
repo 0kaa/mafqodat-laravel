@@ -18,23 +18,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::prefix('admin')->namespace('Dashboard')->group(function () {
+Route::prefix('admin')->middleware(['webLocalization'])->namespace('Dashboard')->group(function () {
 
     /* Auth Routes */
     Route::get('login', [AuthController::class, 'showLoginForm'])->name('admin.login');
     Route::post('login', [AuthController::class, 'login'])->name('admin.login.post');
-    Route::get('logout', [AuthController::class, 'logout'])->name('admin.logout');
     Route::get('reset-password', [AuthController::class, 'reset'])->name('admin.reset');
     Route::post('send-link', [AuthController::class, 'sendLink'])->name('admin.sendLink');
     Route::get('changePassword/{code}', [AuthController::class, 'changePassword'])->name('admin.changePassword');
     Route::post('update-password', [AuthController::class, 'updatePassword'])->name('admin.updatePassword');
 
-});
+    Route::get('not-authoried', [AuthController::class, 'notAuthorized'])->name('admin.notAuthoried');
 
+});
 
 Route::get('language/{locale}', function ($locale) {
 
@@ -74,4 +74,5 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization', 'role:super_admin
 
     Route::get('logs', [LogController::class, 'index'])->name('get_logs');
 
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
