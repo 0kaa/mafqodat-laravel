@@ -14,15 +14,15 @@ class HomeController extends Controller
     public function home()
     {
 
-        $items = Item::get()->count();
+        $items = Item::count();
 
         $latest_items = Item::orderBy('created_at', 'desc')->take(3)->get();
 
-        $delivered_items = Item::where('is_delivered', '1')->get()->count();
+        $delivered_items = Item::where('is_delivered', '1')->count();
 
-        $stations = Station::get()->count();
+        $stations = Station::count();
 
-        $employees = User::whereDoesntHave('roles')->get()->count();
+        $employees = User::whereDoesntHave('roles')->count();
 
         $lost_items = Item::select(
             DB::raw('YEAR(created_at) as year'),
