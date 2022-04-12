@@ -193,5 +193,7 @@
     "item_name"              : "اسم المفقود",
     "item_type"              : "نوع المفقود",
     "qr_code"                : "رمز QR",
+    "the_employee_has"       : "",
+    "added_new_employee"     : "بإضافة موظف جديد",
     ""                       : ""
 }

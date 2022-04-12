@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class LogResource extends JsonResource
@@ -18,12 +19,9 @@ class LogResource extends JsonResource
 
         return [
             'id'         => $this->id,
-            'user_name'  => $this->user->first_name . ' ' . $this->user->family_name,
-            'modal_type' => $this->modal_type,
-            'modal_name' => $this->modal_name,
-            'action'     => $this->action,
+            'user_image' => $this->image ? url('/storage') . '/' . $this->image : null,
             'message'    => $this->message,
-            'created_at' => $this->created_at->format('Y-m-d h:i A'),
+            'created_at' => $this->date,
         ];
     }
 }

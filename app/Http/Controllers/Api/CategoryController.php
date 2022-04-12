@@ -7,7 +7,9 @@ use App\Http\Requests\Api\CategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\PaginationResource;
 use App\Models\Category;
+use App\Models\Log;
 use App\Traits\ApiResponse;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -42,6 +44,13 @@ class CategoryController extends Controller
 
         $category = Category::create($data);
 
+        Log::create([
+            'image' => $user->image ? $user->image : null,
+            'message_ar' => 'بإضافة قسم جديد ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+            'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new Category',
+            'date' => Carbon::now(),
+        ]);
+
         if ($category) {
             return $this->apiResponse(__('created_successfully'), new CategoryResource($category), 201);
         }
@@ -49,6 +58,8 @@ class CategoryController extends Controller
 
     public function updateCategory(CategoryRequest $request, $id)
     {
+        $user = auth()->user();
+
         $category = Category::find($id);
 
         if ($category) {
@@ -69,6 +80,13 @@ class CategoryController extends Controller
 
             $category->update($data);
 
+            Log::create([
+                'image' => $user->image ? $user->image : null,
+                'message_ar' => 'بتعديل القسم ' . $category->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated category ' . $category->name_en,
+                'date' => Carbon::now(),
+            ]);
+
             return $this->apiResponse(__('updated_successfully'), new CategoryResource($category), 200);
 
         } else {
@@ -78,6 +96,8 @@ class CategoryController extends Controller
 
     public function deleteCategory($id)
     {
+        $user = auth()->user();
+
         $category = Category::find($id);
 
         if ($category) {
@@ -87,6 +107,13 @@ class CategoryController extends Controller
             }
 
             $category->delete();
+
+            Log::create([
+                'image' => $user->image ? $user->image : null,
+                'message_ar' => 'بحذف القسم ' . $category->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted category ' . $category->name_en,
+                'date' => Carbon::now(),
+            ]);
 
             return $this->apiResponse(__('deleted_successfully'), [], 200);
 

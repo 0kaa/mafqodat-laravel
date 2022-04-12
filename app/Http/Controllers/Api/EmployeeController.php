@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\PaginationResource;
 use App\Http\Resources\PermissionResource;
 use App\Http\Resources\UserResource;
+use App\Models\Log;
 use App\Models\User;
 use App\Traits\ApiResponse;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Permission;
@@ -55,6 +57,8 @@ class EmployeeController extends Controller
 
     public function createEmployee(Request $request)
     {
+        $user = auth()->user();
+
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -107,6 +111,13 @@ class EmployeeController extends Controller
 
         $employee->givePermissionTo($request->permissions);
 
+        Log::create([
+            'image' => $user->image ? $user->image : null,
+            'message_ar' => 'بإضافة موظف جديد ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+            'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new employee',
+            'date' => Carbon::now(),
+        ]);
+
         if ($employee) {
             return $this->apiResponse(__('created_successfully'), new UserResource($employee), 201);
         }
@@ -114,6 +125,9 @@ class EmployeeController extends Controller
 
     public function updateEmployee(Request $request, $id)
     {
+
+        $user = auth()->user();
+
         $employee = User::whereDoesntHave('roles')->find($id);
 
         if ($employee) {
@@ -174,6 +188,13 @@ class EmployeeController extends Controller
 
             $employee->syncPermissions($request->permissions);
 
+            Log::create([
+                'image' => $user->image ? $user->image : null,
+                'message_ar' => $employee->first_name . ' ' .  $employee->family_name . ' بتعديل الموظف ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated employee' . $employee->first_name . ' ' .  $employee->family_name,
+                'date' => Carbon::now(),
+            ]);
+
             return $this->apiResponse(__('updated_successfully'), new UserResource($employee), 200);
         } else {
             return $this->apiResponse(__('employee_not_found'), [], 404);
@@ -182,6 +203,8 @@ class EmployeeController extends Controller
 
     public function deleteEmployee($id)
     {
+        $user = auth()->user();
+
         $employee = User::find($id);
 
         if ($employee) {
@@ -195,6 +218,13 @@ class EmployeeController extends Controller
             }
 
             $employee->delete();
+
+            Log::create([
+                'image' => $user->image ? $user->image : null,
+                'message_ar' => $employee->first_name . ' ' .  $employee->family_name . ' بحذف الموظف ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted employee' . $employee->first_name . ' ' .  $employee->family_name,
+                'date' => Carbon::now(),
+            ]);
 
             return $this->apiResponse(__('deleted_successfully'), [], 200);
         } else {

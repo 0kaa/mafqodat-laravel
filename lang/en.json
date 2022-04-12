@@ -189,5 +189,7 @@
     "delete_item"            : "Delete Item",
     "permissions"            : "Permissions",
     "qr_code"                : "QR Code",
+    "the_employee_has"       : "The employee has",
+    "added_new_employee"     : "added new employee",
     ""                       : ""
 }

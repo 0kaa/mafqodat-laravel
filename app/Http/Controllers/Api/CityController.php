@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CityResource;
 use App\Http\Resources\PaginationResource;
 use App\Models\City;
+use App\Models\Log;
 use App\Traits\ApiResponse;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Validator;
 
 class CityController extends Controller
 {
@@ -30,6 +33,8 @@ class CityController extends Controller
 
     public function createCity(Request $request)
     {
+        $user = auth()->user();
+
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -52,6 +57,13 @@ class CityController extends Controller
 
         $city = City::create($data);
 
+        Log::create([
+            'image' => $user->image ? $user->image : null,
+            'message_ar' => 'بإضافة مدينة جديدة ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+            'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new City',
+            'date' => Carbon::now(),
+        ]);
+
         if ($city) {
             return $this->apiResponse(__('created_successfully'), new CityResource($city), 201);
         }
@@ -59,6 +71,8 @@ class CityController extends Controller
 
     public function updateCity(Request $request, $id)
     {
+        $user = auth()->user();
+
         $city = City::find($id);
 
         if ($city) {
@@ -85,6 +99,13 @@ class CityController extends Controller
 
             $city->update($data);
 
+            Log::create([
+                'image' => $user->image ? $user->image : null,
+                'message_ar' => 'بتعديل المدينة ' . $city->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated city ' . $city->name_en,
+                'date' => Carbon::now(),
+            ]);
+
             return $this->apiResponse(__('updated_successfully'), new CityResource($city), 200);
         } else {
             return $this->apiResponse(__('city_not_found'), [], 404);
@@ -94,11 +115,20 @@ class CityController extends Controller
 
     public function deleteCity($id)
     {
+        $user = auth()->user();
+
         $city = City::find($id);
 
         if ($city) {
 
             $city->delete();
+
+            Log::create([
+                'image' => $user->image ? $user->image : null,
+                'message_ar' => 'بحذف المدينة ' . $city->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted city ' . $city->name_en,
+                'date' => Carbon::now(),
+            ]);
 
             return $this->apiResponse(__('deleted_successfully'), [], 200);
         } else {

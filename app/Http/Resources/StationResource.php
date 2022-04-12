@@ -17,6 +17,7 @@ class StationResource extends JsonResource
         // return parent::toArray($request);
 
         return [
+            'id'          => $this->id,
             'type'        => $this->type,
             'name'        => $this->name,
             'number'      => $this->number,

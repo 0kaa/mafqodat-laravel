@@ -7,7 +7,9 @@ use App\Http\Requests\Api\CountryRequest;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\PaginationResource;
 use App\Models\Country;
+use App\Models\Log;
 use App\Traits\ApiResponse;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -32,6 +34,8 @@ class CountryController extends Controller
 
     public function createCountry(CountryRequest $request)
     {
+        $user = auth()->user();
+
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -52,6 +56,13 @@ class CountryController extends Controller
 
         $country = Country::create($data);
 
+        Log::create([
+            'image' => $user->image ? $user->image : null,
+            'message_ar' => 'بإضافة دولة جديدة ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+            'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new Country',
+            'date' => Carbon::now(),
+        ]);
+
         if ($country) {
             return $this->apiResponse(__('created_successfully'), new CountryResource($country), 201);
         }
@@ -59,6 +70,8 @@ class CountryController extends Controller
 
     public function updateCountry(Request $request, $id)
     {
+        $user = auth()->user();
+
         $country = Country::find($id);
 
         if ($country) {
@@ -83,6 +96,13 @@ class CountryController extends Controller
 
             $country->update($data);
 
+            Log::create([
+                'image' => $user->image ? $user->image : null,
+                'message_ar' => 'بتعديل الدولة ' . $country->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated country ' . $country->name_en,
+                'date' => Carbon::now(),
+            ]);
+
             return $this->apiResponse(__('updated_successfully'), [new CountryResource($country)], 200);
         } else {
             return $this->apiResponse(__('country_not_found'), [], 404);
@@ -91,11 +111,20 @@ class CountryController extends Controller
 
     public function deleteCountry($id)
     {
+        $user = auth()->user();
+
         $country = Country::find($id);
 
         if ($country) {
 
             $country->delete();
+
+            Log::create([
+                'image' => $user->image ? $user->image : null,
+                'message_ar' => 'بحذف الدولة ' . $country->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted country ' . $country->name_en,
+                'date' => Carbon::now(),
+            ]);
 
             return $this->apiResponse(__('deleted_successfully'), [], 200);
         } else {

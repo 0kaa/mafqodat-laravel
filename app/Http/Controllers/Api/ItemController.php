@@ -7,7 +7,9 @@ use App\Http\Requests\Api\ItemRequest;
 use App\Http\Resources\ItemResource;
 use App\Http\Resources\PaginationResource;
 use App\Models\Item;
+use App\Models\Log;
 use App\Traits\ApiResponse;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Validator;
@@ -44,6 +46,8 @@ class ItemController extends Controller
 
     public function createItem(ItemRequest $request)
     {
+        $user = auth()->user();
+
         $data = $request->all();
 
         if($request->has('image')) {
@@ -52,6 +56,13 @@ class ItemController extends Controller
 
         $item = Item::create($data);
 
+        Log::create([
+            'image' => $user->image ? $user->image : null,
+            'message_ar' => 'بإضافة مفقود جديد ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+            'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new Lost Item',
+            'date' => Carbon::now(),
+        ]);
+
         if($item) {
             return $this->apiResponse('', new ItemResource($item), 201);
         }
@@ -59,6 +70,8 @@ class ItemController extends Controller
 
     public function updateItem(Request $request, $id)
     {
+        $user = auth()->user();
+
         $item = Item::find($id);
 
         if($item) {
@@ -160,6 +173,26 @@ class ItemController extends Controller
 
             $item->update($data);
 
+            if ($item->is_delivered == 1) {
+
+                Log::create([
+                    'image' => $user->image ? $user->image : null,
+                    'message_ar' => $item->id . '#' . ' بتسليم المفقود ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+                    'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' delivered lost item ' . '#' . $item->id,
+                    'date' => Carbon::now(),
+                ]);
+            } else {
+
+                Log::create([
+                    'image' => $user->image ? $user->image : null,
+                    'message_ar' => $item->id . '#' . ' بتعديل المفقود ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+                    'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated lost item ' . '#' . $item->id,
+                    'date' => Carbon::now(),
+                ]);
+            }
+
+
+
             return $this->apiResponse(__('updated_successfully'), new ItemResource($item), 200);
         } else {
             return $this->apiResponse(__('item_not_found'), [], 404);
@@ -168,6 +201,8 @@ class ItemController extends Controller
 
     public function deleteItem($id)
     {
+        $user = auth()->user();
+
         $item = Item::find($id);
 
         if($item) {
@@ -179,6 +214,13 @@ class ItemController extends Controller
             }
 
             $item->delete();
+
+            Log::create([
+                'image' => $user->image ? $user->image : null,
+                'message_ar' => $item->id . '#' . ' بحذف المفقود ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted lost item ' . '#' . $item->id,
+                'date' => Carbon::now(),
+            ]);
 
             return $this->apiResponse(__('deleted_successfully'), [], 200);
         } else {
