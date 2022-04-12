@@ -18,7 +18,7 @@ class StationResource extends JsonResource
 
         return [
             'id'          => $this->id,
-            'type'        => $this->type,
+            'type'        => __($this->type),
             'name'        => $this->name,
             'number'      => $this->number,
             'description' => $this->description,
