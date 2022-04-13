@@ -9,6 +9,7 @@ use App\Models\Item;
 use App\Models\Station;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -31,6 +32,20 @@ class HomeController extends Controller
 
         if($locations->isNotEmpty()) {
             return $this->apiResponse('', StationResource::collection($locations), 200);
+        } else {
+            return $this->apiResponse('', [], 404);
+        }
+    }
+
+    public function itemsStatistics()
+    {
+        $items = Item::select(
+            DB::raw('YEAR(created_at) as year'),
+            DB::raw('MONTH(created_at) as month')
+        )->get()->groupBy('month');
+
+        if($items->isNotEmpty()) {
+            return $this->apiResponse('', $items, 200);
         } else {
             return $this->apiResponse('', [], 404);
         }
