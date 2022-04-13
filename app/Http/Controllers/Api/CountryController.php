@@ -57,7 +57,7 @@ class CountryController extends Controller
         $country = Country::create($data);
 
         Log::create([
-            'image' => $user->image ? $user->image : null,
+            'user_id' => $user->id,
             'message_ar' => 'بإضافة دولة جديدة ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
             'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new Country',
             'date' => Carbon::now(),
@@ -97,7 +97,7 @@ class CountryController extends Controller
             $country->update($data);
 
             Log::create([
-                'image' => $user->image ? $user->image : null,
+                'user_id' => $user->id,
                 'message_ar' => 'بتعديل الدولة ' . $country->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
                 'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated country ' . $country->name_en,
                 'date' => Carbon::now(),
@@ -120,7 +120,7 @@ class CountryController extends Controller
             $country->delete();
 
             Log::create([
-                'image' => $user->image ? $user->image : null,
+                'user_id' => $user->id,
                 'message_ar' => 'بحذف الدولة ' . $country->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
                 'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted country ' . $country->name_en,
                 'date' => Carbon::now(),

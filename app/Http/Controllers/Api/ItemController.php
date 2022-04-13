@@ -57,7 +57,7 @@ class ItemController extends Controller
         $item = Item::create($data);
 
         Log::create([
-            'image' => $user->image ? $user->image : null,
+            'user_id' => $user->id,
             'message_ar' => 'بإضافة مفقود جديد ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
             'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new Lost Item',
             'date' => Carbon::now(),
@@ -176,7 +176,7 @@ class ItemController extends Controller
             if ($item->is_delivered == 1) {
 
                 Log::create([
-                    'image' => $user->image ? $user->image : null,
+                    'user_id' => $user->id,
                     'message_ar' => $item->id . '#' . ' بتسليم المفقود ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
                     'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' delivered lost item ' . '#' . $item->id,
                     'date' => Carbon::now(),
@@ -184,7 +184,7 @@ class ItemController extends Controller
             } else {
 
                 Log::create([
-                    'image' => $user->image ? $user->image : null,
+                    'user_id' => $user->id,
                     'message_ar' => $item->id . '#' . ' بتعديل المفقود ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
                     'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated lost item ' . '#' . $item->id,
                     'date' => Carbon::now(),
@@ -216,7 +216,7 @@ class ItemController extends Controller
             $item->delete();
 
             Log::create([
-                'image' => $user->image ? $user->image : null,
+                'user_id' => $user->id,
                 'message_ar' => $item->id . '#' . ' بحذف المفقود ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
                 'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted lost item ' . '#' . $item->id,
                 'date' => Carbon::now(),

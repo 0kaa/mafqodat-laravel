@@ -112,7 +112,7 @@ class EmployeeController extends Controller
         $employee->givePermissionTo($request->permissions);
 
         Log::create([
-            'image' => $user->image ? $user->image : null,
+            'user_id' => $user->id,
             'message_ar' => 'بإضافة موظف جديد ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
             'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new employee',
             'date' => Carbon::now(),
@@ -189,7 +189,7 @@ class EmployeeController extends Controller
             $employee->syncPermissions($request->permissions);
 
             Log::create([
-                'image' => $user->image ? $user->image : null,
+                'user_id' => $user->id,
                 'message_ar' => $employee->first_name . ' ' .  $employee->family_name . ' بتعديل الموظف ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
                 'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated employee' . $employee->first_name . ' ' .  $employee->family_name,
                 'date' => Carbon::now(),
@@ -220,7 +220,7 @@ class EmployeeController extends Controller
             $employee->delete();
 
             Log::create([
-                'image' => $user->image ? $user->image : null,
+                'user_id' => $user->id,
                 'message_ar' => $employee->first_name . ' ' .  $employee->family_name . ' بحذف الموظف ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
                 'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted employee' . $employee->first_name . ' ' .  $employee->family_name,
                 'date' => Carbon::now(),

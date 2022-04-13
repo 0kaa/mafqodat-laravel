@@ -12,7 +12,7 @@ class Log extends Model
     use HasFactory;
 
     protected $fillable = [
-        'image',
+        'user_id',
         'message_ar',
         'message_en',
         'date',

@@ -72,7 +72,7 @@ class StationController extends Controller
         $station = Station::create($data);
 
         Log::create([
-            'image' => $user->image ? $user->image : null,
+            'user_id' => $user->id,
             'message_ar' => 'بإضافة محطة جديدة ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
             'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new Station',
             'date' => Carbon::now(),
@@ -117,7 +117,7 @@ class StationController extends Controller
             $station->update($data);
 
             Log::create([
-                'image' => $user->image ? $user->image : null,
+                'user_id' => $user->id,
                 'message_ar' => 'بتعديل المحطة ' . $station->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
                 'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated station ' . $station->name_en,
                 'date' => Carbon::now(),
@@ -140,7 +140,7 @@ class StationController extends Controller
             $station->delete();
 
             Log::create([
-                'image' => $user->image ? $user->image : null,
+                'user_id' => $user->id,
                 'message_ar' => 'بحذف المحطة ' . $station->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
                 'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted station ' . $station->name_en,
                 'date' => Carbon::now(),

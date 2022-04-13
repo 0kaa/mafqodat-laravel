@@ -45,8 +45,8 @@
                                                     <td>
                                                         <div class="d-flex">
                                                             <div class="image">
-                                                                @if ($log->image)
-                                                                    <img src="{{ asset('storage/'.$log->image) }}" alt="" width="100px">
+                                                                @if ($log->user->image)
+                                                                    <img src="{{ asset('storage/'.$log->user->image) }}" alt="" width="100px">
                                                                 @else
                                                                     <img src="https://via.placeholder.com/100" alt="">
                                                                 @endif

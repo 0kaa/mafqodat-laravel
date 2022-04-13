@@ -45,7 +45,7 @@ class CategoryController extends Controller
         $category = Category::create($data);
 
         Log::create([
-            'image' => $user->image ? $user->image : null,
+            'user_id' => $user->id,
             'message_ar' => 'بإضافة قسم جديد ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
             'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new Category',
             'date' => Carbon::now(),
@@ -81,7 +81,7 @@ class CategoryController extends Controller
             $category->update($data);
 
             Log::create([
-                'image' => $user->image ? $user->image : null,
+                'user_id' => $user->id,
                 'message_ar' => 'بتعديل القسم ' . $category->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
                 'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated category ' . $category->name_en,
                 'date' => Carbon::now(),
@@ -109,7 +109,7 @@ class CategoryController extends Controller
             $category->delete();
 
             Log::create([
-                'image' => $user->image ? $user->image : null,
+                'user_id' => $user->id,
                 'message_ar' => 'بحذف القسم ' . $category->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
                 'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted category ' . $category->name_en,
                 'date' => Carbon::now(),
