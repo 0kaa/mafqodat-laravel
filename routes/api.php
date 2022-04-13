@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\LogController;
+use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\StationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -80,4 +81,9 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
 
     /* logs routes */
     Route::get('logs', [LogController::class, 'getAllLogs']);
+
+    /* reports routes */
+    Route::get('reports/count', [ReportController::class, 'getCount']);
+    Route::get('reports/latest-items', [ReportController::class, 'latestItems']);
+
 });
