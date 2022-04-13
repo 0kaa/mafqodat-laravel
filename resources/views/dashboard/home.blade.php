@@ -15,12 +15,14 @@
                 <section id="dashboard-analytics">
 
                     <div class="row match-height">
-
+                        <div class="col-12 pb-1">
+                            <h2>{{ __('main_categories') }}</h2>
+                        </div>
                         @foreach ($categories as $category)
-                            <div class="col-3">
+                            <div class="col-2">
                                 <div class="card">
                                     <div class="card-header flex-column align-items-start pb-0">
-                                        <div class="avatar bg-light-primary p-50 m-0">
+                                        <div>
                                             <div class="avatar-content">
                                                 <img src="{{ asset('storage/' . $category->image) }}" alt="" width="65px">
                                             </div>
@@ -56,7 +58,7 @@
                         </div>
                         <!-- Greetings Card ends --> --}}
 
-                        <div class="col-6">
+                        <div class="col-7">
                             <div class="card">
                                 <div class="card-header align-items-start">
                                     <div>
@@ -103,7 +105,7 @@
                             </div>
                         </div>
 
-                        <div class="col-6">
+                        <div class="col-5">
                             <div class="card">
                                 <div class="card-header align-items-start">
                                     <div>

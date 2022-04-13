@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function home()
     {
 
-        $categories = Category::take(4)->get();
+        $categories = Category::take(6)->get();
 
         $latest_items = Item::latest()->take(3)->get();
 
