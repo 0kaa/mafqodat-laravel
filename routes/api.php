@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\EmployeeController;
+use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\LogController;
 use App\Http\Controllers\Api\ReportController;
@@ -82,8 +83,8 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
     /* logs routes */
     Route::get('logs', [LogController::class, 'getAllLogs']);
 
-    /* reports routes */
-    Route::get('reports/count', [ReportController::class, 'getCount']);
-    Route::get('reports/latest-items', [ReportController::class, 'latestItems']);
+    /* home routes */
+    Route::get('home/latest-items', [HomeController::class, 'latestItems']);
+    Route::get('home/locations', [HomeController::class, 'locations']);
 
 });
