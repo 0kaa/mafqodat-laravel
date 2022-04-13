@@ -1,8 +1,8 @@
 <div class="col-4">
     <div class="form-group">
-        <label for="first-name-vertical">{{ __('station_location') }}</label>
+        <label for="first-name-vertical">{{ __('station_type') }}</label>
         <input type="text" class="form-control"  disabled
-            value="{{ $station->location }}"
+            value="{{ __($station->type) }}"
         />
     </div>
 </div>
