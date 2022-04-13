@@ -195,5 +195,9 @@
     "added_new_employee"     : "added new employee",
     "employee_logs"          : "Employee Logs",
     "log"                    : "Log",
+    "station_locations"      : "Lost places and stations",
+    "reports"                : "Reports",
+    "latest_items"           : "Latest Items",
+    "items_statistics"       : "Items Statistics",
     ""                       : ""
 }

@@ -197,5 +197,9 @@
     "added_new_employee"     : "بإضافة موظف جديد",
     "employee_logs"          : "سجلات الموظفين",
     "log"                    : "سجل",
+    "station_locations"      : "أماكن ومحطات الفقد",
+    "reports"                : "التقارير",
+    "latest_items"           : "أحدث المفقودات",
+    "items_statistics"       : "إحصائيات المفقودات",
     ""                       : ""
 }
