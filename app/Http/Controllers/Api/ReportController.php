@@ -40,10 +40,9 @@ class ReportController extends Controller
 
     public function itemsStatistics()
     {
-        $items = Item::select(
-            DB::raw('YEAR(created_at) as year'),
-            DB::raw('MONTH(created_at) as month')
-        )->get()->groupBy('month');
+        $items = Item::select(DB::raw('count(id) as `data`'), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+            ->groupby('year', 'month')
+            ->get();
 
         if ($items->isNotEmpty()) {
             return $this->apiResponse('', $items, 200);
@@ -51,5 +50,4 @@ class ReportController extends Controller
             return $this->apiResponse('', [], 404);
         }
     }
-
 }

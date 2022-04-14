@@ -22,8 +22,8 @@ class StationTableSeeder extends Seeder
                 'name_en'  => 'Riyadh Station',
                 'number'   => '123456',
                 'location' => 'الرياض',
-                'lat'      => '24.774265',
-                'lng'      => '46.738586'
+                'lat'      => '24.799466899606674',
+                'lng'      => '46.83427941618037'
             ]
         ]);
     }
