@@ -29,7 +29,7 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->unsignedBigInteger('station_id');
             $table->foreign('station_id')->references('id')->on('stations')->onDelete('cascade');
-            $table->boolean('is_delivered')->nullable();
+            $table->boolean('is_delivered')->default(0)->nullable();
 
             /* User data */
             $table->string('first_name')->nullable();
