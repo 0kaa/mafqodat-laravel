@@ -21,7 +21,8 @@ class EmployeeController extends Controller
 
     public function getAllEmployees()
     {
-        $employees = User::whereDoesntHave('roles')->paginate(8);
+        $user = auth()->user();
+        $employees = User::where('id', '!=', $user->id)->whereDoesntHave('roles')->paginate(8);
 
         $employees->transform(function ($employee) {
             return new UserResource($employee);
@@ -138,7 +139,7 @@ class EmployeeController extends Controller
                 'first_name'  => 'required',
                 'family_name' => 'required',
                 'email'       => 'required|unique:users,email,' . $id,
-                'password'    => 'required|min:6',
+                'password'    => 'sometimes|min:6',
                 'phone'       => 'required',
                 'mobile'      => 'required',
                 'country_id'  => 'required',
@@ -148,7 +149,6 @@ class EmployeeController extends Controller
                 'family_name.required' => __('family_name_required'),
                 'email.required'       => __('email_required'),
                 'email.unique'         => __('email_unique'),
-                'password.required'    => __('password_required'),
                 'password.min'         => __('password_min'),
                 'phone.required'       => __('phone_required'),
                 'address.required'     => __('address_required'),
@@ -188,12 +188,12 @@ class EmployeeController extends Controller
 
             $employee->syncPermissions($request->permissions);
 
-            Log::create([
-                'user_id' => $user->id,
-                'message_ar' => $employee->first_name . ' ' .  $employee->family_name . ' بتعديل الموظف ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated employee' . $employee->first_name . ' ' .  $employee->family_name,
-                'date' => Carbon::now(),
-            ]);
+            // Log::create([
+            //     'user_id' => $user->id,
+            //     'message_ar' => $employee->first_name . ' ' .  $employee->family_name . ' بتعديل الموظف ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+            //     'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated employee' . $employee->first_name . ' ' .  $employee->family_name,
+            //     'date' => Carbon::now(),
+            // ]);
 
             return $this->apiResponse(__('updated_successfully'), new UserResource($employee), 200);
         } else {

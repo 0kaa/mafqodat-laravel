@@ -19,7 +19,7 @@ class HomeController extends Controller
     {
         $latest_items = Item::latest()->take(3)->get();
 
-        if($latest_items->isNotEmpty()) {
+        if ($latest_items->isNotEmpty()) {
             return $this->apiResponse('', ItemResource::collection($latest_items), 200);
         } else {
             return $this->apiResponse('', [], 404);
@@ -30,8 +30,8 @@ class HomeController extends Controller
     {
         $locations = Station::select('lat', 'lng')->get();
 
-        if($locations->isNotEmpty()) {
-            return $this->apiResponse('', StationResource::collection($locations), 200);
+        if ($locations->isNotEmpty()) {
+            return $this->apiResponse('', $locations, 200);
         } else {
             return $this->apiResponse('', [], 404);
         }
@@ -44,7 +44,7 @@ class HomeController extends Controller
             DB::raw('MONTH(created_at) as month')
         )->get()->groupBy('month');
 
-        if($items->isNotEmpty()) {
+        if ($items->isNotEmpty()) {
             return $this->apiResponse('', $items, 200);
         } else {
             return $this->apiResponse('', [], 404);
