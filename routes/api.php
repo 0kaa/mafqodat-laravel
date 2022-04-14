@@ -86,6 +86,8 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
     /* home routes */
     Route::get('home/items/latest', [HomeController::class, 'latestItems']);
     Route::get('home/locations', [HomeController::class, 'locations']);
-    Route::get('home/items/statistics', [HomeController::class, 'itemsStatistics']);
 
+    /* reports routes */
+    Route::get('reports/data-count', [ReportController::class, 'dataCount']);
+    Route::get('reports/items/statistics', [ReportController::class, 'itemsStatistics']);
 });
