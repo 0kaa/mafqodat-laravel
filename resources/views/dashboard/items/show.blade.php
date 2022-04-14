@@ -78,12 +78,6 @@
                                                 {{ $item->description }}
                                             </p>
                                         </div>
-
-                                        <div class="my-2">
-
-
-
-                                        </div>
                                     </div>
                                 </div>
 

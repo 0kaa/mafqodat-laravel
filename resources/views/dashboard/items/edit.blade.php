@@ -191,7 +191,7 @@
                                                 <div class="form-group">
                                                     <label
                                                         for="description-vertical">{{ __('station_description') }}</label>
-                                                    <textarea name="description" class="form-control" id="description-vertical">{{ old('description') }}</textarea>
+                                                    <textarea name="description" class="form-control" id="description-vertical">{{ old('description', $item->description) }}</textarea>
                                                     @error('description')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
