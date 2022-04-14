@@ -98,7 +98,15 @@ class CategoryController extends Controller
 
         if ($request->has('image')) {
 
-            Storage::delete($category->image);
+            if ($category->image !== null) {
+
+                if (Storage::exists($category->image)) {
+
+                    Storage::delete($category->image);
+
+                }
+            }
+
 
             $data['image'] = $request->file('image')->store('categories');
         } else {

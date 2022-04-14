@@ -113,7 +113,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div id="map" style="height: 415px; margin-bottom: 15px;"></div>
+                                    <div id="map" style="height: 405px; margin-bottom: 15px;"></div>
                                     <input type="hidden" name="lat" id="latitude" value="">
                                     <input type="hidden" name="lng" id="longitude" value="">
                                 </div>

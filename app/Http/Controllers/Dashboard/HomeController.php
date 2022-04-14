@@ -17,7 +17,7 @@ class HomeController extends Controller
 
         $categories = Category::take(6)->get();
 
-        $latest_items = Item::latest()->take(3)->get();
+        $latest_items = Item::latest()->take(5)->get();
 
         $stations = Station::get();
 
