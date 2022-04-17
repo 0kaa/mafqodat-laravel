@@ -32,22 +32,7 @@
         <div style="margin: 10px 10px; text-align:center">
             <h2 style="color:#354052 ; text-align:center">{{ __('to_reset_password') }}</h2>
 
-            <a style="background: rgb(31, 120, 199) ;
-                color: #fff;
-                text-decoration: none;
-                width: 220px;
-                margin: 32px auto 20px;
-                align-items: center;
-                box-shadow: 0px 3px 6px #00000047;
-                justify-content: center;
-                display: flex;
-                border-radius: 4px;
-                background: #7367F0;
-                height: 55px;"
-                href="{{ $data['link'] }}"
-            >
-                {{ __('reset_password') }}
-            </a>
+            <a rel="nofollow noopener noreferrer" target="_blank" href="{{ $data['link'] }}" style="color:#fff;background:#7367F0;display:inline-block;padding:2px 15px;text-decoration:none;line-height:40px;margin:20px auto;">{{ __('reset_password') }}</a>
 
         </div>
 
