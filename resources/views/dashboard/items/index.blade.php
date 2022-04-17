@@ -84,7 +84,7 @@
                                                     @endif
                                                 </td>
                                                 <td class="my-2">
-                                                    {!! QrCode::generate('http://localhost:8000/items/' . $item->id) !!}
+                                                    {!! QrCode::generate(url('/admin/items') . '/' . $item->id) !!}
                                                 </td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-label="Second group">

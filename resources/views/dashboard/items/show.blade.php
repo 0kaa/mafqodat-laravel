@@ -78,6 +78,11 @@
                                                 {{ $item->description }}
                                             </p>
                                         </div>
+
+                                        <div class="col-12 mb-2">
+                                            <a href="{{ route('admin.items.edit', $item->id) }}"
+                                                class="btn btn-primary mr-1">{{ __('update') }}</a>
+                                        </div>
                                     </div>
                                 </div>
 
