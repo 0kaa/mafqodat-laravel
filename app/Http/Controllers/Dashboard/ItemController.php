@@ -65,7 +65,7 @@ class ItemController extends Controller
 
         if ($item) {
 
-            $qr_Code = QrCode::size(100)->generate(url('/items') . '/' . $item->id);
+            $qr_Code = QrCode::size(100)->generate(url('/admin/items') . '/' . $item->id);
 
             session()->put('qr_code', $qr_Code);
             session()->put('item_name', $item->details);
