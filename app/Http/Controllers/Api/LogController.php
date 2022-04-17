@@ -15,7 +15,9 @@ class LogController extends Controller
 
     public function getAllLogs()
     {
-        $logs = Log::paginate(8);
+        $user = auth()->user();
+
+        $logs = Log::where('user_id', $user->id)->paginate(8);
 
         $logs->transform(function ($log) {
             return new LogResource($log);
