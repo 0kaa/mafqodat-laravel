@@ -8,6 +8,7 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ItemResource;
 use App\Http\Resources\PaginationResource;
 use App\Http\Resources\StationResource;
+use App\Models\Category;
 use App\Models\Item;
 use App\Models\Log;
 use App\Models\Station;
