@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\ProfileRequest;
 use App\Models\City;
 use App\Models\Country;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class UserController extends Controller
         return view('dashboard.profile', compact('user', 'countries', 'cities'));
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(ProfileRequest $request)
     {
         $user = Auth::user();
 

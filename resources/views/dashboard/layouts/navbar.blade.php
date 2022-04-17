@@ -42,7 +42,7 @@
                     id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none">
-                        <span class="user-name font-weight-bolder">{{ auth()->user()->first_name }}</span>
+                        <span class="user-name font-weight-bolder">{{ auth()->user()->first_name . ' ' . auth()->user()->family_name }}</span>
                         <span class="user-status">{{ __('admin') }}</span>
                     </div>
                     <span class="avatar">
