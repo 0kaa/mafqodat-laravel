@@ -24,7 +24,7 @@
 
                                         @if ($item->image)
                                             <img class="card-img-top" src="{{ asset('storage/' . $item->image) }}"
-                                                alt="Card image cap" />
+                                                alt="Card image cap" width="100px" />
                                         @else
                                             <img src="https://via.placeholder.com/150">
                                         @endif
@@ -79,7 +79,7 @@
                                             </p>
                                         </div>
 
-                                        <div class="col-12 mb-2">
+                                        <div class="col-12 mt-2">
                                             <a href="{{ route('admin.items.edit', $item->id) }}"
                                                 class="btn btn-primary mr-1">{{ __('update') }}</a>
                                         </div>
