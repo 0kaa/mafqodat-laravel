@@ -48,7 +48,7 @@
                                             <div class="media">
                                                 <div class="avatar bg-light-primary mr-2">
                                                     <div class="avatar-content">
-                                                        <i data-feather="box" class="avatar-icon"></i>
+                                                        <a href="{{ route('admin.items.index') }}" class="text-primary"><i data-feather="box" class="avatar-icon"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="media-body my-auto">
@@ -62,7 +62,7 @@
                                             <div class="media">
                                                 <div class="avatar bg-light-info mr-2">
                                                     <div class="avatar-content">
-                                                        <i data-feather="box" class="avatar-icon"></i>
+                                                        <a href="{{ route('admin.items.index') }}" class="text-info"><i data-feather="box" class="avatar-icon"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="media-body my-auto">
@@ -76,7 +76,7 @@
                                             <div class="media">
                                                 <div class="avatar bg-light-danger mr-2">
                                                     <div class="avatar-content">
-                                                        <i data-feather="compass" class="avatar-icon"></i>
+                                                        <a href="{{ route('admin.stations.index') }}" class="text-danger"><i data-feather="compass" class="avatar-icon"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="media-body my-auto">
@@ -89,7 +89,7 @@
                                             <div class="media">
                                                 <div class="avatar bg-light-success mr-2">
                                                     <div class="avatar-content">
-                                                        <i data-feather="users" class="avatar-icon"></i>
+                                                        <a href="{{ route('admin.employees.index') }}" class="text-success"><i data-feather="users" class="avatar-icon"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="media-body my-auto">
