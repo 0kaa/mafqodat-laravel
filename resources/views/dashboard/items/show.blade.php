@@ -24,7 +24,7 @@
 
                                         @if ($item->image)
                                             <img class="card-img-top" src="{{ asset('storage/' . $item->image) }}"
-                                                alt="Card image cap" width="100px" />
+                                                alt="Card image cap" height="100px" />
                                         @else
                                             <img src="https://via.placeholder.com/150">
                                         @endif
