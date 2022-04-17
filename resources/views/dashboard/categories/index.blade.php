@@ -53,7 +53,7 @@
                                                     <td>{{ $category->id }}</td>
                                                     <td>{{ $category->name }}</td>
                                                     <td>
-                                                        <img src="{{ asset('storage/'.$category->image) }}" style="width: 80px; height: auto;">
+                                                        <img src="{{ asset('public/storage/'.$category->image) }}" style="width: 80px; height: auto;">
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
