@@ -29,7 +29,7 @@ class HomeController extends Controller
 
         $items = Item::count();
 
-        $latest_items = Item::orderBy('created_at', 'desc')->take(3)->get();
+        $latest_items = Item::orderBy('created_at', 'desc')->take(5)->get();
 
         $delivered_items = Item::where('is_delivered', '1')->count();
 

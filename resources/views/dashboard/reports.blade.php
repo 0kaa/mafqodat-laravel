@@ -48,7 +48,9 @@
                                             <div class="media">
                                                 <div class="avatar bg-light-primary mr-2">
                                                     <div class="avatar-content">
-                                                        <a href="{{ route('admin.items.index') }}" class="text-primary"><i data-feather="box" class="avatar-icon"></i></a>
+                                                        <a href="{{ route('admin.items.index') }}"
+                                                            class="text-primary"><i data-feather="box"
+                                                                class="avatar-icon"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="media-body my-auto">
@@ -62,7 +64,9 @@
                                             <div class="media">
                                                 <div class="avatar bg-light-info mr-2">
                                                     <div class="avatar-content">
-                                                        <a href="{{ route('admin.items.index') }}" class="text-info"><i data-feather="box" class="avatar-icon"></i></a>
+                                                        <a href="{{ route('admin.items.index') }}"
+                                                            class="text-info"><i data-feather="box"
+                                                                class="avatar-icon"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="media-body my-auto">
@@ -76,7 +80,9 @@
                                             <div class="media">
                                                 <div class="avatar bg-light-danger mr-2">
                                                     <div class="avatar-content">
-                                                        <a href="{{ route('admin.stations.index') }}" class="text-danger"><i data-feather="compass" class="avatar-icon"></i></a>
+                                                        <a href="{{ route('admin.stations.index') }}"
+                                                            class="text-danger"><i data-feather="compass"
+                                                                class="avatar-icon"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="media-body my-auto">
@@ -89,7 +95,9 @@
                                             <div class="media">
                                                 <div class="avatar bg-light-success mr-2">
                                                     <div class="avatar-content">
-                                                        <a href="{{ route('admin.employees.index') }}" class="text-success"><i data-feather="users" class="avatar-icon"></i></a>
+                                                        <a href="{{ route('admin.employees.index') }}"
+                                                            class="text-success"><i data-feather="users"
+                                                                class="avatar-icon"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="media-body my-auto">
@@ -108,13 +116,13 @@
                         <!-- Sales Line Chart Card -->
                         <div class="col-6">
                             <div class="card">
-                                <div class="card-header align-items-start" style="margin-bottom: 30px">
+                                <div class="card-header align-items-start">
                                     <div>
                                         <h4 class="card-title mb-25">{{ __('items_statistics') }}</h4>
                                     </div>
                                 </div>
                                 <div class="card-body pb-0">
-                                    <div id="sales-line-chart"></div>
+                                    <canvas class="line-chart-ex chartjs" data-height="450" style="height: 300px;width: 546px;"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -170,6 +178,7 @@
         {{-- Chart Scripts --}}
 
         <script src="{{ asset('dashboard/app-assets/vendors/js/charts/apexcharts.min.js') }}"></script>
+        <script src="{{ asset('dashboard/app-assets/vendors/js/charts/chart.min.js') }}"></script>
 
         <script>
             $(document).ready(function() {
@@ -252,89 +261,108 @@
         </script>
 
         <script>
-            $(window).on("load", function() {
-                "use strict";
+            $(window).on('load', function() {
+                'use strict';
 
-                var $strokeColor = "#ebe9f1";
+                var lineChartEx = $('.line-chart-ex');
 
-                var $textMutedColor = "#b9b9c3";
-                var $salesStrokeColor2 = "#df87f2";
+                // Color Variables
+                var warningColorShade = '#ffe802',
+                    tooltipShadow = 'rgba(0, 0, 0, 0.25)',
+                    lineChartPrimary = '#666ee8',
+                    lineChartDanger = '#ff4961',
+                    labelColor = '#6e6b7b',
+                    grid_line_color = 'rgba(200, 200, 200, 0.2)'; // RGBA color helps in dark layout
 
-                var salesLineChartOptions;
+                // Detect Dark Layout
+                if ($('html').hasClass('dark-layout')) {
+                    labelColor = '#b4b7bd';
+                }
 
-                var salesLineChart;
-
-
-                var $salesLineChart = document.querySelector("#sales-line-chart");
-
-                // Sales Line Chart
-                // -----------------------------
-                salesLineChartOptions = {
-                    chart: {
-                        height: 240,
-                        toolbar: {
-                            show: false
-                        },
-                        zoom: {
-                            enabled: false
-                        },
-                        type: "line",
-                        dropShadow: {
-                            enabled: true,
-                            top: 18,
-                            left: 2,
-                            blur: 5,
-                            opacity: 0.2,
-                        },
-                        offsetX: -10,
-                    },
-                    stroke: {
-                        curve: "smooth",
-                        width: 4,
-                    },
-                    grid: {
-                        borderColor: $strokeColor,
-                        padding: {
-                            top: -20,
-                            bottom: 5,
-                            left: 20,
-                        },
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    colors: [$salesStrokeColor2],
-                    fill: {
-                        type: "gradient",
-                        gradient: {
-                            shade: "dark",
-                            inverseColors: false,
-                            gradientToColors: [window.colors.solid.primary],
-                            shadeIntensity: 1,
-                            type: "horizontal",
-                            opacityFrom: 1,
-                            opacityTo: 1,
-                            stops: [0, 100, 100, 100],
-                        },
-                    },
-                    markers: {
-                        size: 0,
-                        hover: {
-                            size: 5,
-                        },
-                    },
-                    xaxis: {
-                        labels: {
-                            offsetY: 5,
-                            style: {
-                                colors: $textMutedColor,
-                                fontSize: "0.857rem",
+                // Line Chart
+                // --------------------------------------------------------------------
+                if (lineChartEx.length) {
+                    var lineExample = new Chart(lineChartEx, {
+                        type: 'line',
+                        plugins: [
+                            // to add spacing between legends and chart
+                            {
+                                beforeInit: function(chart) {
+                                    chart.legend.afterFit = function() {
+                                        this.height += 20;
+                                    };
+                                }
+                            }
+                        ],
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            backgroundColor: false,
+                            hover: {
+                                mode: 'label'
                             },
+                            tooltips: {
+                                // Updated default tooltip UI
+                                shadowOffsetX: 1,
+                                shadowOffsetY: 1,
+                                shadowBlur: 8,
+                                shadowColor: tooltipShadow,
+                                backgroundColor: window.colors.solid.white,
+                                titleFontColor: window.colors.solid.black,
+                                bodyFontColor: window.colors.solid.black
+                            },
+                            layout: {
+                                padding: {
+                                    top: -15,
+                                    bottom: -25,
+                                    left: -15
+                                }
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true
+                                    },
+                                    gridLines: {
+                                        display: true,
+                                        color: grid_line_color,
+                                        zeroLineColor: grid_line_color
+                                    },
+                                    ticks: {
+                                        fontColor: labelColor
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true
+                                    },
+                                    ticks: {
+                                        stepSize: 100,
+                                        min: 0,
+                                        max: 500,
+                                        fontColor: labelColor
+                                    },
+                                    gridLines: {
+                                        display: true,
+                                        color: grid_line_color,
+                                        zeroLineColor: grid_line_color
+                                    }
+                                }]
+                            },
+                            legend: {
+                                position: 'top',
+                                align: 'start',
+                                labels: {
+                                    usePointStyle: true,
+                                    padding: 25,
+                                    boxWidth: 9
+                                }
+                            }
                         },
-                        axisTicks: {
-                            show: false,
-                        },
-                        categories: [
+                        data: {
+                            labels: [
                             "Apr",
                             "May",
                             "Jun",
@@ -347,42 +375,36 @@
                             "Jan",
                             "Feb",
                             "Mar",
-                        ],
-                        axisBorder: {
-                            show: false,
-                        },
-                        tickPlacement: "on",
-                    },
-                    yaxis: {
-                        tickAmount: 5,
-                        min: 0,
-                        max: 500,
-                        labels: {
-                            style: {
-                                colors: $textMutedColor,
-                                fontSize: "0.857rem",
-                            },
+                            ],
+                            datasets: [{
+                                data: [
+                                    @foreach ($lost_items as $item)
+                                        {{ $item->count() }} ,
+                                    @endforeach
+                                ],
+                                label: "{{ __('items') }}",
+                                borderColor: lineChartDanger,
+                                lineTension: 0.5,
+                                pointStyle: 'circle',
+                                backgroundColor: lineChartDanger,
+                                fill: false,
+                                pointRadius: 1,
+                                pointHoverRadius: 5,
+                                pointHoverBorderWidth: 5,
+                                pointBorderColor: 'transparent',
+                                pointHoverBorderColor: window.colors.solid.white,
+                                pointHoverBackgroundColor: lineChartDanger,
+                                pointShadowOffsetX: 1,
+                                pointShadowOffsetY: 1,
+                                pointShadowBlur: 5,
+                                pointShadowColor: tooltipShadow
+                            }, ]
+                        }
+                    });
+                }
 
-                        },
-                    },
-                    tooltip: {
-                        x: {
-                            show: false
-                        },
-                    },
-                    series: [{
-                        name: "{{ __('items') }}",
-                        data: [
 
-                            @foreach ($lost_items as $item)
-                                {{ $item->count() }} ,
-                            @endforeach
 
-                        ],
-                    }, ],
-                };
-                salesLineChart = new ApexCharts($salesLineChart, salesLineChartOptions);
-                salesLineChart.render();
             });
         </script>
     @endpush
