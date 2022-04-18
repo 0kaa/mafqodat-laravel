@@ -65,7 +65,7 @@
                             </form>
 
                             <p class="text-center mt-2">
-                                <a href="page-auth-login-v1.html"> <i data-feather="chevron-left"></i>{{ __('back_login') }}</a>
+                                <a href="{{ route('admin.login') }}"> <i data-feather="chevron-left"></i>{{ __('back_login') }}</a>
                             </p>
                         </div>
                     </div>

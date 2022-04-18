@@ -91,7 +91,7 @@ class AuthController extends Controller
 
         if ($newPassword) {
 
-            Auth::login($user);
+            $user->update(['code' => null]);
 
             return \redirect(\route('admin.login'))->with('success', __('password_changed'));
 
