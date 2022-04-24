@@ -17,14 +17,19 @@ class StationResource extends JsonResource
         // return parent::toArray($request);
 
         return [
-            'id'          => $this->id,
-            'type'        => __($this->type),
-            'name'        => $this->name,
-            'number'      => $this->number,
-            'description' => $this->description,
-            'location'    => $this->location,
-            'lat'         => $this->lat,
-            'lng'         => $this->lng,
+            'id'            => $this->id,
+            'type'          => [
+                'name'      => __($this->type),
+                'value'     => $this->type,
+            ],
+            'name'          => $this->name,
+            'name_ar'       => $this->name_ar,
+            'name_en'       => $this->name_en,
+            'number'        => $this->number,
+            'description'   => substr($this->description, 0, 50),
+            'location'      => $this->location,
+            'lat'           => $this->lat,
+            'lng'           => $this->lng,
         ];
     }
 }

@@ -24,11 +24,7 @@ class StationController extends Controller
             return new StationResource($station);
         });
 
-        if ($stations->isNotEmpty()) {
-            return $this->apiResponse('', new PaginationResource($stations), 200);
-        } else {
-            return $this->apiResponse('', [], 200);
-        }
+        return $this->apiResponse('', new PaginationResource($stations), 200);
     }
 
     public function showStation($id)
@@ -151,5 +147,4 @@ class StationController extends Controller
             return $this->apiResponse(__('station_not_found'), [], 404);
         }
     }
-
 }

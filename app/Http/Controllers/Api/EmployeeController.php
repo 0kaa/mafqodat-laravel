@@ -28,11 +28,7 @@ class EmployeeController extends Controller
             return new UserResource($employee);
         });
 
-        if ($employees->isNotEmpty()) {
-            return $this->apiResponse('', new PaginationResource($employees), 200);
-        } else {
-            return $this->apiResponse('', [], 200);
-        }
+        return $this->apiResponse('', new PaginationResource($employees), 200);
     }
 
 
