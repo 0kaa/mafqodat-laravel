@@ -34,6 +34,8 @@
                                         <thead>
                                             <tr>
                                                 <th>{{ __('id') }}</th>
+                                                <th>{{ __('image') }}</th>
+                                                <th>{{ __('employee_name') }}</th>
                                                 <th>{{ __('log') }}</th>
                                                 {{-- <th>{{ __('actions') }}</th> --}}
                                             </tr>
@@ -46,11 +48,16 @@
                                                         <div class="d-flex">
                                                             <div class="image">
                                                                 @if ($log->user->image)
-                                                                    <img src="{{ asset('storage/'.$log->user->image) }}" alt="" width="100px">
+                                                                    <img src="{{ asset('storage/'.$log->user->image) }}" alt="" width="75px">
                                                                 @else
-                                                                    <img src="https://via.placeholder.com/100" alt="">
+                                                                    <img src="https://via.placeholder.com/75" alt="">
                                                                 @endif
                                                             </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{ $log->user->first_name.' '.$log->user->family_name }}</td>
+                                                    <td>
+                                                        <div class="d-flex">
                                                             <div class="text ml-2" style="direction: ltr">
                                                                 <h4>{{ $log->message }}</h4>
                                                                 <span>{{ $log->date }}</span>

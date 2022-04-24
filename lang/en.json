@@ -201,5 +201,6 @@
     "items_statistics"       : "Items Statistics",
     "main_categories"        : "Main sections of lost and found items",
     "item_description"       : "Item Description",
+    "employee_name"          : "Employee Name",
     ""                       : ""
 }
