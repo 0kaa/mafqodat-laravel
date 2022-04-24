@@ -81,6 +81,6 @@ class User extends Authenticatable
 
     public function logs()
     {
-        return $this->hasMany(Log::class, 'user_id', 'id');
+        return $this->hasMany(Log::class, 'user_id', 'id')->orderBy('created_at', 'desc');
     }
 }

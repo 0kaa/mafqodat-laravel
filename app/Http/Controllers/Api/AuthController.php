@@ -106,7 +106,7 @@ class AuthController extends Controller
     {
         $user = auth()->user();
 
-        return $this->apiResponse(__('login_successfully'), ['token' => $user->createToken('tokens')->plainTextToken, 'user' => new UserResource($user)], 200);
+        return $this->apiResponse(__('login_successfully'), ['user' => new UserResource($user)], 200);
     }
 
     public function updateProfile(Request $request)
