@@ -186,7 +186,7 @@ class EmployeeController extends Controller
 
             Log::create([
                 'user_id' => $user->id,
-                'message_ar' => 'لقد قمت بتعديل بيانات الموظف ' . $employee->first_name . ' ' .  $employee->family_name,
+                'message_ar' => $employee->first_name . ' ' .  $employee->family_name . ' لقد قمت بتعديل بيانات الموظف',
                 'message_en' => 'I have updated the employee ' . $employee->first_name . ' ' .  $employee->family_name,
                 'date' => Carbon::now(),
             ]);
@@ -217,7 +217,7 @@ class EmployeeController extends Controller
 
             Log::create([
                 'user_id' => $user->id,
-                'message_ar' => 'لقد قمت بحذف الموظف ' . $employee->first_name . ' ' .  $employee->family_name,
+                'message_ar' => $employee->first_name . ' ' .  $employee->family_name . ' لقد قمت بحذف الموظف',
                 'message_en' => 'I have deleted the employee ' . $employee->first_name . ' ' .  $employee->family_name,
                 'date' => Carbon::now(),
             ]);
