@@ -184,12 +184,12 @@ class EmployeeController extends Controller
 
             $employee->syncPermissions($request->permissions);
 
-            // Log::create([
-            //     'user_id' => $user->id,
-            //     'message_ar' => $employee->first_name . ' ' .  $employee->family_name . ' بتعديل الموظف ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-            //     'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated employee' . $employee->first_name . ' ' .  $employee->family_name,
-            //     'date' => Carbon::now(),
-            // ]);
+            Log::create([
+                'user_id' => $user->id,
+                'message_ar' => $employee->first_name . ' ' .  $employee->family_name . ' بتعديل الموظف ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
+                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated employee' . $employee->first_name . ' ' .  $employee->family_name,
+                'date' => Carbon::now(),
+            ]);
 
             return $this->apiResponse(__('updated_successfully'), new UserResource($employee), 200);
         } else {

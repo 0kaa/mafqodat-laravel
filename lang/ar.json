@@ -106,7 +106,7 @@
     "location_required"      : "الموقع مطلوب",
     "station_type"           : "نوع المحطة",
     "station_name"           : "إسم المحطة",
-    "station_number"         : "رقم المحطة",
+    "station_number"         : "رقم  المحطة",
     "station_details"        : "التفاصيل",
     "station_location"       : "عنوان المحطة",
     "station_description"    : "بيانات اخرى",
@@ -202,5 +202,6 @@
     "latest_items"           : "أحدث المفقودات",
     "items_statistics"       : "إحصائيات المفقودات",
     "main_categories"        : "الأقسام الرئيسية للمفقودات",
+    "item_description"       : "وصف المفقود",
     ""                       : ""
 }

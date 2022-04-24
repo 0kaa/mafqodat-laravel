@@ -156,7 +156,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-12">
+                                                    <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="first-name-vertical">{{ __('address') }}</label>
                                                             <input type="text" class="form-control" name="address"
@@ -172,9 +172,23 @@
 
                                                     <div class="col-6">
                                                         <div class="form-group">
+                                                            <label for="first-name-vertical">{{ __('second_address') }}</label>
+                                                            <input type="text" class="form-control" name="second_address"
+                                                                value="{{ old('second_address', $user->second_address) }}"
+                                                                placeholder="{{ __('second_address') }}" />
+                                                            @error('second_address')
+                                                                <span class="alert alert-danger">
+                                                                    <small class="errorTxt">{{ $message }}</small>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
                                                             <label for="selectCountry">{{ __('select_country') }}</label>
                                                             <select class="form-control form-control-lg mb-1"
-                                                                name="country_id" id="selectCountry" required>
+                                                                name="country_id" id="selectCountry">
 
                                                                 <option value="">{{ __('select') }}</option>
 
@@ -199,7 +213,7 @@
                                                             <label for="selectCountry">{{ __('select_city') }}</label>
                                                             <div class="form-group">
                                                                 <select id="selectCity" name="city_id"
-                                                                    class="form-control form-control-lg mb-1" required>
+                                                                    class="form-control form-control-lg mb-1" >
                                                                     <option value="">{{ __('select') }}</option>
                                                                     @foreach ($cities as $city)
                                                                         <option value="{{ $city->id }}"
@@ -241,7 +255,7 @@
     <!-- END: Content-->
 
     @push('js')
-        <script src="{{ asset('dashboard/assets/js/validation/profileValidation.js') }}"></script>
+        {{-- <script src="{{ asset('dashboard/assets/js/validation/profileValidation.js') }}"></script> --}}
 
 
         <script>

@@ -79,6 +79,8 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
     Route::post('items/create', [ItemController::class, 'createItem'])->middleware(['permission:create_item']);
     Route::post('items/update/{id}', [ItemController::class, 'updateItem'])->middleware(['permission:update_item']);
     Route::post('items/delete/{id}', [ItemController::class, 'deleteItem'])->middleware(['permission:delete_item']);
+    Route::get('category-list', [ItemController::class, 'categoryList'])->middleware(['permission:create_item|update_item|delete_item']);
+    Route::get('station-list', [ItemController::class, 'stationList'])->middleware(['permission:create_item|update_item|delete_item']);
 
     /* logs routes */
     Route::get('logs', [LogController::class, 'getAllLogs']);

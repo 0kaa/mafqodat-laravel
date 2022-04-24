@@ -16,6 +16,7 @@ class LogController extends Controller
     public function getAllLogs()
     {
         $user = auth()->user();
+
         $logs = $user->logs()->paginate(8);
 
         $logs->transform(function ($log) {

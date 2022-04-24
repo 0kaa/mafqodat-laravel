@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ItemRequest;
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ItemResource;
 use App\Http\Resources\PaginationResource;
+use App\Http\Resources\StationResource;
+use App\Models\Category;
 use App\Models\Item;
 use App\Models\Log;
+use App\Models\Station;
 use App\Traits\ApiResponse;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -226,5 +230,19 @@ class ItemController extends Controller
         } else {
             return $this->apiResponse(__('item_not_found'), [], 404);
         }
+    }
+
+    public function categoryList()
+    {
+        $categories = Category::all();
+
+        return $this->apiResponse('', CategoryResource::collection($categories), 200);
+    }
+
+    public function stationList()
+    {
+        $stations = Station::all();
+
+        return $this->apiResponse('', StationResource::collection($stations), 200);
     }
 }
