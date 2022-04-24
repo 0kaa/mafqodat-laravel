@@ -69,8 +69,8 @@ class StationController extends Controller
 
         Log::create([
             'user_id' => $user->id,
-            'message_ar' => 'بإضافة محطة جديدة ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-            'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new Station',
+            'message_ar' => 'لقد قمت بإضافة محطة جديدة',
+            'message_en' => 'I have added a new station',
             'date' => Carbon::now(),
         ]);
 
@@ -114,8 +114,8 @@ class StationController extends Controller
 
             Log::create([
                 'user_id' => $user->id,
-                'message_ar' => 'بتعديل المحطة ' . $station->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated station ' . $station->name_en,
+                'message_ar' => 'لقد قمت بتعديل معلومات محطة ' . $station->name_ar,
+                'message_en' => 'I have updated station information ' . $station->name_en,
                 'date' => Carbon::now(),
             ]);
 
@@ -137,8 +137,8 @@ class StationController extends Controller
 
             Log::create([
                 'user_id' => $user->id,
-                'message_ar' => 'بحذف المحطة ' . $station->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted station ' . $station->name_en,
+                'message_ar' => 'لقد قمت بحذف محطة ' . $station->name_ar,
+                'message_en' => 'I have deleted station ' . $station->name_en,
                 'date' => Carbon::now(),
             ]);
 

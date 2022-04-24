@@ -62,8 +62,8 @@ class ItemController extends Controller
 
         Log::create([
             'user_id' => $user->id,
-            'message_ar' => 'بإضافة مفقود جديد ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-            'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new Lost Item',
+            'message_ar' => 'لقد قمت بإضافة مفقود جديد',
+            'message_en' => 'I added a new lost item',
             'date' => Carbon::now(),
         ]);
 
@@ -181,16 +181,16 @@ class ItemController extends Controller
 
                 Log::create([
                     'user_id' => $user->id,
-                    'message_ar' => $item->id . '#' . ' بتسليم المفقود ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-                    'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' delivered lost item ' . '#' . $item->id,
+                    'message_ar' => 'لقد قمت بتسليم المفقود #' . $item->id,
+                    'message_en' => 'I delivered the lost item #' . $item->id,
                     'date' => Carbon::now(),
                 ]);
             } else {
 
                 Log::create([
                     'user_id' => $user->id,
-                    'message_ar' => $item->id . '#' . ' بتعديل المفقود ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-                    'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated lost item ' . '#' . $item->id,
+                    'message_ar' => 'لقد قمت بتعديل بيانات المفقود #' . $item->id,
+                    'message_en' => 'I updated the lost item #' . $item->id,
                     'date' => Carbon::now(),
                 ]);
             }
@@ -221,8 +221,8 @@ class ItemController extends Controller
 
             Log::create([
                 'user_id' => $user->id,
-                'message_ar' => $item->id . '#' . ' بحذف المفقود ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted lost item ' . '#' . $item->id,
+                'message_ar' => 'لقد قمت بحذف المفقود #' . $item->id,
+                'message_en' => 'I deleted the lost item #' . $item->id,
                 'date' => Carbon::now(),
             ]);
 

@@ -46,8 +46,8 @@ class CategoryController extends Controller
 
         Log::create([
             'user_id' => $user->id,
-            'message_ar' => 'بإضافة قسم جديد ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-            'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new Category',
+            'message_ar' => 'لقد قمت بإضافة قسم جديد',
+            'message_en' => 'I added a new section',
             'date' => Carbon::now(),
         ]);
 
@@ -82,8 +82,8 @@ class CategoryController extends Controller
 
             Log::create([
                 'user_id' => $user->id,
-                'message_ar' => 'بتعديل القسم ' . $category->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated category ' . $category->name_en,
+                'message_ar' => 'لقد قمت بتعديل قسم ' . $category->name_ar,
+                'message_en' => 'I have updated the category ' . $category->name_en,
                 'date' => Carbon::now(),
             ]);
 
@@ -110,8 +110,8 @@ class CategoryController extends Controller
 
             Log::create([
                 'user_id' => $user->id,
-                'message_ar' => 'بحذف القسم ' . $category->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted category ' . $category->name_en,
+                'message_ar' => 'لقد قمت بحذف قسم ' . $category->name_ar,
+                'message_en' => 'I have deleted the category ' . $category->name_en,
                 'date' => Carbon::now(),
             ]);
 

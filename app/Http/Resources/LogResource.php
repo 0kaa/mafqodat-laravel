@@ -19,7 +19,6 @@ class LogResource extends JsonResource
 
         return [
             'id'         => $this->id,
-            'user_image' => $this->user->image ? url('/storage') . '/' . $this->user->image : null,
             'message'    => $this->message,
             'created_at' => $this->date,
         ];

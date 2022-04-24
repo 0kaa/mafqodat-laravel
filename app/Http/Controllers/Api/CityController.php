@@ -59,8 +59,8 @@ class CityController extends Controller
 
         Log::create([
             'user_id' => $user->id,
-            'message_ar' => 'بإضافة مدينة جديدة ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-            'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new City',
+            'message_ar' => 'لقد قمت بإضافة مدينة جديدة',
+            'message_en' => 'I added a new city',
             'date' => Carbon::now(),
         ]);
 
@@ -101,8 +101,8 @@ class CityController extends Controller
 
             Log::create([
                 'user_id' => $user->id,
-                'message_ar' => 'بتعديل المدينة ' . $city->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated city ' . $city->name_en,
+                'message_ar' => 'لقد قمت بتعديل مدينة ' . $city->name_ar,
+                'message_en' => 'I have updated the city ' . $city->name_en,
                 'date' => Carbon::now(),
             ]);
 
@@ -125,8 +125,8 @@ class CityController extends Controller
 
             Log::create([
                 'user_id' => $user->id,
-                'message_ar' => 'بحذف المدينة ' . $city->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted city ' . $city->name_en,
+                'message_ar' => 'لقد قمت بحذف مدينة ' . $city->name_ar,
+                'message_en' => 'I have deleted the city ' . $city->name_en,
                 'date' => Carbon::now(),
             ]);
 

@@ -58,8 +58,8 @@ class CountryController extends Controller
 
         Log::create([
             'user_id' => $user->id,
-            'message_ar' => 'بإضافة دولة جديدة ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-            'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' added a new Country',
+            'message_ar' => 'لقد قمت بإضافة دولة جديدة',
+            'message_en' => 'I have added a new country',
             'date' => Carbon::now(),
         ]);
 
@@ -98,8 +98,8 @@ class CountryController extends Controller
 
             Log::create([
                 'user_id' => $user->id,
-                'message_ar' => 'بتعديل الدولة ' . $country->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' updated country ' . $country->name_en,
+                'message_ar' => 'لقد قمت بتعديل دولة ' . $country->name_ar,
+                'message_en' => 'I have updated country ' . $country->name_en,
                 'date' => Carbon::now(),
             ]);
 
@@ -121,8 +121,8 @@ class CountryController extends Controller
 
             Log::create([
                 'user_id' => $user->id,
-                'message_ar' => 'بحذف الدولة ' . $country->name_ar . ' ' . $user->first_name . ' ' . $user->family_name . ' قام الموظف ',
-                'message_en' => 'The employee ' . $user->first_name . ' ' . $user->family_name . ' deleted country ' . $country->name_en,
+                'message_ar' => ' لقد قمت بحذف دولة ' . $country->name_ar,
+                'message_en' => 'I have deleted country ' . $country->name_en,
                 'date' => Carbon::now(),
             ]);
 
