@@ -10,11 +10,11 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name_ar', 'name_en', 'image'];
+    protected $fillable = ['name_ar', 'name_en', 'image', 'slug'];
 
     public function getNameAttribute()
     {
-        return $this->{'name_'.App::getLocale()};
+        return $this->{'name_' . App::getLocale()};
     }
 
     protected function rules()

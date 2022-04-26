@@ -12,13 +12,19 @@ use App\Traits\ApiResponse;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 
 class CategoryController extends Controller
 {
     use ApiResponse;
 
-    public function getAllCategories()
+    public function getAllCategories(Request $request)
     {
+        if (isset($request->all) && $request->all == 'true') {
+            return $this->apiResponse('', CategoryResource::collection(Category::get()), 200);
+        }
+
         $categories = Category::paginate(8);
 
         $categories->transform(function ($category) {
@@ -41,6 +47,7 @@ class CategoryController extends Controller
         if ($request->has('image')) {
             $data['image'] = $request->file('image')->store('categories');
         }
+        $data['slug'] = Str::of($request->name_en)->slug('-');
 
         $category = Category::create($data);
 
@@ -71,11 +78,9 @@ class CategoryController extends Controller
                 Storage::delete($category->image);
 
                 $data['image'] = $request->file('image')->store('categories');
-
             } else {
 
                 $data['image'] = $category->image;
-
             }
 
             $category->update($data);
@@ -88,7 +93,6 @@ class CategoryController extends Controller
             ]);
 
             return $this->apiResponse(__('updated_successfully'), new CategoryResource($category), 200);
-
         } else {
             return $this->apiResponse(__('category_not_found'), [], 404);
         }
@@ -116,10 +120,8 @@ class CategoryController extends Controller
             ]);
 
             return $this->apiResponse(__('deleted_successfully'), [], 200);
-
         } else {
             return $this->apiResponse(__('category_not_found'), [], 404);
         }
-
     }
 }

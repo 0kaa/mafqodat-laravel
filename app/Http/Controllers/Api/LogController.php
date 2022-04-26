@@ -23,10 +23,6 @@ class LogController extends Controller
             return new LogResource($log);
         });
 
-        if ($logs->isNotEmpty()) {
-            return $this->apiResponse('', new PaginationResource($logs), 200);
-        } else {
-            return $this->apiResponse('', [], 200);
-        }
+        return $this->apiResponse('', new PaginationResource($logs), 200);
     }
 }

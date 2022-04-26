@@ -16,8 +16,11 @@ class StationController extends Controller
 {
     use ApiResponse;
 
-    public function getAllStations()
+    public function getAllStations(Request $request)
     {
+        if (isset($request->all) && $request->all == 'true') {
+            return $this->apiResponse('', StationResource::collection(Station::get()), 200);
+        }
         $stations = Station::paginate(8);
 
         $stations->transform(function ($station) {

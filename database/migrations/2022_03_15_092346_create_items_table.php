@@ -21,10 +21,15 @@ return new class extends Migration
             $table->timestamp('time')->nullable();
             $table->string('storage');
             $table->string('image')->nullable();
-            $table->string('primary_colour');
+            $table->string('primary_colour')->nullable();
             $table->string('secondary_colour')->nullable();
             $table->string('tertiary_colour')->nullable();
             $table->longText('description')->nullable();
+            $table->string('type')->nullable();
+            $table->string('cost')->nullable();
+            $table->string('location');
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->unsignedBigInteger('station_id');

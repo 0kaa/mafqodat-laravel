@@ -7,6 +7,7 @@ use App\Http\Requests\Dashboard\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -46,12 +47,16 @@ class CategoryController extends Controller
             $data['image'] = $request->file('image')->store('categories');
         }
 
+        $data['slug'] = Str::of($request->name_en)->slug('-');
+
+
         $category = Category::create($data);
 
         if ($category) {
             return \redirect()->route('admin.categories.index')->with('success', __('created_successfully'));
         } else {
-            return redirect()->back()->with('error', __('something_went_wrong'));        }
+            return redirect()->back()->with('error', __('something_went_wrong'));
+        }
     }
 
     /**
@@ -80,7 +85,6 @@ class CategoryController extends Controller
         } else {
             return view('dashboard.error');
         }
-
     }
 
     /**
@@ -103,7 +107,6 @@ class CategoryController extends Controller
                 if (Storage::exists($category->image)) {
 
                     Storage::delete($category->image);
-
                 }
             }
 
@@ -118,12 +121,10 @@ class CategoryController extends Controller
             $category->update($data);
 
             return redirect()->back()->with('success', __('updated_successfully'));
-
         } else {
 
             return redirect()->back()->with('error', __('something_went_wrong'));
         }
-
     }
 
     /**

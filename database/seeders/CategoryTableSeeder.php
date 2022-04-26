@@ -17,10 +17,41 @@ class CategoryTableSeeder extends Seeder
     {
         Category::insert([
             [
-                'name_ar' => 'أجهزة',
-                'name_en' => 'Devices',
-                'image'   => 'categories/devices.png'
-            ]
+                'name_ar' => 'جوال',
+                'name_en' => 'Mobile',
+                'image'   => 'categories/devices.png',
+                'slug'    => 'mobile',
+            ],
+            [
+                'name_ar' => 'اكسسورات',
+                'name_en' => 'Electronics',
+                'image'   => 'categories/electronics.png',
+                'slug'    => 'electronics',
+            ],
+            [
+                'name_ar' => 'مقتنيات ذهبية',
+                'name_en' => 'Jewelry',
+                'image'   => 'categories/jewelry.png',
+                'slug'    => 'jewelry',
+            ],
+            [
+                'name_ar' => 'كتب و مستندات',
+                'name_en' => 'Books',
+                'image'   => 'categories/books.png',
+                'slug'    => 'books',
+            ],
+            [
+                'name_ar' => 'نقود',
+                'name_en' => 'Money',
+                'image'   => 'categories/money.png',
+                'slug'    => 'money',
+            ],
+            [
+                'name_ar' => 'أخرى',
+                'name_en' => 'Other',
+                'image'   => 'categories/other.png',
+                'slug'    => 'other',
+            ],
         ]);
     }
 }

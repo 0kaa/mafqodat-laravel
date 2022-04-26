@@ -22,6 +22,11 @@ class Item extends Model
         'category_id',
         'station_id',
         'description',
+        'type',
+        'cost',
+        'lat',
+        'lng',
+        'location',
         'storage',
         'is_delivered',
 

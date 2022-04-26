@@ -22,10 +22,7 @@ $(document).ready(function () {
             },
             station_id: {
                 required: true
-            },
-            primary_colour: {
-                required: true
-            },
+            },         
             first_name: {
                 required: true,
                 depends: function(element) {
