@@ -130,6 +130,8 @@ class ItemController extends Controller
 
         $item = Item::find($id);
 
+        $slug = Category::where('id', $request->category_id)->first()->slug;
+
         $data = $request->except('_token', '_method', 'image', 'first_name', 'surname', 'is_delivered', 'email', 'phone', 'address', 'second_address', 'postcode', 'city', 'mobile');
 
         $date = Carbon::create($request->date);
@@ -138,6 +140,41 @@ class ItemController extends Controller
         $data['date'] = $date->toDateTimeString();
 
         $data['time'] = $time->toDateTimeString();
+
+        if ($slug == 'other') {
+
+            if ($request->type != null && $request->details != null) {
+
+                $data['type'] = $request->type;
+                $data['details'] = $request->details;
+                $data['cost'] = null;
+            } else {
+                return redirect()->back()->withInput()->with('error', __('please_enter_type_and_details'));
+            }
+
+        } elseif ($slug == 'money') {
+
+            if ($request->cost != null) {
+
+                $data['type'] = null;
+                $data['details'] = null;
+                $data['cost'] = $request->cost;
+            } else {
+                return redirect()->back()->withInput()->with('error', __('please_enter_cost'));
+            }
+
+        } else {
+
+            if ($request->type != null && $request->details != null) {
+
+                $data['type'] = null;
+                $data['details'] = $request->details;
+                $data['cost'] = null;
+            } else {
+                return redirect()->back()->withInput()->with('error', __('please_enter_details'));
+            }
+
+        }
 
         if (isset($request->is_delivered)) {
 
@@ -163,8 +200,6 @@ class ItemController extends Controller
             $data['city'] = null;
             $data['mobile'] = null;
         }
-
-        // dd($data, $request->all());
 
         if ($request->has('image')) {
             $data['image'] = $request->file('image')->store('items');

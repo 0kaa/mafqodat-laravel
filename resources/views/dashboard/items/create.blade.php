@@ -54,7 +54,7 @@
                                         @csrf
                                         <div class="row">
 
-                                            <div class="col-6">
+                                            <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="selectCategory">{{ __('select_category') }}</label>
                                                     <select class="form-control mb-1" name="category_id" id="selectCategory"
@@ -63,7 +63,8 @@
                                                         <option value="">{{ __('select') }}</option>
 
                                                         @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}"
+                                                            <option value="{{ $category->id }}" class="item-category"
+                                                                data-slug="{{ $category->slug }}"
                                                                 {{ old('category_id') == $category->id ? 'selected' : '' }}>
                                                                 {{ $category->name }}
                                                             </option>
@@ -79,8 +80,8 @@
                                             </div>
 
 
-                                            <div class="col-6">
-                                                <div class="form-group">
+                                            <div class="col-12">
+                                                <div class="form-group" id="item_type">
                                                     <label for="first-name-vertical">{{ __('type') }}</label>
                                                     <input type="text" class="form-control" name="type"
                                                         value="{{ old('type') }}" placeholder="{{ __('type') }}" />
@@ -92,11 +93,12 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-6">
-                                                <div class="form-group">
+                                            <div class="col-12">
+                                                <div class="form-group" id="item_cost">
                                                     <label for="first-name-vertical">{{ __('cost') }}</label>
                                                     <input type="text" class="form-control" name="cost"
-                                                        value="{{ old('cost') }}" placeholder="{{ __('if_lost_item_money') }}" />
+                                                        value="{{ old('cost') }}"
+                                                        placeholder="{{ __('if_lost_item_money') }}" />
                                                     @error('cost')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
@@ -105,12 +107,12 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">{{ __('details') }}</label>
-                                                    <input type="text" class="form-control" name="details"
-                                                        value="{{ old('details') }}"
-                                                        placeholder="{{ __('details') }}" />
+                                            <div class="col-12">
+                                                <div class="form-group" id="item_details">
+                                                    <label
+                                                        for="details-vertical">{{ __('item_details') }}</label>
+                                                    <textarea name="details" placeholder="{{ __('write_item_details') }}" class="form-control"
+                                                        id="details-vertical">{{ old('details') }}</textarea>
                                                     @error('details')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
@@ -216,19 +218,6 @@
 
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label
-                                                        for="description-vertical">{{ __('item_description') }}</label>
-                                                    <textarea name="description" class="form-control" id="description-vertical">{{ old('description') }}</textarea>
-                                                    @error('description')
-                                                        <span class="alert alert-danger">
-                                                            <small class="errorTxt">{{ $message }}</small>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="form-group">
                                                     <label for="selectStation">{{ __('select_station') }}</label>
                                                     <select class="form-control form-control-lg mb-1" name="station_id"
                                                         id="selectStation" required>
@@ -236,8 +225,7 @@
                                                         <option value="">{{ __('select') }}</option>
 
                                                         @foreach ($stations as $station)
-                                                            <option
-                                                                value="{{ $station->id }}"
+                                                            <option value="{{ $station->id }}"
                                                                 data-lat="{{ $station->lat }}"
                                                                 data-lng="{{ $station->lng }}"
                                                                 {{ old('station_id') == $station->id ? 'selected' : '' }}>
@@ -263,13 +251,12 @@
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="">{{ __('item_location') }}</label>
-                                                    <input type="text" id="pac-input"
-                                                            class="form-control"
-                                                            value="{{ old('location') }}"
-                                                            placeholder="{{ __('item_location') }}" name="location" required>
+                                                    <input type="text" id="pac-input" class="form-control"
+                                                        value="{{ old('location') }}"
+                                                        placeholder="{{ __('item_location') }}" name="location" required>
 
-                                                    @error("location")
-                                                    <span class="text-danger"> {{$message}}</span>
+                                                    @error('location')
+                                                        <span class="text-danger"> {{ $message }}</span>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -346,7 +333,7 @@
         <script src="{{ asset('dashboard/assets/js/custom/maps.js') }}"></script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdarVlRZOccFIGWJiJ2cFY8-Sr26ibiyY&libraries=places&callback=initAutocomplete&language=ar
-        async defer"></script>
+                                        async defer"></script>
 
 
         <script>
@@ -386,6 +373,44 @@
 
                     }
                 });
+            });
+
+
+            $('#item_type').hide();
+            $('#item_cost').hide();
+            $('#item_details').hide();
+
+            $('#selectCategory').change(function(e) {
+                e.preventDefault();
+
+                var slug = $(this).find(':selected').data('slug');
+
+                if (slug == 'other') {
+
+                    $('#item_type').show();
+
+                    $('#item_details').show();
+
+                    $('#item_cost').hide();
+
+
+                } else if (slug == 'money') {
+
+                    $('#item_cost').show();
+
+                    $('#item_type').hide();
+
+                    $('#item_details').hide();
+
+
+                } else {
+
+                    $('#item_type').hide();
+                    $('#item_cost').hide();
+                    $('#item_details').show();
+
+                }
+
             });
         </script>
     @endpush

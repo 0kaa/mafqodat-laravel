@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             /* Lost item data */
             $table->id();
-            $table->string('details');
             $table->timestamp('date')->nullable();
             $table->timestamp('time')->nullable();
             $table->string('storage');
@@ -24,7 +23,7 @@ return new class extends Migration
             $table->string('primary_colour')->nullable();
             $table->string('secondary_colour')->nullable();
             $table->string('tertiary_colour')->nullable();
-            $table->longText('description')->nullable();
+            $table->longText('details')->nullable();
             $table->string('type')->nullable();
             $table->string('cost')->nullable();
             $table->string('location');

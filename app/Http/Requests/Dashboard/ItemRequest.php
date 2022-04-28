@@ -25,7 +25,6 @@ class ItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'details'         => 'required',
             'category_id'     => 'required',
             'station_id'      => 'required',
             'storage'         => 'required',
