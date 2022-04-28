@@ -202,5 +202,9 @@
     "main_categories"        : "Main sections of lost and found items",
     "item_description"       : "Item Description",
     "employee_name"          : "Employee Name",
+    "type"                   : "Type",
+    "cost"                   : "Cost",
+    "if_lost_item_money"     : "If lost item is money",
+    "item_location"          : "Item Location",
     ""                       : ""
 }

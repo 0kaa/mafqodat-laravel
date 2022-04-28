@@ -80,6 +80,32 @@
 
                                             <div class="col-6">
                                                 <div class="form-group">
+                                                    <label for="first-name-vertical">{{ __('type') }}</label>
+                                                    <input type="text" class="form-control" name="type"
+                                                        value="{{ old('type') }}" placeholder="{{ __('type') }}" />
+                                                    @error('type')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="first-name-vertical">{{ __('cost') }}</label>
+                                                    <input type="text" class="form-control" name="cost"
+                                                        value="{{ old('cost') }}" placeholder="{{ __('if_lost_item_money') }}" />
+                                                    @error('cost')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form-group">
                                                     <label for="first-name-vertical">{{ __('details') }}</label>
                                                     <input type="text" class="form-control" name="details"
                                                         value="{{ old('details', $item->details) }}"
@@ -222,6 +248,7 @@
                                                 </div>
                                             </div>
 
+
                                             <div class="col-12">
                                                 <div class="row" id="appendStation">
                                                     <div class="col-4">
@@ -252,6 +279,25 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="">{{ __('item_location') }}</label>
+                                                    <input type="text" id="pac-input"
+                                                            class="form-control"
+                                                            value="{{ old('location', $item->location) }}"
+                                                            placeholder="{{ __('item_location') }}" name="location" required>
+
+                                                    @error("location")
+                                                    <span class="text-danger"> {{$message}}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div id="map" style="height: 500px;width: 1000px; margin-bottom: 15px;"></div>
+                                            <input type="hidden" name="lat" id="latitude" value="{{ $item->lat }}">
+                                            <input type="hidden" name="lng" id="longitude" value="{{ $item->lng }}">
 
                                             <div class="col-12">
                                                 <div class="form-group">
@@ -591,10 +637,16 @@
             </div>
         </div>
     </div>
+
     <!-- END: Content-->
 
     @push('js')
         <script src="{{ asset('dashboard/assets/js/validation/itemValidation.js') }}"></script>
+
+        <script src="{{ asset('dashboard/assets/js/custom/maps.js') }}"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdarVlRZOccFIGWJiJ2cFY8-Sr26ibiyY&libraries=places&callback=initAutocomplete&language=ar
+        async defer"></script>
 
         <script>
             $('#selectStation').on('change', function() {

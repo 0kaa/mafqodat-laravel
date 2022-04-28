@@ -204,5 +204,9 @@
     "main_categories"        : "الأقسام الرئيسية للمفقودات",
     "item_description"       : "وصف المفقود",
     "employee_name"          : "اسم الموظف",
+    "type"                   : "النوع",
+    "cost"                   : "المبلغ",
+    "if_lost_item_money"     : "إذا كان المفقود نقود",
+    "item_location"          : "مكان المفقود",
     ""                       : ""
 }

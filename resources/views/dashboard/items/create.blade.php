@@ -78,6 +78,33 @@
                                                 </div>
                                             </div>
 
+
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="first-name-vertical">{{ __('type') }}</label>
+                                                    <input type="text" class="form-control" name="type"
+                                                        value="{{ old('type') }}" placeholder="{{ __('type') }}" />
+                                                    @error('type')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="first-name-vertical">{{ __('cost') }}</label>
+                                                    <input type="text" class="form-control" name="cost"
+                                                        value="{{ old('cost') }}" placeholder="{{ __('if_lost_item_money') }}" />
+                                                    @error('cost')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="first-name-vertical">{{ __('details') }}</label>
@@ -209,7 +236,10 @@
                                                         <option value="">{{ __('select') }}</option>
 
                                                         @foreach ($stations as $station)
-                                                            <option value="{{ $station->id }}"
+                                                            <option
+                                                                value="{{ $station->id }}"
+                                                                data-lat="{{ $station->lat }}"
+                                                                data-lng="{{ $station->lng }}"
                                                                 {{ old('station_id') == $station->id ? 'selected' : '' }}>
                                                                 {{ $station->name }}
                                                             </option>
@@ -230,6 +260,23 @@
                                                 </div>
                                             </div>
 
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="">{{ __('item_location') }}</label>
+                                                    <input type="text" id="pac-input"
+                                                            class="form-control"
+                                                            value="{{ old('location') }}"
+                                                            placeholder="{{ __('item_location') }}" name="location" required>
+
+                                                    @error("location")
+                                                    <span class="text-danger"> {{$message}}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div id="map" style="height: 500px;width: 1000px; margin-bottom: 15px;"></div>
+                                            <input type="hidden" name="lat" id="latitude">
+                                            <input type="hidden" name="lng" id="longitude">
 
                                             <div class="col-12">
                                                 <button type="submit"
@@ -248,17 +295,19 @@
     </div>
     <!-- END: Content-->
 
-     <!-- Vertical modal -->
-     <div class="vertical-modal-ex">
+    <!-- Vertical modal -->
+    <div class="vertical-modal-ex">
         {{-- <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">
             Vertically Centered
         </button> --}}
         <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" id="close_modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" id="close_modal"
+                            aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -268,7 +317,9 @@
                             <ul style="list-style: none;text-align: right;">
                                 <li>{{ __('item_type') }} : <span>{{ session('category_name') }}</span></li>
                                 <li>{{ __('item_name') }} : <span>{{ session('item_name') }}</span></li>
-                                <li>{{ __('station_name') }} : <span>{{ session('station_name') . ' - ' . session('station_location') }}</span></li>
+                                <li>{{ __('station_name') }} :
+                                    <span>{{ session('station_name') . ' - ' . session('station_location') }}</span>
+                                </li>
                             </ul>
 
                             <p style="margin: auto;text-align: left;">
@@ -283,16 +334,23 @@
             </div>
         </div>
     </div>
+
     <!-- Vertical modal end-->
 
     @push('js')
         <script src="{{ asset('dashboard/assets/js/validation/itemValidation.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js" integrity="sha512-d5Jr3NflEZmFDdFHZtxeJtBzk0eB+kkRXWFQqEc1EKmolXjHm2IKCA7kTvXBNjIYzjXfD5XzIjaaErpkZHCkBg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"
+                integrity="sha512-d5Jr3NflEZmFDdFHZtxeJtBzk0eB+kkRXWFQqEc1EKmolXjHm2IKCA7kTvXBNjIYzjXfD5XzIjaaErpkZHCkBg=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="{{ asset('dashboard/assets/js/custom/maps.js') }}"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdarVlRZOccFIGWJiJ2cFY8-Sr26ibiyY&libraries=places&callback=initAutocomplete&language=ar
+        async defer"></script>
 
 
         <script>
-
-            $('#print').click(function (e) {
+            $('#print').click(function(e) {
                 e.preventDefault();
                 $('#append_qrcode').printThis();
             });
@@ -317,14 +375,14 @@
                 });
             });
 
-            $("#close_modal").click(function (e) {
+            $("#close_modal").click(function(e) {
                 e.preventDefault();
                 $.ajax({
                     type: "GET",
                     url: "{{ route('admin.remove_session') }}",
                     data: "data",
                     dataType: "dataType",
-                    success: function (response) {
+                    success: function(response) {
 
                     }
                 });
