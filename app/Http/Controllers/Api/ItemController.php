@@ -30,18 +30,14 @@ class ItemController extends Controller
             return new ItemResource($item);
         });
 
-        if($items->isNotEmpty()) {
-            return $this->apiResponse('', new PaginationResource($items), 200);
-        } else {
-            return $this->apiResponse('', [], 404);
-        }
+        return $this->apiResponse('', new PaginationResource($items), 200);
     }
 
     public function showItem($id)
     {
         $item = Item::find($id);
 
-        if($item) {
+        if ($item) {
             return $this->apiResponse('', new ItemResource($item), 200);
         } else {
             return $this->apiResponse(__('item_not_found'), [], 404);
@@ -54,7 +50,7 @@ class ItemController extends Controller
 
         $data = $request->all();
 
-        if($request->has('image')) {
+        if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('items');
         }
 
@@ -67,7 +63,7 @@ class ItemController extends Controller
             'date' => Carbon::now(),
         ]);
 
-        if($item) {
+        if ($item) {
             return $this->apiResponse('', new ItemResource($item), 201);
         }
     }
@@ -78,7 +74,7 @@ class ItemController extends Controller
 
         $item = Item::find($id);
 
-        if($item) {
+        if ($item) {
 
             $data = $request->all();
 
@@ -162,7 +158,7 @@ class ItemController extends Controller
                 $data['mobile'] = null;
             }
 
-            if($request->has('image')) {
+            if ($request->has('image')) {
 
                 if ($item->image !== null) {
                     if (Storage::exists($item->image)) {
@@ -209,7 +205,7 @@ class ItemController extends Controller
 
         $item = Item::find($id);
 
-        if($item) {
+        if ($item) {
 
             if ($item->image !== null) {
                 if (Storage::exists($item->image)) {
