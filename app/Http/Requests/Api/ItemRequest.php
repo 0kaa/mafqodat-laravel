@@ -56,7 +56,7 @@ class ItemRequest extends MasterApiRequest
             'secondary_colour' => 'sometimes',
             'tertiary_colour'  => 'sometimes',
             'description'      => 'sometimes',
-            'image'            => 'sometimes',
+            'image'            => 'nullable',
             'is_delivered'     => 'sometimes',
 
             /* User data */
