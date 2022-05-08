@@ -64,7 +64,7 @@ class ItemController extends Controller
         ]);
 
         if ($item) {
-            return $this->apiResponse('', new ItemResource($item), 201);
+            return $this->apiResponse(__('item_created'), new ItemResource($item), 201);
         }
     }
 
@@ -158,7 +158,7 @@ class ItemController extends Controller
                 $data['mobile'] = null;
             }
 
-            if ($request->has('image')) {
+            if ($request->hasFile('image')) {
 
                 if ($item->image !== null) {
                     if (Storage::exists($item->image)) {

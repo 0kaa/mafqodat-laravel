@@ -59,6 +59,7 @@
     "name_en_min"                  : "name in english minimum is 3 letters",
     "not_found"                    : "This item is not exists",
     "updated_successfully"         : "Updated successfully",
+    "item_created"                 : "Item created successfully",
     "delete"                       : "Delete",
     "no"                           : "No",
     "yes"                          : "Yes",
