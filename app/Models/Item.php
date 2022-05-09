@@ -29,13 +29,15 @@ class Item extends Model
         'location',
         'storage',
         'is_delivered',
+        'user_id',
 
         /* User data */
         'first_name',
         'surname',
         'address',
         'secondary_address',
-        'city',
+        'city_id',
+        'country_id',
         'postcode',
         'phone',
         'mobile',
@@ -60,5 +62,19 @@ class Item extends Model
     public function station()
     {
         return $this->belongsTo(Station::class, 'station_id', 'id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id', 'id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id', 'id');
     }
 }

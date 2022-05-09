@@ -31,8 +31,14 @@ return new class extends Migration
             $table->string('lng')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('categories')->onDelete('cascade');
             $table->unsignedBigInteger('station_id');
             $table->foreign('station_id')->references('id')->on('stations')->onDelete('cascade');
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->boolean('is_delivered')->default(0)->nullable();
 
             /* User data */
@@ -40,7 +46,6 @@ return new class extends Migration
             $table->string('surname')->nullable();
             $table->string('address')->nullable();
             $table->string('secondary_address')->nullable();
-            $table->string('city')->nullable();
             $table->string('postcode')->nullable();
             $table->string('phone')->nullable();
             $table->string('mobile')->nullable();

@@ -53,6 +53,7 @@ class ItemController extends Controller
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('items');
         }
+        $data['user_id'] = $user->id;
 
         $item = Item::create($data);
 
