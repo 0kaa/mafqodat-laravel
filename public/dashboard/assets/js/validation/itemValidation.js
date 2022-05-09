@@ -123,12 +123,6 @@ $(document).ready(function () {
             //         return $("#is_delivered").is(":checked");
             //     }
             // },
-            city: {
-                required: true,
-                depends: function(element) {
-                    return $("#is_delivered").is(":checked");
-                }
-            },
             postcode: {
                 required: true,
                 depends: function(element) {

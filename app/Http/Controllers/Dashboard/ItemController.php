@@ -7,6 +7,8 @@ use App\Http\Requests\Dashboard\ItemRequest;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Station;
+use App\Models\Country;
+use App\Models\City;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -61,6 +63,8 @@ class ItemController extends Controller
             $data['image'] = $request->file('image')->store('items');
         }
 
+        $data['user_id'] = auth()->user()->id;
+
         $item = Item::create($data);
 
         if ($item) {
@@ -111,8 +115,12 @@ class ItemController extends Controller
 
         $stations = Station::get();
 
+        $countries = Country::get();
+
+        $cities = City::where('country_id', $item->country_id)->get();
+
         if ($item) {
-            return view('dashboard.items.edit', compact('item', 'categories', 'stations'));
+            return view('dashboard.items.edit', compact('item', 'categories', 'stations', 'countries', 'cities'));
         } else {
             return view('dashboard.error');
         }
