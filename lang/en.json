@@ -212,5 +212,6 @@
     "please_enter_type_and_details": "Please enter type and details",
     "please_enter_details"         : "Please enter details",
     "show_item"                    : "Show Item",
+    "export_pdf"                   : "Export PDF",
     ""                             : ""
 }
