@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app')
 
-@section('title' ,  __('employee_logs'))
+@section('title', __('employee_logs'))
 
 @section('content')
     <!-- BEGIN: Content-->
@@ -14,7 +14,8 @@
                         <div class="col-12">
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('admin.get_logs') }}">{{ __('employee_logs') }}</a>
+                                    <li class="breadcrumb-item"><a
+                                            href="{{ route('admin.get_logs') }}">{{ __('employee_logs') }}</a>
                                     </li>
                                     <li class="breadcrumb-item"><a href="#">{{ __('employee_logs') }}</a>
                                     </li>
@@ -26,148 +27,160 @@
             </div>
             <div class="content-body">
                 <!-- Basic table -->
-                    <section id="basic-datatable">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <table class="datatables-basic table">
-                                        <thead>
+                <section id="basic-datatable">
+                    <div class="row">
+                        <div class="col-12">
+                            <input
+                                type="button"
+                                class="btn btn-primary mr-1 mb-2"
+                                id="btnExport"
+                                value="{{ __('export_pdf') }}"
+                                onclick="Export()"
+                            />
+                            <div class="card">
+                                <table class="datatables-basic table" id="tblCustomers">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ __('id') }}</th>
+                                            <th>{{ __('image') }}</th>
+                                            <th>{{ __('employee_name') }}</th>
+                                            <th>{{ __('log') }}</th>
+                                            {{-- <th>{{ __('actions') }}</th> --}}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($logs as $log)
                                             <tr>
-                                                <th>{{ __('id') }}</th>
-                                                <th>{{ __('image') }}</th>
-                                                <th>{{ __('employee_name') }}</th>
-                                                <th>{{ __('log') }}</th>
-                                                {{-- <th>{{ __('actions') }}</th> --}}
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($logs as $log)
-                                                <tr>
-                                                    <td>{{ $log->id }}</td>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <div class="image">
-                                                                @if ($log->user->image)
-                                                                    <img src="{{ asset('storage/'.$log->user->image) }}" alt="" width="75px">
-                                                                @else
-                                                                    <img src="https://via.placeholder.com/75" alt="">
-                                                                @endif
-                                                            </div>
+                                                <td>{{ $log->id }}</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <div class="image">
+                                                            @if ($log->user->image)
+                                                                <img src="{{ asset('storage/' . $log->user->image) }}"
+                                                                    alt="" width="75px">
+                                                            @else
+                                                                <img src="https://via.placeholder.com/75" alt="">
+                                                            @endif
                                                         </div>
-                                                    </td>
-                                                    <td>{{ $log->user->first_name.' '.$log->user->family_name }}</td>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <div class="text ml-2" style="direction: ltr">
-                                                                <h4>{{ $log->message }}</h4>
-                                                                <span>{{ $log->date }}</span>
-                                                            </div>
+                                                    </div>
+                                                </td>
+                                                <td>{{ $log->user->first_name . ' ' . $log->user->family_name }}</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <div class="text ml-2" style="direction: ltr">
+                                                            <h4>{{ $log->message }}</h4>
+                                                            <span>{{ $log->date }}</span>
                                                         </div>
-                                                    </td>
-                                                    {{-- <td class="text-center">
+                                                    </div>
+                                                </td>
+                                                {{-- <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
                                                             <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
                                                             <a href="{{ route('admin.categories.destroy', $category->id) }}" data-id="{{ $category->id }}" class="btn btn-sm btn-danger item-delete"><i data-feather="trash"></i></a>
                                                         </div>
                                                     </td> --}}
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </section>
                 <!--/ Basic table -->
             </div>
         </div>
     </div>
     <!-- END: Content-->
-@push('js')
-{{-- <script src="{{ asset('dashboard/app-assets/js/custom/custom-delete.js') }}"></script> --}}
+    @push('js')
+        {{-- <script src="{{ asset('dashboard/app-assets/js/custom/custom-delete.js') }}"></script> --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"
+                integrity="sha512-d5Jr3NflEZmFDdFHZtxeJtBzk0eB+kkRXWFQqEc1EKmolXjHm2IKCA7kTvXBNjIYzjXfD5XzIjaaErpkZHCkBg=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script>
-    $(document).ready(function () {
+        <script>
+            function Export() {
+                // print this
+                $('#tblCustomers').printThis();
+            }
 
-        $('.item-delete').click(function(e) {
+            $(document).ready(function() {
 
-            e.preventDefault();
-            const Toast2 = Swal.mixin({
+                $('.item-delete').click(function(e) {
 
-                showConfirmButton: false,
-                timer: 4000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
+                    e.preventDefault();
+                    const Toast2 = Swal.mixin({
+
+                        showConfirmButton: false,
+                        timer: 4000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    const Toast = Swal.mixin({
+
+                        showCancelButton: true,
+                        showConfirmButton: true,
+                        cancelButtonColor: '#888',
+                        confirmButtonColor: '#d6210f',
+                        confirmButtonText: "{{ __('delete') }}",
+                        cancelButtonText: "{{ __('no') }}",
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'question',
+                        title: "{{ __('want_delete') }}"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                            var id = $(this).data('id');
+                            var url = $(this).attr('href');
+                            var elem = $(this).closest('tr');
+
+                            $.ajax({
+                                type: 'POST',
+                                url: url,
+                                data: {
+                                    _method: 'delete',
+                                    _token: $('meta[name="csrf-token"]').attr('content'),
+                                    id: id,
+                                },
+                                dataType: 'json',
+                                success: function(result) {
+                                    elem.fadeOut();
+
+                                    Toast2.fire({
+                                        title: "{{ __('deleted_successfully') }}",
+                                        // showConfirmButton: false,
+                                        icon: 'success',
+                                        timer: 1000
+                                    });
+                                } // end of success
+
+                            }); // end of ajax
+
+                        } else if (result.dismiss === Swal.DismissReason.cancel) {
+                            Toast2.fire({
+                                title: "{{ __('canceled') }}",
+                                // showConfirmButton: false,
+                                icon: 'success',
+                                timer: 1000
+                            });
+
+                        } // end of else confirmed
+
+                    }) // end of then
+                });
+
             });
-
-            const Toast = Swal.mixin({
-
-                showCancelButton: true,
-                showConfirmButton: true,
-                cancelButtonColor: '#888',
-                confirmButtonColor: '#d6210f',
-                confirmButtonText: "{{ __('delete') }}",
-                cancelButtonText: "{{ __('no') }}",
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-
-            Toast.fire({
-                icon: 'question',
-                title: "{{ __('want_delete') }}"
-            }).then((result) => {
-                    if (result.isConfirmed) {
-
-                        var id    = $(this).data('id');
-                        var url = $(this).attr('href');
-                        var elem  = $(this).closest('tr');
-
-                        $.ajax({
-                            type: 'POST',
-                            url: url,
-                            data: {
-                                _method : 'delete',
-                                _token  : $('meta[name="csrf-token"]').attr('content'),
-                                id      : id,
-                            },
-                            dataType: 'json',
-                            success: function(result) {
-                                elem.fadeOut();
-
-                                Toast2.fire({
-                                    title: "{{ __('deleted_successfully') }}",
-                                    // showConfirmButton: false,
-                                    icon: 'success',
-                                    timer: 1000
-                                });
-                            } // end of success
-
-                        }); // end of ajax
-
-                    } else if (result.dismiss === Swal.DismissReason.cancel)
-                    {
-                        Toast2.fire({
-                            title: "{{ __('canceled') }}",
-                            // showConfirmButton: false,
-                            icon: 'success',
-                            timer: 1000
-                        });
-
-                    } // end of else confirmed
-
-                }) // end of then
-        });
-
-    });
-
-</script>
-@endpush
+        </script>
+    @endpush
 @endsection
-
-

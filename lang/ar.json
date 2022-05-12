@@ -214,5 +214,6 @@
     "please_enter_type_and_details": "أدخل نوع المفقود وتفاصيله",
     "please_enter_details"         : "أدخل تفاصيل المفقود",
     "show_item"                    : "عرض المفقود",
+    "export_pdf"                   : "تصدير PDF",
     ""                             : ""
 }

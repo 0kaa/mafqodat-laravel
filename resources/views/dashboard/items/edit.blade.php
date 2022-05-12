@@ -526,14 +526,14 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('post_code') }}</label>
                                                                 <input type="text" class="form-control" name="postcode"
-                                                                    value="{{ old('post_code', $item->postcode) }}"
+                                                                    value="{{ old('postcode', $item->postcode) }}"
                                                                     placeholder="{{ __('post_code') }}" required />
-                                                                @error('post_code')
+                                                                @error('postcode')
                                                                     <span class="alert alert-danger">
                                                                         <small
                                                                             class="errorTxt">{{ $message }}</small>
@@ -542,7 +542,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('phone') }}</label>
@@ -558,7 +558,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('mobile') }}</label>
@@ -706,14 +706,14 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('post_code') }}</label>
                                                                 <input type="text" class="form-control" name="postcode"
-                                                                    value="{{ old('post_code') }}"
+                                                                    value="{{ old('postcode') }}"
                                                                     placeholder="{{ __('post_code') }}" required />
-                                                                @error('post_code')
+                                                                @error('postcode')
                                                                     <span class="alert alert-danger">
                                                                         <small
                                                                             class="errorTxt">{{ $message }}</small>
@@ -722,7 +722,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('phone') }}</label>
@@ -738,7 +738,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('mobile') }}</label>
