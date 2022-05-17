@@ -15,7 +15,7 @@ class HomeController extends Controller
 
     public function latestItems()
     {
-        $latest_items = Item::latest()->take(3)->get();
+        $latest_items = Item::latest()->take(4)->get();
         return $this->apiResponse('', ItemResource::collection($latest_items), 200);
     }
 
