@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
 
     /* category routes */
     Route::get('categories', [CategoryController::class, 'getAllCategories']);
+    Route::get('category/{id}/items', [CategoryController::class, 'getItemsByCategory']);
     Route::post('categories/create', [CategoryController::class, 'createCategory'])->middleware(['permission:create_category']);
     Route::post('categories/update/{id}', [CategoryController::class, 'updateCategory'])->middleware(['permission:update_category']);
     Route::post('categories/delete/{id}', [CategoryController::class, 'deleteCategory'])->middleware(['permission:delete_category']);

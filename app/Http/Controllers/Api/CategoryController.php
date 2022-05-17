@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CategoryRequest;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\ItemResource;
 use App\Http\Resources\PaginationResource;
 use App\Models\Category;
+use App\Models\Item;
 use App\Models\Log;
 use App\Traits\ApiResponse;
 use Carbon\Carbon;
@@ -31,11 +33,18 @@ class CategoryController extends Controller
             return new CategoryResource($category);
         });
 
-        if ($categories->isNotEmpty()) {
-            return $this->apiResponse('', new PaginationResource($categories), 200);
-        } else {
-            return $this->apiResponse('', [], 200);
-        }
+        return $this->apiResponse('', new PaginationResource($categories), 200);
+    }
+
+    public function getItemsByCategory($id)
+    {
+        $items = Item::where('category_id', $id)->paginate(8);
+
+        $items->transform(function ($item) {
+            return new ItemResource($item);
+        });
+
+        return $this->apiResponse('', new PaginationResource($items), 200);
     }
 
     public function createCategory(CategoryRequest $request)
