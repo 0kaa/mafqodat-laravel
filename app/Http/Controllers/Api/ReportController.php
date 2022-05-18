@@ -14,9 +14,9 @@ class ReportController extends Controller
 {
     use ApiResponse;
 
-    public function dataCount()
+    public function getAllReports()
     {
-        $items = Item::count();
+        $itemsCount = Item::count();
 
         $delivered_items = Item::where('is_delivered', 1)->count();
 
@@ -28,26 +28,20 @@ class ReportController extends Controller
 
         $employees = User::count();
 
-        return $this->apiResponse('', [
-            'items' => $items,
-            'delivered_items' => $delivered_items,
-            'stations' => $stations,
-            'employees' => $employees,
-            'metro_stations' => $metro_stations,
-            'bus_stations' => $bus_stations
-        ], 200);
-    }
-
-    public function itemsStatistics()
-    {
-        $items = Item::select(DB::raw('count(id) as `data`'), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+        $items = Item::select(DB::raw('count(id) as `data`'), DB::raw('YEAR(date) year, MONTH(date) month'))
             ->groupby('year', 'month')
             ->get();
 
-        if ($items->isNotEmpty()) {
-            return $this->apiResponse('', $items, 200);
-        } else {
-            return $this->apiResponse('', [], 404);
-        }
+        return $this->apiResponse('', [
+            'statistics' => [
+                'items' => $itemsCount,
+                'delivered_items' => $delivered_items,
+                'stations' => $stations,
+                'employees' => $employees,
+                'metro_stations' => $metro_stations,
+                'bus_stations' => $bus_stations
+            ],
+            'counts' => $items
+        ], 200);
     }
 }

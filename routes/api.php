@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* Auth routes */
+
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('forget-password', [AuthController::class, 'forgetPassword']);
@@ -91,6 +92,6 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
     Route::get('home/locations', [HomeController::class, 'locations']);
 
     /* reports routes */
-    Route::get('reports/data-count', [ReportController::class, 'dataCount']);
-    Route::get('reports/items/statistics', [ReportController::class, 'itemsStatistics']);
+    Route::get('reports', [ReportController::class, 'getAllReports']);
+    // Route::get('reports/items/statistics', [ReportController::class, 'itemsStatistics']);
 });
