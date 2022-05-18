@@ -31,6 +31,7 @@ class ReportController extends Controller
         $items = Item::select(DB::raw('count(id) as `data`'), DB::raw('YEAR(date) year, MONTH(date) month'))
             ->groupby('year', 'month')
             ->get();
+        // dd($items);
 
         return $this->apiResponse('', [
             'statistics' => [
