@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ItemResource;
 use App\Models\Item;
 use App\Models\Station;
 use App\Models\User;
@@ -28,12 +29,17 @@ class ReportController extends Controller
 
         $employees = User::count();
 
-        $items = Item::select(DB::raw('count(id) as `data`'), DB::raw('YEAR(date) year, MONTH(date) month'))
-            ->groupby('year', 'month')
-            ->get();
-        // dd($items);
+        $latestFiveItems = Item::take(5)->orderBy('created_at', 'desc')->get();
+
+        $itemsList = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $query = Item::select(DB::raw('count(id) as `data`'), DB::raw('YEAR(date) year, MONTH(date) month'))->groupby('year', 'month')->whereYear('date', '=', date('Y'))->whereMonth('date', '=', $i)->first();
+            $itemsList[] = $query ? $query->data : 0;
+        }
 
         return $this->apiResponse('', [
+            'items'     => ItemResource::collection($latestFiveItems),
             'statistics' => [
                 'items' => $itemsCount,
                 'delivered_items' => $delivered_items,
@@ -42,7 +48,7 @@ class ReportController extends Controller
                 'metro_stations' => $metro_stations,
                 'bus_stations' => $bus_stations
             ],
-            'counts' => $items
+            'counts' => $itemsList
         ], 200);
     }
 }
