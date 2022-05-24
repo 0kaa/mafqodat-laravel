@@ -19,9 +19,9 @@
                             <h2>{{ __('main_categories') }}</h2>
                         </div>
                         @foreach ($categories as $category)
-                            <div class="col-2">
-                                <div class="card">
-                                    <div class="card-header flex-column align-items-start pb-0">
+                            <div class="col-lg-2 col-md-4 col-sm-6">
+                                <div class="card home-item">
+                                    <div class="card-header flex-column align-items-start pb-0 cat-item">
                                         <div>
                                             <div class="avatar-content">
                                                 <img src="{{ asset('storage/' . $category->image) }}" alt="" width="65px">
@@ -58,8 +58,8 @@
                         </div>
                         <!-- Greetings Card ends --> --}}
 
-                        <div class="col-7">
-                            <div class="card">
+                        <div class="col-lg-7 col-md-12">
+                            <div class="card home-item">
                                 <div class="card-header align-items-start">
                                     <div>
                                         <h4 class="card-title">{{ __('latest_items') }}</h4>
@@ -105,8 +105,8 @@
                             </div>
                         </div>
 
-                        <div class="col-5">
-                            <div class="card">
+                        <div class="col-lg-5 col-md-12"">
+                            <div class="card home-item">
                                 <div class="card-header align-items-start">
                                     <div>
                                         <h4 class="card-title mb-25">{{ __('station_locations') }}</h4>

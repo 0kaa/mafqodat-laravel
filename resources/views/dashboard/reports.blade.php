@@ -114,7 +114,7 @@
                         <!--/ Statistics Card -->
 
                         <!-- Sales Line Chart Card -->
-                        <div class="col-6">
+                        <div class="col-lg-6 col-md-12">
                             <div class="card">
                                 <div class="card-header align-items-start">
                                     <div>
@@ -128,7 +128,7 @@
                         </div>
                         <!--/ Sales Line Chart Card -->
 
-                        <div class="col-6">
+                        <div class="col-lg-6 col-md-12">
                             <div class="card">
                                 <table class="datatables-basic table">
                                     <thead>
