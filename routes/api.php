@@ -93,5 +93,4 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
 
     /* reports routes */
     Route::get('reports', [ReportController::class, 'getAllReports']);
-    // Route::get('reports/items/statistics', [ReportController::class, 'itemsStatistics']);
 });
