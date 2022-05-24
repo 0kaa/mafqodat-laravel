@@ -10,6 +10,40 @@ NOTE:
 PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
 
+
+@font-face {
+    font-family: "font_main";
+    src: url('../fonts/Regular.otf');
+}
+
+@font-face {
+    font-family: "font_light";
+    src: url('../fonts/Light.otf');
+}
+
+
+body {
+    font-family: 'font_light' !important;
+}
+
+.navigation {
+    font-family: 'font_light' !important;
+}
+
+.img_menu_01 {
+    width: 90%;
+
+    height: 180px;
+    margin: 10px auto;
+}
+
+.img_menu_01 img {
+    width: 100%;
+    border-radius: 10px;
+    height: 100%;
+    object-fit: cover;
+}
+
 .error_page {
     display: block;
     max-width: 50%;
@@ -30,7 +64,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     font-size: 50px;
 }
 
-#pac-input{
+#pac-input {
     z-index: 0;
     position: absolute;
     left: 189px;
@@ -44,10 +78,10 @@ label {
     font-size: 17px;
 }
 
-.item_card{
+.item_card {
     display: flex;
-    gap: 25px ;
-    padding: 20px ;
+    gap: 25px;
+    padding: 20px;
     align-items: start;
 
 
@@ -57,12 +91,108 @@ label {
     list-style-type: none;
     margin: 10px 0;
 }
-.item_card ul
-{
+
+.item_card ul {
     padding: 0;
 }
 
 
-.item_card  .card-body{
+.item_card .card-body {
     padding: 0;
+}
+
+
+
+.main-menu.menu-light .navigation>li>a {
+    margin: 0 0px !important;
+}
+
+.main-menu.menu-light .navigation>li.active>a {
+    background: -webkit-linear-gradient(208deg, #E5E5E5, #E5E5E5);
+    background: linear-gradient(-118deg, #E5E5E5, #E5E5E5);
+    box-shadow: none;
+    color: #1E1E1E;
+    font-weight: 400;
+    border-radius: 0px;
+
+}
+
+.cat-item {
+    padding-bottom: 10px !important;
+
+}
+
+.cat-item img {
+    max-width: 50px;
+    object-fit: contain;
+    height: 65px;
+}
+.cat-item .font-weight-bolder {
+    font-weight: 100 !important;
+    font-size: 18px !important;
+}
+
+.btn-primary:hover:not(.disabled):not(:disabled) {
+    box-shadow: 0 8px 25px -8px #f6931e;
+}
+
+.btn-primary:focus, .btn-primary:active, .btn-primary.active , .btn-primary {
+    color: #FFFFFF;
+    background-color: #f6931e!important;
+    border: #f6931e;
+}
+
+.btn-info {
+    border-color: #E5E5E5 !important;
+    background-color: #E5E5E5 !important;
+    color: #1E1E1E !important;
+}
+
+.page-item.active .page-link {
+    background-color: #f6931e;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #FFFFFF;
+   background-color: #f6931e;
+}
+.dropdown-item:hover, .dropdown-item:focus {
+    color: #1E1E1E;
+    text-decoration: none;
+    background-color: #f6951e25 ;
+}
+
+.nav-pills .nav-link.active
+{
+    background-color: #f6931e;
+    border-color: #f6931e;
+    box-shadow:none;
+}
+
+.form-control:focus {
+    color: #6E6B7B;
+    background-color: #FFFFFF;
+    border-color: #1E1E1E;
+    outline: 0;
+    box-shadow: none;
+}
+
+.card {
+    padding: 20px !important;
+}
+
+
+a {
+    color: #1E1E1E;
+    text-decoration: none;
+    background-color: transparent;
+}
+a:hover {
+    color: #f6931e;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.card.home-item {
+    padding: 0 !important;
 }

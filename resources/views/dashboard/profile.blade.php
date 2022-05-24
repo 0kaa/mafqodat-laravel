@@ -53,7 +53,7 @@
                                                                         id="account-upload-img" class="rounded mr-50"
                                                                         alt="profile image" height="100" width="100" />
                                                                 @else
-                                                                    <img src="{{ asset('dashboard/app-assets/images/avatars/placeholder.png') }}"
+                                                                    <img src="{{ asset('dashboard/assets/img/arab.png') }}"
                                                                         id="account-upload-img" class="rounded mr-50"
                                                                         alt="profile image" height="100" width="100" />
                                                                 @endif

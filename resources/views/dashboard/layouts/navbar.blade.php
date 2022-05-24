@@ -49,7 +49,7 @@
                         @if (auth()->user()->image)
                             <img class="round" src="{{ asset('storage/'.auth()->user()->image) }}" alt="avatar" height="40" width="40">
                         @else
-                            <img class="round" src="https://via.placeholder.com/50" alt="avatar" height="40" width="40">
+                            <img class="round" src="{{ asset('dashboard/assets/img/arab.png') }}" alt="avatar" height="40" width="40">
                         @endif
 
                         <span class="avatar-status-online"></span>
