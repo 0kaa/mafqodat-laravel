@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name_ar')->unique();
             $table->string('name_en')->unique();
-            $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->timestamps();
         });
     }

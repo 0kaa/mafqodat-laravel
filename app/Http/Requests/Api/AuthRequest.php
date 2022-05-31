@@ -20,7 +20,6 @@ class AuthRequest extends MasterApiRequest
             'address.required'     => __('address_required'),
             'phone.required'       => __('phone_required'),
             'mobile.required'      => __('mobile_required'),
-            'country.required'     => __('country_required'),
             'city.required'        => __('city_required'),
 
         ];

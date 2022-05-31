@@ -23,17 +23,6 @@
         </ul>
 
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li  class="nav-item {{ areActiveRoutes(['admin.countries.create' , 'admin.countries.index' , 'admin.countries.edit']) }}"><a class="d-flex align-items-center" href="#"><i data-feather="flag"></i><span class="menu-title text-truncate">{{ __('countries') }}</span></a>
-                <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="{{ route('admin.countries.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('countries') }}</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="{{ route('admin.countries.create') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('new_country') }}</span></a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li  class="nav-item {{ areActiveRoutes(['admin.cities.create' , 'admin.cities.index' , 'admin.cities.edit']) }}"><a class="d-flex align-items-center" href="#"><i data-feather='map-pin'></i><span class="menu-title text-truncate">{{ __('cities') }}</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{ route('admin.cities.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" >{{ __('cities') }}</span></a>

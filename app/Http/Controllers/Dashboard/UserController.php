@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\ProfileRequest;
 use App\Models\City;
-use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -15,11 +14,9 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $countries = Country::get();
+        $cities = City::all();
 
-        $cities = City::where('country_id', $user->country_id)->get();
-
-        return view('dashboard.profile', compact('user', 'countries', 'cities'));
+        return view('dashboard.profile', compact('user', 'cities'));
     }
 
     public function updateProfile(ProfileRequest $request)

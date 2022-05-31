@@ -32,7 +32,6 @@ class UserTableSeeder extends Seeder
             'address' => 'test address',
             'mobile' => '123456789',
             'phone' => '123456789',
-            'country_id' => 1,
             'city_id' => 1,
         ]);
 

@@ -26,7 +26,6 @@ class User extends Authenticatable
         'phone',
         'email',
         'password',
-        'country_id',
         'city_id',
         'code',
         'image',
@@ -64,14 +63,8 @@ class User extends Authenticatable
             'second_address' => 'nullable|min:3',
             'phone'          => 'required|min:8|max:12',
             'mobile'         => 'required|min:8|max:12',
-            'country_id'     => 'required',
             'city_id'        => 'required',
         ];
-    }
-
-    public function country()
-    {
-        return $this->belongsTo(Country::class, 'country_id', 'id');
     }
 
     public function city()

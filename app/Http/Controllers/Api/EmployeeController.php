@@ -67,7 +67,6 @@ class EmployeeController extends Controller
             'second_address' => 'nullable|min:3',
             'phone'          => 'required|min:8|max:12',
             'mobile'         => 'required|min:8|max:12',
-            'country_id'     => 'required',
             'city_id'        => 'required',
         ], [
             'first_name.required'  => __('first_name_required'),
@@ -87,7 +86,6 @@ class EmployeeController extends Controller
             'mobile.required'      => __('mobile_required'),
             'mobile.min'           => __('mobile_min'),
             'mobile.max'           => __('mobile_max'),
-            'country_id.required'  => __('country_required'),
             'city_id.required'     => __('city_required'),
         ]);
 
@@ -138,7 +136,6 @@ class EmployeeController extends Controller
                 'password'    => 'sometimes|min:6',
                 'phone'       => 'required',
                 'mobile'      => 'required',
-                'country_id'  => 'required',
                 'city_id'     => 'required',
             ], [
                 'first_name.required'  => __('first_name_required'),
@@ -150,7 +147,6 @@ class EmployeeController extends Controller
                 'address.required'     => __('address_required'),
                 'phone.required'       => __('phone_required'),
                 'mobile.required'      => __('mobile_required'),
-                'country_id.required'  => __('country_required'),
                 'city_id.required'     => __('city_required'),
             ]);
 

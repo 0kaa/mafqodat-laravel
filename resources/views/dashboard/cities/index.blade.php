@@ -43,7 +43,6 @@
                                             <tr>
                                                 <th>{{ __('id') }}</th>
                                                 <th>{{ __('city_name') }}</th>
-                                                <th>{{ __('country_name') }}</th>
                                                 <th>{{ __('actions') }}</th>
                                             </tr>
                                         </thead>
@@ -52,7 +51,6 @@
                                                 <tr>
                                                     <td>{{ $city->id }}</td>
                                                     <td>{{ $city->name }}</td>
-                                                    <td>{{ $city->country->name }}</td>
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
                                                             <a href="{{ route('admin.cities.edit', $city->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>

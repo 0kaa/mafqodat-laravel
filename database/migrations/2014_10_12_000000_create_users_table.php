@@ -24,8 +24,6 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('mobile')->nullable();
             $table->string('image')->nullable();
-            $table->unsignedBigInteger('country_id')->nullable();
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->string('code')->nullable();

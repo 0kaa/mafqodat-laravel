@@ -146,7 +146,6 @@ class ItemController extends Controller
                 $data['second_address'] = $request->second_address;
                 $data['postcode'] = $request->postcode;
                 $data['city_id'] = $request->city_id;
-                $data['country_id'] = $request->country_id;
                 $data['mobile'] = $request->mobile;
             } else {
                 $data['first_name'] = null;
@@ -157,7 +156,6 @@ class ItemController extends Controller
                 $data['second_address'] = null;
                 $data['postcode'] = null;
                 $data['city_id'] = null;
-                $data['country_id'] = null;
                 $data['mobile'] = null;
             }
 

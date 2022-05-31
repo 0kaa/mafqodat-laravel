@@ -8,9 +8,6 @@ $(document).ready(function () {
             name_en: {
                 required: true
             },
-            country_id: {
-                required: true
-            },
         },
 
         submitHandler: function(form) {

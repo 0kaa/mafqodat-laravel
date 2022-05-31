@@ -36,11 +36,11 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $countries = Country::get();
+        $cities = City::all();
 
         $permissions = Permission::get();
 
-        return view('dashboard.employees.create', compact('countries', 'permissions'));
+        return view('dashboard.employees.create', compact('cities', 'permissions'));
     }
 
     /**
@@ -94,14 +94,12 @@ class EmployeeController extends Controller
     {
         $employee = User::find($id);
 
-        $countries = Country::get();
-
-        $cities = City::where('country_id', $employee->country_id)->get();
+        $cities = City::all();
 
         $permissions = Permission::get();
 
         if ($employee) {
-            return view('dashboard.employees.edit', compact('employee', 'countries', 'cities', 'permissions'));
+            return view('dashboard.employees.edit', compact('employee', 'cities', 'permissions'));
         } else {
             return view('dashboard.error');
         }
@@ -168,17 +166,6 @@ class EmployeeController extends Controller
 
         return response()->json([
             'success' => __('deleted_successfully'),
-        ]);
-    }
-
-    public function getCities(Request $request)
-    {
-        $cities = City::where('country_id', $request->country_id)->get();
-
-        $cities = CityResource::collection($cities);
-
-        return response()->json([
-            'cities' => $cities
         ]);
     }
 }

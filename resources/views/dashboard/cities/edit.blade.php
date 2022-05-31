@@ -46,7 +46,7 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-6">
                                                 <div class="form-group">
                                                     <input type="hidden" name="id" value="{{ $city->id }}">
                                                     <label for="first-name-vertical">{{ __('name_ar') }}</label>
@@ -58,34 +58,11 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-12">
+                                            <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="first-name-vertical">{{ __('name_en') }}</label>
                                                     <input type="text" id="first-name-vertical" class="form-control" name="name_en" value="{{ old('name_en', $city->name_en) }}" placeholder="{{ __('write_name_en') }}" />
                                                     @error('name_en')
-                                                        <span class="alert alert-danger">
-                                                            <small class="errorTxt">{{ $message }}</small>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="selectCountry">{{ __('select_country') }}</label>
-                                                    <select class="form-control form-control-lg mb-1" name="country_id" id="selectCountry" required>
-
-                                                        @foreach ($countries as $country)
-                                                            <option
-                                                                value="{{ $country->id }}"
-                                                                {{ $city->country_id == $country->id ? 'selected' : '' }}
-                                                            >
-                                                                {{ $country->name }}
-                                                            </option>
-                                                        @endforeach
-
-                                                    </select>
-                                                    @error('country_id')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
                                                         </span>

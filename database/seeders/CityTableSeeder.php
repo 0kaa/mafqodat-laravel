@@ -19,7 +19,6 @@ class CityTableSeeder extends Seeder
             [
                 'name_ar'    => 'الرياض',
                 'name_en'    => 'Riyadh',
-                'country_id' => 1
             ]
         ]);
     }

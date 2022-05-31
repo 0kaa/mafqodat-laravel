@@ -27,7 +27,6 @@ class EmployeeRequest extends FormRequest
             'mobile.required'      => __('mobile_required'),
             'mobile.min'           => __('mobile_min'),
             'mobile.max'           => __('mobile_max'),
-            'country_id.required'  => __('country_required'),
             'city_id.required'     => __('city_required'),
         ];
     }
@@ -68,7 +67,6 @@ class EmployeeRequest extends FormRequest
                     'second_address' => 'nullable',
                     'phone'          => 'required',
                     'mobile'         => 'required',
-                    'country_id'     => 'required',
                     'city_id'        => 'required',
                 ];
 

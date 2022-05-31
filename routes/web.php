@@ -54,11 +54,7 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization', 'role:super_admin
 
     Route::resource('employees', 'EmployeeController');
 
-    Route::resource('countries', 'CountryController');
-
     Route::resource('cities', 'CityController');
-
-    Route::post('get-cities', [EmployeeController::class, 'getCities'])->name('get_cities');
 
     Route::resource('categories', 'CategoryController');
 

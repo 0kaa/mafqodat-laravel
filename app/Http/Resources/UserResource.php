@@ -30,7 +30,6 @@ class UserResource extends JsonResource
             'second_address' => $this->second_address,
             'phone'          => $this->phone,
             'mobile'         => $this->mobile,
-            'country'        => new CountryResource($this->country),
             'city'           => new CityResource($this->city),
             'post_code'      => $this->post_code,
             'image'          => $this->image ? url('/storage') . '/' . $this->image : null,

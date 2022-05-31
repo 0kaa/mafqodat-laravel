@@ -10,20 +10,11 @@ class City extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name_ar', 'name_en', 'country_id'];
-
-    protected $casts = [
-        'country_id' => 'integer'
-    ];
+    protected $fillable = ['name_ar', 'name_en'];
 
     public function getNameAttribute()
     {
         return $this->{'name_'.App::getLocale()};
-    }
-
-    public function country()
-    {
-        return $this->belongsTo(Country::class, 'country_id', 'id');
     }
 
     public function user()

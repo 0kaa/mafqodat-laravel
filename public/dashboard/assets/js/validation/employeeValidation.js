@@ -31,9 +31,6 @@ $(document).ready(function () {
                 required: true,
                 minlength: 6,
             },
-            country_id: {
-                required: true
-            },
             city_id: {
                 required: true
             },
@@ -82,9 +79,6 @@ $(document).ready(function () {
             //     required: true,
             //     minlength: 6,
             // },
-            country_id: {
-                required: true
-            },
             city_id: {
                 required: true
             },

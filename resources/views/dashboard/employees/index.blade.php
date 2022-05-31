@@ -46,7 +46,6 @@
                                                 <th>{{ __('mobile') }}</th>
                                                 <th>{{ __('phone') }}</th>
                                                 <th>{{ __('email') }}</th>
-                                                <th>{{ __('country') }}</th>
                                                 <th>{{ __('city') }}</th>
                                                 <th>{{ __('actions') }}</th>
                                             </tr>
@@ -59,7 +58,6 @@
                                                     <td>{{ $employee->mobile }}</td>
                                                     <td>{{ $employee->phone }}</td>
                                                     <td>{{ $employee->email }}</td>
-                                                    <td>{{ $employee->country->name }}</td>
                                                     <td>{{ $employee->city->name }}</td>
 
                                                     <td class="text-center">

@@ -29,9 +29,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        $countries = Country::get();
-
-        return view('dashboard.cities.create', compact('countries'));
+        return view('dashboard.cities.create');
     }
 
     /**
@@ -75,11 +73,9 @@ class CityController extends Controller
     {
         $city = City::find($id);
 
-        $countries = Country::get();
-
         if ($city) {
 
-            return view('dashboard.cities.edit', compact('city', 'countries'));
+            return view('dashboard.cities.edit', compact('city'));
 
         } else {
 
