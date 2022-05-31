@@ -215,5 +215,6 @@
     "please_enter_details"         : "أدخل تفاصيل المفقود",
     "show_item"                    : "عرض المفقود",
     "export_pdf"                   : "تصدير PDF",
+    "export_excel"                 : "تصدير Excel",
     ""                             : ""
 }

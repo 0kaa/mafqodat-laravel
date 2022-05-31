@@ -30,6 +30,7 @@
                 <section id="basic-datatable">
                     <div class="row">
                         <div class="col-12">
+                            {{-- export pdf button --}}
                             <input
                                 type="button"
                                 class="btn btn-primary mr-1 mb-2"
@@ -37,12 +38,20 @@
                                 value="{{ __('export_pdf') }}"
                                 onclick="Export()"
                             />
+
+                            {{-- export excel button --}}
+                            <input
+                                type="button"
+                                class="btn btn-primary mr-1 mb-2"
+                                id="exportExcel"
+                                value="{{ __('export_excel') }}"
+                            />
                             <div class="card">
-                                <table class="datatables-basic table" id="tblCustomers">
+                                <table class="datatables-basic table export_table" id="tblCustomers">
                                     <thead>
                                         <tr>
                                             <th>{{ __('id') }}</th>
-                                            <th>{{ __('image') }}</th>
+                                            <th class="noExl">{{ __('image') }}</th>
                                             <th>{{ __('employee_name') }}</th>
                                             <th>{{ __('log') }}</th>
                                             {{-- <th>{{ __('actions') }}</th> --}}
@@ -52,7 +61,7 @@
                                         @foreach ($logs as $log)
                                             <tr>
                                                 <td>{{ $log->id }}</td>
-                                                <td>
+                                                <td class="noExl">
                                                     <div class="d-flex">
                                                         <div class="image">
                                                             @if ($log->user->image)
@@ -97,6 +106,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"
                 integrity="sha512-d5Jr3NflEZmFDdFHZtxeJtBzk0eB+kkRXWFQqEc1EKmolXjHm2IKCA7kTvXBNjIYzjXfD5XzIjaaErpkZHCkBg=="
                 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="{{ asset('dashboard/app-assets/js/custom/export.js') }}"></script>
 
         <script>
             function Export() {
