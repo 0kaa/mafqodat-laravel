@@ -113,31 +113,43 @@
                         </div>
                         <!--/ Statistics Card -->
 
-                        <!-- Sales Line Chart Card -->
-                        <div class="col-lg-6 col-md-12">
+                        <div class="col-lg-12 col-md-12">
                             <div class="card">
-                                <div class="card-header align-items-start">
-                                    <div>
-                                        <h4 class="card-title mb-25">{{ __('items_statistics') }}</h4>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        {{-- export pdf button --}}
+                                        <input type="button" class="btn btn-primary mr-1 mb-2" id="btnExport"
+                                            value="{{ __('export_pdf') }}" onclick="Export()" />
+
+                                        {{-- export excel button --}}
+                                        <input type="button" class="btn btn-primary mr-1 mb-2" id="exportExcel"
+                                            value="{{ __('export_excel') }}" />
                                     </div>
                                 </div>
-                                <div class="card-body pb-0">
-                                    <canvas class="line-chart-ex chartjs" data-height="450" style="height: 300px;width: 546px;"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/ Sales Line Chart Card -->
 
-                        <div class="col-lg-6 col-md-12">
-                            <div class="card">
-                                <table class="datatables-basic table">
+                                <table class="datatables-basic table export_table" id="tblLatestItems">
                                     <thead>
                                         <tr>
                                             <th>{{ __('id') }}</th>
                                             <th>{{ __('category_name') }}</th>
                                             <th>{{ __('details') }}</th>
                                             <th>{{ __('station_name') }}</th>
-                                            <th>{{ __('actions') }}</th>
+                                            <th>{{ __('station_location') }}</th>
+                                            <th>{{ __('storage') }}</th>
+                                            <th class="noExl">{{ __('image') }}</th>
+                                            <th>{{ __('is_delivered') }}</th>
+                                            {{-- user data --}}
+                                            <th>{{ __('full_name') }}</th>
+                                            <th>{{ __('email') }}</th>
+                                            <th>{{ __('phone') }}</th>
+                                            <th>{{ __('mobile') }}</th>
+                                            <th>{{ __('address') }}</th>
+                                            <th>{{ __('second_address') }}</th>
+                                            <th>{{ __('city') }}</th>
+                                            <th>{{ __('post_code') }}</th>
+                                            <th class="noExl">{{ __('qr_code') }}</th>
+                                            <th class="noExl">{{ __('actions') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -147,7 +159,36 @@
                                                 <td>{{ $item->category->name }}</td>
                                                 <td>{{ $item->details }}</td>
                                                 <td>{{ $item->station->name . ' | ' . __($item->station->type) }}</td>
-                                                <td class="text-center">
+                                                <td>{{ $item->station->location }}</td>
+                                                <td>{{ $item->storage }}</td>
+                                                <td class="noExl">
+                                                    @if ($item->image != null)
+                                                        <img src="{{ asset('storage/' . $item->image) }}"
+                                                            style="width: 50px; height: auto;">
+                                                    @else
+                                                        <img src="https://via.placeholder.com/50">
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($item->is_delivered == 1)
+                                                        <span class="badge badge-light-success">{{ __('yes') }}</span>
+                                                    @else
+                                                        <span class="badge badge-light-danger">{{ __('no') }}</span>
+                                                    @endif
+                                                </td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->first_name . ' ' . $item->surname : '-' }}
+                                                </td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->email : '-' }}</td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->phone : '-' }}</td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->mobile : '-' }}</td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->address : '-' }}</td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->secondary_address : '-' }}</td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->city->name : '-' }}</td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->postcode : '-' }}</td>
+                                                <td class="my-2 noExl">
+                                                    {!! QrCode::generate(url('/admin/items') . '/' . $item->id) !!}
+                                                </td>
+                                                <td class="text-center noExl">
                                                     <div class="btn-group" role="group" aria-label="Second group">
                                                         <a href="{{ route('admin.items.show', $item->id) }}"
                                                             class="btn btn-sm btn-info"><i data-feather="eye"></i></a>
@@ -165,6 +206,24 @@
                                 </table>
                             </div>
                         </div>
+
+                        <!-- Sales Line Chart Card -->
+                        <div class="col-lg-12 col-md-12">
+                            <div class="card">
+                                <div class="card-header align-items-start">
+                                    <div>
+                                        <h4 class="card-title mb-25">{{ __('items_statistics') }}</h4>
+                                    </div>
+                                </div>
+                                <div class="card-body pb-0">
+                                    <canvas class="line-chart-ex chartjs" data-height="450"
+                                        style="height: 300px;width: 546px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/ Sales Line Chart Card -->
+
+
                     </div>
                 </section>
                 <!-- Dashboard Analytics end -->
@@ -174,13 +233,21 @@
     </div>
 
     @push('js')
-
         {{-- Chart Scripts --}}
 
         <script src="{{ asset('dashboard/app-assets/vendors/js/charts/apexcharts.min.js') }}"></script>
         <script src="{{ asset('dashboard/app-assets/vendors/js/charts/chart.min.js') }}"></script>
+        <script src="{{ asset('dashboard/app-assets/js/custom/export.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"
+                integrity="sha512-d5Jr3NflEZmFDdFHZtxeJtBzk0eB+kkRXWFQqEc1EKmolXjHm2IKCA7kTvXBNjIYzjXfD5XzIjaaErpkZHCkBg=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <script>
+            function Export() {
+                // print this
+                $('#tblLatestItems').printThis();
+            }
+
             $(document).ready(function() {
 
                 $('.item-delete').click(function(e) {
@@ -363,23 +430,23 @@
                         },
                         data: {
                             labels: [
-                            "Apr",
-                            "May",
-                            "Jun",
-                            "July",
-                            "Aug",
-                            "Sep",
-                            "Oct",
-                            "Nov",
-                            "Dec",
-                            "Jan",
-                            "Feb",
-                            "Mar",
+                                "Apr",
+                                "May",
+                                "Jun",
+                                "July",
+                                "Aug",
+                                "Sep",
+                                "Oct",
+                                "Nov",
+                                "Dec",
+                                "Jan",
+                                "Feb",
+                                "Mar",
                             ],
                             datasets: [{
                                 data: [
                                     @foreach ($lost_items as $item)
-                                        {{ $item->count() }} ,
+                                        {{ $item->count() }},
                                     @endforeach
                                 ],
                                 label: "{{ __('items') }}",

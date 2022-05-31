@@ -37,7 +37,6 @@ class Item extends Model
         'address',
         'secondary_address',
         'city_id',
-        'country_id',
         'postcode',
         'phone',
         'mobile',
@@ -71,10 +70,5 @@ class Item extends Model
     public function city()
     {
         return $this->belongsTo(City::class, 'city_id', 'id');
-    }
-
-    public function country()
-    {
-        return $this->belongsTo(Country::class, 'country_id', 'id');
     }
 }

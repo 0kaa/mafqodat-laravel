@@ -447,7 +447,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('address') }}</label>
@@ -463,7 +463,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('second_address') }}</label>
@@ -480,43 +480,21 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
-                                                                    for="selectCountry">{{ __('select_country') }}</label>
+                                                                    for="selectCity">{{ __('select_city') }}</label>
                                                                 <select class="form-control form-control-lg mb-1"
-                                                                    name="country_id" id="selectCountry" required>
+                                                                    name="city_id" id="selectCity" required>
 
-                                                                    @foreach ($countries as $country)
-                                                                        <option value="{{ $country->id }}"
-                                                                            {{ old('country_id', $item->country_id) == $country->id ? 'selected' : '' }}>
-                                                                            {{ $country->name }}
+                                                                    @foreach ($cities as $city)
+                                                                        <option value="{{ $city->id }}"
+                                                                            {{ old('city_id', $item->city_id) == $city->id ? 'selected' : '' }}>
+                                                                            {{ $city->name }}
                                                                         </option>
                                                                     @endforeach
 
                                                                 </select>
-                                                                @error('country_id')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-6">
-                                                            <div class="form-group" id="city_form_select">
-                                                                <label for="selectCity">{{ __('select_city') }}</label>
-                                                                <div class="form-group">
-                                                                    <select id="selectCity" name="city_id"
-                                                                        class="form-control form-control-lg mb-1" required>
-
-                                                                        <option value="">
-
-                                                                        </option>
-
-                                                                    </select>
-                                                                </div>
                                                                 @error('city_id')
                                                                     <span class="alert alert-danger">
                                                                         <small
@@ -628,7 +606,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('address') }}</label>
@@ -644,7 +622,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('second_address') }}</label>
@@ -662,41 +640,23 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
-                                                                    for="selectCountry">{{ __('select_country') }}</label>
+                                                                    for="selectCity">{{ __('select_city') }}</label>
                                                                 <select class="form-control form-control-lg mb-1"
-                                                                    name="country_id" id="selectCountry" required>
+                                                                    name="city_id" id="selectCity" required>
 
                                                                     <option value="">{{ __('select') }}</option>
 
-                                                                    @foreach ($countries as $country)
-                                                                        <option value="{{ $country->id }}"
-                                                                            {{ old('country_id') == $country->id ? 'selected' : '' }}>
-                                                                            {{ $country->name }}
+                                                                    @foreach ($cities as $city)
+                                                                        <option value="{{ $city->id }}"
+                                                                            {{ old('city_id') == $city->id ? 'selected' : '' }}>
+                                                                            {{ $city->name }}
                                                                         </option>
                                                                     @endforeach
 
                                                                 </select>
-                                                                @error('country_id')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-6">
-                                                            <div class="form-group" id="city_form_select">
-                                                                <label for="selectCity">{{ __('select_city') }}</label>
-                                                                <div class="form-group">
-                                                                    <select id="selectCity" name="city_id"
-                                                                        class="form-control form-control-lg mb-1" required>
-                                                                        <option value="">{{ __('select') }}</option>
-                                                                    </select>
-                                                                </div>
                                                                 @error('city_id')
                                                                     <span class="alert alert-danger">
                                                                         <small
@@ -886,66 +846,6 @@
 
             });
 
-            $('#update_item_form').submit(function() {
-
-                localStorage.setItem('city', $("#selectCity").val());
-
-            })
-
-            window.onload = (() => {
-                if ($('#selectCountry').val()) {
-
-                    $('#city_form_select').fadeIn();
-                    var idCountry = $('#selectCountry').val();
-                    $("#selectCity").html('');
-
-
-                    $.ajax({
-                        url: "{{ route('admin.get_cities') }}",
-                        type: "POST",
-                        data: {
-                            country_id: idCountry,
-                            _token: '{{ csrf_token() }}'
-                        },
-                        dataType: 'json',
-                        success: function(result) {
-
-                            var city = localStorage.getItem('city');
-
-                            $.each(result.cities, function(key, value) {
-                                $("#selectCity").append('<option value="' + value
-                                    .id + '" ' + (city == value.id ? 'selected' : '') + '>' +
-                                    value.name + '</option>');
-                            });
-                        }
-                    });
-
-                }
-
-            });
-
-            // $('#city_form_select').hide();
-            $('#selectCountry').on('change', function() {
-                $('#city_form_select').fadeIn();
-                var idCountry = this.value;
-                $("#selectCity").html('');
-                $.ajax({
-                    url: "{{ route('admin.get_cities') }}",
-                    type: "POST",
-                    data: {
-                        country_id: idCountry,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    dataType: 'json',
-                    success: function(result) {
-                        $('#selectCity').html('<option value="">{{ __('select') }}</option>');
-                        $.each(result.cities, function(key, value) {
-                            $("#selectCity").append('<option value="' + value
-                                .id + '">' + value.name + '</option>');
-                        });
-                    }
-                });
-            });
         </script>
     @endpush
 @endsection

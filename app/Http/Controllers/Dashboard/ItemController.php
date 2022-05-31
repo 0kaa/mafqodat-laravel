@@ -7,7 +7,6 @@ use App\Http\Requests\Dashboard\ItemRequest;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Station;
-use App\Models\Country;
 use App\Models\City;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -115,12 +114,10 @@ class ItemController extends Controller
 
         $stations = Station::get();
 
-        $countries = Country::get();
-
-        $cities = City::where('country_id', $item->country_id)->get();
+        $cities = City::get();
 
         if ($item) {
-            return view('dashboard.items.edit', compact('item', 'categories', 'stations', 'countries', 'cities'));
+            return view('dashboard.items.edit', compact('item', 'categories', 'stations', 'cities'));
         } else {
             return view('dashboard.error');
         }
@@ -140,7 +137,7 @@ class ItemController extends Controller
 
         $slug = Category::where('id', $request->category_id)->first()->slug;
 
-        $data = $request->except('_token', '_method', 'image', 'first_name', 'surname', 'is_delivered', 'email', 'phone', 'address', 'second_address', 'postcode', 'city', 'mobile');
+        $data = $request->except('_token', '_method', 'image', 'first_name', 'surname', 'is_delivered', 'email', 'phone', 'address', 'second_address', 'postcode', 'city_id', 'mobile');
 
         $date = Carbon::create($request->date);
         $time = Carbon::create($request->time);
@@ -173,7 +170,7 @@ class ItemController extends Controller
 
         } else {
 
-            if ($request->type != null && $request->details != null) {
+            if ($request->details != null) {
 
                 $data['type'] = null;
                 $data['details'] = $request->details;
