@@ -24,9 +24,6 @@ class EmployeeRequest extends FormRequest
             'phone.required'       => __('phone_required'),
             'phone.min'            => __('phone_min'),
             'phone.max'            => __('phone_max'),
-            'mobile.required'      => __('mobile_required'),
-            'mobile.min'           => __('mobile_min'),
-            'mobile.max'           => __('mobile_max'),
             'city_id.required'     => __('city_required'),
         ];
     }
@@ -66,8 +63,10 @@ class EmployeeRequest extends FormRequest
                     'address'        => 'required',
                     'second_address' => 'nullable',
                     'phone'          => 'required',
-                    'mobile'         => 'required',
                     'city_id'        => 'required',
+                    'date_of_hiring' => 'required',
+                    'job_number'     => 'required',
+                    'working_period' => 'required',
                 ];
 
                 break;

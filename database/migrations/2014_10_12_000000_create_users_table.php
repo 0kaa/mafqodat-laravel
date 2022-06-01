@@ -22,7 +22,9 @@ return new class extends Migration
             $table->string('second_address')->nullable();
             $table->string('post_code')->nullable();
             $table->string('phone')->nullable();
-            $table->string('mobile')->nullable();
+            $table->string('job_number')->nullable();
+            $table->enum('working_period', ['morning', 'evening', 'night'])->nullable();
+            $table->timestamp('date_of_hiring')->nullable();
             $table->string('image')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');

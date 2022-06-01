@@ -30,7 +30,6 @@ class UserTableSeeder extends Seeder
             'email' => 'user@test.com',
             'password' => \bcrypt('123456'),
             'address' => 'test address',
-            'mobile' => '123456789',
             'phone' => '123456789',
             'city_id' => 1,
         ]);

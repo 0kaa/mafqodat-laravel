@@ -226,5 +226,12 @@
     "report_number"                : "رقم البلاغ",
     "deliverd_name"                : "اسم المستلم",
     "deliverd_phone"               : "هاتف المستلم",
+    "job_number"                   : "الرقم الوظيفي",
+    "date_of_hiring"               : "تاريخ التعيين",
+    "working_period"               : "فترة الدوام",
+    "select_working_period"        : "إختر فترة الدوام",
+    "morning"                      : "صباحاً",
+    "evening"                      : "مساءً",
+    "night"                        : "ليلاً",
     ""                             : ""
 }

@@ -23,9 +23,8 @@ $(document).ready(function () {
                 required: true,
                 maxlength: 12,
             },
-            mobile: {
+            job_number: {
                 required: true,
-                maxlength: 12,
             },
             password: {
                 required: true,
@@ -71,9 +70,11 @@ $(document).ready(function () {
                 required: true,
                 maxlength: 12,
             },
-            mobile: {
+            job_number: {
                 required: true,
-                maxlength: 12,
+            },
+            working_period: {
+                required: true,
             },
             // password: {
             //     required: true,

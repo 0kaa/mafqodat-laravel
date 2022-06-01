@@ -128,27 +128,13 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-6">
+                                                    <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="first-name-vertical">{{ __('phone') }}</label>
                                                             <input type="text" class="form-control" name="phone"
                                                                 value="{{ old('phone', $user->phone) }}"
                                                                 placeholder="{{ __('write_phone') }}" />
                                                             @error('phone')
-                                                                <span class="alert alert-danger">
-                                                                    <small class="errorTxt">{{ $message }}</small>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label for="first-name-vertical">{{ __('mobile') }}</label>
-                                                            <input type="text" class="form-control" name="mobile"
-                                                                value="{{ old('mobile', $user->mobile) }}"
-                                                                placeholder="{{ __('write_mobile') }}" />
-                                                            @error('mobile')
                                                                 <span class="alert alert-danger">
                                                                     <small class="errorTxt">{{ $message }}</small>
                                                                 </span>

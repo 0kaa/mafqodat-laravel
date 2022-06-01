@@ -221,6 +221,13 @@
     "informer_phone"               : "Informer Phone",
     "report_number"                : "Report Number",
     "delivered_name"               : "Recipient Name",
-    "delivered_phone"               : "Recipient Phone",
+    "delivered_phone"              : "Recipient Phone",
+    "job_number"                   : "Job Number",
+    "date_of_hiring"               : "Date of Hiring",
+    "working_period"               : "Working Period",
+    "select_working_period"        : "Select Working Period",
+    "morning"                      : "Morning",
+    "evening"                      : "Evening",
+    "night"                        : "Night",
     ""                             : ""
 }

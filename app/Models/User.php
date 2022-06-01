@@ -22,8 +22,10 @@ class User extends Authenticatable
         'first_name',
         'family_name',
         'address',
-        'mobile',
         'phone',
+        'job_number',
+        'working_period',
+        'date_of_hiring',
         'email',
         'password',
         'city_id',
@@ -52,6 +54,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $dates = [
+        'date_of_hiring',
+    ];
+
     protected function rules()
     {
         return [
@@ -62,7 +68,7 @@ class User extends Authenticatable
             'address'        => 'required|min:3',
             'second_address' => 'nullable|min:3',
             'phone'          => 'required|min:8|max:12',
-            'mobile'         => 'required|min:8|max:12',
+            'job_number'     => 'required',
             'city_id'        => 'required',
         ];
     }

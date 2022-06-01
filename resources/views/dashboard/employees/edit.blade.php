@@ -155,11 +155,43 @@
 
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="first-name-vertical">{{ __('mobile') }}</label>
-                                                    <input type="text" class="form-control" name="mobile"
-                                                        value="{{ old('mobile', $employee->mobile) }}"
-                                                        placeholder="{{ __('write_mobile') }}" />
-                                                    @error('mobile')
+                                                    <label for="first-name-vertical">{{ __('job_number') }}</label>
+                                                    <input type="text" class="form-control" name="job_number"
+                                                        value="{{ old('job_number', $employee->job_number) }}"
+                                                        placeholder="{{ __('job_number') }}" />
+                                                    @error('job_number')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="selectWorkPeriod">{{ __('select_working_period') }}</label>
+                                                    <select class="form-control form-control-lg mb-1" name="working_period"
+                                                        id="selectWorkPeriod" required>
+
+                                                        <option value="morning" {{ $employee->working_period == 'morning' ? 'selected' : '-' }}>{{ __('morning') }}</option>
+                                                        <option value="evening" {{ $employee->working_period == 'evening' ? 'selected' : '-' }}>{{ __('evening') }}</option>
+                                                        <option value="night" {{ $employee->working_period == 'night' ? 'selected' : '-' }}>{{ __('night') }}</option>
+
+                                                    </select>
+                                                    @error('working_period')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="first-name-vertical">{{ __('date_of_hiring') }}</label>
+                                                    <input type="date" class="form-control" name="date_of_hiring"
+                                                        value="{{ old('date_of_hiring', $employee->date_of_hiring->format('Y-m-d')) }}" required/>
+                                                    @error('date_of_hiring')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
                                                         </span>
