@@ -48,12 +48,12 @@
                             />
                             <div class="card">
                                 <table class="datatables-basic table export_table" id="tblCustomers">
-                                    <thead>
+                                    <thead class="filters">
                                         <tr>
                                             <th>{{ __('id') }}</th>
-                                            <th class="noExl">{{ __('image') }}</th>
                                             <th>{{ __('employee_name') }}</th>
                                             <th>{{ __('log') }}</th>
+                                            <th>{{ __('date') }}</th>
                                             {{-- <th>{{ __('actions') }}</th> --}}
                                         </tr>
                                     </thead>
@@ -61,18 +61,6 @@
                                         @foreach ($logs as $log)
                                             <tr>
                                                 <td>{{ $log->id }}</td>
-                                                <td class="noExl">
-                                                    <div class="d-flex">
-                                                        <div class="image">
-                                                            @if ($log->user->image)
-                                                                <img src="{{ asset('storage/' . $log->user->image) }}"
-                                                                    alt="" width="75px">
-                                                            @else
-                                                                <img src="https://via.placeholder.com/75" alt="">
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </td>
                                                 <td>{{ $log->user->first_name . ' ' . $log->user->family_name }}</td>
                                                 <td>
                                                     <div class="d-flex">
@@ -82,6 +70,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
+                                                <td>{{ $log->created_at->format('Y-m-d') }}</td>
                                                 {{-- <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
                                                             <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
