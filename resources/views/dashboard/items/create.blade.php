@@ -24,19 +24,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
-                    <div class="form-group breadcrumb-right">
-                        <div class="dropdown">
-                            <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                    data-feather="grid"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
-                                    href="{{ route('admin.items.create') }}"><i class="mr-1"
-                                        data-feather="check-square"></i><span
-                                        class="align-middle">{{ __('new_item') }}</span></a></div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="content-body">
                 <!-- Basic Vertical form layout section start -->
@@ -54,7 +41,26 @@
                                         @csrf
                                         <div class="row">
 
-                                            <div class="col-12">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="reportType">{{ __('report_type') }}</label>
+                                                    <select class="form-control mb-1" name="report_type" id="reportType"
+                                                        required>
+
+                                                        <option value="">{{ __('select') }}</option>
+                                                        <option value="lost" {{ old('report_type' == 'lost' ? 'selected' : '') }}>{{ __('add_lost_item') }}</option>
+                                                        <option value="found" {{ old('report_type' == 'found' ? 'selected' : '') }}>{{ __('report_found_item') }}</option>
+
+                                                    </select>
+                                                    @error('report_type')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="selectCategory">{{ __('select_category') }}</label>
                                                     <select class="form-control mb-1" name="category_id" id="selectCategory"
@@ -72,6 +78,33 @@
 
                                                     </select>
                                                     @error('category_id')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            {{-- informer data --}}
+                                            <div class="col-6">
+                                                <div class="form-group" id="informer_name">
+                                                    <label for="first-name-vertical">{{ __('informer_name') }}</label>
+                                                    <input type="text" class="form-control" name="informer_name"
+                                                        value="{{ old('informer_name') }}" placeholder="{{ __('informer_name') }}" />
+                                                    @error('informer_name')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form-group" id="informer_phone">
+                                                    <label for="first-name-vertical">{{ __('informer_phone') }}</label>
+                                                    <input type="text" class="form-control" name="informer_phone"
+                                                        value="{{ old('informer_phone') }}" placeholder="{{ __('informer_phone') }}" />
+                                                    @error('informer_phone')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
                                                         </span>
@@ -174,48 +207,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-4">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">{{ __('primary_colour') }}</label>
-                                                    <input type="text" class="form-control" name="primary_colour"
-                                                        value="{{ old('primary_colour') }}"
-                                                        placeholder="{{ __('primary_colour') }}" />
-                                                    @error('primary_colour')
-                                                        <span class="alert alert-danger">
-                                                            <small class="errorTxt">{{ $message }}</small>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="col-4">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">{{ __('secondary_colour') }}</label>
-                                                    <input type="text" class="form-control" name="secondary_colour"
-                                                        value="{{ old('secondary_colour') }}"
-                                                        placeholder="{{ __('secondary_colour') }}" />
-                                                    @error('secondary_colour')
-                                                        <span class="alert alert-danger">
-                                                            <small class="errorTxt">{{ $message }}</small>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="col-4">
-                                                <div class="form-group">
-                                                    <label for="first-name-vertical">{{ __('tertiary_colour') }}</label>
-                                                    <input type="text" class="form-control" name="tertiary_colour"
-                                                        value="{{ old('tertiary_colour') }}"
-                                                        placeholder="{{ __('tertiary_colour') }}" />
-                                                    @error('tertiary_colour')
-                                                        <span class="alert alert-danger">
-                                                            <small class="errorTxt">{{ $message }}</small>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="selectStation">{{ __('select_station') }}</label>
@@ -239,12 +230,6 @@
                                                             <small class="errorTxt">{{ $message }}</small>
                                                         </span>
                                                     @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="row" id="appendStation">
-
                                                 </div>
                                             </div>
 
@@ -342,26 +327,6 @@
                 $('#append_qrcode').printThis();
             });
 
-            $('#selectStation').on('change', function() {
-
-                var id = this.value;
-                $("#appendStation").html();
-
-                $.ajax({
-                    url: "{{ route('admin.get_stations') }}",
-                    type: "get",
-                    data: {
-                        id: id,
-                    },
-                    dataType: 'html',
-                    success: function(result) {
-
-                        $("#appendStation").html(result);
-
-                    }
-                });
-            });
-
             $("#close_modal").click(function(e) {
                 e.preventDefault();
                 $.ajax({
@@ -409,6 +374,28 @@
                     $('#item_cost').hide();
                     $('#item_details').show();
 
+                }
+
+            });
+
+
+            $('#informer_name').hide();
+            $('#informer_phone').hide();
+
+            $('#reportType').change(function(e) {
+                e.preventDefault();
+
+                var value = $(this).val();
+
+                if (value == 'found') {
+
+                    $('#informer_name').show();
+                    $('#informer_phone').show();
+
+                } else {
+
+                    $('#informer_name').hide();
+                    $('#informer_phone').hide();
                 }
 
             });

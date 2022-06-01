@@ -48,7 +48,6 @@ class ItemController extends Controller
      */
     public function store(ItemRequest $request)
     {
-
         $data = $request->except('_token');
 
         $date = Carbon::create($request->date);
@@ -61,6 +60,16 @@ class ItemController extends Controller
         if ($request->has('image')) {
             $data['image'] = $request->file('image')->store('items');
         }
+
+        if($request->report_type == 'found') {
+            $data['informer_name'] = $request->informer_name;
+            $data['informer_phone'] = $request->informer_phone;
+        } else {
+            $data['informer_name'] = null;
+            $data['informer_phone'] = null;
+        }
+
+        $data['report_number'] = random_int(00000, 99999);
 
         $data['user_id'] = auth()->user()->id;
 
@@ -213,6 +222,15 @@ class ItemController extends Controller
         } else {
             $data['image'] = $item->image;
         }
+
+        if($request->report_type == 'found') {
+            $data['informer_name'] = $request->informer_name;
+            $data['informer_phone'] = $request->informer_phone;
+        } else {
+            $data['informer_name'] = null;
+            $data['informer_phone'] = null;
+        }
+
 
         if ($item) {
 

@@ -8,6 +8,14 @@ $(document).ready(function () {
 
     });
 
+    value = '';
+    $('#reportType').change(function(e) {
+        e.preventDefault();
+
+        value = $(this).find(':selected').val();
+
+    });
+
 
     $('#create_item_form').validate({ // initialize the plugin
 
@@ -50,6 +58,18 @@ $(document).ready(function () {
             station_id: {
                 required: true
             },
+            informer_name: {
+                required: true,
+                depends: function(element) {
+                    return value == 'found';
+                }
+            },
+            informer_phone: {
+                required: true,
+                depends: function(element) {
+                    return value == 'found';
+                }
+            },
 
         },
 
@@ -62,6 +82,14 @@ $(document).ready(function () {
 
 /* Update item Validation */
 $(document).ready(function () {
+
+    value = '';
+    $('#reportType').change(function(e) {
+        e.preventDefault();
+
+        value = $(this).find(':selected').val();
+
+    });
 
     $('#update_item_form').validate({ // initialize the plugin
 
@@ -141,6 +169,18 @@ $(document).ready(function () {
                 maxlength: 12,
                 depends: function(element) {
                     return $("#is_delivered").is(":checked");
+                }
+            },
+            informer_name: {
+                required: true,
+                depends: function(element) {
+                    return value == 'found';
+                }
+            },
+            informer_phone: {
+                required: true,
+                depends: function(element) {
+                    return value == 'found';
                 }
             },
         },

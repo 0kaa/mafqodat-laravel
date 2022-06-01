@@ -196,3 +196,7 @@ a:hover {
 .card.home-item {
     padding: 0 !important;
 }
+
+.datatables-basic{
+    white-space: nowrap;
+}

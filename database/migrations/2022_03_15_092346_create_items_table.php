@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             /* Lost item data */
             $table->id();
+            $table->enum('report_type', ['lost', 'found']);
+            $table->integer('report_number')->unique();
             $table->timestamp('date')->nullable();
             $table->timestamp('time')->nullable();
             $table->string('storage');
             $table->string('image')->nullable();
-            $table->string('primary_colour')->nullable();
-            $table->string('secondary_colour')->nullable();
-            $table->string('tertiary_colour')->nullable();
+            $table->string('second_image')->nullable();
             $table->longText('details')->nullable();
             $table->string('type')->nullable();
             $table->string('cost')->nullable();
@@ -38,6 +38,10 @@ return new class extends Migration
             $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->boolean('is_delivered')->default(0)->nullable();
+
+            /* informer data */
+            $table->string('informer_name')->nullable();
+            $table->string('informer_phone')->nullable();
 
             /* User data */
             $table->string('first_name')->nullable();

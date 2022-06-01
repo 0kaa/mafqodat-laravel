@@ -40,6 +40,14 @@
 
                                             <div class="my-2">
                                                 <ul>
+                                                    <li>{{ __('report_type') }} : {{ __($item->report_type) }}</li>
+
+                                                    @if ($item->report_type == 'found')
+                                                        <li>{{ __('informer_name') }} : {{ $item->informer_name }}</li>
+                                                        <li>{{ __('informer_phone') }} : {{ $item->informer_phone }}
+                                                        </li>
+                                                    @endif
+
                                                     <li>{{ __('category_name') }} : {{ $item->category->name }}</li>
 
                                                     @if ($item->category->slug == 'other')
@@ -51,15 +59,7 @@
 
                                                     <li>{{ __('station_name') }} : {{ $item->station->name }}</li>
                                                     <li>{{ __('station_number') }} : {{ $item->station->number }}</li>
-                                                    <li>{{ __('station_location') }} : {{ $item->station->location }}
-                                                    </li>
-
-                                                    <li>{{ __('primary_colour') }} : {{ $item->primary_colour }}</li>
-                                                    <li>{{ __('secondary_colour') }} :
-                                                        {{ $item->secondary_colour }}
-                                                    </li>
-                                                    <li>{{ __('tertiary_colour') }} :
-                                                        {{ $item->tertiary_colour }}</li>
+                                                    <li>{{ __('station_location') }} : {{ $item->station->location }}</li>
                                                 </ul>
                                             </div>
                                         </div>

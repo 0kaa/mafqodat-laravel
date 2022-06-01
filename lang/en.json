@@ -214,5 +214,13 @@
     "show_item"                    : "Show Item",
     "export_pdf"                   : "Export PDF",
     "export_excel"                 : "Export Excel",
+    "add_lost_item"                : "Add Lost Item",
+    "report_found_item"            : "Report Found Item",
+    "report_type"                  : "Report Type",
+    "informer_name"                : "Informer Name",
+    "informer_phone"               : "Informer Phone",
+    "report_number"                : "Report Number",
+    "delivered_name"               : "Recipient Name",
+    "delivered_phone"               : "Recipient Phone",
     ""                             : ""
 }

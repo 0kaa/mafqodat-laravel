@@ -12,11 +12,11 @@ class Item extends Model
 
     protected $fillable = [
         /* Lost item data */
+        'report_type',
+        'report_number',
         'details',
         'image',
-        'primary_colour',
-        'secondary_colour',
-        'tertiary_colour',
+        'second_image',
         'date',
         'time',
         'category_id',
@@ -30,6 +30,10 @@ class Item extends Model
         'storage',
         'is_delivered',
         'user_id',
+
+        /* informer data */
+        'informer_name',
+        'informer_phone',
 
         /* User data */
         'first_name',

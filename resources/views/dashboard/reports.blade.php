@@ -132,36 +132,33 @@
                                     <thead>
                                         <tr>
                                             <th>{{ __('id') }}</th>
+                                            <th>{{ __('report_number') }}</th>
                                             <th>{{ __('category_name') }}</th>
-                                            <th>{{ __('details') }}</th>
+                                            <th>{{ __('storage') }}</th>
+                                            <th>{{ __('date') }}</th>
+                                            <th>{{ __('time') }}</th>
                                             <th>{{ __('station_name') }}</th>
                                             <th>{{ __('station_location') }}</th>
-                                            <th>{{ __('storage') }}</th>
-                                            <th class="noExl">{{ __('image') }}</th>
+                                            <th>{{ __('image') }}</th>
                                             <th>{{ __('is_delivered') }}</th>
-                                            {{-- user data --}}
-                                            <th>{{ __('full_name') }}</th>
-                                            <th>{{ __('email') }}</th>
-                                            <th>{{ __('phone') }}</th>
-                                            <th>{{ __('mobile') }}</th>
-                                            <th>{{ __('address') }}</th>
-                                            <th>{{ __('second_address') }}</th>
-                                            <th>{{ __('city') }}</th>
-                                            <th>{{ __('post_code') }}</th>
-                                            <th class="noExl">{{ __('qr_code') }}</th>
-                                            <th class="noExl">{{ __('actions') }}</th>
+                                            <th>{{ __('qr_code') }}</th>
+                                            <th>{{ __('deliverd_name') }}</th>
+                                            <th>{{ __('deliverd_phone') }}</th>
+                                            <th>{{ __('actions') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($latest_items as $item)
                                             <tr>
                                                 <td>{{ $item->id }}</td>
+                                                <td>{{ $item->report_number }}</td>
                                                 <td>{{ $item->category->name }}</td>
-                                                <td>{{ $item->details }}</td>
-                                                <td>{{ $item->station->name . ' | ' . __($item->station->type) }}</td>
-                                                <td>{{ $item->station->location }}</td>
                                                 <td>{{ $item->storage }}</td>
-                                                <td class="noExl">
+                                                <td>{{ $item->date->format('Y-m-d') }}</td>
+                                                <td>{{ $item->time->format('h:i A') }}</td>
+                                                <td>{{ $item->station->name}}</td>
+                                                <td>{{ $item->station->location }}</td>
+                                                <td>
                                                     @if ($item->image != null)
                                                         <img src="{{ asset('storage/' . $item->image) }}"
                                                             style="width: 50px; height: auto;">
@@ -176,19 +173,12 @@
                                                         <span class="badge badge-light-danger">{{ __('no') }}</span>
                                                     @endif
                                                 </td>
-                                                <td>{{ $item->is_delivered == 1 ? $item->first_name . ' ' . $item->surname : '-' }}
-                                                </td>
-                                                <td>{{ $item->is_delivered == 1 ? $item->email : '-' }}</td>
-                                                <td>{{ $item->is_delivered == 1 ? $item->phone : '-' }}</td>
-                                                <td>{{ $item->is_delivered == 1 ? $item->mobile : '-' }}</td>
-                                                <td>{{ $item->is_delivered == 1 ? $item->address : '-' }}</td>
-                                                <td>{{ $item->is_delivered == 1 ? $item->secondary_address : '-' }}</td>
-                                                <td>{{ $item->is_delivered == 1 ? $item->city->name : '-' }}</td>
-                                                <td>{{ $item->is_delivered == 1 ? $item->postcode : '-' }}</td>
-                                                <td class="my-2 noExl">
+                                                <td class="my-2">
                                                     {!! QrCode::generate(url('/admin/items') . '/' . $item->id) !!}
                                                 </td>
-                                                <td class="text-center noExl">
+                                                <td>{{ $item->is_delivered == 1 ? $item->first_name . ' ' . $item->surname : '-' }}</td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->phone : '-' }}</td>
+                                                <td class="text-center">
                                                     <div class="btn-group" role="group" aria-label="Second group">
                                                         <a href="{{ route('admin.items.show', $item->id) }}"
                                                             class="btn btn-sm btn-info"><i data-feather="eye"></i></a>

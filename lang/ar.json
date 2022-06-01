@@ -216,5 +216,15 @@
     "show_item"                    : "عرض المفقود",
     "export_pdf"                   : "تصدير PDF",
     "export_excel"                 : "تصدير Excel",
+    "add_lost_item"                : "تسجيل مفقود",
+    "report_found_item"            : "بلاغ عن مفقود",
+    "lost"                         : "تسجيل مفقود",
+    "found"                        : "بلاغ عن مفقود",
+    "report_type"                  : "نوع البلاغ",
+    "informer_name"                : "اسم المبلغ",
+    "informer_phone"               : "رقم الجوال",
+    "report_number"                : "رقم البلاغ",
+    "deliverd_name"                : "اسم المستلم",
+    "deliverd_phone"               : "هاتف المستلم",
     ""                             : ""
 }
