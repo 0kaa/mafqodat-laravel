@@ -288,11 +288,18 @@
 
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="first-name-vertical">{{ __('storage') }}</label>
-                                                    <input type="text" class="form-control" name="storage"
-                                                        value="{{ old('storage', $item->storage) }}"
-                                                        placeholder="{{ __('storage') }}" />
-                                                    @error('storage')
+                                                    <label for="selectStorage">{{ __('select_storage') }}</label>
+                                                    <select class="form-control mb-1" name="storage_id" id="selectStorage"
+                                                        required>
+
+                                                        @foreach ($storages as $storage)
+                                                            <option value="{{ $storage->id }}"
+                                                                {{ old('storage_id', $item->storage_id) == $storage->id ? 'selected' : '' }}>
+                                                                {{ $storage->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('storage_id')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
                                                         </span>
@@ -827,6 +834,32 @@
                     $('#informer_name').hide();
                     $('#informer_phone').hide();
                 }
+
+            });
+
+            $('#selectCategory').change(function(e) {
+                e.preventDefault();
+
+                var category_id = $(this).val();
+                $("#selectStorage").html('');
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('admin.get_storages') }}",
+                    data: {
+                        category_id: category_id,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    dataType: "json",
+                    success: function(result) {
+
+                        $('#selectStorage').html('<option value="">{{ __('select') }}</option>');
+                        $.each(result.storages, function(key, value) {
+                            $("#selectStorage").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+
+                    }
+                });
 
             });
         </script>

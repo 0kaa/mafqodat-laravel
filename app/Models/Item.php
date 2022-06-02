@@ -27,7 +27,7 @@ class Item extends Model
         'lat',
         'lng',
         'location',
-        'storage',
+        'storage_id',
         'is_delivered',
         'user_id',
 
@@ -74,5 +74,10 @@ class Item extends Model
     public function city()
     {
         return $this->belongsTo(City::class, 'city_id', 'id');
+    }
+
+    public function storage()
+    {
+        return $this->belongsTo(Storage::class, 'storage_id', 'id');
     }
 }

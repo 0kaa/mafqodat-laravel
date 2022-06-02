@@ -69,7 +69,7 @@
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->report_number }}</td>
                                                 <td>{{ $item->category->name }}</td>
-                                                <td>{{ $item->storage }}</td>
+                                                <td>{{ $item->storage->name }}</td>
                                                 <td>{{ $item->date->format('Y-m-d') }}</td>
                                                 <td>{{ $item->time->format('h:i A') }}</td>
                                                 <td>{{ $item->station->name}}</td>

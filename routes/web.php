@@ -60,6 +60,8 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization', 'role:super_admin
 
     Route::resource('storages', 'StorageController');
 
+    Route::post('get-storages', 'ItemController@getStorages')->name('get_storages');
+
     Route::resource('stations', 'StationController');
 
     Route::resource('items', 'ItemController');

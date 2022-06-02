@@ -233,5 +233,6 @@
     "new_storage"                  : "Add New Storage",
     "storage_name"                 : "Storage Name",
     "edit_storage"                 : "Edit Storage",
+    "select_storage"               : "Select Storage",
     ""                             : ""
 }

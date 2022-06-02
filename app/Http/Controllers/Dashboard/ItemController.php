@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\ItemRequest;
+use App\Http\Resources\StorageResource;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Station;
 use App\Models\City;
+use App\Models\Storage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -125,8 +127,10 @@ class ItemController extends Controller
 
         $cities = City::get();
 
+        $storages = Storage::where('category_id' , $item->category_id)->get();
+
         if ($item) {
-            return view('dashboard.items.edit', compact('item', 'categories', 'stations', 'cities'));
+            return view('dashboard.items.edit', compact('item', 'categories', 'stations', 'cities', 'storages'));
         } else {
             return view('dashboard.error');
         }
@@ -257,11 +261,15 @@ class ItemController extends Controller
         ]);
     }
 
-    public function getStations(Request $request)
+    public function getStorages(Request $request)
     {
-        $station = Station::find($request->id);
+        $storages = Storage::where('category_id', $request->category_id)->get();
 
-        return view('dashboard.ajax.stations', compact('station'))->render();
+        $storages = StorageResource::collection($storages);
+
+        return response()->json([
+            'storages' => $storages
+        ]);
     }
 
     public function removeSession()

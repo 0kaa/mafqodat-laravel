@@ -237,5 +237,6 @@
     "new_storage"                  : "إضافة مخزن جديد",
     "storage_name"                 : "اسم المخزن",
     "edit_storage"                 : "تعديل مخزن",
+    "select_storage"               : "إختر المخزن",
     ""                             : ""
 }

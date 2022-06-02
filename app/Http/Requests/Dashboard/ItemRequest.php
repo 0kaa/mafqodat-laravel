@@ -25,14 +25,14 @@ class ItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id'     => 'required',
-            'station_id'      => 'required',
-            'storage'         => 'required',
-            'date'            => 'required',
-            'description'     => 'sometimes',
-            'image'           => 'sometimes',
-            'location'        => 'required',
-            'report_type'     => 'required',
+            'category_id' => 'required',
+            'station_id'  => 'required',
+            'storage_id'  => 'required',
+            'date'        => 'required',
+            'description' => 'sometimes',
+            'image'       => 'sometimes',
+            'location'    => 'required',
+            'report_type' => 'required',
         ];
     }
 }

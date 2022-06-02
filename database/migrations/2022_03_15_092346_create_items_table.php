@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer('report_number')->unique();
             $table->timestamp('date')->nullable();
             $table->timestamp('time')->nullable();
-            $table->string('storage');
             $table->string('image')->nullable();
             $table->string('second_image')->nullable();
             $table->longText('details')->nullable();
@@ -31,6 +30,8 @@ return new class extends Migration
             $table->string('lng')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->unsignedBigInteger('storage_id');
+            $table->foreign('storage_id')->references('id')->on('storages')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('station_id');

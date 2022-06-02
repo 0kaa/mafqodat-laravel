@@ -48,9 +48,8 @@ $(document).ready(function () {
             time: {
                 required: true,
             },
-            storage: {
+            storage_id: {
                 required: true,
-                minlength: 3,
             },
             category_id: {
                 required: true
@@ -110,9 +109,8 @@ $(document).ready(function () {
             time: {
                 required: true,
             },
-            storage: {
+            storage_id: {
                 required: true,
-                minlength: 3,
             },
             category_id: {
                 required: true

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Storage extends Model
 {
@@ -15,7 +16,7 @@ class Storage extends Model
 
     public function getNameAttribute()
     {
-        return $this->{'name_' . app()->getLocale()};
+        return $this->{'name_' . App::getLocale()};
     }
 
     public function category()
