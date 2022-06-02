@@ -233,5 +233,9 @@
     "morning"                      : "صباحاً",
     "evening"                      : "مساءً",
     "night"                        : "ليلاً",
+    "storages"                     : "المخازن",
+    "new_storage"                  : "إضافة مخزن جديد",
+    "storage_name"                 : "اسم المخزن",
+    "edit_storage"                 : "تعديل مخزن",
     ""                             : ""
 }

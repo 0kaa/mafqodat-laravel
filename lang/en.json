@@ -229,5 +229,9 @@
     "morning"                      : "Morning",
     "evening"                      : "Evening",
     "night"                        : "Night",
+    "storages"                     : "Storages",
+    "new_storage"                  : "Add New Storage",
+    "storage_name"                 : "Storage Name",
+    "edit_storage"                 : "Edit Storage",
     ""                             : ""
 }

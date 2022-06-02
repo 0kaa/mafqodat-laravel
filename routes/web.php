@@ -58,6 +58,8 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization', 'role:super_admin
 
     Route::resource('categories', 'CategoryController');
 
+    Route::resource('storages', 'StorageController');
+
     Route::resource('stations', 'StationController');
 
     Route::resource('items', 'ItemController');
