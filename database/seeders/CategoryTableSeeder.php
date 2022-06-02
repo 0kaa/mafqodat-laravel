@@ -17,16 +17,16 @@ class CategoryTableSeeder extends Seeder
     {
         Category::insert([
             [
-                'name_ar' => 'جوال',
-                'name_en' => 'Mobile',
+                'name_ar' => 'الاجهزة الالكترونية',
+                'name_en' => 'Electronics',
                 'image'   => 'categories/devices.png',
-                'slug'    => 'mobile',
+                'slug'    => 'electronics',
             ],
             [
                 'name_ar' => 'اكسسورات',
-                'name_en' => 'Electronics',
-                'image'   => 'categories/electronics.png',
-                'slug'    => 'electronics',
+                'name_en' => 'Accessories',
+                'image'   => 'categories/accessories.png',
+                'slug'    => 'accessories',
             ],
             [
                 'name_ar' => 'مقتنيات ذهبية',

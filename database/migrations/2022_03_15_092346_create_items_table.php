@@ -20,8 +20,6 @@ return new class extends Migration
             $table->integer('report_number')->unique();
             $table->timestamp('date')->nullable();
             $table->timestamp('time')->nullable();
-            $table->string('image')->nullable();
-            $table->string('second_image')->nullable();
             $table->longText('details')->nullable();
             $table->string('type')->nullable();
             $table->string('cost')->nullable();

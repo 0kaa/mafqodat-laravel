@@ -9,9 +9,11 @@ use App\Models\Category;
 use App\Models\Item;
 use App\Models\Station;
 use App\Models\City;
+use App\Models\Media;
 use App\Models\Storage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage as IlluminateStorage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ItemController extends Controller
@@ -59,10 +61,6 @@ class ItemController extends Controller
 
         $data['time'] = $time->toDateTimeString();
 
-        if ($request->has('image')) {
-            $data['image'] = $request->file('image')->store('items');
-        }
-
         if($request->report_type == 'found') {
             $data['informer_name'] = $request->informer_name;
             $data['informer_phone'] = $request->informer_phone;
@@ -76,6 +74,25 @@ class ItemController extends Controller
         $data['user_id'] = auth()->user()->id;
 
         $item = Item::create($data);
+
+        if ($request->has('images')) {
+
+            $files = $request->file('images');
+
+            foreach ($files as $file) {
+
+                $image = $file->store('items');
+
+                $item->media()->create([
+
+                    'item_id' => $item->id,
+                    'image' => $image
+
+                ]); // end of create
+
+            } // end of foreach
+
+        } // end of has images
 
         if ($item) {
 
@@ -221,11 +238,24 @@ class ItemController extends Controller
             $data['mobile'] = null;
         }
 
-        if ($request->has('image')) {
-            $data['image'] = $request->file('image')->store('items');
-        } else {
-            $data['image'] = $item->image;
-        }
+        if ($request->has('images')) {
+
+            $files = $request->file('images');
+
+            foreach ($files as $file) {
+
+                $image = $file->store('items');
+
+                $item->media()->create([
+
+                    'item_id' => $item->id,
+                    'image' => $image
+
+                ]); // end of create
+
+            } // end of foreach
+
+        } // end of has images
 
         if($request->report_type == 'found') {
             $data['informer_name'] = $request->informer_name;
@@ -281,6 +311,20 @@ class ItemController extends Controller
         session()->forget('station_location');
         return response()->json([
             'success' => "Session Removed"
+        ]);
+    }
+
+    public function removeImage(Request $request)
+    {
+
+        $media = Media::find($request->id);
+
+            IlluminateStorage::delete($media->image);
+
+        $media->delete();
+
+        return \response()->json([
+            'message' => 'تم حذف الصورة بنجاح',
         ]);
     }
 }

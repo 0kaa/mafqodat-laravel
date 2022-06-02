@@ -48,8 +48,12 @@
                                                         required>
 
                                                         <option value="">{{ __('select') }}</option>
-                                                        <option value="lost" {{ old('report_type' == 'lost' ? 'selected' : '') }}>{{ __('add_lost_item') }}</option>
-                                                        <option value="found" {{ old('report_type' == 'found' ? 'selected' : '') }}>{{ __('report_found_item') }}</option>
+                                                        <option value="lost"
+                                                            {{ old('report_type' == 'lost' ? 'selected' : '') }}>
+                                                            {{ __('add_lost_item') }}</option>
+                                                        <option value="found"
+                                                            {{ old('report_type' == 'found' ? 'selected' : '') }}>
+                                                            {{ __('report_found_item') }}</option>
 
                                                     </select>
                                                     @error('report_type')
@@ -90,7 +94,8 @@
                                                 <div class="form-group" id="informer_name">
                                                     <label for="first-name-vertical">{{ __('informer_name') }}</label>
                                                     <input type="text" class="form-control" name="informer_name"
-                                                        value="{{ old('informer_name') }}" placeholder="{{ __('informer_name') }}" />
+                                                        value="{{ old('informer_name') }}"
+                                                        placeholder="{{ __('informer_name') }}" />
                                                     @error('informer_name')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
@@ -103,7 +108,8 @@
                                                 <div class="form-group" id="informer_phone">
                                                     <label for="first-name-vertical">{{ __('informer_phone') }}</label>
                                                     <input type="text" class="form-control" name="informer_phone"
-                                                        value="{{ old('informer_phone') }}" placeholder="{{ __('informer_phone') }}" />
+                                                        value="{{ old('informer_phone') }}"
+                                                        placeholder="{{ __('informer_phone') }}" />
                                                     @error('informer_phone')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
@@ -142,8 +148,7 @@
 
                                             <div class="col-12">
                                                 <div class="form-group" id="item_details">
-                                                    <label
-                                                        for="details-vertical">{{ __('item_details') }}</label>
+                                                    <label for="details-vertical">{{ __('item_details') }}</label>
                                                     <textarea name="details" placeholder="{{ __('write_item_details') }}" class="form-control"
                                                         id="details-vertical">{{ old('details') }}</textarea>
                                                     @error('details')
@@ -199,10 +204,12 @@
 
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="formFile"
-                                                        class="form-label">{{ __('image') }}</label>
-                                                    <input class="form-control" type="file" id="formFile" name="image">
-                                                    @error('image')
+                                                    <label for="images"
+                                                        class="form-label">{{ __('images') }}</label>
+                                                        <input type="file" class="form-control dt-full-images images"
+                                                        name="images[]" id="images" required aria-label="{{ __('images') }}"
+                                                        multiple />
+                                                    @error('images')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
                                                         </span>
@@ -321,7 +328,7 @@
         <script src="{{ asset('dashboard/assets/js/custom/maps.js') }}"></script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdarVlRZOccFIGWJiJ2cFY8-Sr26ibiyY&libraries=places&callback=initAutocomplete&language=ar
-                                        async defer"></script>
+                                                async defer"></script>
 
 
         <script>

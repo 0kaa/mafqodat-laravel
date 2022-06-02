@@ -309,15 +309,33 @@
 
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="formFile"
-                                                        class="form-label">{{ __('image') }}</label>
-                                                    <input class="form-control" type="file" id="formFile" name="image">
-                                                    @error('image')
+                                                    <label for="images"
+                                                        class="form-label">{{ __('images') }}</label>
+                                                    <input type="file" class="form-control dt-full-images images"
+                                                        name="images[]" id="images" required
+                                                        aria-label="{{ __('images') }}" multiple />
+                                                    @error('images')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
                                                         </span>
                                                     @enderror
                                                 </div>
+                                            </div>
+
+                                            <div class="row">
+                                                @foreach ($item->media as $media)
+                                                    @if ($item->id == $media->item_id)
+                                                        <div class="col-6 py-2">
+                                                            <a href="" data-url="{{ route('admin.remove.image') }}"
+                                                                data-id="{{ $media->id }}"
+                                                                style="color: red;text-decoration: none;"
+                                                                class="btn btn-red deleteImage">
+                                                                <i data-feather="trash"></i> حذف</a> </label>
+                                                            <img id="files" src="{{ asset('storage/' . $media->image) }}"
+                                                                style="width: 200px; height: auto;">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
                                             </div>
 
                                             <div class="col-12">
@@ -722,7 +740,7 @@
         <script src="{{ asset('dashboard/assets/js/custom/maps.js') }}"></script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdarVlRZOccFIGWJiJ2cFY8-Sr26ibiyY&libraries=places&callback=initAutocomplete&language=ar
-                                                async defer"></script>
+                                                                async defer"></script>
 
         <script>
             if ($('#is_delivered').is(':checked')) {
@@ -859,6 +877,80 @@
                         });
 
                     }
+                });
+
+            });
+
+            $(document).ready(function() {
+
+                $('.deleteImage').click(function(e) {
+
+                    e.preventDefault();
+                    const Toast2 = Swal.mixin({
+
+                        showConfirmButton: false,
+                        timer: 4000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    const Toast = Swal.mixin({
+
+                        showCancelButton: true,
+                        showConfirmButton: true,
+                        cancelButtonColor: '#888',
+                        confirmButtonColor: '#d6210f',
+                        confirmButtonText: "{{ __('delete') }}",
+                        cancelButtonText: "{{ __('no') }}",
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'question',
+                        title: "{{ __('want_delete') }}"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                            var id = $(this).data('id');
+                            var url = $(this).data('url');
+                            var elem = $(this).closest('img');
+
+                            $.ajax({
+                                type: 'get',
+                                url: url,
+                                data: {
+                                    _method: 'delete',
+                                    _token: $('meta[name="csrf-token"]').attr('content'),
+                                    id: id,
+                                },
+                                dataType: 'json',
+                                success: function(result) {
+
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 200);
+                                } // end of success
+
+                            }); // end of ajax
+
+                        } else if (result.dismiss === Swal.DismissReason.cancel) {
+                            Toast2.fire({
+                                title: "{{ __('canceled') }}",
+                                // showConfirmButton: false,
+                                icon: 'success',
+                                timer: 1000
+                            });
+
+                        } // end of else confirmed
+
+                    }) // end of then
                 });
 
             });

@@ -15,8 +15,6 @@ class Item extends Model
         'report_type',
         'report_number',
         'details',
-        'image',
-        'second_image',
         'date',
         'time',
         'category_id',
@@ -55,6 +53,8 @@ class Item extends Model
     protected $casts = [
         'category_id' => 'integer',
         'station_id' => 'integer',
+        'storage_id' => 'integer',
+        'user_id' => 'integer',
     ];
 
     public function category()
@@ -80,4 +80,10 @@ class Item extends Model
     {
         return $this->belongsTo(Storage::class, 'storage_id', 'id');
     }
+
+    public function media()
+    {
+
+        return $this->hasMany(Media::class, 'item_id', 'id');
+    } // end of media
 }

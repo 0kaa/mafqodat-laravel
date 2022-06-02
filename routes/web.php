@@ -66,6 +66,8 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization', 'role:super_admin
 
     Route::resource('items', 'ItemController');
 
+    Route::get('remove-image', 'ItemController@removeImage')->name('remove.image');
+
     Route::get('remove-session', [ItemController::class, 'removeSession'])->name('remove_session');
 
     Route::get('get-stations', [ItemController::class, 'getStations'])->name('get_stations');
