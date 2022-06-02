@@ -7,6 +7,7 @@ use App\Http\Requests\Dashboard\EmployeeRequest;
 use App\Http\Resources\CityResource;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Log;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -167,5 +168,16 @@ class EmployeeController extends Controller
         return response()->json([
             'success' => __('deleted_successfully'),
         ]);
+    }
+
+    public function employeeLogs($id)
+    {
+        $logs = Log::Where('user_id', $id)->get();
+
+        if ($logs) {
+            return view('dashboard.employees.log', compact('logs'));
+        } else {
+            return view('dashboard.error');
+        }
     }
 }

@@ -54,6 +54,8 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization', 'role:super_admin
 
     Route::resource('employees', 'EmployeeController');
 
+    Route::get('employees/logs/{id}', 'EmployeeController@employeeLogs')->name('employees.logs');
+
     Route::resource('cities', 'CityController');
 
     Route::resource('categories', 'CategoryController');
