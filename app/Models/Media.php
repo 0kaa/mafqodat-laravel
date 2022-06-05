@@ -18,4 +18,9 @@ class Media extends Model
     {
         return asset('storage/' . $this->image);
     }
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
 }

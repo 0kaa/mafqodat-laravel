@@ -40,12 +40,8 @@
                             />
 
                             {{-- export excel button --}}
-                            <input
-                                type="button"
-                                class="btn btn-primary mr-1 mb-2"
-                                id="exportExcel"
-                                value="{{ __('export_excel') }}"
-                            />
+                            <input type="button" class="btn btn-primary mr-1 mb-2" id="exportExcel"
+                            value="{{ __('export_excel') }}" />
                             <div class="card">
                                 <table class="datatables-basic table export_table" id="tblCustomers">
                                     <thead class="filters">
@@ -54,6 +50,7 @@
                                             <th>{{ __('employee_name') }}</th>
                                             <th>{{ __('log') }}</th>
                                             <th>{{ __('date') }}</th>
+                                            <th>{{ __('time') }}</th>
                                             {{-- <th>{{ __('actions') }}</th> --}}
                                         </tr>
                                     </thead>
@@ -66,11 +63,11 @@
                                                     <div class="d-flex">
                                                         <div class="text ml-2" style="direction: ltr">
                                                             <h4>{{ $log->message }}</h4>
-                                                            <span>{{ $log->date }}</span>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>{{ $log->created_at->format('Y-m-d') }}</td>
+                                                <td>{{ $log->created_at->format('h:i A') }}</td>
                                                 {{-- <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
                                                             <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>

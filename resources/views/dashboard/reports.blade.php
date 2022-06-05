@@ -139,12 +139,12 @@
                                             <th>{{ __('time') }}</th>
                                             <th>{{ __('station_name') }}</th>
                                             <th>{{ __('station_location') }}</th>
-                                            <th>{{ __('image') }}</th>
+                                            <th class="noExl">{{ __('image') }}</th>
                                             <th>{{ __('is_delivered') }}</th>
-                                            <th>{{ __('qr_code') }}</th>
+                                            <th class="noExl">{{ __('qr_code') }}</th>
                                             <th>{{ __('deliverd_name') }}</th>
                                             <th>{{ __('deliverd_phone') }}</th>
-                                            <th>{{ __('actions') }}</th>
+                                            <th class="noExl">{{ __('actions') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -153,14 +153,14 @@
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->report_number }}</td>
                                                 <td>{{ $item->category->name }}</td>
-                                                <td>{{ $item->storage }}</td>
+                                                <td>{{ $item->storage->name }}</td>
                                                 <td>{{ $item->date->format('Y-m-d') }}</td>
                                                 <td>{{ $item->time->format('h:i A') }}</td>
                                                 <td>{{ $item->station->name}}</td>
                                                 <td>{{ $item->station->location }}</td>
-                                                <td>
-                                                    @if ($item->image != null)
-                                                        <img src="{{ asset('storage/' . $item->image) }}"
+                                                <td class="noExl">
+                                                    @if ($item->media())
+                                                        <img src="{{ asset('storage/' . $item->media[0]->image) }}"
                                                             style="width: 50px; height: auto;">
                                                     @else
                                                         <img src="https://via.placeholder.com/50">
@@ -173,12 +173,12 @@
                                                         <span class="badge badge-light-danger">{{ __('no') }}</span>
                                                     @endif
                                                 </td>
-                                                <td class="my-2">
+                                                <td class="my-2 noExl">
                                                     {!! QrCode::generate(url('/admin/items') . '/' . $item->id) !!}
                                                 </td>
                                                 <td>{{ $item->is_delivered == 1 ? $item->first_name . ' ' . $item->surname : '-' }}</td>
                                                 <td>{{ $item->is_delivered == 1 ? $item->phone : '-' }}</td>
-                                                <td class="text-center">
+                                                <td class="text-center noExl">
                                                     <div class="btn-group" role="group" aria-label="Second group">
                                                         <a href="{{ route('admin.items.show', $item->id) }}"
                                                             class="btn btn-sm btn-info"><i data-feather="eye"></i></a>
@@ -227,11 +227,11 @@
 
         <script src="{{ asset('dashboard/app-assets/vendors/js/charts/apexcharts.min.js') }}"></script>
         <script src="{{ asset('dashboard/app-assets/vendors/js/charts/chart.min.js') }}"></script>
-        <script src="{{ asset('dashboard/app-assets/js/custom/export.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"
-                integrity="sha512-d5Jr3NflEZmFDdFHZtxeJtBzk0eB+kkRXWFQqEc1EKmolXjHm2IKCA7kTvXBNjIYzjXfD5XzIjaaErpkZHCkBg=="
-                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        integrity="sha512-d5Jr3NflEZmFDdFHZtxeJtBzk0eB+kkRXWFQqEc1EKmolXjHm2IKCA7kTvXBNjIYzjXfD5XzIjaaErpkZHCkBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+        <script src="{{ asset('dashboard/app-assets/js/custom/export.js') }}"></script>
         <script>
             function Export() {
                 // print this

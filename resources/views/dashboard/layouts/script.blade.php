@@ -25,6 +25,7 @@
 <script src="{{ asset('dashboard/app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
 <script src="{{ asset('dashboard/app-assets/js/scripts/forms/form-select2.js') }}"></script>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
 
 @stack('js')

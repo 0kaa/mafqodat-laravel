@@ -75,8 +75,8 @@
                                                 <td>{{ $item->station->name}}</td>
                                                 <td>{{ $item->station->location }}</td>
                                                 <td>
-                                                    @if ($item->image != null)
-                                                        <img src="{{ asset('storage/' . $item->image) }}"
+                                                    @if ($item->media())
+                                                        <img src="{{ asset('storage/' . $item->media[0]->image) }}"
                                                             style="width: 50px; height: auto;">
                                                     @else
                                                         <img src="https://via.placeholder.com/50">
