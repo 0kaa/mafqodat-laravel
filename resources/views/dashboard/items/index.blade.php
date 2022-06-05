@@ -75,24 +75,12 @@
                                                 <td>{{ $item->station->name }}</td>
                                                 <td>{{ $item->station->location }}</td>
                                                 <td>
-                                                    @foreach ($itemMedia as $media)
-
-                                                        @if ($media != null)
-                                                            @if ($item->id == $media->item_id)
-
-                                                                {{-- get only one image --}}
-                                                                @if ($loop->first)
-                                                                    <img src="{{ asset('storage/'.$media->media->image) }}"
-                                                                        width="100" height="100">
-                                                                @endif
-                                                            @endif
-
-                                                        @else
-                                                            <img src="https://via.placeholder.com/50">
+                                                    @foreach ($itemMedia->where('item_id', $item->id) as $media)
+                                                        @if ($loop->first)
+                                                            <img src="{{ asset('storage/' . $media->media->image) }}"
+                                                                alt="{{ $media->name }}" width="100" height="100">
                                                         @endif
-
                                                     @endforeach
-
                                                 </td>
                                                 <td>
                                                     @if ($item->is_delivered == 1)
