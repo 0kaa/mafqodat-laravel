@@ -11,7 +11,7 @@ class Storage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name_ar', 'name_en', 'category_id'
+        'name_ar', 'name_en'
     ];
 
     public function getNameAttribute()
@@ -19,8 +19,4 @@ class Storage extends Model
         return $this->{'name_' . App::getLocale()};
     }
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
 }

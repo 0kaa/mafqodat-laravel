@@ -243,5 +243,6 @@
     "write_name"                   : "Write name",
     "informer_name_required"       : "Informer Name is required",
     "informer_phone_required"      : "Informer Phone is required",
+    "storage_not_found"            : "Storage not found",
     ""                             : ""
 }

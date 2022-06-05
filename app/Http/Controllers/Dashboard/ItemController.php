@@ -293,7 +293,7 @@ class ItemController extends Controller
 
     public function getStorages(Request $request)
     {
-        $storages = Storage::where('category_id', $request->category_id)->get();
+        $storages = Category::find($request->category_id)->storage()->get();
 
         $storages = StorageResource::collection($storages);
 

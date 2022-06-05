@@ -43,7 +43,6 @@
                                             <tr>
                                                 <th>{{ __('id') }}</th>
                                                 <th>{{ __('storage_name') }}</th>
-                                                <th>{{ __('category_name') }}</th>
                                                 <th>{{ __('actions') }}</th>
                                             </tr>
                                         </thead>
@@ -52,7 +51,6 @@
                                                 <tr>
                                                     <td>{{ $storage->id }}</td>
                                                     <td>{{ $storage->name }}</td>
-                                                    <td>{{ $storage->category->name }}</td>
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
                                                             <a href="{{ route('admin.storages.edit', $storage->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>

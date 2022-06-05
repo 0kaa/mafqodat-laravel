@@ -10,7 +10,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name_ar', 'name_en', 'image', 'slug'];
+    protected $fillable = ['name_ar', 'name_en', 'image', 'slug', 'storage_id'];
 
     public function getNameAttribute()
     {
@@ -20,9 +20,16 @@ class Category extends Model
     protected function rules()
     {
         return [
-            'name_ar' => 'required',
-            'name_en' => 'required',
-            'image'   => 'sometimes'
+            'name_ar'    => 'required',
+            'name_en'    => 'required',
+            'image'      => 'sometimes',
+            'storage_id' => 'required',
         ];
     }
+
+    public function storage()
+    {
+        return $this->belongsTo(Storage::class);
+    }
+
 }

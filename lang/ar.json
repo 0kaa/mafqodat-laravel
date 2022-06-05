@@ -247,5 +247,6 @@
     "write_name"                   : "أكتب الاسم",
     "informer_name_required"       : "اسم المبلغ مطلوب",
     "informer_phone_required"      : "رقم الجوال مطلوب",
+    "storage_not_found"            : "لم يتم العثور على المخزن",
     ""                             : ""
 }

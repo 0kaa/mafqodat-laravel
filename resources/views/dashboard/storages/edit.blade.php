@@ -69,30 +69,6 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="selectCategory">{{ __('select_category') }}</label>
-                                                    <select class="form-control mb-1" name="category_id" id="selectCategory"
-                                                        required>
-
-                                                        <option value="">{{ __('select') }}</option>
-
-                                                        @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}" class="item-category"
-                                                                data-slug="{{ $category->slug }}"
-                                                                {{ old('category_id', $storage->category_id) == $category->id ? 'selected' : '' }}>
-                                                                {{ $category->name }}
-                                                            </option>
-                                                        @endforeach
-
-                                                    </select>
-                                                    @error('category_id')
-                                                        <span class="alert alert-danger">
-                                                            <small class="errorTxt">{{ $message }}</small>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
 
                                             <div class="col-12">
                                                 <button type="submit" class="btn btn-primary mr-1">{{ __('update') }}</button>

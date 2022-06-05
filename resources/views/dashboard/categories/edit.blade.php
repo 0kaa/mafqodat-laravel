@@ -71,6 +71,29 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
+                                                    <label for="selectStorage">{{ __('select_storage') }}</label>
+                                                    <select class="form-control mb-1" name="storage_id" id="selectStorage"
+                                                        required>
+
+                                                        <option value="">{{ __('select') }}</option>
+
+                                                        @foreach ($storages as $storage)
+                                                            <option value="{{ $storage->id }}" class="item-storage"
+                                                                {{ old('storage_id', $category->storage_id) == $storage->id ? 'selected' : '' }}>
+                                                                {{ $storage->name }}
+                                                            </option>
+                                                        @endforeach
+
+                                                    </select>
+                                                    @error('storage_id')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
                                                     <label for="formFile" class="form-label">{{ __('image') }}</label>
                                                     <input class="form-control" type="file" id="formFile" name="image">
                                                     <img src="{{ asset('storage/'.$category->image) }}" style="width: 80px; height: auto;">

@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\LogController;
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\StationController;
+use App\Http\Controllers\Api\StorageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -93,4 +94,12 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
 
     /* reports routes */
     Route::get('reports', [ReportController::class, 'getAllReports']);
+
+    /* storages routes */
+
+    Route::get('storages', [StorageController::class, 'getAllStorages']);
+    Route::get('storages/show/{id}', [StorageController::class, 'getStorage']);
+    Route::post('storages/create', [StorageController::class, 'createStorage']);
+    Route::post('storages/update/{id}', [StorageController::class, 'updateStorage']);
+    Route::post('storages/delete/{id}', [StorageController::class, 'deleteStorage']);
 });

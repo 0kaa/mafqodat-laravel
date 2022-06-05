@@ -20,7 +20,11 @@ class CategoryResource extends JsonResource
 
             'id'    => $this->id,
             'name'  => $this->name,
-            'slug' => $this->slug,
+            'slug'  => $this->slug,
+            'storage' => [
+                'id'   => $this->storage->id,
+                'name' => $this->storage->name,
+            ],
             'image' => $this->image ? url('/storage') . '/' . $this->image : null,
         ];
     }

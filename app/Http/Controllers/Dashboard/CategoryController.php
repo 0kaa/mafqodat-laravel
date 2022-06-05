@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\CategoryRequest;
 use App\Models\Category;
+use App\Models\Storage as AppStorage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -30,7 +31,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.categories.create');
+        $storages = AppStorage::get();
+
+        return view('dashboard.categories.create' , compact('storages'));
     }
 
     /**
@@ -80,8 +83,10 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
+        $storages = AppStorage::get();
+
         if ($category) {
-            return view('dashboard.categories.edit', compact('category'));
+            return view('dashboard.categories.edit', compact('category' , 'storages'));
         } else {
             return view('dashboard.error');
         }

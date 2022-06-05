@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('name_en');
             $table->string('slug');
             $table->string('image')->nullable();
+            $table->unsignedBigInteger('storage_id');
+            $table->foreign('storage_id')->references('id')->on('storages');
             $table->timestamps();
         });
     }
