@@ -48,7 +48,7 @@
                                         @foreach ($logs as $log)
                                             <tr>
                                                 <td>{{ $log->id }}</td>
-                                                <td>{{ $log->user->first_name . ' ' . $log->user->family_name }}</td>
+                                                <td>{{ $log->user->name }}</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="text ml-2" style="direction: ltr">

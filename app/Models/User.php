@@ -19,20 +19,16 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
-        'family_name',
-        'address',
+        'name',
+        'email',
         'phone',
         'job_number',
         'working_period',
         'date_of_hiring',
         'email',
         'password',
-        'city_id',
         'code',
         'image',
-        'second_address',
-        'post_code',
     ];
 
     /**
@@ -61,15 +57,11 @@ class User extends Authenticatable
     protected function rules()
     {
         return [
-            'first_name'     => 'required|min:3',
-            'family_name'    => 'required|min:3',
+            'name'     => 'required|min:3',
             'email'          => 'required|unique:users,email' . $this->id,
             'password'       => 'required|min:6',
-            'address'        => 'required|min:3',
-            'second_address' => 'nullable|min:3',
             'phone'          => 'required|min:8|max:12',
             'job_number'     => 'required',
-            'city_id'        => 'required',
         ];
     }
 

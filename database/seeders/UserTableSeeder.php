@@ -16,8 +16,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'first_name' => 'super',
-            'family_name' => 'admin',
+            'name' => 'super Admin',
             'email'      => 'admin@gmail.com',
             'password'   => \bcrypt('password'),
         ]);
@@ -25,13 +24,10 @@ class UserTableSeeder extends Seeder
         $user->assignRole('super_admin');
 
         $employee = User::create([
-            'first_name' => 'test',
-            'family_name' => 'user',
+            'name' => 'test user',
             'email' => 'user@test.com',
             'password' => \bcrypt('123456'),
-            'address' => 'test address',
             'phone' => '123456789',
-            'city_id' => 1,
             'job_number' => '123456789',
             'date_of_hiring' => '2022-06-02 00:00:00',
             'working_period' => 'morning',

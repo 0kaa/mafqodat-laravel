@@ -22,16 +22,12 @@ class UserResource extends JsonResource
 
         return [
             'id'             => $this->id,
-            'first_name'     => $this->first_name,
-            'family_name'    => $this->family_name,
-            'full_name'      => $this->first_name . ' ' . $this->family_name,
+            'name'           => $this->name,
             'email'          => $this->email,
-            'address'        => $this->address,
-            'second_address' => $this->second_address,
             'phone'          => $this->phone,
-            'mobile'         => $this->mobile,
-            'city'           => new CityResource($this->city),
-            'post_code'      => $this->post_code,
+            'job_number'     => $this->job_number,
+            'working_period' => $this->working_period,
+            'date_of_hiring' => $this->date_of_hiring->format('Y-m-d'),
             'image'          => $this->image ? url('/storage') . '/' . $this->image : null,
             "permissions"    => $this->getPermissionNames(),
         ];

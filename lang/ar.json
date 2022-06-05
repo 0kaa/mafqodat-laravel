@@ -239,5 +239,11 @@
     "edit_storage"                 : "تعديل مخزن",
     "select_storage"               : "إختر المخزن",
     "images"                       : "الصور",
+    "job_number_required"          : "الرقم الوظيفي مطلوب",
+    "working_period_required"      : "فترة الدوام مطلوبة",
+    "working_period_in"            : "يجب أن تكون فترة العمل في الصباح والمساء والليل",
+    "date_of_hiring_required"      : "تاريخ التعيين مطلوب",
+    "name"                         : "الاسم",
+    "write_name"                   : "أكتب الاسم",
     ""                             : ""
 }

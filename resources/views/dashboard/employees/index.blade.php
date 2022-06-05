@@ -42,13 +42,12 @@
                                         <thead>
                                             <tr>
                                                 <th>{{ __('id') }}</th>
-                                                <th>{{ __('full_name') }}</th>
+                                                <th>{{ __('name') }}</th>
                                                 <th>{{ __('phone') }}</th>
                                                 <th>{{ __('email') }}</th>
                                                 <th>{{ __('job_number') }}</th>
                                                 <th>{{ __('working_period') }}</th>
                                                 <th>{{ __('date_of_hiring') }}</th>
-                                                <th>{{ __('city') }}</th>
                                                 <th>{{ __('actions') }}</th>
                                             </tr>
                                         </thead>
@@ -62,7 +61,6 @@
                                                     <td>{{ $employee->job_number }}</td>
                                                     <td>{{ __($employee->working_period) }}</td>
                                                     <td>{{ $employee->date_of_hiring->format('Y-m-d') }}</td>
-                                                    <td>{{ $employee->city->name }}</td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">

@@ -3,21 +3,13 @@ $(document).ready(function () {
     $('#create_employee_form').validate({ // initialize the plugin
 
         rules: {
-            first_name: {
-                required: true,
-                minlength: 3,
-            },
-            family_name: {
+            name: {
                 required: true,
                 minlength: 3,
             },
             email: {
                 required: true,
                 email: true,
-            },
-            address: {
-                required: true,
-                minlength: 3,
             },
             phone: {
                 required: true,
@@ -26,12 +18,15 @@ $(document).ready(function () {
             job_number: {
                 required: true,
             },
+            date_of_hiring: {
+                required: true,
+            },
+            working_period: {
+                required: true,
+            },
             password: {
                 required: true,
                 minlength: 6,
-            },
-            city_id: {
-                required: true
             },
             permissions: {
                 required: true
@@ -50,21 +45,13 @@ $(document).ready(function () {
     $('#update_employee_form').validate({ // initialize the plugin
 
         rules: {
-            first_name: {
-                required: true,
-                minlength: 3,
-            },
-            family_name: {
+            name: {
                 required: true,
                 minlength: 3,
             },
             email: {
                 required: true,
                 email: true,
-            },
-            address: {
-                required: true,
-                minlength: 3,
             },
             phone: {
                 required: true,
@@ -76,13 +63,13 @@ $(document).ready(function () {
             working_period: {
                 required: true,
             },
+            date_of_hiring: {
+                required: true,
+            },
             // password: {
             //     required: true,
             //     minlength: 6,
             // },
-            city_id: {
-                required: true
-            },
         },
 
         submitHandler: function(form) {

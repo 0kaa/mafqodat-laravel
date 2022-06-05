@@ -235,5 +235,11 @@
     "edit_storage"                 : "Edit Storage",
     "select_storage"               : "Select Storage",
     "images"                       : "Images",
+    "job_number_required"          : "Job Number is required",
+    "working_period_required"      : "Working Period is required",
+    "working_period_in"            : "Working period must be in morning, evening and night",
+    "date_of_hiring_required"      : "Date of Hiring is required",
+    "name"                         : "Name",
+    "write_name"                   : "Write name",
     ""                             : ""
 }

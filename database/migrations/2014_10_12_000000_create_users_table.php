@@ -15,19 +15,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('family_name')->nullable();
+            $table->string('name');
             $table->string('email')->unique();
-            $table->string('address')->nullable();
-            $table->string('second_address')->nullable();
-            $table->string('post_code')->nullable();
             $table->string('phone')->nullable();
             $table->string('job_number')->nullable();
             $table->enum('working_period', ['morning', 'evening', 'night'])->nullable();
             $table->timestamp('date_of_hiring')->nullable();
             $table->string('image')->nullable();
-            $table->unsignedBigInteger('city_id')->nullable();
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->string('code')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
