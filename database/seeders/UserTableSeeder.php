@@ -33,7 +33,7 @@ class UserTableSeeder extends Seeder
             'working_period' => 'morning',
         ]);
 
-        $employee->givePermissionTo(['create_employee', 'update_employee', 'delete_employee', 'create_category', 'update_category', 'delete_category', 'create_country', 'update_country', 'delete_country', 'create_city', 'update_city', 'delete_city', 'create_station', 'update_station', 'delete_station', 'create_item', 'update_item', 'delete_item']);
+        $employee->givePermissionTo(['create_employee', 'update_employee', 'delete_employee', 'create_category', 'update_category', 'delete_category', 'create_country', 'update_country', 'delete_country', 'create_city', 'update_city', 'delete_city', 'create_station', 'update_station', 'delete_station', 'create_item', 'update_item', 'delete_item', 'create_storage', 'update_storage', 'delete_storage']);
 
     }
 }

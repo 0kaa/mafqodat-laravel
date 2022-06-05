@@ -84,6 +84,7 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
     Route::post('items/delete/{id}', [ItemController::class, 'deleteItem'])->middleware(['permission:delete_item']);
     Route::get('category-list', [ItemController::class, 'categoryList'])->middleware(['permission:create_item|update_item|delete_item']);
     Route::get('station-list', [ItemController::class, 'stationList'])->middleware(['permission:create_item|update_item|delete_item']);
+    Route::post('storage-list', [ItemController::class, 'storageList'])->middleware(['permission:create_item|update_item|delete_item']);
 
     /* logs routes */
     Route::get('logs', [LogController::class, 'getAllLogs']);
@@ -99,7 +100,7 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
 
     Route::get('storages', [StorageController::class, 'getAllStorages']);
     Route::get('storages/show/{id}', [StorageController::class, 'getStorage']);
-    Route::post('storages/create', [StorageController::class, 'createStorage']);
-    Route::post('storages/update/{id}', [StorageController::class, 'updateStorage']);
-    Route::post('storages/delete/{id}', [StorageController::class, 'deleteStorage']);
+    Route::post('storages/create', [StorageController::class, 'createStorage'])->middleware(['permission:create_storage']);
+    Route::post('storages/update/{id}', [StorageController::class, 'updateStorage'])->middleware(['permission:update_storage']);
+    Route::post('storages/delete/{id}', [StorageController::class, 'deleteStorage'])->middleware(['permission:delete_storage']);
 });

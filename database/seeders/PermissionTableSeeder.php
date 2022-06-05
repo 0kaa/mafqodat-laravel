@@ -88,6 +88,18 @@ class PermissionTableSeeder extends Seeder
                 'name'       => 'delete_item',
                 'guard_name' => 'web',
             ],
+            [
+                'name'       => 'create_storage',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'update_storage',
+                'guard_name' => 'web',
+            ],
+            [
+                'name'       => 'delete_storage',
+                'guard_name' => 'web',
+            ],
 
         ]);
     }

@@ -303,10 +303,11 @@ class ItemController extends Controller
         return $this->apiResponse('', StationResource::collection($stations), 200);
     }
 
-    public function storageList()
+    public function storageList(Request $request)
     {
-        $storages = AppStorage::all();
+        $storages = Category::find($request->category_id)->storage()->get();
 
         return $this->apiResponse('', StorageResource::collection($storages), 200);
     }
+
 }
