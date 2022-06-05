@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Item;
 use App\Models\Station;
 use App\Models\City;
+use App\Models\ItemMedia;
 use App\Models\Media;
 use App\Models\Storage;
 use Carbon\Carbon;
@@ -27,7 +28,9 @@ class ItemController extends Controller
     {
         $items = Item::get();
 
-        return view('dashboard.items.index', compact('items'));
+        $itemMedia = ItemMedia::get();
+
+        return view('dashboard.items.index', compact('items' ,'itemMedia'));
     }
 
     /**
@@ -83,16 +86,22 @@ class ItemController extends Controller
 
                 $image = $file->store('items');
 
-                $item->media()->create([
+                $image = Media::create([
 
-                    'item_id' => $item->id,
                     'image' => $image
 
                 ]); // end of create
 
+                ItemMedia::create([
+                    'item_id' => $item->id,
+                    'media_id' => $image->id,
+                ]);
+
             } // end of foreach
 
+
         } // end of has images
+
 
         if ($item) {
 
@@ -144,10 +153,12 @@ class ItemController extends Controller
 
         $cities = City::get();
 
-        $storages = Storage::where('category_id' , $item->category_id)->get();
+        $storages = Storage::where('id', $item->storage_id)->get();
+
+        $itemMedia = ItemMedia::where('item_id', $item->id)->get();
 
         if ($item) {
-            return view('dashboard.items.edit', compact('item', 'categories', 'stations', 'cities', 'storages'));
+            return view('dashboard.items.edit', compact('item', 'categories', 'stations', 'cities', 'storages', 'itemMedia'));
         } else {
             return view('dashboard.error');
         }
@@ -246,12 +257,16 @@ class ItemController extends Controller
 
                 $image = $file->store('items');
 
-                $item->media()->create([
+                $image = Media::create([
 
-                    'item_id' => $item->id,
                     'image' => $image
 
                 ]); // end of create
+
+                ItemMedia::create([
+                    'item_id' => $item->id,
+                    'media_id' => $image->id,
+                ]);
 
             } // end of foreach
 
@@ -317,11 +332,13 @@ class ItemController extends Controller
     public function removeImage(Request $request)
     {
 
-        $media = Media::find($request->id);
+        $itemMedia = ItemMedia::find($request->id);
 
-            IlluminateStorage::delete($media->image);
+        IlluminateStorage::delete($itemMedia->media->image);
 
-        $media->delete();
+        Media::destroy($itemMedia->media->id);
+
+        $itemMedia->delete();
 
         return \response()->json([
             'message' => 'تم حذف الصورة بنجاح',

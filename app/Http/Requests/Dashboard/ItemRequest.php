@@ -31,7 +31,6 @@ class ItemRequest extends FormRequest
             'date'        => 'required',
             'description' => 'sometimes',
             'image'       => 'sometimes',
-            'location'    => 'required',
             'report_type' => 'required',
         ];
     }

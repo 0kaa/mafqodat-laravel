@@ -11,7 +11,6 @@ class Media extends Model
 
     protected $fillable = [
         'image',
-        'item_id',
     ];
 
     public function getMediaImageAttribute()
@@ -19,8 +18,8 @@ class Media extends Model
         return asset('storage/' . $this->image);
     }
 
-    public function item()
-    {
-        return $this->belongsTo(Item::class);
-    }
+    // public function item()
+    // {
+    //     return $this->belongsTo(Item::class);
+    // }
 }

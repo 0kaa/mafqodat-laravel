@@ -243,23 +243,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="">{{ __('item_location') }}</label>
-                                                    <input type="text" id="pac-input" class="form-control"
-                                                        value="{{ old('location') }}"
-                                                        placeholder="{{ __('item_location') }}" name="location" required>
-
-                                                    @error('location')
-                                                        <span class="text-danger"> {{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div id="map" style="height: 500px;width: 1000px; margin-bottom: 15px;"></div>
-                                            <input type="hidden" name="lat" id="latitude">
-                                            <input type="hidden" name="lng" id="longitude">
-
                                             <div class="col-12">
                                                 <button type="submit"
                                                     class="btn btn-primary mr-1">{{ __('add') }}</button>
@@ -325,10 +308,10 @@
                 integrity="sha512-d5Jr3NflEZmFDdFHZtxeJtBzk0eB+kkRXWFQqEc1EKmolXjHm2IKCA7kTvXBNjIYzjXfD5XzIjaaErpkZHCkBg=="
                 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <script src="{{ asset('dashboard/assets/js/custom/maps.js') }}"></script>
+        {{-- <script src="{{ asset('dashboard/assets/js/custom/maps.js') }}"></script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdarVlRZOccFIGWJiJ2cFY8-Sr26ibiyY&libraries=places&callback=initAutocomplete&language=ar
-                                                async defer"></script>
+                                                async defer"></script> --}}
 
 
         <script>

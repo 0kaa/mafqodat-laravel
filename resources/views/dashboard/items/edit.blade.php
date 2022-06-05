@@ -312,7 +312,7 @@
                                                     <label for="images"
                                                         class="form-label">{{ __('images') }}</label>
                                                     <input type="file" class="form-control dt-full-images images"
-                                                        name="images[]" id="images" required
+                                                        name="images[]" id="images"
                                                         aria-label="{{ __('images') }}" multiple />
                                                     @error('images')
                                                         <span class="alert alert-danger">
@@ -323,7 +323,7 @@
                                             </div>
 
                                             <div class="row">
-                                                @foreach ($item->media as $media)
+                                                @foreach ($itemMedia as $media)
                                                     @if ($item->id == $media->item_id)
                                                         <div class="col-6 py-2">
                                                             <a href="" data-url="{{ route('admin.remove.image') }}"
@@ -331,7 +331,7 @@
                                                                 style="color: red;text-decoration: none;"
                                                                 class="btn btn-red deleteImage">
                                                                 <i data-feather="trash"></i> حذف</a> </label>
-                                                            <img id="files" src="{{ asset('storage/' . $media->image) }}"
+                                                            <img id="files" src="{{ asset('storage/' . $media->media->image) }}"
                                                                 style="width: 200px; height: auto;">
                                                         </div>
                                                     @endif
@@ -359,23 +359,6 @@
                                                     @enderror
                                                 </div>
                                             </div>
-
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="">{{ __('item_location') }}</label>
-                                                    <input type="text" id="pac-input" class="form-control"
-                                                        value="{{ old('location', $item->location) }}"
-                                                        placeholder="{{ __('item_location') }}" name="location" required>
-
-                                                    @error('location')
-                                                        <span class="text-danger"> {{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div id="map" style="height: 500px;width: 1000px; margin-bottom: 15px;"></div>
-                                            <input type="hidden" name="lat" id="latitude" value="{{ $item->lat }}">
-                                            <input type="hidden" name="lng" id="longitude" value="{{ $item->lng }}">
 
                                             <div class="col-12">
                                                 <div class="form-group">
@@ -737,10 +720,10 @@
     @push('js')
         <script src="{{ asset('dashboard/assets/js/validation/itemValidation.js') }}"></script>
 
-        <script src="{{ asset('dashboard/assets/js/custom/maps.js') }}"></script>
+        {{-- <script src="{{ asset('dashboard/assets/js/custom/maps.js') }}"></script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdarVlRZOccFIGWJiJ2cFY8-Sr26ibiyY&libraries=places&callback=initAutocomplete&language=ar
-                                                                async defer"></script>
+                                                                async defer"></script> --}}
 
         <script>
             if ($('#is_delivered').is(':checked')) {

@@ -11,7 +11,9 @@ use App\Http\Resources\StationResource;
 use App\Http\Resources\StorageResource;
 use App\Models\Category;
 use App\Models\Item;
+use App\Models\ItemMedia;
 use App\Models\Log;
+use App\Models\Media;
 use App\Models\Station;
 use App\Models\Storage as AppStorage;
 use App\Traits\ApiResponse;
@@ -74,12 +76,16 @@ class ItemController extends Controller
 
                 $image = $file->store('items');
 
-                $item->media()->create([
+                $image = Media::create([
 
-                    'item_id' => $item->id,
                     'image' => $image
 
                 ]); // end of create
+
+                ItemMedia::create([
+                    'item_id' => $item->id,
+                    'media_id' => $image->id,
+                ]);
 
             } // end of foreach
 
@@ -198,12 +204,16 @@ class ItemController extends Controller
 
                     $image = $file->store('items');
 
-                    $item->media()->create([
+                    $image = Media::create([
 
-                        'item_id' => $item->id,
                         'image' => $image
 
                     ]); // end of create
+
+                    ItemMedia::create([
+                        'item_id' => $item->id,
+                        'media_id' => $image->id,
+                    ]);
 
                 } // end of foreach
 

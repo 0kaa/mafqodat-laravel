@@ -22,9 +22,6 @@ class Item extends Model
         'description',
         'type',
         'cost',
-        'lat',
-        'lng',
-        'location',
         'storage_id',
         'is_delivered',
         'user_id',
@@ -81,9 +78,4 @@ class Item extends Model
         return $this->belongsTo(Storage::class, 'storage_id', 'id');
     }
 
-    public function media()
-    {
-
-        return $this->hasMany(Media::class, 'item_id', 'id');
-    } // end of media
 }

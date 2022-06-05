@@ -72,15 +72,27 @@
                                                 <td>{{ $item->storage->name }}</td>
                                                 <td>{{ $item->date->format('Y-m-d') }}</td>
                                                 <td>{{ $item->time->format('h:i A') }}</td>
-                                                <td>{{ $item->station->name}}</td>
+                                                <td>{{ $item->station->name }}</td>
                                                 <td>{{ $item->station->location }}</td>
                                                 <td>
-                                                    @if ($item->media())
-                                                        <img src="{{ asset('storage/' . $item->media[0]->image) }}"
-                                                            style="width: 50px; height: auto;">
-                                                    @else
-                                                        <img src="https://via.placeholder.com/50">
-                                                    @endif
+                                                    @foreach ($itemMedia as $media)
+
+                                                        @if ($media != null)
+                                                            @if ($item->id == $media->item_id)
+
+                                                                {{-- get only one image --}}
+                                                                @if ($loop->first)
+                                                                    <img src="{{ asset('storage/'.$media->media->image) }}"
+                                                                        width="100" height="100">
+                                                                @endif
+                                                            @endif
+
+                                                        @else
+                                                            <img src="https://via.placeholder.com/50">
+                                                        @endif
+
+                                                    @endforeach
+
                                                 </td>
                                                 <td>
                                                     @if ($item->is_delivered == 1)
@@ -92,7 +104,8 @@
                                                 <td class="my-2">
                                                     {!! QrCode::generate(url('/admin/items') . '/' . $item->id) !!}
                                                 </td>
-                                                <td>{{ $item->is_delivered == 1 ? $item->first_name . ' ' . $item->surname : '-' }}</td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->first_name . ' ' . $item->surname : '-' }}
+                                                </td>
                                                 <td>{{ $item->is_delivered == 1 ? $item->phone : '-' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-label="Second group">
