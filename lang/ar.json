@@ -245,5 +245,7 @@
     "date_of_hiring_required"      : "تاريخ التعيين مطلوب",
     "name"                         : "الاسم",
     "write_name"                   : "أكتب الاسم",
+    "informer_name_required"       : "اسم المبلغ مطلوب",
+    "informer_phone_required"      : "رقم الجوال مطلوب",
     ""                             : ""
 }

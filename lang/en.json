@@ -241,5 +241,7 @@
     "date_of_hiring_required"      : "Date of Hiring is required",
     "name"                         : "Name",
     "write_name"                   : "Write name",
+    "informer_name_required"       : "Informer Name is required",
+    "informer_phone_required"      : "Informer Phone is required",
     ""                             : ""
 }
