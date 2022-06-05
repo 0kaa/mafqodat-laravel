@@ -122,9 +122,6 @@
     @push('js')
         {{-- <script src="{{ asset('dashboard/app-assets/js/custom/custom-delete.js') }}"></script> --}}
 
-
-
-
         <script>
             $(document).ready(function() {
 

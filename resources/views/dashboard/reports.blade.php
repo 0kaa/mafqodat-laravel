@@ -123,8 +123,8 @@
                                             value="{{ __('export_pdf') }}" onclick="Export()" />
 
                                         {{-- export excel button --}}
-                                        <input type="button" class="btn btn-primary mr-1 mb-2" id="exportExcel"
-                                            value="{{ __('export_excel') }}" />
+                                        {{-- <input type="button" class="btn btn-primary mr-1 mb-2" id="exportExcel"
+                                            value="{{ __('export_excel') }}" /> --}}
                                     </div>
                                 </div>
 

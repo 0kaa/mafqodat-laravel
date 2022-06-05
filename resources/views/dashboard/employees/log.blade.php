@@ -27,12 +27,12 @@
                             />
 
                             {{-- export excel button --}}
-                            <input
+                            {{-- <input
                                 type="button"
                                 class="btn btn-primary mr-1 mb-2"
                                 id="exportExcel"
                                 value="{{ __('export_excel') }}"
-                            />
+                            /> --}}
                             <div class="card">
                                 <table class="datatables-basic table export_table" id="tblCustomers">
                                     <thead class="filters">
