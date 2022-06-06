@@ -53,8 +53,8 @@
                                                     <td>{{ $city->name }}</td>
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
-                                                            <a href="{{ route('admin.cities.edit', $city->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
-                                                            <a href="{{ route('admin.cities.destroy', $city->id) }}" data-id="{{ $city->id }}" class="btn btn-sm btn-danger item-delete"><i data-feather="trash"></i></a>
+                                                            <a href="{{ route('admin.cities.edit', $city->id) }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                            <a href="{{ route('admin.cities.destroy', $city->id) }}" data-id="{{ $city->id }}" class="btn btn-sm btn-danger item-delete"><i class="fa-solid fa-trash"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>

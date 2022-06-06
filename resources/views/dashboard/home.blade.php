@@ -87,14 +87,15 @@
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
                                                             <a href="{{ route('admin.items.show', $item->id) }}"
-                                                                class="btn btn-sm btn-info"><i data-feather="eye"></i></a>
+                                                                class="btn btn-sm btn-info"><i
+                                                                    class="fa-solid fa-eye"></i></a>
                                                             <a href="{{ route('admin.items.edit', $item->id) }}"
                                                                 class="btn btn-sm btn-primary"><i
-                                                                    data-feather="edit"></i></a>
+                                                                    class="fa-solid fa-pen-to-square"></i></a>
                                                             <a href="{{ route('admin.items.destroy', $item->id) }}"
                                                                 data-id="{{ $item->id }}"
                                                                 class="btn btn-sm btn-danger item-delete"><i
-                                                                    data-feather="trash"></i></a>
+                                                                    class="fa-solid fa-trash"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -106,26 +107,26 @@
                         </div>
 
                         <div class="col-lg-5 col-md-12"">
-                            <div class="card home-item">
-                                <div class="card-header align-items-start">
-                                    <div>
-                                        <h4 class="card-title mb-25">{{ __('station_locations') }}</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div id="map" style="height: 405px; margin-bottom: 15px;"></div>
-                                    <input type="hidden" name="lat" id="latitude" value="">
-                                    <input type="hidden" name="lng" id="longitude" value="">
+                                <div class=" card home-item">
+                            <div class="card-header align-items-start">
+                                <div>
+                                    <h4 class="card-title mb-25">{{ __('station_locations') }}</h4>
                                 </div>
                             </div>
+                            <div class="card-body">
+                                <div id="map" style="height: 405px; margin-bottom: 15px;"></div>
+                                <input type="hidden" name="lat" id="latitude" value="">
+                                <input type="hidden" name="lng" id="longitude" value="">
+                            </div>
                         </div>
-
                     </div>
-                </section>
-                <!-- Dashboard Analytics end -->
 
             </div>
+            </section>
+            <!-- Dashboard Analytics end -->
+
         </div>
+    </div>
     </div>
 
     @push('js')

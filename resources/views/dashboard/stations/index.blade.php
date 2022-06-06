@@ -60,8 +60,8 @@
 
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
-                                                            <a href="{{ route('admin.stations.edit', $station->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
-                                                            <a href="{{ route('admin.stations.destroy', $station->id) }}" data-id="{{ $station->id }}" class="btn btn-sm btn-danger item-delete"><i data-feather="trash"></i></a>
+                                                            <a href="{{ route('admin.stations.edit', $station->id) }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                            <a href="{{ route('admin.stations.destroy', $station->id) }}" data-id="{{ $station->id }}" class="btn btn-sm btn-danger item-delete"><i class="fa-solid fa-trash"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>

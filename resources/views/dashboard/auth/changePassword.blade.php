@@ -35,7 +35,7 @@
                                     <div class="input-group input-group-merge form-password-toggle">
                                         <input type="password" class="form-control form-control-merge" id="password" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" tabindex="1" autofocus />
                                         <div class="input-group-append">
-                                            <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                                            <span class="input-group-text cursor-pointer"><i class="fa-solid fa-eye"></i></span>
                                         </div>
                                     </div>
                                     @error('password')
@@ -52,7 +52,7 @@
                                     <div class="input-group input-group-merge form-password-toggle">
                                         <input type="password" class="form-control form-control-merge" id="password_confirmation" name="password_confirmation" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password_confirmation" tabindex="2" />
                                         <div class="input-group-append">
-                                            <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                                            <span class="input-group-text cursor-pointer"><i class="fa-solid fa-eye"></i></span>
                                         </div>
                                         @error('password_confirmation')
                                             <span class="alert alert-danger">

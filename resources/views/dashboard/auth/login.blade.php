@@ -40,7 +40,7 @@
                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                 aria-describedby="password" />
                             <div class="input-group-append">
-                                <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                                <span class="input-group-text cursor-pointer"><i class="fa-solid fa-eye"></i></span>
                             </div>
                         </div>
                         @error('password')

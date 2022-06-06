@@ -330,7 +330,7 @@
                                                                 data-id="{{ $media->id }}"
                                                                 style="color: red;text-decoration: none;"
                                                                 class="btn btn-red deleteImage">
-                                                                <i data-feather="trash"></i> حذف</a> </label>
+                                                                <i class="fa-solid fa-trash"></i> حذف</a> </label>
                                                             <img id="files" src="{{ asset('storage/' . $media->media->image) }}"
                                                                 style="width: 200px; height: auto;">
                                                         </div>
