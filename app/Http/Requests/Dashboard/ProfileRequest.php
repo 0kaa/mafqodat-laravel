@@ -9,11 +9,10 @@ class ProfileRequest extends FormRequest
     public function messages()
     {
         return [
-            'first_name.required' => __('first_name_required'),
-            'family_name.required' => __('family_name_required'),
+            'name.required'  => __('name_required'),
             'email.required' => __('email_required'),
-            'email.unique' => __('email_unique'),
-            'password.min' => __('password_min'),
+            'email.unique'   => __('email_unique'),
+            'password.min'   => __('password_min'),
         ];
     }
 
@@ -35,17 +34,10 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required',
-            'family_name' => 'required',
-            'email' => 'required|email|unique:users,email,' . auth()->user()->id,
-            'address' => 'nullable',
-            'second_address' => 'nullable',
-            'post_code' => 'nullable',
-            'phone' => 'nullable',
-            'mobile' => 'nullable',
-            'image' => 'nullable',
-            'country_id' => 'nullable|exists:countries,id',
-            'city_id' => 'nullable|exists:cities,id',
+            'name'     => 'required',
+            'email'    => 'required|email|unique:users,email,' . auth()->user()->id,
+            'phone'    => 'nullable',
+            'image'    => 'nullable',
             'password' => 'nullable|min:6',
         ];
     }

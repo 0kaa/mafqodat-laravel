@@ -46,7 +46,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">{{ __('edit_employee') }} |
-                                        {{ $employee->first_name . ' ' . $employee->family_name }}</h2>
+                                        {{ $employee->name }}</h2>
                                 </div>
                                 <div class="card-body">
                                     <form class="form form-vertical" id="update_employee_form"

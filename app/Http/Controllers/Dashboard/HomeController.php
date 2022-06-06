@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Item;
+use App\Models\ItemMedia;
 use App\Models\Station;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -37,11 +38,13 @@ class HomeController extends Controller
 
         $employees = User::whereDoesntHave('roles')->count();
 
+        $itemMedia = ItemMedia::get();
+
         $lost_items = Item::select(
             DB::raw('YEAR(created_at) as year'),
             DB::raw('MONTH(created_at) as month')
         )->get()->groupBy('month');
 
-        return view('dashboard.reports', compact('items', 'delivered_items', 'employees', 'lost_items', 'latest_items', 'stations_count'));
+        return view('dashboard.reports', compact('items', 'delivered_items', 'employees', 'lost_items', 'latest_items', 'stations_count', 'itemMedia'));
     }
 }

@@ -10,8 +10,7 @@ class AuthRequest extends MasterApiRequest
     public function messages()
     {
         return [
-            'first_name.required'  => __('first_name_required'),
-            'family_name.required' => __('family_name_required'),
+            'name.required'  => __('name_required'),
             'email.required'       => __('email_required'),
             'email.unique'         => __('email_unique'),
             'password.required'    => __('password_required'),

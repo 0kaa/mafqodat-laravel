@@ -57,11 +57,11 @@ class User extends Authenticatable
     protected function rules()
     {
         return [
-            'name'     => 'required|min:3',
-            'email'          => 'required|unique:users,email' . $this->id,
-            'password'       => 'required|min:6',
-            'phone'          => 'required|min:8|max:12',
-            'job_number'     => 'required',
+            'name'       => 'required|min:3',
+            'email'      => 'required|unique:users,email' . $this->id,
+            'password'   => 'required|min:6',
+            'phone'      => 'required|min:8|max:12',
+            'job_number' => 'required',
         ];
     }
 

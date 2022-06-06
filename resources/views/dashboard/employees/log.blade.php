@@ -17,24 +17,8 @@
                 <section id="basic-datatable">
                     <div class="row">
                         <div class="col-12">
-                            {{-- export pdf button --}}
-                            <input
-                                type="button"
-                                class="btn btn-primary mr-1 mb-2"
-                                id="btnExport"
-                                value="{{ __('export_pdf') }}"
-                                onclick="Export()"
-                            />
-
-                            {{-- export excel button --}}
-                            {{-- <input
-                                type="button"
-                                class="btn btn-primary mr-1 mb-2"
-                                id="exportExcel"
-                                value="{{ __('export_excel') }}"
-                            /> --}}
                             <div class="card">
-                                <table class="datatables-basic table export_table" id="tblCustomers">
+                                <table class="datatables-basic table export_table" id="tblMafkodat">
                                     <thead class="filters">
                                         <tr>
                                             <th>{{ __('id') }}</th>
@@ -81,11 +65,6 @@
         <script src="{{ asset('dashboard/app-assets/js/custom/export.js') }}"></script>
 
         <script>
-            function Export() {
-                // print this
-                $('#tblCustomers').printThis();
-            }
-
             $(document).ready(function() {
 
                 $('.item-delete').click(function(e) {

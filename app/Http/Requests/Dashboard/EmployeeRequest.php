@@ -10,10 +10,8 @@ class EmployeeRequest extends FormRequest
     public function messages()
     {
         return [
-            'first_name.required'  => __('first_name_required'),
-            'first_name.min'       => __('first_name_min'),
-            'family_name.required' => __('family_name_required'),
-            'family_name.min'      => __('family_name_min'),
+            'name.required'        => __('name_required'),
+            'name.min'             => __('name_min'),
             'email.required'       => __('email_required'),
             'email.unique'         => __('email_unique'),
             'password.required'    => __('password_required'),

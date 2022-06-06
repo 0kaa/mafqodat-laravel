@@ -288,3 +288,17 @@ a:hover {
     max-width: 100%;
     max-height: 100%
 }
+
+#tblMafkodat_wrapper button{
+    background: #f6931e;
+    height: 40px;
+    width: 105px;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    margin: 10px ;
+}
+
+#tblMafkodat_wrapper button:hover{
+    box-shadow: 0px 0px 8px #f6951e75;
+}

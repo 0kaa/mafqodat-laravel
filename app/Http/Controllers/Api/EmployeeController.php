@@ -178,15 +178,15 @@ class EmployeeController extends Controller
 
             $employee->syncPermissions($request->permissions);
 
-            if (!preg_match('/[^A-Za-z0-9]/', $employee->first_name)) {
-                $message_ar = $employee->family_name . ' ' .  $employee->first_name . ' لقد قمت بتعديل بيانات الموظف';
+            if (!preg_match('/[^A-Za-z0-9]/', $employee->name)) {
+                $message_ar = $employee->name . ' لقد قمت بتعديل بيانات الموظف';
             } else {
-                $message_ar = 'لقد قمت بتعديل بيانات الموظف ' . $employee->first_name . ' ' .  $employee->family_name;
+                $message_ar = 'لقد قمت بتعديل بيانات الموظف ' . $employee->name;
             }
             Log::create([
                 'user_id' => $user->id,
                 'message_ar' => $message_ar,
-                'message_en' => 'I have updated the employee ' . $employee->first_name . ' ' .  $employee->family_name,
+                'message_en' => 'I have updated the employee ' . $employee->name,
                 'date' => Carbon::now(),
             ]);
 
@@ -216,8 +216,8 @@ class EmployeeController extends Controller
 
             Log::create([
                 'user_id' => $user->id,
-                'message_ar' => $employee->first_name . ' ' .  $employee->family_name . ' لقد قمت بحذف الموظف',
-                'message_en' => 'I have deleted the employee ' . $employee->first_name . ' ' .  $employee->family_name,
+                'message_ar' => $employee->name . ' لقد قمت بحذف الموظف',
+                'message_en' => 'I have deleted the employee ' . $employee->name,
                 'date' => Carbon::now(),
             ]);
 

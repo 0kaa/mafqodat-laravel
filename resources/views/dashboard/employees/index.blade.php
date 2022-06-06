@@ -38,7 +38,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
-                                    <table class="datatables-basic table">
+                                    <table class="datatables-basic table" id="tblMafkodat">
                                         <thead>
                                             <tr>
                                                 <th>{{ __('id') }}</th>
@@ -55,7 +55,7 @@
                                             @foreach ($employees as $employee)
                                                 <tr>
                                                     <td>{{ $employee->id }}</td>
-                                                    <td>{{ $employee->first_name . ' ' . $employee->family_name }}</td>
+                                                    <td>{{ $employee->name }}</td>
                                                     <td>{{ $employee->phone }}</td>
                                                     <td>{{ $employee->email }}</td>
                                                     <td>{{ $employee->job_number }}</td>

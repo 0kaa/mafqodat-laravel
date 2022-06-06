@@ -115,20 +115,7 @@
 
                         <div class="col-lg-12 col-md-12">
                             <div class="card">
-
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        {{-- export pdf button --}}
-                                        <input type="button" class="btn btn-primary mr-1 mb-2" id="btnExport"
-                                            value="{{ __('export_pdf') }}" onclick="Export()" />
-
-                                        {{-- export excel button --}}
-                                        {{-- <input type="button" class="btn btn-primary mr-1 mb-2" id="exportExcel"
-                                            value="{{ __('export_excel') }}" /> --}}
-                                    </div>
-                                </div>
-
-                                <table class="datatables-basic table export_table" id="tblLatestItems">
+                                <table class="datatables-basic table export_table" id="tblMafkodat">
                                     <thead>
                                         <tr>
                                             <th>{{ __('id') }}</th>
@@ -159,12 +146,12 @@
                                                 <td>{{ $item->station->name}}</td>
                                                 <td>{{ $item->station->location }}</td>
                                                 <td class="noExl">
-                                                    @if ($item->media())
-                                                        <img src="{{ asset('storage/' . $item->media[0]->image) }}"
-                                                            style="width: 50px; height: auto;">
-                                                    @else
-                                                        <img src="https://via.placeholder.com/50">
-                                                    @endif
+                                                    @foreach ($itemMedia->where('item_id', $item->id) as $media)
+                                                        @if ($loop->first)
+                                                            <img src="{{ asset('storage/' . $media->media->image) }}"
+                                                                alt="{{ $media->name }}" width="100" height="100">
+                                                        @endif
+                                                    @endforeach
                                                 </td>
                                                 <td>
                                                     @if ($item->is_delivered == 1)
@@ -232,6 +219,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <script src="{{ asset('dashboard/app-assets/js/custom/export.js') }}"></script>
+
         <script>
             function Export() {
                 // print this

@@ -118,8 +118,7 @@ class AuthController extends Controller
             $data = $request->all();
 
             $validator = Validator::make($data, [
-                'first_name'  => 'required',
-                'family_name' => 'required',
+                'name'  => 'required',
                 'email'       => 'required|unique:users,email,' . $user->id,
                 'address'     => 'required',
                 'phone'       => 'required',
@@ -127,16 +126,15 @@ class AuthController extends Controller
                 'country_id'  => 'required',
                 'city_id'     => 'required',
             ], [
-                'first_name.required'  => __('first_name_required'),
-                'family_name.required' => __('family_name_required'),
-                'email.required'       => __('email_required'),
-                'email.unique'         => __('email_unique'),
-                'phone.required'       => __('phone_required'),
-                'address.required'     => __('address_required'),
-                'phone.required'       => __('phone_required'),
-                'mobile.required'      => __('mobile_required'),
-                'country_id.required'  => __('country_required'),
-                'city_id.required'     => __('city_required'),
+                'name.required'       => __('name_required'),
+                'email.required'      => __('email_required'),
+                'email.unique'        => __('email_unique'),
+                'phone.required'      => __('phone_required'),
+                'address.required'    => __('address_required'),
+                'phone.required'      => __('phone_required'),
+                'mobile.required'     => __('mobile_required'),
+                'country_id.required' => __('country_required'),
+                'city_id.required'    => __('city_required'),
             ]);
 
             if ($validator->stopOnFirstFailure()->fails()) {
