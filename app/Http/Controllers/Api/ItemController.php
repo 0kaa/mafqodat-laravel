@@ -69,7 +69,6 @@ class ItemController extends Controller
         $item = Item::create($data);
 
         if ($request->has('images')) {
-
             $files = $request->file('images');
 
             foreach ($files as $file) {

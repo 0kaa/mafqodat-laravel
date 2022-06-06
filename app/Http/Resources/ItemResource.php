@@ -39,7 +39,9 @@ class ItemResource extends JsonResource
             'location'          => $this->location,
             'details'           => $this->details,
             // 'image'             => $this->image ? url('/storage') . '/' . $this->image : null,
-            'media'             => $this->media,
+            'media'             => $this->itemMedia->map(function ($itemMedia) {
+                return new MediaResource($itemMedia->media);
+            }),
             'is_delivered'      => $this->is_delivered == 1 ? 1 : 0,
             'first_name'        => $this->first_name,
             'surname'           => $this->surname,

@@ -78,4 +78,8 @@ class Item extends Model
         return $this->belongsTo(Storage::class, 'storage_id', 'id');
     }
 
+    public function itemMedia()
+    {
+        return $this->hasMany(ItemMedia::class, 'item_id', 'id');
+    }
 }
