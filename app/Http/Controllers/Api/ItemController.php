@@ -309,4 +309,30 @@ class ItemController extends Controller
         return $this->apiResponse('', StorageResource::collection($storages), 200);
     }
 
+    public function deleteImage(Request $request) {
+
+        // dd($request->all());
+
+        $itemMedia = ItemMedia::find($request->image_id);
+
+        try {
+            Storage::delete($itemMedia->media->image);
+
+            Media::destroy($itemMedia->media->id);
+
+            $itemMedia->delete();
+
+            return \response()->json([
+                'message' => __('image_deleted_successfully'),
+            ]);
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return \response()->json([
+                'message' => __('image_not_found'),
+            ]);
+        }
+
+
+    }
 }

@@ -245,5 +245,7 @@
     "informer_name_required"       : "Informer Name is required",
     "informer_phone_required"      : "Informer Phone is required",
     "storage_not_found"            : "Storage not found",
+    "image_deleted_successfully"   : "Image deleted successfully",
+    "image_not_found"              : "Image not found",
     ""                             : ""
 }

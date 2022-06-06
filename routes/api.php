@@ -103,4 +103,6 @@ Route::group(['middleware' => 'auth:sanctum', 'localization'], function () {
     Route::post('storages/create', [StorageController::class, 'createStorage'])->middleware(['permission:create_storage']);
     Route::post('storages/update/{id}', [StorageController::class, 'updateStorage'])->middleware(['permission:update_storage']);
     Route::post('storages/delete/{id}', [StorageController::class, 'deleteStorage'])->middleware(['permission:delete_storage']);
+
+    Route::post('delete_item_image', [ItemController::class, 'deleteImage']);
 });
