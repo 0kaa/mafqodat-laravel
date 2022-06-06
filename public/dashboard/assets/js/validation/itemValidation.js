@@ -65,6 +65,7 @@ $(document).ready(function () {
             },
             informer_phone: {
                 required: true,
+                number: true,
                 depends: function(element) {
                     return value == 'found';
                 }

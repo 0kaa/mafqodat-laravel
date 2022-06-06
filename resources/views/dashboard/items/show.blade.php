@@ -90,7 +90,7 @@
                                                     <li>{{ __('address') }} : {{ $item->address }}</li>
                                                     <li>{{ __('second_address') }} :
                                                         {{ $item->second_address }}</li>
-                                                    <li>{{ __('city') }} : {{ $item->city }}</li>
+                                                    <li>{{ __('city') }} : {{ $item->city->name }}</li>
                                                     <li>{{ __('postcode') }} : {{ $item->postcode }}</li>
                                                     <li>{{ __('phone') }} : {{ $item->phone }}</li>
                                                     <li>{{ __('mobile') }} : {{ $item->mobile }}</li>
