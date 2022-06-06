@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <table class="datatables-basic table">
+                                    <table class="datatables-basic table" id="tblMafkodat">
                                         <thead>
                                             <tr>
                                                 <th>{{ __('id') }}</th>

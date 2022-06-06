@@ -46,10 +46,11 @@
                 "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json"
             },
             scrollX: true,
+            lengthMenu: [ 10, 25, 50, 75, 100 ],
             dom: 'Bfrtip',
             buttons: [
-                'copy', 'excel', 'print'
-            ]
+                'copy', 'excel', 'print', 'pageLength'
+            ],
         });
         table.buttons().container()
         .appendTo( '#tblMafkodat_wrapper .col-md-6:eq(0)' );
@@ -63,8 +64,9 @@
             },
             scrollX: true,
             dom: 'Bfrtip',
+            lengthMenu: [ 10, 25, 50, 75, 100 ],
             buttons: [
-                'copy', 'excel', 'print'
+                'copy', 'excel', 'print', 'pageLength'
             ]
         });
         table.buttons().container()
