@@ -127,6 +127,7 @@ label {
     object-fit: contain;
     height: 65px;
 }
+
 .cat-item .font-weight-bolder {
     font-weight: 100 !important;
     font-size: 18px !important;
@@ -136,9 +137,12 @@ label {
     box-shadow: 0 8px 25px -8px #f6931e;
 }
 
-.btn-primary:focus, .btn-primary:active, .btn-primary.active , .btn-primary {
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary {
     color: #FFFFFF;
-    background-color: #f6931e!important;
+    background-color: #f6931e !important;
     border: #f6931e;
 }
 
@@ -152,21 +156,23 @@ label {
     background-color: #f6931e;
 }
 
-.dropdown-item.active, .dropdown-item:active {
+.dropdown-item.active,
+.dropdown-item:active {
     color: #FFFFFF;
-   background-color: #f6931e;
-}
-.dropdown-item:hover, .dropdown-item:focus {
-    color: #1E1E1E;
-    text-decoration: none;
-    background-color: #f6951e25 ;
+    background-color: #f6931e;
 }
 
-.nav-pills .nav-link.active
-{
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #1E1E1E;
+    text-decoration: none;
+    background-color: #f6951e25;
+}
+
+.nav-pills .nav-link.active {
     background-color: #f6931e;
     border-color: #f6931e;
-    box-shadow:none;
+    box-shadow: none;
 }
 
 .form-control:focus {
@@ -187,6 +193,7 @@ a {
     text-decoration: none;
     background-color: transparent;
 }
+
 a:hover {
     color: #f6931e;
     text-decoration: none;
@@ -197,6 +204,87 @@ a:hover {
     padding: 0 !important;
 }
 
-.datatables-basic{
+.datatables-basic {
     white-space: nowrap;
+}
+
+
+.login_new_page {
+    min-height: 100vh;
+    background-image: url(../../app-assets/images/pages/auth-screen.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+    width: 100%;
+    background-position: center;
+}
+
+.login_new_page::after {
+    content: "";
+    top: 20px;
+    left: 20px;
+    width: 200px;
+
+    filter: brightness(0) invert(1);
+    background-repeat: no-repeat;
+    height: 200px;
+    background-size: contain;
+    position: absolute;
+    background-image: url(../../app-assets/images/pages/2030.png);
+}
+
+.sub_login_new_page {
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 10px;
+    margin: auto;
+
+    width: 50%;
+}
+
+.sub_login_new_page .form-control {
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #E5E5E5;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #5E5873;
+    font-weight: 400;
+    background-color: #FFFFFF;
+    box-shadow: none;
+    margin: 5px 0;
+
+}
+
+.sub_login_new_page .input-group:not(.bootstrap-touchspin):focus-within .form-control,
+.sub_login_new_page .input-group:not(.bootstrap-touchspin):focus-within .input-group-text {
+    border: none;
+    box-shadow: none;
+}
+
+.sub_login_new_page .input-group-text.cursor-pointer {
+    height: 50px;
+    vertical-align: middle;
+}
+
+.sub_login_new_page .input-group-append {
+    margin: 5px -1px;
+}
+
+.logo_login_new_page {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+
+    height: 220px;
+}
+
+.logo_login_new_page img {
+    max-width: 100%;
+    max-height: 100%
 }
