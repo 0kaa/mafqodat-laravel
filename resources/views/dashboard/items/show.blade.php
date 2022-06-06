@@ -50,6 +50,8 @@
 
                                                     <li>{{ __('category_name') }} : {{ $item->category->name }}</li>
 
+                                                    <li>{{ __('storage') }} : {{ $item->storage->name }}</li>
+
                                                     @if ($item->category->slug == 'other')
                                                         <li>{{ __('type') }} : {{ $item->type }}</li>
                                                         <li>{{ __('details') }} : {{ $item->details }}</li>
