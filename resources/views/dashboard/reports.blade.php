@@ -143,7 +143,7 @@
                                                 <td>{{ $item->storage->name }}</td>
                                                 <td>{{ $item->date->format('Y-m-d') }}</td>
                                                 <td>{{ $item->time->format('h:i A') }}</td>
-                                                <td>{{ $item->station->name}}</td>
+                                                <td>{{ $item->station->name }}</td>
                                                 <td>{{ $item->station->location }}</td>
                                                 <td class="noExl">
                                                     @foreach ($itemMedia->where('item_id', $item->id) as $media)
@@ -163,18 +163,20 @@
                                                 <td class="my-2 noExl">
                                                     {!! QrCode::generate(url('/admin/items') . '/' . $item->id) !!}
                                                 </td>
-                                                <td>{{ $item->is_delivered == 1 ? $item->first_name . ' ' . $item->surname : '-' }}</td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->first_name . ' ' . $item->surname : '-' }}
+                                                </td>
                                                 <td>{{ $item->is_delivered == 1 ? $item->phone : '-' }}</td>
                                                 <td class="text-center noExl">
                                                     <div class="btn-group" role="group" aria-label="Second group">
                                                         <a href="{{ route('admin.items.show', $item->id) }}"
-                                                            class="btn btn-sm btn-info"><i data-feather="eye"></i></a>
+                                                            class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
                                                         <a href="{{ route('admin.items.edit', $item->id) }}"
-                                                            class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
+                                                            class="btn btn-sm btn-primary"><i
+                                                                class="fa-solid fa-pen-to-square"></i></a>
                                                         <a href="{{ route('admin.items.destroy', $item->id) }}"
                                                             data-id="{{ $item->id }}"
                                                             class="btn btn-sm btn-danger item-delete"><i
-                                                                data-feather="trash"></i></a>
+                                                                class="fa-solid fa-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -215,8 +217,8 @@
         <script src="{{ asset('dashboard/app-assets/vendors/js/charts/apexcharts.min.js') }}"></script>
         <script src="{{ asset('dashboard/app-assets/vendors/js/charts/chart.min.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"
-        integrity="sha512-d5Jr3NflEZmFDdFHZtxeJtBzk0eB+kkRXWFQqEc1EKmolXjHm2IKCA7kTvXBNjIYzjXfD5XzIjaaErpkZHCkBg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                integrity="sha512-d5Jr3NflEZmFDdFHZtxeJtBzk0eB+kkRXWFQqEc1EKmolXjHm2IKCA7kTvXBNjIYzjXfD5XzIjaaErpkZHCkBg=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <script src="{{ asset('dashboard/app-assets/js/custom/export.js') }}"></script>
 

@@ -330,7 +330,7 @@
                                                                 data-id="{{ $media->id }}"
                                                                 style="color: red;text-decoration: none;"
                                                                 class="btn btn-red deleteImage">
-                                                                <i data-feather="trash"></i> حذف</a> </label>
+                                                                <i class="fa-solid fa-trash"></i> حذف</a> </label>
                                                             <img id="files" src="{{ asset('storage/' . $media->media->image) }}"
                                                                 style="width: 200px; height: auto;">
                                                         </div>
@@ -383,14 +383,14 @@
                                                 <div class="col-12" id="delivered_data">
                                                     <div class="row">
 
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <div class="form-group">
                                                                 <label
-                                                                    for="first-name-vertical">{{ __('first_name') }}</label>
-                                                                <input type="text" class="form-control" name="first_name"
-                                                                    value="{{ old('first_name', $item->first_name) }}"
-                                                                    placeholder="{{ __('first_name') }}" required />
-                                                                @error('first_name')
+                                                                    for="first-name-vertical">{{ __('full_name') }}</label>
+                                                                <input type="text" class="form-control" name="full_name"
+                                                                    value="{{ old('full_name', $item->full_name) }}"
+                                                                    placeholder="{{ __('full_name') }}" required />
+                                                                @error('full_name')
                                                                     <span class="alert alert-danger">
                                                                         <small
                                                                             class="errorTxt">{{ $message }}</small>
@@ -399,111 +399,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="first-name-vertical">{{ __('family_name') }}</label>
-                                                                <input type="text" class="form-control" name="surname"
-                                                                    value="{{ old('surname', $item->surname) }}"
-                                                                    placeholder="{{ __('family_name') }}" required />
-                                                                @error('surname')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="first-name-vertical">{{ __('email') }}</label>
-                                                                <input type="email" class="form-control" name="email"
-                                                                    value="{{ old('email', $item->email) }}"
-                                                                    placeholder="{{ __('email') }}" required />
-                                                                @error('email')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="first-name-vertical">{{ __('address') }}</label>
-                                                                <input type="text" class="form-control" name="address"
-                                                                    value="{{ old('address', $item->address) }}"
-                                                                    placeholder="{{ __('address') }}" required />
-                                                                @error('address')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="first-name-vertical">{{ __('second_address') }}</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="second_address"
-                                                                    value="{{ old('second_address', $item->second_address) }}"
-                                                                    placeholder="{{ __('second_address') }}" />
-                                                                @error('second_address')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label for="selectCity">{{ __('select_city') }}</label>
-                                                                <select class="form-control form-control-lg mb-1"
-                                                                    name="city_id" id="selectCity" required>
-
-                                                                    @foreach ($cities as $city)
-                                                                        <option value="{{ $city->id }}"
-                                                                            {{ old('city_id', $item->city_id) == $city->id ? 'selected' : '' }}>
-                                                                            {{ $city->name }}
-                                                                        </option>
-                                                                    @endforeach
-
-                                                                </select>
-                                                                @error('city_id')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="first-name-vertical">{{ __('post_code') }}</label>
-                                                                <input type="text" class="form-control" name="postcode"
-                                                                    value="{{ old('postcode', $item->postcode) }}"
-                                                                    placeholder="{{ __('post_code') }}" required />
-                                                                @error('postcode')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('phone') }}</label>
@@ -518,37 +414,20 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="first-name-vertical">{{ __('mobile') }}</label>
-                                                                <input type="text" class="form-control" name="mobile"
-                                                                    value="{{ old('mobile', $item->mobile) }}"
-                                                                    placeholder="{{ __('mobile') }}" required />
-                                                                @error('mobile')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
                                                     </div>
                                                 </div>
                                             @else
                                                 <div class="col-12" id="delivered_data">
                                                     <div class="row">
 
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <div class="form-group">
                                                                 <label
-                                                                    for="first-name-vertical">{{ __('first_name') }}</label>
-                                                                <input type="text" class="form-control" name="first_name"
-                                                                    value="{{ old('first_name') }}"
-                                                                    placeholder="{{ __('first_name') }}" required />
-                                                                @error('first_name')
+                                                                    for="first-name-vertical">{{ __('full_name') }}</label>
+                                                                <input type="text" class="form-control" name="full_name"
+                                                                    value="{{ old('full_name') }}"
+                                                                    placeholder="{{ __('full_name') }}" required />
+                                                                @error('full_name')
                                                                     <span class="alert alert-danger">
                                                                         <small
                                                                             class="errorTxt">{{ $message }}</small>
@@ -557,113 +436,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="first-name-vertical">{{ __('family_name') }}</label>
-                                                                <input type="text" class="form-control" name="surname"
-                                                                    value="{{ old('surname') }}"
-                                                                    placeholder="{{ __('family_name') }}" required />
-                                                                @error('surname')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="first-name-vertical">{{ __('email') }}</label>
-                                                                <input type="email" class="form-control" name="email"
-                                                                    value="{{ old('email') }}"
-                                                                    placeholder="{{ __('email') }}" required />
-                                                                @error('email')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="first-name-vertical">{{ __('address') }}</label>
-                                                                <input type="text" class="form-control" name="address"
-                                                                    value="{{ old('address') }}"
-                                                                    placeholder="{{ __('address') }}" required />
-                                                                @error('address')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="first-name-vertical">{{ __('second_address') }}</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="second_address"
-                                                                    value="{{ old('second_address') }}"
-                                                                    placeholder="{{ __('second_address') }}" />
-                                                                @error('second_address')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label for="selectCity">{{ __('select_city') }}</label>
-                                                                <select class="form-control form-control-lg mb-1"
-                                                                    name="city_id" id="selectCity" required>
-
-                                                                    <option value="">{{ __('select') }}</option>
-
-                                                                    @foreach ($cities as $city)
-                                                                        <option value="{{ $city->id }}"
-                                                                            {{ old('city_id') == $city->id ? 'selected' : '' }}>
-                                                                            {{ $city->name }}
-                                                                        </option>
-                                                                    @endforeach
-
-                                                                </select>
-                                                                @error('city_id')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="first-name-vertical">{{ __('post_code') }}</label>
-                                                                <input type="text" class="form-control" name="postcode"
-                                                                    value="{{ old('postcode') }}"
-                                                                    placeholder="{{ __('post_code') }}" required />
-                                                                @error('postcode')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('phone') }}</label>
@@ -671,22 +444,6 @@
                                                                     value="{{ old('phone') }}"
                                                                     placeholder="{{ __('phone') }}" required />
                                                                 @error('phone')
-                                                                    <span class="alert alert-danger">
-                                                                        <small
-                                                                            class="errorTxt">{{ $message }}</small>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="first-name-vertical">{{ __('mobile') }}</label>
-                                                                <input type="text" class="form-control" name="mobile"
-                                                                    value="{{ old('mobile') }}"
-                                                                    placeholder="{{ __('mobile') }}" required />
-                                                                @error('mobile')
                                                                     <span class="alert alert-danger">
                                                                         <small
                                                                             class="errorTxt">{{ $message }}</small>

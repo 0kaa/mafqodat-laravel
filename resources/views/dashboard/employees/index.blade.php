@@ -64,10 +64,10 @@
 
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
-                                                            <a href="{{ route('admin.employees.edit', $employee->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
-                                                            <a href="{{ route('admin.employees.destroy', $employee->id) }}" data-id="{{ $employee->id }}" class="btn btn-sm btn-danger item-delete"><i data-feather="trash"></i></a>
+                                                            <a href="{{ route('admin.employees.edit', $employee->id) }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                            <a href="{{ route('admin.employees.destroy', $employee->id) }}" data-id="{{ $employee->id }}" class="btn btn-sm btn-danger item-delete"><i class="fa-solid fa-trash"></i></a>
                                                             @if ($employee->logs->isNotEmpty())
-                                                                <a href="{{ route('admin.employees.logs', $employee->id) }}" class="btn btn-sm btn-info"><i data-feather='file-text'></i></a>
+                                                                <a href="{{ route('admin.employees.logs', $employee->id) }}" class="btn btn-sm btn-info"><i class="fa-solid fa-file-lines"></i></a>
                                                             @endif
                                                         </div>
                                                     </td>

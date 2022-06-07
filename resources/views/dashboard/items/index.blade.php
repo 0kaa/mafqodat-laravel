@@ -60,6 +60,7 @@
                                             <th>{{ __('qr_code') }}</th>
                                             <th>{{ __('deliverd_name') }}</th>
                                             <th>{{ __('deliverd_phone') }}</th>
+                                            <th>{{ __('deliverd_date') }}</th>
                                             <th>{{ __('actions') }}</th>
                                         </tr>
                                     </thead>
@@ -75,12 +76,17 @@
                                                 <td>{{ $item->station->name }}</td>
                                                 <td>{{ $item->station->location }}</td>
                                                 <td>
-                                                    @foreach ($itemMedia->where('item_id', $item->id) as $media)
-                                                        @if ($loop->first)
-                                                            <img src="{{ asset('storage/' . $media->media->image) }}"
-                                                                alt="{{ $media->name }}" width="100" height="100">
-                                                        @endif
-                                                    @endforeach
+                                                    {{-- check if itemMedia not empty --}}
+                                                    @if ($item->itemMedia->count() > 0)
+                                                        @foreach ($itemMedia->where('item_id', $item->id) as $media)
+                                                            @if ($loop->first)
+                                                                <img src="{{ asset('storage/' . $media->media->image) }}"
+                                                                    alt="{{ $media->name }}" width="100" height="100">
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                        <img src="https://via.placeholder.com/100" alt="">
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if ($item->is_delivered == 1)
@@ -95,16 +101,19 @@
                                                 <td>{{ $item->is_delivered == 1 ? $item->first_name . ' ' . $item->surname : '-' }}
                                                 </td>
                                                 <td>{{ $item->is_delivered == 1 ? $item->phone : '-' }}</td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->delivery_date->format('Y-m-d') : '-' }}
+                                                </td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-label="Second group">
                                                         <a href="{{ route('admin.items.show', $item->id) }}"
-                                                            class="btn btn-sm btn-info"><i data-feather="eye"></i></a>
+                                                            class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
                                                         <a href="{{ route('admin.items.edit', $item->id) }}"
-                                                            class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
+                                                            class="btn btn-sm btn-primary"><i
+                                                                class="fa-solid fa-pen-to-square"></i></a>
                                                         <a href="{{ route('admin.items.destroy', $item->id) }}"
                                                             data-id="{{ $item->id }}"
                                                             class="btn btn-sm btn-danger item-delete"><i
-                                                                data-feather="trash"></i></a>
+                                                                class="fa-solid fa-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

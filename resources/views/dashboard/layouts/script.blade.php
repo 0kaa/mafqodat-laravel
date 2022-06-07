@@ -41,7 +41,7 @@
 @if (App::getLocale() == 'ar')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/localization/messages_ar.min.js"></script>
     <script>
-        var table = $('.table').DataTable({
+        var table = $('.datatables-basic').DataTable({
             "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json"
             },
@@ -58,7 +58,7 @@
     </script>
 @else
     <script>
-        var table = $('.table').DataTable({
+        var table = $('.datatables-basic').DataTable({
             "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/en-GB.json"
             },

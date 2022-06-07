@@ -53,8 +53,8 @@
                                                     <td>{{ $storage->name }}</td>
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
-                                                            <a href="{{ route('admin.storages.edit', $storage->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
-                                                            <a href="{{ route('admin.storages.destroy', $storage->id) }}" data-id="{{ $storage->id }}" class="btn btn-sm btn-danger item-delete"><i data-feather="trash"></i></a>
+                                                            <a href="{{ route('admin.storages.edit', $storage->id) }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                            <a href="{{ route('admin.storages.destroy', $storage->id) }}" data-id="{{ $storage->id }}" class="btn btn-sm btn-danger item-delete"><i class="fa-solid fa-trash"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>

@@ -178,7 +178,7 @@ class ItemController extends Controller
 
         $slug = Category::where('id', $request->category_id)->first()->slug;
 
-        $data = $request->except('_token', '_method', 'image', 'first_name', 'surname', 'is_delivered', 'email', 'phone', 'address', 'second_address', 'postcode', 'city_id', 'mobile');
+        $data = $request->except('_token', '_method', 'image', 'full_name', 'phone', 'is_delivered');
 
         $date = Carbon::create($request->date);
         $time = Carbon::create($request->time);
@@ -224,29 +224,15 @@ class ItemController extends Controller
 
         if (isset($request->is_delivered)) {
 
-            $data['is_delivered'] = $request->is_delivered;
-            $data['first_name'] = $request->first_name;
-            $data['surname'] = $request->surname;
-            $data['email'] = $request->email;
+            $data['is_delivered'] = 1;
+            $data['full_name'] = $request->full_name;
             $data['phone'] = $request->phone;
-            $data['address'] = $request->address;
-            $data['second_address'] = $request->second_address;
-            $data['postcode'] = $request->postcode;
-            $data['country_id'] = $request->country_id;
-            $data['city_id'] = $request->city_id;
-            $data['mobile'] = $request->mobile;
+            $data['delivery_date'] = Carbon::now();
         } else {
             $data['is_delivered'] = 0;
-            $data['first_name'] = null;
-            $data['surname'] = null;
-            $data['email'] = null;
+            $data['full_name'] = null;
             $data['phone'] = null;
-            $data['address'] = null;
-            $data['second_address'] = null;
-            $data['postcode'] = null;
-            $data['country_id'] = null;
-            $data['city_id'] = null;
-            $data['mobile'] = null;
+            $data['delivery_date'] = null;
         }
 
         if ($request->has('images')) {

@@ -31,20 +31,15 @@ class Item extends Model
         'informer_phone',
 
         /* User data */
-        'first_name',
-        'surname',
-        'address',
-        'secondary_address',
-        'city_id',
-        'postcode',
+        'full_name',
         'phone',
-        'mobile',
-        'email',
+        'delivery_date',
     ];
 
     protected $dates = [
         'date',
-        'time'
+        'time',
+        'delivery_date',
     ];
 
     protected $casts = [

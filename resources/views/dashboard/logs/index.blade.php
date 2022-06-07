@@ -59,8 +59,8 @@
                                                 <td>{{ $log->created_at->format('h:i A') }}</td>
                                                 {{-- <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
-                                                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-primary"><i data-feather="edit"></i></a>
-                                                            <a href="{{ route('admin.categories.destroy', $category->id) }}" data-id="{{ $category->id }}" class="btn btn-sm btn-danger item-delete"><i data-feather="trash"></i></a>
+                                                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                            <a href="{{ route('admin.categories.destroy', $category->id) }}" data-id="{{ $category->id }}" class="btn btn-sm btn-danger item-delete"><i class="fa-solid fa-trash"></i></a>
                                                         </div>
                                                     </td> --}}
                                             </tr>
