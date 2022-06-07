@@ -43,17 +43,11 @@ class ItemResource extends JsonResource
                 return new MediaResource($itemMedia->media);
             }),
             'is_delivered'      => $this->is_delivered == 1 ? 1 : 0,
-            'first_name'        => $this->first_name,
-            'surname'           => $this->surname,
-            'address'           => $this->address,
-            'secondary_address' => $this->secondary_address,
+            'full_name'         => $this->full_name,
             'cost'              => $this->cost,
             'type'              => $this->type,
-            'city'              => new CityResource($this->city),
-            'postcode'          => $this->postcode,
             'phone'             => $this->phone,
-            'mobile'            => $this->mobile,
-            'email'             => $this->email,
+            'delivery_date'     => $this->delivery_date ? $this->delivery_date->format('Y-m-d | h:i A') : null,
         ];
     }
 }
