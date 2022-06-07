@@ -251,5 +251,7 @@
     "date&time"                    : "Date & Time",
     "deliverd_date"                : "Delivered Date",
     "no_data"                      : "No data available in table",
+    "date_from"                    : "Date From",
+    "date_to"                      : "Date To",
     ""                             : ""
 }
