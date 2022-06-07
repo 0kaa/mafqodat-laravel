@@ -250,5 +250,6 @@
     "postcode"                     : "Post Code",
     "date&time"                    : "Date & Time",
     "deliverd_date"                : "Delivered Date",
+    "no_data"                      : "No data available in table",
     ""                             : ""
 }

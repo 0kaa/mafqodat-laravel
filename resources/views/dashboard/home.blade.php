@@ -56,22 +56,29 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($latest_items as $item)
+                                            @if (count($latest_items) > 0)
+                                                @foreach ($latest_items as $item)
+                                                    <tr>
+                                                        <td>{{ $item->id }}</td>
+                                                        <td>{{ $item->category->name }}</td>
+                                                        <td>{{ Str::limit($item->details, 25, '...') }}</td>
+                                                        <td>{{ $item->station->name }}</td>
+                                                        <td class="text-center">
+                                                            <div class="btn-group" role="group"
+                                                                aria-label="Second group">
+                                                                <a href="{{ route('admin.items.show', $item->id) }}"
+                                                                    class="btn btn-sm btn-info">
+                                                                    <i class="fa-solid fa-eye"></i>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
                                                 <tr>
-                                                    <td>{{ $item->id }}</td>
-                                                    <td>{{ $item->category->name }}</td>
-                                                    <td>{{ Str::limit($item->details, 25, '...') }}</td>
-                                                    <td>{{ $item->station->name }}</td>
-                                                    <td class="text-center">
-                                                        <div class="btn-group" role="group" aria-label="Second group">
-                                                            <a href="{{ route('admin.items.show', $item->id) }}"
-                                                                class="btn btn-sm btn-info">
-                                                                <i class="fa-solid fa-eye"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
+                                                    <td colspan="5" style="text-align: center">{{ __('no_data') }}</td>
                                                 </tr>
-                                            @endforeach
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>

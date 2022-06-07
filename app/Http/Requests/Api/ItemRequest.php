@@ -61,15 +61,8 @@ class ItemRequest extends MasterApiRequest
             'informer_phone'   => 'required_if:report_type,found',
 
             /* User data */
-            'first_name'        => 'required_if:is_delivered,1',
-            'surname'           => 'required_if:is_delivered,1',
-            'address'           => 'required_if:is_delivered,1',
-            'secondary_address' => 'sometimes',
-            'city'              => 'required_if:is_delivered,1',
-            'postcode'          => 'required_if:is_delivered,1',
+            'full_name'        => 'required_if:is_delivered,1',
             'phone'             => 'required_if:is_delivered,1',
-            'mobile'            => 'required_if:is_delivered,1',
-            'email'             => 'required_if:is_delivered,1',
 
         ];
     }
