@@ -30,7 +30,9 @@ class ItemController extends Controller
 
         $itemMedia = ItemMedia::get();
 
-        return view('dashboard.items.index', compact('items' ,'itemMedia'));
+        $stations = Station::get();
+
+        return view('dashboard.items.index', compact('items' ,'itemMedia', 'stations'));
     }
 
     /**
