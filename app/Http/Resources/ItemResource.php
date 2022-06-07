@@ -43,11 +43,12 @@ class ItemResource extends JsonResource
                 return new MediaResource($itemMedia->media);
             }),
             'is_delivered'      => $this->is_delivered == 1 ? 1 : 0,
+            'item_status'       => $this->is_delivered == 1 ? __('is_delivered') : __('not_delivered'),
             'full_name'         => $this->full_name,
             'cost'              => $this->cost,
             'type'              => $this->type,
             'phone'             => $this->phone,
-            'delivery_date'     => $this->delivery_date ? $this->delivery_date->format('Y-m-d | h:i A') : null,
+            'delivery_date'     => $this->delivery_date ? $this->delivery_date->format('Y-m-d') : null,
         ];
     }
 }

@@ -144,6 +144,7 @@
     "date"                         : "تاريخ",
     "time"                         : "وقت",
     "is_delivered"                 : "تم الاستلام",
+    "not_delivered"                : "لم يتم الاستلام",
     "statistics"                   : "الاحصائيات",
     "total_items"                  : "إجمالي المفقودات",
     "total_delivered_items"        : "إجمالي المفقودات المستلمة",

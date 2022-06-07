@@ -26,8 +26,12 @@ class ItemController extends Controller
 {
     use ApiResponse;
 
-    public function getAllItems()
+    public function getAllItems(Request $request)
     {
+        if (isset($request->all) && $request->all == 'true') {
+            return $this->apiResponse('', ItemResource::collection(Item::get()), 200);
+        }
+
         $items = Item::paginate(8);
 
         $items->transform(function ($item) {
@@ -54,7 +58,7 @@ class ItemController extends Controller
 
         $data = $request->all();
 
-        if($request->report_type == 'found') {
+        if ($request->report_type == 'found') {
             $data['informer_name'] = $request->informer_name;
             $data['informer_phone'] = $request->informer_phone;
         } else {
@@ -85,7 +89,6 @@ class ItemController extends Controller
                     'item_id' => $item->id,
                     'media_id' => $image->id,
                 ]);
-
             } // end of foreach
 
         } // end of has images
@@ -179,7 +182,6 @@ class ItemController extends Controller
                         'item_id' => $item->id,
                         'media_id' => $image->id,
                     ]);
-
                 } // end of foreach
 
             } // end of has images
@@ -188,12 +190,10 @@ class ItemController extends Controller
 
                 $data['informer_name'] = $request->informer_name;
                 $data['informer_phone'] = $request->informer_phone;
-
             } else {
 
                 $data['informer_name'] = null;
                 $data['informer_phone'] = null;
-
             }
 
 
@@ -275,7 +275,8 @@ class ItemController extends Controller
         return $this->apiResponse('', StorageResource::collection($storages), 200);
     }
 
-    public function deleteImage(Request $request) {
+    public function deleteImage(Request $request)
+    {
 
         // dd($request->all());
 
@@ -291,14 +292,11 @@ class ItemController extends Controller
             return \response()->json([
                 'message' => __('image_deleted_successfully'),
             ]);
-
         } catch (\Throwable $th) {
             //throw $th;
             return \response()->json([
                 'message' => __('image_not_found'),
             ]);
         }
-
-
     }
 }
