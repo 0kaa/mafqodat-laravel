@@ -40,14 +40,9 @@ return new class extends Migration
             $table->string('informer_phone')->nullable();
 
             /* User data */
-            $table->string('first_name')->nullable();
-            $table->string('surname')->nullable();
-            $table->string('address')->nullable();
-            $table->string('secondary_address')->nullable();
-            $table->string('postcode')->nullable();
+            $table->string('full_name')->nullable();
             $table->string('phone')->nullable();
-            $table->string('mobile')->nullable();
-            $table->string('email')->nullable();
+            $table->timestamp('delivery_date')->nullable();
 
             $table->timestamps();
         });

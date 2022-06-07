@@ -129,15 +129,10 @@ class ItemController extends Controller
                 'informer_phone' => 'required_if:report_type,found',
 
                 /* User data */
-                'first_name'        => 'nullable',
-                'surname'           => 'nullable',
-                'address'           => 'nullable',
-                'secondary_address' => 'nullable',
-                'city'              => 'nullable',
-                'postcode'          => 'nullable',
-                'phone'             => 'nullable',
-                'mobile'            => 'nullable',
-                'email'             => 'nullable',
+                'full_name'     => 'nullable',
+                'phone'         => 'nullable',
+                'delivery_date' => 'nullable',
+
             ], [
                 'details.required'           => __('details_required'),
                 'category_id.required'       => __('category_id_required'),
@@ -148,23 +143,6 @@ class ItemController extends Controller
                 'report_type.required'       => __('report_type_required'),
                 'informer_name.required_if'  => __('informer_name_required'),
                 'informer_phone.required_if' => __('informer_phone_required'),
-                'first_name.required_if'     => __('first_name_required'),
-                'first_name.min'             => __('first_name_min'),
-                'surname.required_if'        => __('family_name_required'),
-                'surname.min'                => __('family_name_min'),
-                'email.required_if'          => __('email_required'),
-                'email.email'                => __('must_be_email'),
-                'address.required_if'        => __('address_required'),
-                'address.min'                => __('address_min'),
-                'secondary_address.min'      => __('secondary_address_min'),
-                'postcode.required_if'       => __('postcode_required'),
-                'city.required_if'           => __('city_required'),
-                'phone.required_if'          => __('phone_required'),
-                'phone.min'                  => __('phone_min'),
-                'phone.max'                  => __('phone_max'),
-                'mobile.required_if'         => __('mobile_required'),
-                'mobile.min'                 => __('mobile_min'),
-                'mobile.max'                 => __('mobile_max'),
             ]);
 
             if ($validator->stopOnFirstFailure()->fails()) {
@@ -174,25 +152,13 @@ class ItemController extends Controller
             if ($request->is_delivered == 1) {
 
                 $data['is_delivered'] = $request->is_delivered;
-                $data['first_name'] = $request->first_name;
-                $data['surname'] = $request->surname;
-                $data['email'] = $request->email;
+                $data['full_name'] = $request->full_name;
                 $data['phone'] = $request->phone;
-                $data['address'] = $request->address;
-                $data['second_address'] = $request->second_address;
-                $data['postcode'] = $request->postcode;
-                $data['city_id'] = $request->city_id;
-                $data['mobile'] = $request->mobile;
+                $data['delivery_date'] = Carbon::now();
             } else {
-                $data['first_name'] = null;
-                $data['surname'] = null;
-                $data['email'] = null;
+                $data['full_name'] = null;
                 $data['phone'] = null;
-                $data['address'] = null;
-                $data['second_address'] = null;
-                $data['postcode'] = null;
-                $data['city_id'] = null;
-                $data['mobile'] = null;
+                $data['delivery_date'] = null;
             }
 
             if ($request->has('images')) {

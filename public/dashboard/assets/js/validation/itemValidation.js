@@ -66,6 +66,7 @@ $(document).ready(function () {
             informer_phone: {
                 required: true,
                 number: true,
+                maxlength: 12,
                 depends: function(element) {
                     return value == 'found';
                 }
@@ -119,51 +120,13 @@ $(document).ready(function () {
             station_id: {
                 required: true
             },
-            first_name: {
-                required: true,
-                depends: function(element) {
-                    return $("#is_delivered").is(":checked");
-                }
-            },
-            sur_name: {
-                required: true,
-                depends: function(element) {
-                    return $("#is_delivered").is(":checked");
-                }
-            },
-            email: {
-                required: true,
-                email: true,
-                depends: function(element) {
-                    return $("#is_delivered").is(":checked");
-                }
-            },
-            address: {
-                required: true,
-                depends: function(element) {
-                    return $("#is_delivered").is(":checked");
-                }
-            },
-            // second_address: {
-            //     required: true,
-            //     depends: function(element) {
-            //         return $("#is_delivered").is(":checked");
-            //     }
-            // },
-            postcode: {
+            full_name: {
                 required: true,
                 depends: function(element) {
                     return $("#is_delivered").is(":checked");
                 }
             },
             phone: {
-                required: true,
-                maxlength: 12,
-                depends: function(element) {
-                    return $("#is_delivered").is(":checked");
-                }
-            },
-            mobile: {
                 required: true,
                 maxlength: 12,
                 depends: function(element) {
@@ -178,6 +141,8 @@ $(document).ready(function () {
             },
             informer_phone: {
                 required: true,
+                number: true,
+                maxlength: 12,
                 depends: function(element) {
                     return value == 'found';
                 }
