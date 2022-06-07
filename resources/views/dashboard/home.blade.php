@@ -37,28 +37,7 @@
                     </div>
 
                     <div class="row match-height">
-                        {{-- <!-- Greetings Card starts -->
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="card card-congratulations">
-                                <div class="card-body text-center">
-                                    <img src="{{ url('dashboard') }}/app-assets/images/elements/decore-left.png"
-                                        class="congratulations-img-left" alt="card-img-left" />
-                                    <img src="{{ url('dashboard') }}/app-assets/images/elements/decore-right.png"
-                                        class="congratulations-img-right" alt="card-img-right" />
-                                    <div class="avatar avatar-xl bg-primary shadow">
-                                        <div class="avatar-content">
-                                            <i data-feather="award" class="font-large-1"></i>
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <h1 class="mb-1 text-white">{{ __('congrats') }} </h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Greetings Card ends --> --}}
-
-                        <div class="col-lg-7 col-md-12">
+                        <div class="col-lg-8 col-md-12">
                             <div class="card home-item">
                                 <div class="card-header align-items-start">
                                     <div>
@@ -66,7 +45,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <table class="datatables-basic table" id="tblMafkodat">
+                                    <table class="table" id="tblMafkodat">
                                         <thead>
                                             <tr>
                                                 <th>{{ __('id') }}</th>
@@ -81,21 +60,14 @@
                                                 <tr>
                                                     <td>{{ $item->id }}</td>
                                                     <td>{{ $item->category->name }}</td>
-                                                    <td>{{ $item->details }}</td>
-                                                    <td>{{ $item->station->name . ' | ' . __($item->station->type) }}
-                                                    </td>
+                                                    <td>{{ Str::limit($item->details, 25, '...') }}</td>
+                                                    <td>{{ $item->station->name }}</td>
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">
                                                             <a href="{{ route('admin.items.show', $item->id) }}"
-                                                                class="btn btn-sm btn-info"><i
-                                                                    class="fa-solid fa-eye"></i></a>
-                                                            <a href="{{ route('admin.items.edit', $item->id) }}"
-                                                                class="btn btn-sm btn-primary"><i
-                                                                    class="fa-solid fa-pen-to-square"></i></a>
-                                                            <a href="{{ route('admin.items.destroy', $item->id) }}"
-                                                                data-id="{{ $item->id }}"
-                                                                class="btn btn-sm btn-danger item-delete"><i
-                                                                    class="fa-solid fa-trash"></i></a>
+                                                                class="btn btn-sm btn-info">
+                                                                <i class="fa-solid fa-eye"></i>
+                                                            </a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -106,27 +78,27 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-5 col-md-12"">
-                                <div class=" card home-item">
-                            <div class="card-header align-items-start">
-                                <div>
-                                    <h4 class="card-title mb-25">{{ __('station_locations') }}</h4>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="card home-item">
+                                <div class="card-header align-items-start">
+                                    <div>
+                                        <h4 class="card-title mb-25">{{ __('station_locations') }}</h4>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div id="map" style="height: 300px;"></div>
+                                    <input type="hidden" name="lat" id="latitude" value="">
+                                    <input type="hidden" name="lng" id="longitude" value="">
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div id="map" style="height: 405px; margin-bottom: 15px;"></div>
-                                <input type="hidden" name="lat" id="latitude" value="">
-                                <input type="hidden" name="lng" id="longitude" value="">
-                            </div>
                         </div>
+
                     </div>
+                </section>
+                <!-- Dashboard Analytics end -->
 
             </div>
-            </section>
-            <!-- Dashboard Analytics end -->
-
         </div>
-    </div>
     </div>
 
     @push('js')

@@ -252,5 +252,6 @@
     "image_deleted_successfully"   : "تم حذف الصورة بنجاح",
     "image_not_found"              : "لم يتم العثور على الصورة",
     "postcode"                     : "الرمز البريدي",
+    "date&time"                    : "التاريخ والوقت",
     ""                             : ""
 }
