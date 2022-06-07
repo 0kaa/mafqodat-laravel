@@ -17,6 +17,7 @@ class ReportController extends Controller
 
     public function getAllReports()
     {
+        $user = auth()->user();
         $itemsCount = Item::count();
 
         $delivered_items = Item::where('is_delivered', 1)->count();
@@ -29,7 +30,7 @@ class ReportController extends Controller
 
         $employees = User::count();
 
-        $latestFiveItems = Item::take(5)->orderBy('created_at', 'desc')->get();
+        $latestFiveItems = Item::where('user_id', $user->id)->take(9)->orderBy('created_at', 'desc')->get();
 
         $itemsList = [];
 
