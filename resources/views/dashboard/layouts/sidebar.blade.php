@@ -2,7 +2,7 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
 
     <div class="img_menu_01">
-        <img src="{{ asset('dashboard/assets/img/nav-image.png') }}" alt="logo">
+        <img src="{{ asset('dashboard/app-assets/images/pages/station_logo.jpg') }}" alt="logo">
     </div>
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">

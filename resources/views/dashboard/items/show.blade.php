@@ -48,6 +48,8 @@
                                                         </li>
                                                     @endif
 
+                                                    <li>{{ __('report_number') }} : {{ $item->report_number }}</li>
+
                                                     <li>{{ __('category_name') }} : {{ $item->category->name }}</li>
 
                                                     <li>{{ __('storage') }} : {{ $item->storage->name }}</li>
