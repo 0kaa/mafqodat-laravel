@@ -259,5 +259,6 @@
     "date_from"                    : "من",
     "date_to"                      : "إلى",
     "welcome"                      : "مرحباً",
+    "import_success"               : "تمت الإضافة بنجاح",
     ""                             : ""
 }

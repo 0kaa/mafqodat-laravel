@@ -18,13 +18,13 @@
                             <h1 class="mb-1">{{ __('welcome') . ' ' . auth()->user()->name }} </h1>
                         </div>
                         <div class="col-4">
-                            <a href="" class="btn btn-lg btn-outline-warning">{{ __('items') }}</a>
+                            <a href="{{ route('admin.items.index') }}" class="btn btn-lg btn-outline-warning">{{ __('items') }}</a>
                         </div>
                         <div class="col-4">
-                            <a href="" class="btn btn-lg btn-outline-warning">{{ __('reports') }}</a>
+                            <a href="{{ route('admin.reports') }}" class="btn btn-lg btn-outline-warning">{{ __('reports') }}</a>
                         </div>
                         <div class="col-4">
-                            <a href="" class="btn btn-lg btn-outline-warning">{{ __('logs') }}</a>
+                            <a href="{{ route('admin.get_logs') }}" class="btn btn-lg btn-outline-warning">{{ __('employee_logs') }}</a>
                         </div>
                     </div>
                 </section>
