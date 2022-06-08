@@ -28,7 +28,7 @@ class ReportController extends Controller
 
         $bus_stations = Station::where('type', 'bus')->count();
 
-        $employees = User::count();
+        $employees = User::doesntHave('roles')->count();
 
         $latestFiveItems = Item::where('user_id', $user->id)->take(9)->orderBy('created_at', 'desc')->get();
 
