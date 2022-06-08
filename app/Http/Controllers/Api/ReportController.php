@@ -18,9 +18,9 @@ class ReportController extends Controller
     public function getAllReports()
     {
         $user = auth()->user();
-        $itemsCount = Item::count();
+        $itemsCount = Item::where('user_id', $user->id)->count();
 
-        $delivered_items = Item::where('is_delivered', 1)->count();
+        $delivered_items = Item::where('is_delivered', 1)->where('user_id', $user->id)->count();
 
         $stations = Station::count();
 
@@ -35,7 +35,7 @@ class ReportController extends Controller
         $itemsList = [];
 
         for ($i = 1; $i <= 12; $i++) {
-            $query = Item::select(DB::raw('count(id) as `data`'), DB::raw('YEAR(date) year, MONTH(date) month'))->groupby('year', 'month')->whereYear('date', '=', date('Y'))->whereMonth('date', '=', $i)->first();
+            $query = Item::select(DB::raw('count(id) as `data`'), DB::raw('YEAR(date) year, MONTH(date) month'))->groupby('year', 'month')->whereYear('date', '=', date('Y'))->whereMonth('date', '=', $i)->where('user_id', $user->id)->first();
             $itemsList[] = $query ? $query->data : 0;
         }
 

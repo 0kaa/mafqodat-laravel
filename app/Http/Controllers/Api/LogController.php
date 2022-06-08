@@ -13,9 +13,13 @@ class LogController extends Controller
 {
     use ApiResponse;
 
-    public function getAllLogs()
+    public function getAllLogs(Request $request)
     {
         $user = auth()->user();
+
+        if (isset($request->all) && $request->all == 'true') {
+            return $this->apiResponse('', LogResource::collection($user->logs()->get()), 200);
+        }
 
         $logs = $user->logs()->paginate(8);
 
