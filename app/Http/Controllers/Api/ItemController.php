@@ -97,6 +97,7 @@ class ItemController extends Controller
             'user_id' => $user->id,
             'message_ar' => 'لقد قمت بإضافة مفقود جديد',
             'message_en' => 'I added a new lost item',
+            'item_id'   => $item->id,
             'date' => Carbon::now(),
         ]);
 
