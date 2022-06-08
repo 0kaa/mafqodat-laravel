@@ -38,41 +38,43 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-@if (App::getLocale() == 'ar')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/localization/messages_ar.min.js"></script>
-    <script>
-        var table = $('.datatables-basic').DataTable({
-            "language": {
-                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json"
-            },
-            scrollX: true,
-            lengthMenu: [ 10, 25, 50, 75, 100 ],
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'excel', 'print', 'pageLength'
-            ],
-        });
-        table.buttons().container()
-        .appendTo( '#tblMafkodat_wrapper .col-md-6:eq(0)' );
 
-    </script>
-@else
-    <script>
-        var table = $('.datatables-basic').DataTable({
-            "language": {
-                "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/en-GB.json"
-            },
-            scrollX: true,
-            dom: 'Bfrtip',
-            lengthMenu: [ 10, 25, 50, 75, 100 ],
-            buttons: [
-                'copy', 'excel', 'print', 'pageLength'
-            ]
-        });
-        table.buttons().container()
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/localization/messages_ar.min.js"></script>
+<script>
+    var locale = '{!! config('app.locale') !!}';
+
+    var length = $('.datatables-basic thead tr th').length - 1;
+
+    items = [];
+
+    for (var i = 0; i < length; i++) {
+        items.push(i);
+    }
+
+    console.log(items)
+
+    var table = $('.datatables-basic').DataTable({
+        "language": {
+            "url": locale == 'ar' ? "https://cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json" :
+                "https://cdn.datatables.net/plug-ins/1.11.5/i18n/en-GB.json"
+        },
+        scrollX: true,
+        lengthMenu: [10, 25, 50, 75, 100],
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', {
+                extend: 'excel',
+                exportOptions: {
+                    columns: items
+
+                }
+            }, 'print', 'pageLength',
+        ],
+    });
+    table.buttons().container()
         .appendTo('#tblMafkodat_wrapper .col-md-6:eq(0)');
-    </script>
-@endif
+</script>
+
 
 
 

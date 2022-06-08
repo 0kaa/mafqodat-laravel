@@ -254,5 +254,6 @@
     "no_data"                      : "No data available in table",
     "date_from"                    : "Date From",
     "date_to"                      : "Date To",
+    "welcome"                      : "Welcome",
     ""                             : ""
 }
