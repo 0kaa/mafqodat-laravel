@@ -31,7 +31,7 @@ class CategoryTableSeeder extends Seeder
                 'storage_id' => 2,
             ],
             [
-                'name_ar'    => 'مقتنيات ذهبية',
+                'name_ar'    => 'مقتنيات ثمينة',
                 'name_en'    => 'Jewelry',
                 'image'      => 'categories/jewelry.png',
                 'slug'       => 'jewelry',
