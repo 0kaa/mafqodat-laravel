@@ -29,9 +29,7 @@ class StorageController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-
-        return view('dashboard.storages.create', compact('categories'));
+        return view('dashboard.storages.create');
     }
 
     /**
@@ -75,9 +73,7 @@ class StorageController extends Controller
     {
         $storage = Storage::find($id);
 
-        $categories = Category::all();
-
-        return view('dashboard.storages.edit', compact('storage', 'categories'));
+        return view('dashboard.storages.edit', compact('storage'));
     }
 
     /**
