@@ -26,7 +26,6 @@ class StorageRequest extends FormRequest
         return [
             'name_ar' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
-            'category_id' => 'required',
         ];
     }
 }
