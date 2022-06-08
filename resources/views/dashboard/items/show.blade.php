@@ -89,15 +89,8 @@
                                                     class="badge badge-light-success">{{ __('yes') }}</span>
 
                                                 <ul>
-                                                    <li>{{ __('first_name') }} : {{ $item->first_name }}</li>
-                                                    <li>{{ __('family_name') }} : {{ $item->surname }}</li>
-                                                    <li>{{ __('address') }} : {{ $item->address }}</li>
-                                                    <li>{{ __('second_address') }} :
-                                                        {{ $item->second_address }}</li>
-                                                    <li>{{ __('city') }} : {{ $item->city->name }}</li>
-                                                    <li>{{ __('postcode') }} : {{ $item->postcode }}</li>
+                                                    <li>{{ __('full_name') }} : {{ $item->full_name }}</li>
                                                     <li>{{ __('phone') }} : {{ $item->phone }}</li>
-                                                    <li>{{ __('mobile') }} : {{ $item->mobile }}</li>
                                                 </ul>
                                             </div>
                                         </div>
