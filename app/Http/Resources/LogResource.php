@@ -18,9 +18,11 @@ class LogResource extends JsonResource
         // return parent::toArray($request);
 
         return [
-            'id'         => $this->id,
-            'message'    => $this->message,
-            'created_at' => $this->date,
+            'id'      => $this->id,
+            'item_id' => $this->item_id,
+            'message' => $this->message,
+            'date'    => $this->created_at->format('Y-m-d'),
+            'time'    => $this->created_at->format('h:i A'),
         ];
     }
 }
