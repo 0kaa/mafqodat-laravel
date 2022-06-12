@@ -135,130 +135,17 @@
                                                 </div>
                                             </div>
 
-                                            @if ($item->category->slug == 'other')
-                                                <div class="col-12">
-                                                    <div class="form-group" id="item_type">
-                                                        <label for="first-name-vertical">{{ __('type') }}</label>
-                                                        <input type="text" class="form-control" name="type"
-                                                            value="{{ old('type', $item->type) }}"
-                                                            placeholder="{{ __('type') }}" />
-                                                        @error('type')
-                                                            <span class="alert alert-danger">
-                                                                <small class="errorTxt">{{ $message }}</small>
-                                                            </span>
-                                                        @enderror
-                                                    </div>
+                                            <div class="col-12">
+                                                <div class="form-group" id="item_details">
+                                                    <label for="details-vertical">{{ __('item_details') }}</label>
+                                                    <textarea name="details" placeholder="{{ __('write_item_details') }}" class="form-control" id="details-vertical">{{ old('details', $item->details) }}</textarea>
+                                                    @error('details')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
                                                 </div>
-
-                                                <div class="col-12">
-                                                    <div class="form-group" id="item_cost">
-                                                        <label for="first-name-vertical">{{ __('cost') }}</label>
-                                                        <input type="text" class="form-control" name="cost"
-                                                            value="{{ old('cost', $item->cost) }}"
-                                                            placeholder="{{ __('if_lost_item_money') }}" />
-                                                        @error('cost')
-                                                            <span class="alert alert-danger">
-                                                                <small class="errorTxt">{{ $message }}</small>
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12">
-                                                    <div class="form-group" id="item_details">
-                                                        <label for="details-vertical">{{ __('item_details') }}</label>
-                                                        <textarea name="details" placeholder="{{ __('write_item_details') }}" class="form-control"
-                                                            id="details-vertical">{{ old('details', $item->details) }}</textarea>
-                                                        @error('details')
-                                                            <span class="alert alert-danger">
-                                                                <small class="errorTxt">{{ $message }}</small>
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            @elseif ($item->category->slug == 'money')
-                                                <div class="col-12">
-                                                    <div class="form-group" id="item_type">
-                                                        <label for="first-name-vertical">{{ __('type') }}</label>
-                                                        <input type="text" class="form-control" name="type"
-                                                            value="{{ old('type', $item->type) }}"
-                                                            placeholder="{{ __('type') }}" />
-                                                        @error('type')
-                                                            <span class="alert alert-danger">
-                                                                <small class="errorTxt">{{ $message }}</small>
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12">
-                                                    <div class="form-group" id="item_cost">
-                                                        <label for="first-name-vertical">{{ __('cost') }}</label>
-                                                        <input type="text" class="form-control" name="cost"
-                                                            value="{{ old('cost', $item->cost) }}"
-                                                            placeholder="{{ __('if_lost_item_money') }}" />
-                                                        @error('cost')
-                                                            <span class="alert alert-danger">
-                                                                <small class="errorTxt">{{ $message }}</small>
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12">
-                                                    <div class="form-group" id="item_details">
-                                                        <label for="details-vertical">{{ __('item_details') }}</label>
-                                                        <textarea name="details" placeholder="{{ __('write_item_details') }}" class="form-control"
-                                                            id="details-vertical">{{ old('details', $item->details) }}</textarea>
-                                                        @error('details')
-                                                            <span class="alert alert-danger">
-                                                                <small class="errorTxt">{{ $message }}</small>
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            @else
-                                                <div class="col-12">
-                                                    <div class="form-group" id="item_type">
-                                                        <label for="first-name-vertical">{{ __('type') }}</label>
-                                                        <input type="text" class="form-control" name="type"
-                                                            value="{{ old('type', $item->type) }}"
-                                                            placeholder="{{ __('type') }}" />
-                                                        @error('type')
-                                                            <span class="alert alert-danger">
-                                                                <small class="errorTxt">{{ $message }}</small>
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12">
-                                                    <div class="form-group" id="item_cost">
-                                                        <label for="first-name-vertical">{{ __('cost') }}</label>
-                                                        <input type="text" class="form-control" name="cost"
-                                                            value="{{ old('cost', $item->cost) }}"
-                                                            placeholder="{{ __('if_lost_item_money') }}" />
-                                                        @error('cost')
-                                                            <span class="alert alert-danger">
-                                                                <small class="errorTxt">{{ $message }}</small>
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12">
-                                                    <div class="form-group" id="item_details">
-                                                        <label for="details-vertical">{{ __('item_details') }}</label>
-                                                        <textarea name="details" placeholder="{{ __('write_item_details') }}" class="form-control"
-                                                            id="details-vertical">{{ old('details', $item->details) }}</textarea>
-                                                        @error('details')
-                                                            <span class="alert alert-danger">
-                                                                <small class="errorTxt">{{ $message }}</small>
-                                                            </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            @endif
+                                            </div>
 
                                             <div class="col-6">
                                                 <div class="form-group">
@@ -309,11 +196,10 @@
 
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="images"
-                                                        class="form-label">{{ __('images') }}</label>
+                                                    <label for="images" class="form-label">{{ __('images') }}</label>
                                                     <input type="file" class="form-control dt-full-images images"
-                                                        name="images[]" id="images"
-                                                        aria-label="{{ __('images') }}" multiple />
+                                                        name="images[]" id="images" aria-label="{{ __('images') }}"
+                                                        multiple />
                                                     @error('images')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
@@ -331,7 +217,8 @@
                                                                 style="color: red;text-decoration: none;"
                                                                 class="btn btn-red deleteImage">
                                                                 <i class="fa-solid fa-trash"></i> حذف</a> </label>
-                                                            <img id="files" src="{{ asset('storage/' . $media->media->image) }}"
+                                                            <img id="files"
+                                                                src="{{ asset('storage/' . $media->media->image) }}"
                                                                 style="width: 200px; height: auto;">
                                                         </div>
                                                     @endif
@@ -497,68 +384,6 @@
                     $('#delivered_data').show();
                 } else {
                     $('#delivered_data').hide();
-                }
-
-            });
-
-            var slug = $('#selectCategory').find(':selected').data('slug');
-
-            if (slug == 'other') {
-
-                $('#item_type').show();
-
-                $('#item_details').show();
-
-                $('#item_cost').hide();
-
-
-            } else if (slug == 'money') {
-
-                $('#item_cost').show();
-
-                $('#item_type').hide();
-
-                $('#item_details').hide();
-
-
-            } else {
-
-                $('#item_type').hide();
-                $('#item_cost').hide();
-                $('#item_details').show();
-
-            }
-
-
-            $('#selectCategory').change(function(e) {
-                e.preventDefault();
-
-                var slug = $(this).find(':selected').data('slug');
-
-                if (slug == 'other') {
-
-                    $('#item_type').show();
-
-                    $('#item_details').show();
-
-                    $('#item_cost').hide();
-
-
-                } else if (slug == 'money') {
-
-                    $('#item_cost').show();
-
-                    $('#item_type').hide();
-
-                    $('#item_details').hide();
-
-
-                } else {
-
-                    $('#item_type').hide();
-                    $('#item_cost').hide();
-                    $('#item_details').show();
-
                 }
 
             });

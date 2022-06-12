@@ -260,5 +260,6 @@
     "date_to"                      : "إلى",
     "welcome"                      : "مرحباً",
     "import_success"               : "تمت الإضافة بنجاح",
+    "full_name_and_phone_required" : "الاسم ورقم الجوال مطلوب",
     ""                             : ""
 }

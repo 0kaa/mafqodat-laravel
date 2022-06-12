@@ -32,7 +32,7 @@ class ItemController extends Controller
 
         $stations = Station::get();
 
-        return view('dashboard.items.index', compact('items' ,'itemMedia', 'stations'));
+        return view('dashboard.items.index', compact('items', 'itemMedia', 'stations'));
     }
 
     /**
@@ -66,7 +66,7 @@ class ItemController extends Controller
 
         $data['time'] = $time->toDateTimeString();
 
-        if($request->report_type == 'found') {
+        if ($request->report_type == 'found') {
             $data['informer_name'] = $request->informer_name;
             $data['informer_phone'] = $request->informer_phone;
         } else {
@@ -98,7 +98,6 @@ class ItemController extends Controller
                     'item_id' => $item->id,
                     'media_id' => $image->id,
                 ]);
-
             } // end of foreach
 
 
@@ -116,7 +115,6 @@ class ItemController extends Controller
             session()->put('station_location', $item->station->location);
 
             return redirect()->back()->with(['success' => __('created_successfully')]);
-
         } else {
             return redirect()->back()->with('error', __('something_went_wrong'));
         }
@@ -132,8 +130,10 @@ class ItemController extends Controller
     {
         $item = Item::find($id);
 
+        $itemMedia = ItemMedia::where('item_id', $id)->get();
+
         if ($item) {
-            return view('dashboard.items.show', compact('item'));
+            return view('dashboard.items.show', compact('item', 'itemMedia'));
         } else {
             return redirect()->back()->with('error', __('item_not_found'));
         }
@@ -175,10 +175,9 @@ class ItemController extends Controller
      */
     public function update(ItemRequest $request, $id)
     {
+        // dd($request->all());
 
         $item = Item::find($id);
-
-        $slug = Category::where('id', $request->category_id)->first()->slug;
 
         $data = $request->except('_token', '_method', 'image', 'full_name', 'phone', 'is_delivered');
 
@@ -189,52 +188,21 @@ class ItemController extends Controller
 
         $data['time'] = $time->toDateTimeString();
 
-        if ($slug == 'other') {
-
-            if ($request->type != null && $request->details != null) {
-
-                $data['type'] = $request->type;
-                $data['details'] = $request->details;
-                $data['cost'] = null;
-            } else {
-                return redirect()->back()->withInput()->with('error', __('please_enter_type_and_details'));
-            }
-
-        } elseif ($slug == 'money') {
-
-            if ($request->cost != null) {
-
-                $data['type'] = null;
-                $data['details'] = null;
-                $data['cost'] = $request->cost;
-            } else {
-                return redirect()->back()->withInput()->with('error', __('please_enter_cost'));
-            }
-
-        } else {
-
-            if ($request->details != null) {
-
-                $data['type'] = null;
-                $data['details'] = $request->details;
-                $data['cost'] = null;
-            } else {
-                return redirect()->back()->withInput()->with('error', __('please_enter_details'));
-            }
-
-        }
-
-        if (isset($request->is_delivered)) {
+        if ($request->is_delivered == 1 && $request->full_name != null && $request->phone != null) {
 
             $data['is_delivered'] = 1;
             $data['full_name'] = $request->full_name;
             $data['phone'] = $request->phone;
             $data['delivery_date'] = Carbon::now();
-        } else {
+
+        } elseif ($request->is_delivered == 0) {
             $data['is_delivered'] = 0;
             $data['full_name'] = null;
             $data['phone'] = null;
             $data['delivery_date'] = null;
+
+        } else {
+            return redirect()->back()->with('error', __('full_name_and_phone_required'));
         }
 
         if ($request->has('images')) {
@@ -255,12 +223,11 @@ class ItemController extends Controller
                     'item_id' => $item->id,
                     'media_id' => $image->id,
                 ]);
-
             } // end of foreach
 
         } // end of has images
 
-        if($request->report_type == 'found') {
+        if ($request->report_type == 'found') {
             $data['informer_name'] = $request->informer_name;
             $data['informer_phone'] = $request->informer_phone;
         } else {

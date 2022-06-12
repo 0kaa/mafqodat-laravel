@@ -118,34 +118,6 @@
                                                 </div>
                                             </div>
 
-
-                                            <div class="col-12">
-                                                <div class="form-group" id="item_type">
-                                                    <label for="first-name-vertical">{{ __('type') }}</label>
-                                                    <input type="text" class="form-control" name="type"
-                                                        value="{{ old('type') }}" placeholder="{{ __('type') }}" />
-                                                    @error('type')
-                                                        <span class="alert alert-danger">
-                                                            <small class="errorTxt">{{ $message }}</small>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="form-group" id="item_cost">
-                                                    <label for="first-name-vertical">{{ __('cost') }}</label>
-                                                    <input type="text" class="form-control" name="cost"
-                                                        value="{{ old('cost') }}"
-                                                        placeholder="{{ __('if_lost_item_money') }}" />
-                                                    @error('cost')
-                                                        <span class="alert alert-danger">
-                                                            <small class="errorTxt">{{ $message }}</small>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
                                             <div class="col-12">
                                                 <div class="form-group" id="item_details">
                                                     <label for="details-vertical">{{ __('item_details') }}</label>
@@ -332,45 +304,6 @@
                     }
                 });
             });
-
-
-            $('#item_type').hide();
-            $('#item_cost').hide();
-            $('#item_details').hide();
-
-            $('#selectCategory').change(function(e) {
-                e.preventDefault();
-
-                var slug = $(this).find(':selected').data('slug');
-
-                if (slug == 'other') {
-
-                    $('#item_type').show();
-
-                    $('#item_details').show();
-
-                    $('#item_cost').hide();
-
-
-                } else if (slug == 'money') {
-
-                    $('#item_cost').show();
-
-                    $('#item_type').hide();
-
-                    $('#item_details').hide();
-
-
-                } else {
-
-                    $('#item_type').hide();
-                    $('#item_cost').hide();
-                    $('#item_details').show();
-
-                }
-
-            });
-
 
             $('#informer_name').hide();
             $('#informer_phone').hide();

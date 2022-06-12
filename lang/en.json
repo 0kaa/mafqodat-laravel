@@ -256,5 +256,6 @@
     "date_to"                      : "Date To",
     "welcome"                      : "Welcome",
     "import_success"               : "Import Success",
+    "full_name_and_phone_required" : "Full Name and Phone Number are required",
     ""                             : ""
 }

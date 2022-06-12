@@ -51,8 +51,6 @@
         items.push(i);
     }
 
-    console.log(items)
-
     var table = $('.datatables-basic').DataTable({
         "language": {
             "url": locale == 'ar' ? "https://cdn.datatables.net/plug-ins/1.11.3/i18n/ar.json" :

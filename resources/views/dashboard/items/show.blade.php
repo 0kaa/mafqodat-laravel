@@ -22,11 +22,15 @@
                                 <div class="item_card">
                                     <div>
 
-                                        @if ($item->image)
-                                            <img class="card-img-top" src="{{ asset('storage/' . $item->image) }}"
-                                                alt="Card image cap" height="100px" />
+                                        @if ($item->itemMedia->count() > 0)
+                                            @foreach ($itemMedia->where('item_id', $item->id) as $media)
+                                                @if ($loop->first)
+                                                    <img src="{{ asset('storage/' . $media->media->image) }}"
+                                                        alt="{{ $media->name }}" width="150" height="150">
+                                                @endif
+                                            @endforeach
                                         @else
-                                            <img src="https://via.placeholder.com/150">
+                                            <img src="https://via.placeholder.com/150" alt="">
                                         @endif
 
                                     </div>
@@ -54,16 +58,12 @@
 
                                                     <li>{{ __('storage') }} : {{ $item->storage->name }}</li>
 
-                                                    @if ($item->category->slug == 'other')
-                                                        <li>{{ __('type') }} : {{ $item->type }}</li>
-                                                        <li>{{ __('details') }} : {{ $item->details }}</li>
-                                                    @elseif ($item->category->slug == 'money')
-                                                        <li>{{ __('cost') }} : {{ $item->cost }}</li>
-                                                    @endif
+                                                    <li>{{ __('details') }} : {{ $item->details }}</li>
 
                                                     <li>{{ __('station_name') }} : {{ $item->station->name }}</li>
                                                     <li>{{ __('station_number') }} : {{ $item->station->number }}</li>
-                                                    <li>{{ __('station_location') }} : {{ $item->station->location }}</li>
+                                                    <li>{{ __('station_location') }} : {{ $item->station->location }}
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>

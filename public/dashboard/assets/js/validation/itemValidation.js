@@ -1,13 +1,5 @@
 /* Create item Validation */
 $(document).ready(function () {
-    slug = '';
-    $('#selectCategory').change(function(e) {
-        e.preventDefault();
-
-        slug = $(this).find(':selected').data('slug');
-
-    });
-
     value = '';
     $('#reportType').change(function(e) {
         e.preventDefault();
@@ -23,24 +15,6 @@ $(document).ready(function () {
             details: {
                 required: true,
                 minlength: 3,
-                depends: function(element) {
-                    return slug != 'money';
-                }
-            },
-            type: {
-                required: true,
-                minlength: 3,
-                depends: function(element) {
-                    return slug == 'other';
-                }
-            },
-            cost: {
-                required: true,
-                number: true,
-                min: 0,
-                depends: function(element) {
-                    return slug == 'money';
-                }
             },
             date: {
                 required: true,
@@ -97,13 +71,6 @@ $(document).ready(function () {
         rules: {
             details: {
                 minlength: 3,
-            },
-            type: {
-                minlength: 3,
-            },
-            cost: {
-                number: true,
-                min: 0,
             },
             date: {
                 required: true,

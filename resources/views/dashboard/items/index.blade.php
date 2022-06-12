@@ -114,7 +114,7 @@
                                                 <td class="my-2">
                                                     {!! QrCode::generate(url('/admin/items') . '/' . $item->id) !!}
                                                 </td>
-                                                <td>{{ $item->is_delivered == 1 ? $item->first_name . ' ' . $item->surname : '-' }}
+                                                <td>{{ $item->is_delivered == 1 ? $item->full_name : '-' }}
                                                 </td>
                                                 <td>{{ $item->is_delivered == 1 ? $item->phone : '-' }}</td>
                                                 <td>{{ $item->is_delivered == 1 ? $item->delivery_date->format('Y-m-d') : '-' }}
