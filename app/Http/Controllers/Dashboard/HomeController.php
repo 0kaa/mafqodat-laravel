@@ -40,10 +40,17 @@ class HomeController extends Controller
 
         $itemMedia = ItemMedia::get();
 
-        $lost_items = Item::select(
-            DB::raw('YEAR(created_at) as year'),
-            DB::raw('MONTH(created_at) as month')
-        )->get()->groupBy('month');
+        // $lost_items = Item::select(
+        //     DB::raw('YEAR(created_at) as year'),
+        //     DB::raw('MONTH(created_at) as month')
+        // )->get()->groupBy('month');
+
+        $lost_items = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $query = Item::select(DB::raw('count(id) as `data`'), DB::raw('YEAR(date) year, MONTH(date) month'))->groupby('year', 'month')->whereYear('date', '=', date('Y'))->whereMonth('date', '=', $i)->first();
+            $lost_items[] = $query ? $query->data : 0;
+        }
 
         return view('dashboard.reports', compact('items', 'delivered_items', 'employees', 'lost_items', 'latest_items', 'stations_count', 'itemMedia'));
     }

@@ -196,7 +196,7 @@
     "qr_code"                      : "QR Code",
     "the_employee_has"             : "The employee has",
     "added_new_employee"           : "added new employee",
-    "employee_logs"                : "Employee Logs",
+    "employee_logs"                : "Records",
     "log"                          : "Log",
     "station_locations"            : "Lost places and stations",
     "reports"                      : "Reports",
@@ -257,5 +257,6 @@
     "welcome"                      : "Welcome",
     "import_success"               : "Import Success",
     "full_name_and_phone_required" : "Full Name and Phone Number are required",
+    "date_after_today_error"       : "Date must be before today",
     ""                             : ""
 }

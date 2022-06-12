@@ -131,6 +131,7 @@
                                             <th class="noExl">{{ __('qr_code') }}</th>
                                             <th>{{ __('deliverd_name') }}</th>
                                             <th>{{ __('deliverd_phone') }}</th>
+                                            <th>{{ __('deliverd_date') }}</th>
                                             <th class="noExl">{{ __('actions') }}</th>
                                         </tr>
                                     </thead>
@@ -166,6 +167,7 @@
                                                 <td>{{ $item->is_delivered == 1 ? $item->first_name . ' ' . $item->surname : '-' }}
                                                 </td>
                                                 <td>{{ $item->is_delivered == 1 ? $item->phone : '-' }}</td>
+                                                <td>{{ $item->is_delivered == 1 ? $item->delivery_date->format('Y-m-d') : '-' }}
                                                 <td class="text-center noExl">
                                                     <div class="btn-group" role="group" aria-label="Second group">
                                                         <a href="{{ route('admin.items.show', $item->id) }}"
@@ -410,6 +412,9 @@
                         },
                         data: {
                             labels: [
+                                "Jan",
+                                "Feb",
+                                "Mar",
                                 "Apr",
                                 "May",
                                 "Jun",
@@ -419,14 +424,11 @@
                                 "Oct",
                                 "Nov",
                                 "Dec",
-                                "Jan",
-                                "Feb",
-                                "Mar",
                             ],
                             datasets: [{
                                 data: [
                                     @foreach ($lost_items as $item)
-                                        {{ $item->count() }},
+                                        {{ $item }},
                                     @endforeach
                                 ],
                                 label: "{{ __('items') }}",

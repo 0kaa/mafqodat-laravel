@@ -62,9 +62,17 @@ class ItemController extends Controller
         $date = Carbon::create($request->date);
         $time = Carbon::create($request->time);
 
-        $data['date'] = $date->toDateTimeString();
+        $today = Carbon::now();
 
-        $data['time'] = $time->toDateTimeString();
+        if($date->isAfter($today)) {
+            return redirect()->back()->withInput()->with('error', __('date_after_today_error'));
+        } else {
+            $data['date'] = $date->toDateTimeString();
+
+            $data['time'] = $time->toDateTimeString();
+        }
+
+
 
         if ($request->report_type == 'found') {
             $data['informer_name'] = $request->informer_name;

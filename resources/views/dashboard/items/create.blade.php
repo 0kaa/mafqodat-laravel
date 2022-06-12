@@ -49,10 +49,10 @@
 
                                                         <option value="">{{ __('select') }}</option>
                                                         <option value="lost"
-                                                            {{ old('report_type' == 'lost' ? 'selected' : '') }}>
+                                                            @if (old('report_type') == 'lost') selected="selected" @endif>
                                                             {{ __('add_lost_item') }}</option>
                                                         <option value="found"
-                                                            {{ old('report_type' == 'found' ? 'selected' : '') }}>
+                                                            @if (old('report_type') == 'found') selected="selected" @endif>
                                                             {{ __('report_found_item') }}</option>
 
                                                     </select>
@@ -121,8 +121,7 @@
                                             <div class="col-12">
                                                 <div class="form-group" id="item_details">
                                                     <label for="details-vertical">{{ __('item_details') }}</label>
-                                                    <textarea name="details" placeholder="{{ __('write_item_details') }}" class="form-control"
-                                                        id="details-vertical">{{ old('details') }}</textarea>
+                                                    <textarea name="details" placeholder="{{ __('write_item_details') }}" class="form-control" id="details-vertical">{{ old('details') }}</textarea>
                                                     @error('details')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
@@ -176,11 +175,10 @@
 
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="images"
-                                                        class="form-label">{{ __('images') }}</label>
-                                                        <input type="file" class="form-control dt-full-images images"
-                                                        name="images[]" id="images" required aria-label="{{ __('images') }}"
-                                                        multiple />
+                                                    <label for="images" class="form-label">{{ __('images') }}</label>
+                                                    <input type="file" class="form-control dt-full-images images"
+                                                        name="images[]" id="images"
+                                                        aria-label="{{ __('images') }}" multiple />
                                                     @error('images')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
