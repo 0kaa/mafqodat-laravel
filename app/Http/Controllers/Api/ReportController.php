@@ -8,6 +8,7 @@ use App\Models\Item;
 use App\Models\Station;
 use App\Models\User;
 use App\Traits\ApiResponse;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -30,7 +31,7 @@ class ReportController extends Controller
 
         $employees = User::doesntHave('roles')->count();
 
-        $latestFiveItems = Item::where('user_id', $user->id)->take(9)->orderBy('created_at', 'desc')->get();
+        $latets_items = Item::where('user_id', $user->id)->take(9)->whereDate('created_at', Carbon::today())->orderBy('created_at', 'desc')->get();
 
         $itemsList = [];
 
@@ -40,7 +41,7 @@ class ReportController extends Controller
         }
 
         return $this->apiResponse('', [
-            'items'     => ItemResource::collection($latestFiveItems),
+            'items'     => ItemResource::collection($latets_items),
             'statistics' => [
                 'items' => $itemsCount,
                 'delivered_items' => $delivered_items,
