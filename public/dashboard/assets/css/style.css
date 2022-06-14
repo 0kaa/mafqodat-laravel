@@ -339,3 +339,47 @@ a:hover {
 .drop_01  .dropdown-menu.dropdown-menu-right.show {
     padding: 10px 10px 0px;
 }
+
+.main-menu .main-menu-content {
+    overflow: auto !important;
+}
+
+.main-menu .main-menu-content {
+    height: 74% !important;
+    position: relative;
+}
+
+li.breadcrumb-item {
+    min-width: 100px;
+    display: flex;
+    height: 43px;
+    align-items: center;
+    background: #f6931e;
+    position: relative;
+    color: #fff;
+    margin-left: 10px;
+    padding: 5px 40px 5px 20px;
+}
+
+li.breadcrumb-item a {
+    color: #fff;
+
+}
+
+li.breadcrumb-item::before {
+    display: none !important;
+}
+
+li.breadcrumb-item::after {
+    content: "";
+    border-right: solid 15px #f8f8f8;
+    border-bottom: solid 15px transparent;
+    border-top: solid 15px transparent;
+    user-select: none;
+    z-index: 111;
+    position: absolute;
+    bottom: -10px;
+    right: -3px;
+    left: auto;
+    transform: rotate(225deg);
+}

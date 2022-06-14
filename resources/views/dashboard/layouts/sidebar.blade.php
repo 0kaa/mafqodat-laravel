@@ -5,7 +5,7 @@
         <img src="{{ asset('dashboard/app-assets/images/pages/station_logo.jpg') }}" alt="logo">
     </div>
     <div class="shadow-bottom"></div>
-    <div class="main-menu-content">
+    <div class="main-menu-content ps ps__rtl ps--active-y" >
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="nav-item {{ isActiveRoute('admin.home') }}"><a class="d-flex align-items-center" href="{{ route('admin.home') }}"><i data-feather="home"></i><span class="menu-title text-truncate">{{ __('home') }}</span></a>
             </li>

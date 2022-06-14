@@ -289,17 +289,17 @@ a:hover {
     max-height: 100%
 }
 
-#tblMafkodat_wrapper button{
+#tblMafkodat_wrapper button {
     background: #f6931e;
     height: 40px;
     width: 105px;
     color: #fff;
     border: 0;
     border-radius: 5px;
-    margin: 10px ;
+    margin: 10px;
 }
 
-#tblMafkodat_wrapper button:hover{
+#tblMafkodat_wrapper button:hover {
     box-shadow: 0px 0px 8px #f6951e75;
 }
 
@@ -307,17 +307,17 @@ a:hover {
     white-space: nowrap;
 }
 
-#tblItemMafkodat_wrapper button{
+#tblItemMafkodat_wrapper button {
     background: #f6931e;
     height: 40px;
     width: 105px;
     color: #fff;
     border: 0;
     border-radius: 5px;
-    margin: 10px ;
+    margin: 10px;
 }
 
-#tblItemMafkodat_wrapper button:hover{
+#tblItemMafkodat_wrapper button:hover {
     box-shadow: 0px 0px 8px #f6951e75;
 }
 
@@ -334,7 +334,9 @@ a:hover {
     left: -3px !important;
 }
 
-.drop_01 .dropdown-menu.dropdown-menu-right, .drop_01 .dropdown-menu.dropdown-menu-right, .drop_01 .btn-group .dropdown-menu.dropdown-menu-right {
+.drop_01 .dropdown-menu.dropdown-menu-right,
+.drop_01 .dropdown-menu.dropdown-menu-right,
+.drop_01 .btn-group .dropdown-menu.dropdown-menu-right {
     left: 39px !important;
     right: auto !important;
 }
@@ -342,10 +344,55 @@ a:hover {
 .drop_01 select#station_select {
     margin: 3px 0;
 }
+
 .drop_01 .dropdown-menu input {
     margin: 3px 0;
 }
 
-.drop_01  .dropdown-menu.dropdown-menu-right.show {
+.drop_01 .dropdown-menu.dropdown-menu-right.show {
     padding: 10px 10px 0px;
+}
+
+
+.main-menu .main-menu-content {
+    overflow: auto !important;
+}
+
+.main-menu .main-menu-content {
+    height: 74% !important;
+    position: relative;
+}
+
+li.breadcrumb-item {
+    min-width: 100px;
+    display: flex;
+    height: 43px;
+    align-items: center;
+    background: #f6931e;
+    position: relative;
+    color: #fff;
+    margin-left: 10px;
+    padding: 5px 20px 5px 40px;
+}
+
+li.breadcrumb-item a {
+    color: #fff;
+
+}
+
+li.breadcrumb-item::before {
+    display: none !important;
+}
+
+li.breadcrumb-item::after {
+    content: "";
+    border-right: solid 15px #f8f8f8;
+    border-bottom: solid 15px transparent;
+    border-top: solid 15px transparent;
+    user-select: none;
+    z-index: 111;
+    position: absolute;
+    bottom: -10px;
+    left: -3px;
+    transform: rotate(316deg);
 }
