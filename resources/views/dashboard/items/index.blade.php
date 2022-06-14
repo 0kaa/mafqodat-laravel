@@ -17,7 +17,7 @@
                                     <li class="breadcrumb-item"><a
                                             href="{{ route('admin.items.index') }}">{{ __('items') }}</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">{{ __('items') }}</a>
+                                    <li class="breadcrumb-item"><a href="#">{{ __('items_list') }}</a>
                                     </li>
                                 </ol>
                             </div>
@@ -72,7 +72,7 @@
                                             <th>{{ __('station_name') }}</th>
                                             <th>{{ __('station_location') }}</th>
                                             <th>{{ __('image') }}</th>
-                                            <th>{{ __('is_delivered') }}</th>
+                                            <th>{{ __('item_status') }}</th>
                                             <th>{{ __('qr_code') }}</th>
                                             <th>{{ __('deliverd_name') }}</th>
                                             <th>{{ __('deliverd_phone') }}</th>
@@ -106,9 +106,9 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->is_delivered == 1)
-                                                        <span class="badge badge-light-success">{{ __('yes') }}</span>
+                                                        <span class="badge badge-light-success">{{ __('delivered') }}</span>
                                                     @else
-                                                        <span class="badge badge-light-danger">{{ __('no') }}</span>
+                                                        <span class="badge badge-light-danger">{{ __('not_delivered') }}</span>
                                                     @endif
                                                 </td>
                                                 <td class="my-2">

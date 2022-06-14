@@ -76,10 +76,10 @@
 
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="first-name-vertical">{{ __('name') }}</label>
+                                                    <label for="first-name-vertical">{{ __('employee_name') }}</label>
                                                     <input type="text" class="form-control" name="name"
                                                         value="{{ old('name') }}"
-                                                        placeholder="{{ __('write_name') }}" />
+                                                        placeholder="{{ __('employee_name') }}" />
                                                     @error('name')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
@@ -93,7 +93,7 @@
                                                     <label for="first-name-vertical">{{ __('email') }}</label>
                                                     <input type="email" class="form-control" name="email"
                                                         value="{{ old('email') }}"
-                                                        placeholder="{{ __('write_email') }}" />
+                                                        placeholder="{{ __('email') }}" />
                                                     @error('email')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
@@ -107,7 +107,7 @@
                                                     <label for="first-name-vertical">{{ __('password') }}</label>
                                                     <input type="password" class="form-control" name="password"
                                                         value="{{ old('password') }}"
-                                                        placeholder="{{ __('write_password') }}" />
+                                                        placeholder="{{ __('password') }}" />
                                                     @error('password')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
@@ -121,7 +121,7 @@
                                                     <label for="first-name-vertical">{{ __('phone') }}</label>
                                                     <input type="text" class="form-control" name="phone"
                                                         value="{{ old('phone') }}"
-                                                        placeholder="{{ __('write_phone') }}" />
+                                                        placeholder="{{ __('phone') }}" />
                                                     @error('phone')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>

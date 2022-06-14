@@ -50,7 +50,7 @@ Route::prefix('admin')->middleware(['auth', 'webLocalization', 'role:super_admin
 
     Route::get('/', 'HomeController@home')->name('home');
 
-    Route::get('reports', 'HomeController@reports')->name('reports');
+    // Route::get('reports', 'HomeController@reports')->name('reports');
 
     Route::resource('employees', 'EmployeeController');
 

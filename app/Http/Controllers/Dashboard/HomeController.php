@@ -16,16 +16,29 @@ class HomeController extends Controller
     public function home()
     {
 
-        $categories = Category::take(6)->get();
+        $items = Item::count();
 
-        $latest_items = Item::latest()->take(5)->get();
+        $latest_items = Item::orderBy('created_at', 'desc')->take(5)->get();
 
-        $stations = Station::get();
+        $delivered_items = Item::where('is_delivered', '1')->count();
 
-        return view('dashboard.home', compact('categories', 'stations', 'latest_items'));
+        $stations_count = Station::count();
+
+        $employees = User::whereDoesntHave('roles')->count();
+
+        $itemMedia = ItemMedia::get();
+
+        $lost_items = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $query = Item::select(DB::raw('count(id) as `data`'), DB::raw('YEAR(date) year, MONTH(date) month'))->groupby('year', 'month')->whereYear('date', '=', date('Y'))->whereMonth('date', '=', $i)->first();
+            $lost_items[] = $query ? $query->data : 0;
+        }
+
+        return view('dashboard.home', compact('items', 'latest_items', 'delivered_items', 'stations_count', 'employees', 'itemMedia', 'lost_items'));
     }
 
-    public function reports()
+   /*  public function reports()
     {
 
         $items = Item::count();
@@ -53,5 +66,5 @@ class HomeController extends Controller
         }
 
         return view('dashboard.reports', compact('items', 'delivered_items', 'employees', 'lost_items', 'latest_items', 'stations_count', 'itemMedia'));
-    }
+    } */
 }

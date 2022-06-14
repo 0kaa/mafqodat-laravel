@@ -258,5 +258,12 @@
     "import_success"               : "Import Success",
     "full_name_and_phone_required" : "Full Name and Phone Number are required",
     "date_after_today_error"       : "Date must be before today",
+    "employees_list"               : "Employees List",
+    "cities_list"                  : "Cities List",
+    "categories_list"              : "Lost Items Categories",
+    "items_list"                   : "Lost Items List",
+    "storages_list"                : "Storages List",
+    "stations_list"                : "Stations List",
+    "event"                        : "Event",
     ""                             : ""
 }

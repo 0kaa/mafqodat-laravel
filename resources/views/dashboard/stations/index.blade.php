@@ -16,7 +16,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('admin.stations.index') }}">{{ __('stations') }}</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">{{ __('stations') }}</a>
+                                    <li class="breadcrumb-item"><a href="#">{{ __('stations_list') }}</a>
                                     </li>
                                 </ol>
                             </div>

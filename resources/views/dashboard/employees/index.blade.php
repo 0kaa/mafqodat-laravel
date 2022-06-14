@@ -16,7 +16,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('admin.employees.index') }}">{{ __('employees') }}</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">{{ __('employees') }}</a>
+                                    <li class="breadcrumb-item"><a href="#">{{ __('employees_list') }}</a>
                                     </li>
                                 </ol>
                             </div>
@@ -42,12 +42,12 @@
                                         <thead>
                                             <tr>
                                                 <th>{{ __('id') }}</th>
-                                                <th>{{ __('name') }}</th>
+                                                <th>{{ __('employee_name') }}</th>
+                                                <th>{{ __('job_number') }}</th>
+                                                <th>{{ __('date_of_hiring') }}</th>
+                                                <th>{{ __('working_period') }}</th>
                                                 <th>{{ __('phone') }}</th>
                                                 <th>{{ __('email') }}</th>
-                                                <th>{{ __('job_number') }}</th>
-                                                <th>{{ __('working_period') }}</th>
-                                                <th>{{ __('date_of_hiring') }}</th>
                                                 <th>{{ __('actions') }}</th>
                                             </tr>
                                         </thead>
@@ -56,11 +56,11 @@
                                                 <tr>
                                                     <td>{{ $employee->id }}</td>
                                                     <td>{{ $employee->name }}</td>
+                                                    <td>{{ $employee->job_number }}</td>
+                                                    <td>{{ $employee->date_of_hiring->format('Y-m-d') }}</td>
+                                                    <td>{{ __($employee->working_period) }}</td>
                                                     <td>{{ $employee->phone }}</td>
                                                     <td>{{ $employee->email }}</td>
-                                                    <td>{{ $employee->job_number }}</td>
-                                                    <td>{{ __($employee->working_period) }}</td>
-                                                    <td>{{ $employee->date_of_hiring->format('Y-m-d') }}</td>
 
                                                     <td class="text-center">
                                                         <div class="btn-group" role="group" aria-label="Second group">

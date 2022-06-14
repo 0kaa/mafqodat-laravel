@@ -15,7 +15,7 @@
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a
-                                            href="{{ route('admin.get_logs') }}">{{ __('employee_logs') }}</a>
+                                            href="{{ route('admin.employees.index') }}">{{ __('employees') }}</a>
                                     </li>
                                     <li class="breadcrumb-item"><a href="#">{{ __('employee_logs') }}</a>
                                     </li>
@@ -37,7 +37,10 @@
                                         <tr>
                                             <th>{{ __('id') }}</th>
                                             <th>{{ __('employee_name') }}</th>
-                                            <th>{{ __('log') }}</th>
+                                            <th>{{ __('job_number') }}</th>
+                                            <th>{{ __('working_period') }}</th>
+                                            <th>{{ __('report_number') }}</th>
+                                            <th>{{ __('event') }}</th>
                                             <th>{{ __('date') }}</th>
                                             <th>{{ __('time') }}</th>
                                             {{-- <th>{{ __('actions') }}</th> --}}
@@ -48,6 +51,9 @@
                                             <tr>
                                                 <td>{{ $log->id }}</td>
                                                 <td>{{ $log->user->name }}</td>
+                                                <td>{{ $log->user->job_number }}</td>
+                                                <td>{{ $log->user->working_period }}</td>
+                                                <td>{{ $log->item->report_number }}</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="text ml-2" style="direction: ltr">

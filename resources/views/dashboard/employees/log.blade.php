@@ -23,7 +23,7 @@
                                         <tr>
                                             <th>{{ __('id') }}</th>
                                             <th>{{ __('employee_name') }}</th>
-                                            <th>{{ __('log') }}</th>
+                                            <th>{{ __('event') }}</th>
                                             <th>{{ __('date') }}</th>
                                             <th>{{ __('time') }}</th>
                                         </tr>

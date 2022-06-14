@@ -85,9 +85,8 @@
                                         <div class="card-body">
                                             <div>
 
-                                                {{ __('is_delivered') }} : <span
-                                                    class="badge badge-light-success">{{ __('yes') }}</span>
-
+                                                {{ __('item_status') }} : <span
+                                                    class="badge badge-light-success">{{ __('delivered') }}</span>
                                                 <ul>
                                                     <li>{{ __('full_name') }} : {{ $item->full_name }}</li>
                                                     <li>{{ __('phone') }} : {{ $item->phone }}</li>
