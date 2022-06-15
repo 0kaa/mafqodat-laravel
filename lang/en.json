@@ -265,5 +265,6 @@
     "storages_list"                : "Storages List",
     "stations_list"                : "Stations List",
     "event"                        : "Event",
+    "delivery_date"                : "Delivery Date",
     ""                             : ""
 }

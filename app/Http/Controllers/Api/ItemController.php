@@ -196,7 +196,7 @@ class ItemController extends Controller
                 $data['is_delivered'] = $request->is_delivered;
                 $data['full_name'] = $request->full_name;
                 $data['phone'] = $request->phone;
-                $data['delivery_date'] = Carbon::now();
+                $data['delivery_date'] = $request->delivery_date;
             } else {
                 $data['full_name'] = null;
                 $data['phone'] = null;

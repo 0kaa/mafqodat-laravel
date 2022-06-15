@@ -271,7 +271,7 @@
                                                 <div class="col-12" id="delivered_data">
                                                     <div class="row">
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('full_name') }}</label>
@@ -287,7 +287,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('phone') }}</label>
@@ -302,13 +302,26 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
+
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="first-name-vertical">{{ __('delivery_date') }}</label>
+                                                                <input type="date" class="form-control" name="delivery_date"
+                                                                    value="{{ old('delivery_date', $item->delivery_date->format('Y-m-d')) }}" />
+                                                                @error('delivery_date')
+                                                                    <span class="alert alert-danger">
+                                                                        <small class="errorTxt">{{ $message }}</small>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             @else
                                                 <div class="col-12" id="delivered_data">
                                                     <div class="row">
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('full_name') }}</label>
@@ -324,7 +337,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <div class="form-group">
                                                                 <label
                                                                     for="first-name-vertical">{{ __('phone') }}</label>
@@ -335,6 +348,19 @@
                                                                     <span class="alert alert-danger">
                                                                         <small
                                                                             class="errorTxt">{{ $message }}</small>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="first-name-vertical">{{ __('delivery_date') }}</label>
+                                                                <input type="date" class="form-control" name="delivery_date"
+                                                                    value="{{ old('delivery_date') }}" />
+                                                                @error('delivery_date')
+                                                                    <span class="alert alert-danger">
+                                                                        <small class="errorTxt">{{ $message }}</small>
                                                                     </span>
                                                                 @enderror
                                                             </div>

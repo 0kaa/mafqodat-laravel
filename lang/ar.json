@@ -271,5 +271,6 @@
     "item_status"                  : "حالة المفقود",
     "delivered"                    : "تم التسليم",
     "not_delivered"                : "لم يتم التسليم",
+    "delivery_date"                : "تاريخ التسليم",
     ""                             : ""
 }

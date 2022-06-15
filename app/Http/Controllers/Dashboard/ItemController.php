@@ -240,7 +240,7 @@ class ItemController extends Controller
             $data['is_delivered'] = 1;
             $data['full_name'] = $request->full_name;
             $data['phone'] = $request->phone;
-            $data['delivery_date'] = Carbon::now();
+            $data['delivery_date'] = $request->delivery_date;
 
         } elseif ($request->is_delivered == 0) {
             $data['is_delivered'] = 0;
