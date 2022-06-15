@@ -23,6 +23,7 @@
                                         <tr>
                                             <th>{{ __('id') }}</th>
                                             <th>{{ __('employee_name') }}</th>
+                                            <th>{{ __('report_number') }}</th>
                                             <th>{{ __('event') }}</th>
                                             <th>{{ __('date') }}</th>
                                             <th>{{ __('time') }}</th>
@@ -33,6 +34,7 @@
                                             <tr>
                                                 <td>{{ $log->id }}</td>
                                                 <td>{{ $log->user->name }}</td>
+                                                <td>{{ $log->item ? $log->item->report_number : "-" }}</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="text ml-2" style="direction: ltr">

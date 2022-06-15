@@ -73,7 +73,7 @@ class ItemController extends Controller
 
         if ($request->report_type == 'lost') {
             if ($itemCountLost > 0) {
-                $last_item = Item::where('report_type', 'lost')->orderBy('id', 'desc')->first();
+                $last_item = Item::withTrashed()->where('report_type', 'lost')->orderBy('id', 'desc')->first();
                 $start_report_number = $last_item->report_number + 1;
 
                 $item_report_number = str_pad($start_report_number, 6, '22000', STR_PAD_LEFT);
@@ -88,7 +88,7 @@ class ItemController extends Controller
             }
         } else {
             if ($itemCountFound > 0) {
-                $last_item = Item::where('report_type', 'found')->orderBy('id', 'desc')->first();
+                $last_item = Item::withTrashed()->where('report_type', 'found')->orderBy('id', 'desc')->first();
                 $start_report_number = $last_item->report_number + 1;
 
                 $item_report_number = str_pad($start_report_number, 6, '33000', STR_PAD_LEFT);

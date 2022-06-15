@@ -42,6 +42,8 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->timestamp('delivery_date')->nullable();
 
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }
