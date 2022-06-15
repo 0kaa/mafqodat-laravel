@@ -53,7 +53,7 @@
                                                 <td>{{ $log->user->name }}</td>
                                                 <td>{{ $log->user->job_number }}</td>
                                                 <td>{{ $log->user->working_period }}</td>
-                                                <td>{{ $log->item->report_number }}</td>
+                                                <td>{{ $log->item ? $log->item->report_number : "-" }}</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <div class="text ml-2" style="direction: ltr">
