@@ -134,7 +134,7 @@ class ItemController extends Controller
         Log::create([
             'user_id' => $user->id,
             'message_ar' => 'لقد قمت بإضافة مفقود جديد',
-            'message_en' => 'I added a new lost item',
+            'message_en' => 'Added new item',
             'item_id'   => $item->id,
             'date' => Carbon::now(),
         ]);
@@ -243,7 +243,7 @@ class ItemController extends Controller
                 Log::create([
                     'user_id' => $user->id,
                     'message_ar' => 'لقد قمت بتسليم المفقود',
-                    'message_en' => 'I delivered the lost item',
+                    'message_en' => 'Delivered item',
                     'item_id' => $item->id,
                     'date' => Carbon::now(),
                 ]);
@@ -252,7 +252,7 @@ class ItemController extends Controller
                 Log::create([
                     'user_id' => $user->id,
                     'message_ar' => 'لقد قمت بتعديل بيانات المفقود',
-                    'message_en' => 'I updated the lost item',
+                    'message_en' => 'Updated item',
                     'item_id' => $item->id,
                     'date' => Carbon::now(),
                 ]);
@@ -285,7 +285,7 @@ class ItemController extends Controller
             Log::create([
                 'user_id' => $user->id,
                 'message_ar' => 'لقد قمت بحذف المفقود',
-                'message_en' => 'I deleted the lost item',
+                'message_en' => 'Deleted item',
                 'item_id' => $item->id,
                 'date' => Carbon::now(),
             ]);
