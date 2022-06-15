@@ -21,9 +21,7 @@ class Item extends Model
         'category_id',
         'station_id',
         'description',
-        'type',
-        'cost',
-        'storage_id',
+        // 'storage_id',
         'is_delivered',
         'user_id',
 
@@ -69,10 +67,10 @@ class Item extends Model
         return $this->belongsTo(City::class, 'city_id', 'id');
     }
 
-    public function storage()
-    {
-        return $this->belongsTo(Storage::class, 'storage_id', 'id');
-    }
+    // public function storage()
+    // {
+    //     return $this->belongsTo(Storage::class, 'storage_id', 'id');
+    // }
 
     public function itemMedia()
     {

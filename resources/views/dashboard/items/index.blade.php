@@ -66,7 +66,6 @@
                                             <th>{{ __('id') }}</th>
                                             <th>{{ __('report_number') }}</th>
                                             <th>{{ __('category_name') }}</th>
-                                            <th>{{ __('storage') }}</th>
                                             <th>{{ __('date') }}</th>
                                             <th>{{ __('time') }}</th>
                                             <th>{{ __('station_name') }}</th>
@@ -86,7 +85,6 @@
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->report_number }}</td>
                                                 <td>{{ $item->category->name }}</td>
-                                                <td>{{ $item->storage->name }}</td>
                                                 <td>{{ $item->date->format('Y-m-d') }}</td>
                                                 <td>{{ $item->time->format('h:i A') }}</td>
                                                 <td>{{ $item->station->name }}</td>

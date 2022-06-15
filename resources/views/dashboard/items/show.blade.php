@@ -17,7 +17,7 @@
                 <!-- Item Card -->
                 <section id="card-demo-example">
                     <div class="row match-height">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="item_card">
                                     <div>
@@ -56,14 +56,24 @@
 
                                                     <li>{{ __('category_name') }} : {{ $item->category->name }}</li>
 
-                                                    <li>{{ __('storage') }} : {{ $item->storage->name }}</li>
-
                                                     <li>{{ __('details') }} : {{ $item->details }}</li>
 
                                                     <li>{{ __('station_name') }} : {{ $item->station->name }}</li>
                                                     <li>{{ __('station_number') }} : {{ $item->station->number }}</li>
                                                     <li>{{ __('station_location') }} : {{ $item->station->location }}
                                                     </li>
+
+                                                    @if ($item->is_delivered == 1)
+                                                        <li>{{ __('item_status') }} : <span
+                                                                class="badge badge-light-success">{{ __('delivered') }}</span>
+                                                        </li>
+                                                        <li>{{ __('full_name') }} : {{ $item->full_name }}</li>
+                                                        <li>{{ __('phone') }} : {{ $item->phone }}</li>
+                                                    @else
+                                                        <li>{{ __('item_status') }} : <span
+                                                                class="badge badge-light-danger">{{ __('not_delivered') }}</span>
+                                                        </li>
+                                                    @endif
                                                 </ul>
                                             </div>
                                         </div>
@@ -78,7 +88,7 @@
                             </div>
                         </div>
 
-                        @if ($item->is_delivered == 1)
+                        {{-- @if ($item->is_delivered == 1)
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="item_card">
@@ -96,7 +106,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                        @endif --}}
                     </div>
                 </section>
                 <!-- Item Card -->

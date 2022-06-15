@@ -173,7 +173,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-6">
+                                            {{-- <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="selectStorage">{{ __('select_storage') }}</label>
                                                     <select class="form-control mb-1" name="storage_id" id="selectStorage"
@@ -192,7 +192,7 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-6">
                                                 <div class="form-group">
@@ -201,6 +201,28 @@
                                                         name="images[]" id="images" aria-label="{{ __('images') }}"
                                                         multiple />
                                                     @error('images')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="selectStation">{{ __('select_station') }}</label>
+                                                    <select class="form-control mb-1" name="station_id"
+                                                        id="selectStation" required>
+
+                                                        @foreach ($stations as $station)
+                                                            <option value="{{ $station->id }}"
+                                                                {{ old('station_id', $item->station_id) == $station->id ? 'selected' : '' }}>
+                                                                {{ $station->name }}
+                                                            </option>
+                                                        @endforeach
+
+                                                    </select>
+                                                    @error('station_id')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
                                                         </span>
@@ -225,27 +247,6 @@
                                                 @endforeach
                                             </div>
 
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="selectStation">{{ __('select_station') }}</label>
-                                                    <select class="form-control form-control-lg mb-1" name="station_id"
-                                                        id="selectStation" required>
-
-                                                        @foreach ($stations as $station)
-                                                            <option value="{{ $station->id }}"
-                                                                {{ old('station_id', $item->station_id) == $station->id ? 'selected' : '' }}>
-                                                                {{ $station->name }}
-                                                            </option>
-                                                        @endforeach
-
-                                                    </select>
-                                                    @error('station_id')
-                                                        <span class="alert alert-danger">
-                                                            <small class="errorTxt">{{ $message }}</small>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
 
                                             <div class="col-12">
                                                 <div class="form-group">
@@ -420,31 +421,31 @@
 
             });
 
-            $('#selectCategory').change(function(e) {
-                e.preventDefault();
+            // $('#selectCategory').change(function(e) {
+            //     e.preventDefault();
 
-                var category_id = $(this).val();
-                $("#selectStorage").html('');
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('admin.get_storages') }}",
-                    data: {
-                        category_id: category_id,
-                        _token: "{{ csrf_token() }}"
-                    },
-                    dataType: "json",
-                    success: function(result) {
+            //     var category_id = $(this).val();
+            //     $("#selectStorage").html('');
+            //     $.ajax({
+            //         type: "POST",
+            //         url: "{{ route('admin.get_storages') }}",
+            //         data: {
+            //             category_id: category_id,
+            //             _token: "{{ csrf_token() }}"
+            //         },
+            //         dataType: "json",
+            //         success: function(result) {
 
-                        $('#selectStorage').html('<option value="">{{ __('select') }}</option>');
-                        $.each(result.storages, function(key, value) {
-                            $("#selectStorage").append('<option value="' + value
-                                .id + '">' + value.name + '</option>');
-                        });
+            //             $('#selectStorage').html('<option value="">{{ __('select') }}</option>');
+            //             $.each(result.storages, function(key, value) {
+            //                 $("#selectStorage").append('<option value="' + value
+            //                     .id + '">' + value.name + '</option>');
+            //             });
 
-                    }
-                });
+            //         }
+            //     });
 
-            });
+            // });
 
             $(document).ready(function() {
 

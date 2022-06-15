@@ -156,7 +156,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-6">
+                                            {{-- <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="selectStorage">{{ __('select_storage') }}</label>
                                                     <select class="form-control mb-1" name="storage_id" id="selectStorage"
@@ -171,7 +171,7 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-6">
                                                 <div class="form-group">
@@ -187,10 +187,10 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-12">
+                                            <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="selectStation">{{ __('select_station') }}</label>
-                                                    <select class="form-control form-control-lg mb-1" name="station_id"
+                                                    <select class="form-control mb-1" name="station_id"
                                                         id="selectStation" required>
 
                                                         <option value="">{{ __('select') }}</option>
@@ -324,31 +324,31 @@
 
             });
 
-            $('#selectCategory').change(function(e) {
-                e.preventDefault();
+            // $('#selectCategory').change(function(e) {
+            //     e.preventDefault();
 
-                var category_id = $(this).val();
-                $("#selectStorage").html('');
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('admin.get_storages') }}",
-                    data: {
-                        category_id: category_id,
-                        _token: "{{ csrf_token() }}"
-                    },
-                    dataType: "json",
-                    success: function(result) {
+            //     var category_id = $(this).val();
+            //     $("#selectStorage").html('');
+            //     $.ajax({
+            //         type: "POST",
+            //         url: "{{ route('admin.get_storages') }}",
+            //         data: {
+            //             category_id: category_id,
+            //             _token: "{{ csrf_token() }}"
+            //         },
+            //         dataType: "json",
+            //         success: function(result) {
 
-                        $('#selectStorage').html('<option value="">{{ __('select') }}</option>');
-                        $.each(result.storages, function(key, value) {
-                            $("#selectStorage").append('<option value="' + value
-                                .id + '">' + value.name + '</option>');
-                        });
+            //             $('#selectStorage').html('<option value="">{{ __('select') }}</option>');
+            //             $.each(result.storages, function(key, value) {
+            //                 $("#selectStorage").append('<option value="' + value
+            //                     .id + '">' + value.name + '</option>');
+            //             });
 
-                    }
-                });
+            //         }
+            //     });
 
-            });
+            // });
         </script>
     @endpush
 @endsection

@@ -202,12 +202,12 @@ class ItemController extends Controller
 
         $cities = City::get();
 
-        $storages = Storage::where('id', $item->storage_id)->get();
+        // $storages = Storage::where('id', $item->storage_id)->get();
 
         $itemMedia = ItemMedia::where('item_id', $item->id)->get();
 
         if ($item) {
-            return view('dashboard.items.edit', compact('item', 'categories', 'stations', 'cities', 'storages', 'itemMedia'));
+            return view('dashboard.items.edit', compact('item', 'categories', 'stations', 'cities', 'itemMedia'));
         } else {
             return view('dashboard.error');
         }
@@ -308,16 +308,16 @@ class ItemController extends Controller
         ]);
     }
 
-    public function getStorages(Request $request)
-    {
-        $storages = Category::find($request->category_id)->storage()->get();
+    // public function getStorages(Request $request)
+    // {
+    //     $storages = Category::find($request->category_id)->storage()->get();
 
-        $storages = StorageResource::collection($storages);
+    //     $storages = StorageResource::collection($storages);
 
-        return response()->json([
-            'storages' => $storages
-        ]);
-    }
+    //     return response()->json([
+    //         'storages' => $storages
+    //     ]);
+    // }
 
     public function removeSession()
     {
