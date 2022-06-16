@@ -63,17 +63,9 @@ class ItemController extends Controller
         $date = Carbon::create($request->date);
         $time = Carbon::create($request->time);
 
-        $today = Carbon::now();
+        $data['date'] = $date->toDateTimeString();
 
-        if($date->isAfter($today)) {
-            return redirect()->back()->withInput()->with('error', __('date_after_today_error'));
-        } else {
-            $data['date'] = $date->toDateTimeString();
-
-            $data['time'] = $time->toDateTimeString();
-        }
-
-
+        $data['time'] = $time->toDateTimeString();
 
         if ($request->report_type == 'found') {
             $data['storage_id'] = null;
@@ -93,9 +85,14 @@ class ItemController extends Controller
         if ($request->report_type == 'lost') {
             if ($itemCountLost > 0) {
                 $last_item = Item::withTrashed()->where('report_type', 'lost')->orderBy('id', 'desc')->first();
-                $start_report_number = $last_item->report_number + 1;
 
-                $item_report_number = str_pad($start_report_number, 7, 'L22000', STR_PAD_LEFT);
+                $reportNumber = \str_replace('L', '', $last_item->report_number);
+
+                $reportNumberInt = (int) $reportNumber;
+
+                $start_report_number = $reportNumberInt + 1;
+
+                $item_report_number = 'L' . $start_report_number;
 
                 $data['report_number'] = $item_report_number;
 
@@ -108,10 +105,14 @@ class ItemController extends Controller
         } else {
             if ($itemCountFound > 0) {
                 $last_item = Item::withTrashed()->where('report_type', 'found')->orderBy('id', 'desc')->first();
-                $start_report_number = $last_item->report_number + 1;
 
-                $item_report_number = str_pad($start_report_number, 7, 'F33000', STR_PAD_LEFT);
+                $reportNumber = \str_replace('F', '', $last_item->report_number);
 
+                $reportNumberInt = (int) $reportNumber;
+
+                $start_report_number = $reportNumberInt + 1;
+
+                $item_report_number = 'F' . $start_report_number;
 
                 $data['report_number'] = $item_report_number;
 
