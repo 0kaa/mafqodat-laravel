@@ -57,13 +57,12 @@ class ItemController extends Controller
         $user = auth()->user();
 
         $data = $request->all();
-
         if ($request->report_type == 'found') {
-            $data['storage_id'] = $request->storage_id;
+            $data['storage_id'] = null;
             $data['informer_name'] = $request->informer_name;
             $data['informer_phone'] = $request->informer_phone;
         } else {
-            $data['storage_id'] = null;
+            $data['storage_id'] = $request->storage_id;
             $data['informer_name'] = null;
             $data['informer_phone'] = null;
         }
@@ -81,12 +80,10 @@ class ItemController extends Controller
                 $item_report_number = str_pad($start_report_number, 7, 'L22000', STR_PAD_LEFT);
 
                 $data['report_number'] = $item_report_number;
-
             } else {
                 $item_report_number = str_pad($start_report_number, 7, 'L22000', STR_PAD_LEFT);
 
                 $data['report_number'] = $item_report_number;
-
             }
         } else {
             if ($itemCountFound > 0) {
@@ -97,12 +94,10 @@ class ItemController extends Controller
 
 
                 $data['report_number'] = $item_report_number;
-
             } else {
                 $item_report_number = str_pad($start_report_number, 7, 'F33000', STR_PAD_LEFT);
 
                 $data['report_number'] = $item_report_number;
-
             }
         }
 
