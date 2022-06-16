@@ -29,10 +29,10 @@ class ItemResource extends JsonResource
                 'id'                => $this->user->id,
                 'first_name'        => $this->user->name,
             ],
-            'storage'           => [
+            'storage'           => $this->storage ?  [
                 'id'                => $this->storage->id,
                 'name'              => $this->storage->name,
-            ],
+            ] : null,
             'date'              => $this->date->format('Y-m-d'),
             'time'              => $this->time->format('h:i'),
             'fulldate'          => $this->date->format('Y-m-d') . ' - ' . $this->time->format('h:i A'),
