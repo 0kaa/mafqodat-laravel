@@ -1,5 +1,24 @@
 /* Create item Validation */
 $(document).ready(function () {
+
+    var lang = $('#locale').attr('lang');
+
+    if (lang == 'ar') {
+        var message_date = 'يجب ان يكون تاريخ الفقد أصغر من او مساوى لتاريخ اليوم';
+
+    } else {
+        var message_date = "Loss date must be less than or equal to today's date";
+
+    }
+
+    $.validator.addMethod('greaterThanDate', function (value) {
+        // get date today and compare with the date entered
+        var today = new Date();
+        var date = new Date(value);
+        return date <= today;
+
+    }, message_date);
+
     value = '';
     $('#reportType').change(function(e) {
         e.preventDefault();
@@ -18,12 +37,15 @@ $(document).ready(function () {
             },
             date: {
                 required: true,
+                greaterThanDate: true,
             },
             time: {
                 required: true,
             },
             storage_id: {
-                required: true,
+                depends: function(element) {
+                    return value == 'lost';
+                }
             },
             category_id: {
                 required: true
@@ -58,6 +80,24 @@ $(document).ready(function () {
 /* Update item Validation */
 $(document).ready(function () {
 
+    var lang = $('#locale').attr('lang');
+
+    if (lang == 'ar') {
+        var message_date = 'يجب ان يكون تاريخ الفقد أصغر من او مساوى لتاريخ اليوم';
+
+    } else {
+        var message_date = "Loss date must be less than or equal to today's date";
+
+    }
+
+    $.validator.addMethod('greaterThanDate', function (value) {
+        // get date today and compare with the date entered
+        var today = new Date();
+        var date = new Date(value);
+        return date <= today;
+
+    }, message_date);
+
     value = '';
     $('#reportType').change(function(e) {
         e.preventDefault();
@@ -74,12 +114,16 @@ $(document).ready(function () {
             },
             date: {
                 required: true,
+                greaterThanDate: true,
             },
             time: {
                 required: true,
             },
             storage_id: {
                 required: true,
+                depends: function(element) {
+                    return value == 'lost';
+                }
             },
             category_id: {
                 required: true

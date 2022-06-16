@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="rtl">
+<html class="loading" id="locale" lang="{{ App::getLocale() }}" data-textdirection="rtl">
 <!-- BEGIN: Head-->
 
 <head>
