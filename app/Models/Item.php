@@ -21,7 +21,7 @@ class Item extends Model
         'category_id',
         'station_id',
         'description',
-        // 'storage_id',
+        'storage_id',
         'is_delivered',
         'user_id',
 

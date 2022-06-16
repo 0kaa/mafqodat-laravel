@@ -23,8 +23,8 @@ return new class extends Migration
             $table->longText('details')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            // $table->unsignedBigInteger('storage_id');
-            // $table->foreign('storage_id')->references('id')->on('storages')->onDelete('cascade');
+            $table->unsignedBigInteger('storage_id');
+            $table->foreign('storage_id')->references('id')->on('storages')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('station_id');
