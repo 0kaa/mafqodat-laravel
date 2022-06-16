@@ -23,7 +23,9 @@ $(document).ready(function () {
                 required: true,
             },
             storage_id: {
-                required: true,
+                depends: function(element) {
+                    return value == 'lost';
+                }
             },
             category_id: {
                 required: true
@@ -80,6 +82,9 @@ $(document).ready(function () {
             },
             storage_id: {
                 required: true,
+                depends: function(element) {
+                    return value == 'lost';
+                }
             },
             category_id: {
                 required: true

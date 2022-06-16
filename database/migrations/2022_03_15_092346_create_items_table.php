@@ -17,7 +17,7 @@ return new class extends Migration
             /* Lost item data */
             $table->id();
             $table->enum('report_type', ['lost', 'found']);
-            $table->integer('report_number')->unique();
+            $table->string('report_number')->unique();
             $table->timestamp('date')->nullable();
             $table->timestamp('time')->nullable();
             $table->longText('details')->nullable();

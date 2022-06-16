@@ -156,23 +156,6 @@
                                                 </div>
                                             </div>
 
-                                            {{-- <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="selectStorage">{{ __('select_storage') }}</label>
-                                                    <select class="form-control mb-1" name="storage_id" id="selectStorage"
-                                                        required>
-
-                                                        <option value="">{{ __('select') }}</option>
-
-                                                    </select>
-                                                    @error('storage_id')
-                                                        <span class="alert alert-danger">
-                                                            <small class="errorTxt">{{ $message }}</small>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div> --}}
-
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="images" class="form-label">{{ __('images') }}</label>
@@ -206,6 +189,23 @@
 
                                                     </select>
                                                     @error('station_id')
+                                                        <span class="alert alert-danger">
+                                                            <small class="errorTxt">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <div class="form-group" id="storage_id">
+                                                    <label for="selectStorage">{{ __('select_storage') }}</label>
+                                                    <select class="form-control mb-1" name="storage_id" id="selectStorage"
+                                                        required>
+
+                                                        <option value="">{{ __('select') }}</option>
+
+                                                    </select>
+                                                    @error('storage_id')
                                                         <span class="alert alert-danger">
                                                             <small class="errorTxt">{{ $message }}</small>
                                                         </span>
@@ -305,6 +305,7 @@
 
             $('#informer_name').hide();
             $('#informer_phone').hide();
+            $('#storage_id').hide();
 
             $('#reportType').change(function(e) {
                 e.preventDefault();
@@ -312,43 +313,44 @@
                 var value = $(this).val();
 
                 if (value == 'found') {
-
+                    $('#storage_id').hide();
                     $('#informer_name').show();
                     $('#informer_phone').show();
 
                 } else {
 
+                    $('#storage_id').show();
                     $('#informer_name').hide();
                     $('#informer_phone').hide();
                 }
 
             });
 
-            // $('#selectCategory').change(function(e) {
-            //     e.preventDefault();
+            $('#selectCategory').change(function(e) {
+                e.preventDefault();
 
-            //     var category_id = $(this).val();
-            //     $("#selectStorage").html('');
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "{{ route('admin.get_storages') }}",
-            //         data: {
-            //             category_id: category_id,
-            //             _token: "{{ csrf_token() }}"
-            //         },
-            //         dataType: "json",
-            //         success: function(result) {
+                var category_id = $(this).val();
+                $("#selectStorage").html('');
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('admin.get_storages') }}",
+                    data: {
+                        category_id: category_id,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    dataType: "json",
+                    success: function(result) {
 
-            //             $('#selectStorage').html('<option value="">{{ __('select') }}</option>');
-            //             $.each(result.storages, function(key, value) {
-            //                 $("#selectStorage").append('<option value="' + value
-            //                     .id + '">' + value.name + '</option>');
-            //             });
+                        $('#selectStorage').html('<option value="">{{ __('select') }}</option>');
+                        $.each(result.storages, function(key, value) {
+                            $("#selectStorage").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
 
-            //         }
-            //     });
+                    }
+                });
 
-            // });
+            });
         </script>
     @endpush
 @endsection

@@ -76,9 +76,11 @@ class ItemController extends Controller
 
 
         if ($request->report_type == 'found') {
+            $data['storage_id'] = null;
             $data['informer_name'] = $request->informer_name;
             $data['informer_phone'] = $request->informer_phone;
         } else {
+            $data['storage_id'] = $request->storage_id;
             $data['informer_name'] = null;
             $data['informer_phone'] = null;
         }
@@ -93,12 +95,12 @@ class ItemController extends Controller
                 $last_item = Item::withTrashed()->where('report_type', 'lost')->orderBy('id', 'desc')->first();
                 $start_report_number = $last_item->report_number + 1;
 
-                $item_report_number = str_pad($start_report_number, 6, '22000', STR_PAD_LEFT);
+                $item_report_number = str_pad($start_report_number, 7, 'L22000', STR_PAD_LEFT);
 
                 $data['report_number'] = $item_report_number;
 
             } else {
-                $item_report_number = str_pad($start_report_number, 6, '22000', STR_PAD_LEFT);
+                $item_report_number = str_pad($start_report_number, 7, 'L22000', STR_PAD_LEFT);
 
                 $data['report_number'] = $item_report_number;
 
@@ -108,13 +110,13 @@ class ItemController extends Controller
                 $last_item = Item::withTrashed()->where('report_type', 'found')->orderBy('id', 'desc')->first();
                 $start_report_number = $last_item->report_number + 1;
 
-                $item_report_number = str_pad($start_report_number, 6, '33000', STR_PAD_LEFT);
+                $item_report_number = str_pad($start_report_number, 7, 'F33000', STR_PAD_LEFT);
 
 
                 $data['report_number'] = $item_report_number;
 
             } else {
-                $item_report_number = str_pad($start_report_number, 6, '33000', STR_PAD_LEFT);
+                $item_report_number = str_pad($start_report_number, 7, 'F33000', STR_PAD_LEFT);
 
                 $data['report_number'] = $item_report_number;
 
@@ -202,12 +204,12 @@ class ItemController extends Controller
 
         $cities = City::get();
 
-        // $storages = Storage::where('id', $item->storage_id)->get();
+        $storages = Storage::where('id', $item->storage_id)->get();
 
         $itemMedia = ItemMedia::where('item_id', $item->id)->get();
 
         if ($item) {
-            return view('dashboard.items.edit', compact('item', 'categories', 'stations', 'cities', 'itemMedia'));
+            return view('dashboard.items.edit', compact('item', 'categories', 'stations', 'storages', 'cities', 'itemMedia'));
         } else {
             return view('dashboard.error');
         }
@@ -275,9 +277,11 @@ class ItemController extends Controller
         } // end of has images
 
         if ($request->report_type == 'found') {
+            $data['storage_id'] = null;
             $data['informer_name'] = $request->informer_name;
             $data['informer_phone'] = $request->informer_phone;
         } else {
+            $data['storage_id'] = $request->storage_id;
             $data['informer_name'] = null;
             $data['informer_phone'] = null;
         }
@@ -308,16 +312,16 @@ class ItemController extends Controller
         ]);
     }
 
-    // public function getStorages(Request $request)
-    // {
-    //     $storages = Category::find($request->category_id)->storage()->get();
+    public function getStorages(Request $request)
+    {
+        $storages = Category::find($request->category_id)->storage()->get();
 
-    //     $storages = StorageResource::collection($storages);
+        $storages = StorageResource::collection($storages);
 
-    //     return response()->json([
-    //         'storages' => $storages
-    //     ]);
-    // }
+        return response()->json([
+            'storages' => $storages
+        ]);
+    }
 
     public function removeSession()
     {

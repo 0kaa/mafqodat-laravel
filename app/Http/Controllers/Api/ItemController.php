@@ -78,12 +78,12 @@ class ItemController extends Controller
                 $last_item = Item::withTrashed()->where('report_type', 'lost')->orderBy('id', 'desc')->first();
                 $start_report_number = $last_item->report_number + 1;
 
-                $item_report_number = str_pad($start_report_number, 6, '22000', STR_PAD_LEFT);
+                $item_report_number = str_pad($start_report_number, 7, 'L22000', STR_PAD_LEFT);
 
                 $data['report_number'] = $item_report_number;
 
             } else {
-                $item_report_number = str_pad($start_report_number, 6, '22000', STR_PAD_LEFT);
+                $item_report_number = str_pad($start_report_number, 7, 'L22000', STR_PAD_LEFT);
 
                 $data['report_number'] = $item_report_number;
 
@@ -93,13 +93,13 @@ class ItemController extends Controller
                 $last_item = Item::withTrashed()->where('report_type', 'found')->orderBy('id', 'desc')->first();
                 $start_report_number = $last_item->report_number + 1;
 
-                $item_report_number = str_pad($start_report_number, 6, '33000', STR_PAD_LEFT);
+                $item_report_number = str_pad($start_report_number, 7, 'F33000', STR_PAD_LEFT);
 
 
                 $data['report_number'] = $item_report_number;
 
             } else {
-                $item_report_number = str_pad($start_report_number, 6, '33000', STR_PAD_LEFT);
+                $item_report_number = str_pad($start_report_number, 7, 'F33000', STR_PAD_LEFT);
 
                 $data['report_number'] = $item_report_number;
 

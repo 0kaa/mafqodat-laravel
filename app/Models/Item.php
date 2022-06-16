@@ -67,10 +67,10 @@ class Item extends Model
         return $this->belongsTo(City::class, 'city_id', 'id');
     }
 
-    // public function storage()
-    // {
-    //     return $this->belongsTo(Storage::class, 'storage_id', 'id');
-    // }
+    public function storage()
+    {
+        return $this->belongsTo(Storage::class, 'storage_id', 'id');
+    }
 
     public function itemMedia()
     {
