@@ -231,11 +231,11 @@ class ItemController extends Controller
             } // end of has images
 
             if ($request->report_type == 'found') {
-                $data['storage_id'] = $request->storage_id;
+                $data['storage_id'] = null;
                 $data['informer_name'] = $request->informer_name;
                 $data['informer_phone'] = $request->informer_phone;
             } else {
-                $data['storage_id'] = null;
+                $data['storage_id'] = $request->storage_id;
                 $data['informer_name'] = null;
                 $data['informer_phone'] = null;
             }
