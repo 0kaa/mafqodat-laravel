@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::prefix('admin')->middleware(['webLocalization'])->namespace('Dashboard')->group(function () {
+Route::middleware(['webLocalization'])->namespace('Dashboard')->group(function () {
 
     /* Auth Routes */
     Route::get('login', [AuthController::class, 'showLoginForm'])->name('admin.login');
@@ -46,7 +46,7 @@ Route::get('language/{locale}', function ($locale) {
 })->name('language');
 
 
-Route::prefix('admin')->middleware(['auth', 'webLocalization', 'role:super_admin'])->namespace('Dashboard')->name('admin.')->group(function () {
+Route::middleware(['auth', 'webLocalization', 'role:super_admin'])->namespace('Dashboard')->name('admin.')->group(function () {
 
     Route::get('/', 'HomeController@home')->name('home');
 
